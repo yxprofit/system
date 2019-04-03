@@ -5,19 +5,17 @@
 				<h3>我的小组</h3>
 			</span>
 			<div class="group">
-				<ul :style="{ width: (data.length - 3) * 350 + 'px' }">
-					<li v-for="(item, index) in data" v-if="index < 4">
+				<ul>
+					<li v-for="(item, index) in data" :key="index">
 						<h4>09级2班 03组</h4>
 						<div class="teamMain">
-							<div class="teamBlock" v-for="(item) in data">
+							<div class="teamBlock" v-for="(item,index) in data" :key="index">
 								<div class="teamAvatar">
 									<img :src="head" />
 									<span>欧阳娜娜</span>
 								</div>
 								<div class="teamText">
-									Appreciation of Beauty & Excellence  |<br /> 
-									Appreciation of Beauty & Excellence  |<br />
-									Appreciation of Beauty & Excellence
+									优势01 | 优势02 | 优势03
 								</div>
 							</div>
 						</div>
@@ -82,7 +80,14 @@ export default {
 	}
 	.group {
 		overflow-x: scroll;
-		overflow-y: hidden;
+		overflow-y: scroll;
+		ul{
+			display: flex;
+			justify-content: flex-start;
+			flex-wrap: nowrap;
+			height: 646px;
+			width: 1100px;
+		}
 		li {
 			border: #E4E8ED 1px solid;
 			width: 332px;

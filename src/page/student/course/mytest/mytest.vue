@@ -14,7 +14,7 @@
     <div>
       <section>
         <ul>
-			<li v-for="(n, index) in 4" :key="index">
+			<li v-for="(n, index) in data" :style="{width:(1/data.length)*200 + '%'}" :key="index">
 				<p class="title">自我认知</p>
 				<big v-if="index === 2" style="color: #aaa">— —</big>
 				<big v-else>3.5 <small>分</small></big>
@@ -48,6 +48,7 @@ export default {
   name: 'Mytest',
   data () {
     return {
+      data: [1,2,3,4],
       loading: true,
       vs,
       pro1: 0,
@@ -189,15 +190,15 @@ export default {
         width: 100%;
         display: flex;
         margin-bottom: 30px;
-        justify-content: space-between;
+        justify-content: space-around;
         li{
           width: 224px;
-          // background-color: #3EACFA;
           border-radius:6px;
           overflow: hidden;
           background:rgba(245,245,245,1);
           border:1px solid rgba(238,238,238,1);
           position: relative;
+          margin-right: 16px;
           big {
             font-size:26px;
             font-family:PingFang-SC-Regular;
