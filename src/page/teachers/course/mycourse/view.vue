@@ -130,7 +130,7 @@
 							<div class="myteam">
 								<span class="i">小组分配</span>
 								<router-link to="/courseware" class="classstart" tag="span" >开始上课</router-link>
-								<span class="classdata">备课资料</span>
+								<span class="classdata" @click="handlePrepareLesson">备课资料</span>
 							</div>
 						</div>
 					</el-col>
@@ -186,25 +186,31 @@
 				</el-row>
 			</div>
 		</div>
+
+    <!-- 课程资料弹窗 -->
+    <prepare-lesson :showLesson.sync="showLesson"></prepare-lesson>
 	</div>
 </template>
 
 <script>
 import breadcrumb from '@/components/common/breadcrumb.vue'
+import PrepareLesson from '../prepareLesson';
 import breadcrumb_address from 'assets/images/student/breadcrumb_address.png'
 import workimg from 'assets/images/student/workimg.png'
 
 export default {
 	name: "MyCourseView",
 	components: {
-		breadcrumb,
+    breadcrumb,
+    PrepareLesson
 	},
 	data() {
 		return {
 			loading: true,
 			workimg,
 			data: [1,2,3,4,5,6,7],
-			desState: false
+      desState: false,
+      showLesson: false
 		};
 	},
 	created() {
@@ -214,7 +220,9 @@ export default {
 		}, 1000);
 	},
 	methods: {
-
+    handlePrepareLesson() {
+      this.showLesson = true;
+    },
 		fitlerdes(){
 			let text = '外教英语培训班 , 外教英语培训班 , 每天45分钟 , 随时纠正 , 学英语上TutorABC , 随时随地对话全球外教 , 生活,职场，外教英语培训班 , 外教英语培训班 , 每天45分钟 , 随时纠正 , 学英语上TutorABC，外教英语培训班 , 外教英语培训班 , 每天45分';
 			return this.desState ? text : text.slice(0, 133) + '...'
