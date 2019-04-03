@@ -92,7 +92,7 @@ export default {
     background: #fff;
     // max-height: 80%;
     // min-width: 640px;
-    width: 80%;
+    max-width: 80%;
     border-radius: 5px;
     z-index: 4445;
     animation: slide 0.5s ease-out;
@@ -151,19 +151,42 @@ export default {
 }
 
 .lesson-list {
-  text-align: center;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  display: -webkit-flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-box-orient: horizontal;
+  -moz-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
   max-height: 400px;
   width: 100%;
   overflow: auto;
   margin-bottom: 30px;
+  padding: 0 5px;
+  box-sizing: border-box;
 }
 .lesson-item {
   width: 110px;
   height: 140px;
+  flex: 1;
   display: inline-block;
   margin: 10px 5px;
   border: 1px solid #e4e8ed;
   border-radius: 4px;
+  cursor: pointer;
 
   .lesson-img {
     .less-image {
