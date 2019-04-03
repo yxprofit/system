@@ -28,7 +28,7 @@ export default {
 
 <style lang="scss" scoped>
 .g_main {
-  width: 1349px;
+  width:1366px;
   margin: 0 auto;
 }
 .main {
