@@ -1,77 +1,81 @@
 <template>
   <div class="courseware" v-loading="loading">
     <div class="taskleft">
-      <div class="backclass" @click="goback">< 返回课程</div>
-      <div class="step">
-        <div class="stepimg" v-if="page === 1">
-          <img :src="material">
+      <div class="backclass" @click="goback">
+        < 返回课程</div>
+          <div class="step">
+            <div class="stepimg" v-if="page === 1">
+              <img :src="material">
+            </div>
+            <div class="stepimg" v-if="page === 2">
+              <img :src="details1">
+            </div>
+          </div>
+          <div class="stepbut">
+            <button class="pre" :class="{'active':page === 1}" @click="page = 1">上一页</button>
+            <span class="pages">
+              <var>{{page}}</var>/2
+            </span>
+            <button class="next" :class="{'active':page === 2}" @click="page = 2">下一页</button>
+          </div>
+          <div class="allprint" @click="screenF">
+            <img :src="allprint"> {{fullShow ? '退出全屏' : '全屏' }}
+          </div>
+      </div>
+      <hgroup :class="{'active':isHidden}">
+        <div>
+          <span>本课时任务</span>
+          <span v-show='!isHidden'>
+            <img @click="changeIsHidden" src="../../assets/images/icon/icon_task_close.png" alt>
+          </span>
         </div>
-        <div class="stepimg" v-if="page === 2">
-          <img :src="details1">
-        </div>
-      </div>
-      <div class="stepbut">
-        <button class="pre" :class="{'active':page === 1}" @click="page = 1">上一页</button>
-        <span class="pages">
-          <var>{{page}}</var>/2
-        </span>
-        <button class="next" :class="{'active':page === 2}" @click="page = 2">下一页</button>
-      </div>
-      <div class="allprint" @click="screenF">
-        <img :src="allprint">
-        {{fullShow ? '退出全屏' : '全屏' }}
-      </div>
+        <ul class="task">
+          <li>
+            <h4 class="icon-course">
+              <b>课件任务名称</b>
+              <span class="active">去完成</span>
+            </h4>
+          </li>
+          <li>
+            <h4 class="icon-test">
+              <b>测试任务名称</b>
+              <span class="active">去完成</span>
+            </h4>
+          </li>
+          <li>
+            <h4 class="icon-questionnaire">
+              <b>问卷任务名称</b>
+              <span>已完成</span>
+            </h4>
+          </li>
+          <li>
+            <h4 class="icon-works">
+              <b>作品上传</b>
+              <span>已完成</span>
+            </h4>
+          </li>
+          <li>
+            <h4 class="icon-clock">
+              <b>优势打卡任务名称</b>
+              <span>已完成</span>
+            </h4>
+          </li>
+        </ul>
+        <ul class="operation">
+          <li class="edit">
+            <span>
+              <i class="el-icon-check"></i>保存修改
+            </span>
+          </li>
+          <li class="add">
+            <span>
+              <i class="el-icon-plus"></i>添加任务
+            </span>
+          </li>
+        </ul>
+        <img class='bottom' @click="changeIsHidden" src="../../assets/images/icon/icon_open.png" alt="">
+      </hgroup>
     </div>
-    <hgroup :class="{'active':isHidden}">
-      <div>
-        <span>本课时任务</span>
-        <span>
-          <img @click="changeIsHidden" src="../../assets/images/icon/icon_task_close.png" alt>
-        </span>
-      </div>
-      <ul class="task">
-        <li>
-          <h4 class="icon-course">
-            课件任务名称
-            <span class="active">查看结果</span>
-          </h4>
-        </li>
-        <li>
-          <h4 class="icon-test">课件任务名称</h4>
-        </li>
-        <li>
-          <h4 class="icon-questionnaire">
-            课件任务名称
-            <span>查看结果</span>
-          </h4>
-        </li>
-        <li>
-          <h4 class="icon-works">
-            课件任务名称
-            <span>查看结果</span>
-          </h4>
-        </li>
-        <li>
-          <h4 class="icon-clock">
-            课件任务名称
-            <span>查看结果</span>
-          </h4>
-        </li>
-      </ul>
-      <ul class="operation">
-        <li class="edit">
-          <span>
-            <i class="el-icon-check"></i>保存修改
-          </span>
-        </li>
-        <li class="add">
-          <span>
-            <i class="el-icon-plus"></i>添加任务
-          </span>
-        </li>
-      </ul>
-    </hgroup>
-  </div>
 </template>
 
 <script>
@@ -90,8 +94,8 @@ export default {
       details1,
       allprint,
       fullShow: false,
-			page: 1,
-			isHidden: false
+      page: 1,
+      isHidden: false
     };
   },
   created() {
@@ -108,8 +112,8 @@ export default {
     screenF() {
       this.fullShow = !this.fullShow;
       screenfull.toggle();
-		},
-		 changeIsHidden () {
+    },
+    changeIsHidden() {
       this.isHidden = !this.isHidden
     }
   }
@@ -288,33 +292,53 @@ hgroup {
     }
   }
   &.active {
-    max-width: 44px;
-    width: 44px;
-    height: 44px;
-    min-height: 44px;
+    max-width: 103px;
+    width: 103px;
     padding-bottom: 0;
-    margin-top: 28px;
+    // margin-top: 28px;
     background-color: transparent;
-    border: none;
+    // border: none;
     & > div {
-      width: 44px;
-      height: 44px;
-      padding: 10px;
+      padding: 0;
+      width: 100%;
+      height: 70px;
+      font-size: 14px;
       text-align: center;
-      border-radius: 50% 0 0 50%;
-      span:nth-child(1) {
-        display: none;
-      }
       span:nth-child(2) {
-        margin-top: 0;
-        transform: rotate(180deg);
+        display: none;
       }
     }
     ul {
+      li {
+        position: relative;
+        &::before {
+          position: absolute;
+          content: "";
+          width: 6px;
+          height: 6px;
+          background: rgba(39, 137, 247, 1);
+          background: rgba(204, 204, 204, 1);
+          border-radius: 50%;
+          top: 60%;
+          right: 29px;
+        }
+        b,
+        span {
+          display: none;
+        }
+      }
+    }
+    .operation {
       display: none;
+    }
+    .bottom {
+      display: block;
     }
   }
   .task {
+    b {
+      font-weight: 700;
+    }
     span {
       float: right;
       border: 1px solid #ccc;
@@ -355,6 +379,13 @@ hgroup {
     }
     .add {
     }
+  }
+  .bottom {
+    display: none;
+    margin: 60px auto;
+    width: 22px;
+    height: 14px;
+    transform:rotate(180deg);
   }
 }
 </style>
