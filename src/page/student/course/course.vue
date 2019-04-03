@@ -44,7 +44,7 @@ export default {
       this.$router.push(torouter)
     },
     addover (idx) {
-      console.log(idx)
+      // console.log(idx)
       this.over = idx
     },
     changeIsNavShow () {
@@ -57,7 +57,7 @@ export default {
 <style lang="scss" scoped>
 .course{
   // width: 100%;
-  height: 500px;
+  height:100%;
   // background: #eee;
   display: flex;
   aside{
