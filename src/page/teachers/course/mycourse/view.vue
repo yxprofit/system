@@ -129,7 +129,7 @@
 							</div>
 							<div class="myteam">
 								<span class="i">小组分配</span>
-								<router-link to="/courseware" class="classstart" tag="span" >开始上课</router-link>
+								<span class="classstart" tag="span" @click="handleStartClass">开始上课</span>
 								<span class="classdata" @click="handlePrepareLesson">备课资料</span>
 							</div>
 						</div>
@@ -189,12 +189,15 @@
 
     <!-- 课程资料弹窗 -->
     <prepare-lesson :showLesson.sync="showLesson"></prepare-lesson>
+    <!-- 班级列表弹窗 -->
+    <open-class ref="OpenClass"></Open-class>
 	</div>
 </template>
 
 <script>
 import breadcrumb from '@/components/common/breadcrumb.vue'
 import PrepareLesson from '../prepareLesson';
+import OpenClass from './openclass';
 import breadcrumb_address from 'assets/images/student/breadcrumb_address.png'
 import workimg from 'assets/images/student/workimg.png'
 
@@ -202,7 +205,8 @@ export default {
 	name: "MyCourseView",
 	components: {
     breadcrumb,
-    PrepareLesson
+    PrepareLesson,
+    OpenClass
 	},
 	data() {
 		return {
@@ -210,7 +214,8 @@ export default {
 			workimg,
 			data: [1,2,3,4,5,6,7],
       desState: false,
-      showLesson: false
+      showLesson: false,
+      showClass: false
 		};
 	},
 	created() {
@@ -222,6 +227,9 @@ export default {
 	methods: {
     handlePrepareLesson() {
       this.showLesson = true;
+    },
+    handleStartClass () {
+    	this.$refs.OpenClass.show()
     },
 		fitlerdes(){
 			let text = '外教英语培训班 , 外教英语培训班 , 每天45分钟 , 随时纠正 , 学英语上TutorABC , 随时随地对话全球外教 , 生活,职场，外教英语培训班 , 外教英语培训班 , 每天45分钟 , 随时纠正 , 学英语上TutorABC，外教英语培训班 , 外教英语培训班 , 每天45分';
