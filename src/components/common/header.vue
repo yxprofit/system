@@ -1,8 +1,8 @@
 <template>
   <header>
-    <router-link :to="{path:'student'}" class="logo">
+    <!-- <router-link :to="{path:'student'}" class="logo">
       <img src="../../assets/images/logo.png" alt="">
-    </router-link>
+    </router-link> -->
     <div class="userinfo">
       <span class='msg'><img src="../../assets/images/icon/icon_message.png" alt=""></span>
       <span @click='faq'><img src="../../assets/images/icon/icon_problem.png" alt=""></span>
@@ -10,7 +10,7 @@
         <div><img src="../../assets/images/head.png" alt=""></div>
         <div>
           <h3>余周周</h3>
-          <p>高中三年级</p>
+          <!-- <p>高中三年级</p> -->
         </div>
         <!-- <span><img src="../../assets/images/icon/icon_arrow_bottom.png" alt=""></span> -->
       </div>
@@ -39,7 +39,6 @@ header {
   .logo {
     display: block;
     width: 209px;
-    // margin-top: 12px;
     float: left;
     img {
       width: 100%;
@@ -56,8 +55,10 @@ header {
       overflow: hidden;
       width: 146px;
       margin-left: 40px;
+      display: flex;
+      align-items: center;
       & > div:nth-child(1) {
-        margin-top: 10px;
+        margin-top: 6px;
         width: 40px;
         height: 40px;
         line-height: 40px;
@@ -73,7 +74,7 @@ header {
         h3 {
           font-size: 14px;
           line-height: 12px;
-          margin: 17px 0 6px;
+          margin: 18px 0 6px;
         }
         p {
           font-size: 12px;
