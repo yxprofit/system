@@ -9,9 +9,6 @@
   color: #F28C18;
   background:rgba(255,247,237,1);
 }
-.el-select-dropdown{
-  top: 122px !important;
-}
 .el-select-dropdown__item.selected{
   color: #F28C18;
 }
@@ -44,6 +41,9 @@
 }
 .mytest .el-table .tableRow:hover td {
   background-color: initial !important;
+}
+.mytest .el-select-dropdown{
+  top:53px !important;
 }
 
 .upload .el-upload {width: 100%}

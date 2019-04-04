@@ -2,7 +2,7 @@
   <div class="mytest" v-loading="loading">
     <section>
       <h2>我的测试</h2>
-      <el-select class="search" v-model="value" placeholder="请选择">
+      <el-select class="search" v-model="value" placeholder="请选择" :popper-append-to-body='false'>
         <el-option
           v-for="item in options"
           :key="item.value"
