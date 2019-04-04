@@ -8,12 +8,12 @@
 import List from './list.vue'
 export default {
   name: 'Works',
-  data () {
+  data() {
     return {
       loading: true
     }
   },
-  created () {
+  created() {
     setTimeout(() => {
       this.loading = false
     }, 1000)
@@ -25,4 +25,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+div {
+  height: 100%;
+}
 </style>

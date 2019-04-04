@@ -207,6 +207,10 @@ export default{
 
 <style lang="scss" scoped>
 .container-tends{
+  box-sizing: border-box;
+  padding-bottom: 30px;
+  height: 100%;
+  overflow: auto;
   .tendsHead {
     background-color: #fff;
     border-radius: 6px 6px 0 0;
@@ -290,11 +294,10 @@ export default{
     height: 34px;
     line-height: 34px;
     text-align: center;
-    margin: 0 auto;
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 17px;
-    margin-top: 20px;
+    margin: 20px auto 0;
     color: #999;
     font-size: 13px;
     font-family: '微软雅黑';

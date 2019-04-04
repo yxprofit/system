@@ -24,10 +24,7 @@
       </div>
       <hgroup :class="{'active':isHidden}">
         <div>
-          <span>本课时任务</span>
-          <span v-show='!isHidden'>
-            <img @click="changeIsHidden" src="../../assets/images/icon/icon_task_close.png" alt>
-          </span>
+          <p>本课时任务</p>
         </div>
         <ul class="task">
           <li>
@@ -73,7 +70,7 @@
             </span>
           </li>
         </ul> -->
-        <img class='bottom' @click="changeIsHidden" src="../../assets/images/icon/icon_open.png" alt="">
+        <img :class="['bottom',{'hidden':isHidden}]" @click="changeIsHidden" src="../../assets/images/icon/icon_open.png" alt="">
       </hgroup>
     </div>
 </template>
@@ -225,16 +222,9 @@ hgroup {
     font-size: 18px;
     color: #fff;
     font-weight: 600;
-    & > span:first-child {
-      flex: 1;
-    }
-    & > span:nth-child(2) {
-      display: inline-block;
-      width: 24px;
-      height: 24px;
-      line-height: 24px;
-      margin-top: 23px;
-      cursor: pointer;
+    p {
+      width: 100%;
+      text-align: center;
     }
   }
   & > ul > li {
@@ -380,12 +370,20 @@ hgroup {
     .add {
     }
   }
+  // .bottom {
+  //   margin: 56px auto;
+  //   width: 22px;
+  //   height: 14px;
+  //   // transform:rotate(180deg);
+  // }
   .bottom {
-    display: none;
-    margin: 60px auto;
+    margin: 56px 0 0 21px;
     width: 22px;
     height: 14px;
-    transform:rotate(180deg);
+    &.hidden {
+      margin: 56px auto;
+      transform: rotate(180deg);
+    }
   }
 }
 </style>
