@@ -84,17 +84,21 @@
                   </el-tooltip>
                 </div>
               </div>
-              <div class="item-body" @click="changedetails(item)">
+              <div class="item-body">
                 <div class="item-desc">{{item.worksTitle}}</div>
                 <div class="task-name">{{item.jobTitle ? '任务名称： ' + item.jobTitle : ''}}</div>
                 <div class="name">课时1：课时名称</div>
                 <div class="dianzan">
                   <div class="dianzan-head">
                     <span><img src="../../../../assets/images/head.png" alt=""></span>
-                    <span class="tname">余周周</span>
+                    <span class="tname">{{item.tname}}</span>
                   </div>
-                  <div class="good" :class="{'is-zan':item.isZan}">
-                    <span>6</span>
+                  <div class="good" :class="{'is-zan':item.isLike}">
+                    <span @click="handleLike(item)">
+                      <img class="like-img" v-show="item.isLike" :src="zan">
+                      <img class="like-img" v-show="!item.isLike" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo1QTJGRjhGMjU1MzcxMUU5QUU2OUVDQjlGOTkzNEQ3QSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo1QTJGRjhGMzU1MzcxMUU5QUU2OUVDQjlGOTkzNEQ3QSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjVBMkZGOEYwNTUzNzExRTlBRTY5RUNCOUY5OTM0RDdBIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjVBMkZGOEYxNTUzNzExRTlBRTY5RUNCOUY5OTM0RDdBIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+tjw++AAAANlJREFUeNqUkUsPRTAQhZV6LDxC0p3/4P+v7e1FbCywk8hFxKMOTUTEvbfOojnT9utMZwjnXHlSlmV1XUdR5LrudV9VvqhpmnEc0zS97T8Dy7J0XQfTtq0UUJYlGBh+6A/Q932e58IbhkEI+QUMw5AkyTzPIvQ873aBoBvTNME5jhOGYRzH+Ot5bNv2lUHHaFEU67oisCwLwPU29Dl0hlVVqbquK9LCoyqlVB5A2e8A/OddSb7vv8hgmuZeknyGIAj2wclnYIztADolYk3TsGIUwtyEkQlgE2AAwPpTUmAwyA0AAAAASUVORK5CYII=" alt="">
+                    </span>
+                    <span>{{item.liked}}</span>
                   </div>
                 </div>
               </div>
@@ -126,6 +130,8 @@ import icon_39 from 'assets/images/icon/icon_39.png'
 import icon_40 from 'assets/images/icon/icon_40.png'
 import icon_42 from 'assets/images/icon/icon_42.png'
 import icon_task_close from 'assets/images/icon/icon_task_close.png'
+import zan from 'assets/images/student/zan.png'
+
 
 export default{
 	components: {
@@ -138,6 +144,7 @@ export default{
       icon_39,
       icon_40,
       icon_42,
+      zan,
       icon_task_close,
       detailsShow: false,
       uploadShow: false,
@@ -170,6 +177,16 @@ export default{
     }
   },
   methods: {
+    handleLike(listItem) {
+      console.log(listItem);
+      let index = this.data.findIndex(item => listItem.id === item.id)
+      if (listItem.isLike) {
+        this.data[index]['liked'] -= 1
+      } else {
+        this.data[index]['liked'] += 1
+      }
+      this.data[index]['isLike'] = !this.data[index]['isLike']
+    },
     handleConditionChange() {
       let data = {
         classHoure: this.classHoure,
@@ -226,8 +243,9 @@ export default{
           worksTitle: '作品名称作品名称.jpg',
           avatar: '33',
           jobTitle: '完成课时测试',
-          liked: '12',
-          isZan: true,
+          liked: 52,
+          isLike: true,
+          tname: '余周周',
           id: 1111
         },
         {
@@ -235,8 +253,9 @@ export default{
           worksTitle: '作品名称作品名称.jpg',
           avatar: '33',
           jobTitle: '完成课时测试,复习先下功课完成测试',
-          liked: '12',
-          isZan: false,
+          liked: 12,
+          isLike: false,
+          tname: '白月初',
           id: 1112
         },
         {
@@ -244,8 +263,9 @@ export default{
           worksTitle: '作品名称作品名称.jpg',
           avatar: '33',
           jobTitle: '完成课时测试,复习先下功课完成测试',
-          liked: '12',
-          isZan: true,
+          liked: 12,
+          tname: '涂涂',
+          isLike: true,
           id: 1113
         },
         {
@@ -253,8 +273,9 @@ export default{
           worksTitle: '作品名称作品名称.jpg',
           avatar: '33',
           jobTitle: '33',
-          liked: '12',
-          isZan: false,
+          liked: 15,
+          isLike: false,
+          tname: '张三',
           id: 1114
         },
         {
@@ -262,8 +283,9 @@ export default{
           worksTitle: '作品名称作品名称.jpg',
           avatar: '33',
           jobTitle: '完成课时测试,复习先下功课完成测试',
-          liked: '12',
-          isZan: false,
+          liked: 12,
+          isLike: false,
+          tname: '张依依',
           id: 1115
         },
         {
@@ -271,8 +293,9 @@ export default{
           worksTitle: '作品名称作品名称.jpg',
           avatar: '33',
           jobTitle: '完成课时测试,复习先下功课完成测试',
-          liked: '12',
-          isZan: false,
+          liked: 12,
+          isLike: false,
+          tname: '王小二',
           id: 1116
         },
         {
@@ -280,8 +303,8 @@ export default{
           worksitle: '作品名称作品名称.jpg',
           avatar: '33',
           jobTitle: '完成课时测试,复习先下功课完成测试',
-          liked: '12',
-          isZan: false,
+          liked: 12,
+          isLike: false,
           id: 1117
         }
       ]
@@ -468,27 +491,21 @@ export default{
           right: 0;
           top: 50%;
           transform: translateY(-50%);
-          
+          height: 16px;
+          line-height: 16px;
+          font-size: 0;
           span {
             position: relative;
-            text-indent: 27px;
+            margin-left: 10px;
             display: inline-block;
             color: #999;
             font-size: 12px;
-            &:after {
-              content: '';
-              position: absolute;
-              width: 16px;
-              height: 16px;
-              top: -2px;
-              left: 0;
-              background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo1QTJGRjhGMjU1MzcxMUU5QUU2OUVDQjlGOTkzNEQ3QSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo1QTJGRjhGMzU1MzcxMUU5QUU2OUVDQjlGOTkzNEQ3QSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjVBMkZGOEYwNTUzNzExRTlBRTY5RUNCOUY5OTM0RDdBIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjVBMkZGOEYxNTUzNzExRTlBRTY5RUNCOUY5OTM0RDdBIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+tjw++AAAANlJREFUeNqUkUsPRTAQhZV6LDxC0p3/4P+v7e1FbCywk8hFxKMOTUTEvbfOojnT9utMZwjnXHlSlmV1XUdR5LrudV9VvqhpmnEc0zS97T8Dy7J0XQfTtq0UUJYlGBh+6A/Q932e58IbhkEI+QUMw5AkyTzPIvQ873aBoBvTNME5jhOGYRzH+Ot5bNv2lUHHaFEU67oisCwLwPU29Dl0hlVVqbquK9LCoyqlVB5A2e8A/OddSb7vv8hgmuZeknyGIAj2wclnYIztADolYk3TsGIUwtyEkQlgE2AAwPpTUmAwyA0AAAAASUVORK5CYII=);
-            }
+            vertical-align: middle;
           }
-        }
-        .good.is-zan {
-          span:after {
-
+          .like-img {
+            height: 16px;
+            width: 16px;
+            vertical-align: top;
           }
         }
       }
