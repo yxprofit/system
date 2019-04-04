@@ -339,6 +339,7 @@ export default {
             &.bai {
               visibility: hidden;
               height: 0;
+              margin: 0;
             }
           }
         }
