@@ -91,16 +91,16 @@ header {
   }
   .msg {
     position: relative;
-    &::after {
-      position: absolute;
-      content: "";
-      width: 7px;
-      height: 7px;
-      background: rgba(242, 42, 24, 1);
-      border-radius: 50%;
-      top: 40%;
-      right: 0;
-    }
+    // &::after {
+    //   position: absolute;
+    //   content: "";
+    //   width: 7px;
+    //   height: 7px;
+    //   background: rgba(242, 42, 24, 1);
+    //   border-radius: 50%;
+    //   top: 40%;
+    //   right: 0;
+    // }
   }
 }
 </style>
