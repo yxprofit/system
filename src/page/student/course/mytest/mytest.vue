@@ -253,6 +253,7 @@ export default {
       margin-bottom: 30px;
       .look {
         color: #f80;
+        display: none;
       }
       ul {
         width: 100%;
