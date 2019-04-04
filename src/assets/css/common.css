@@ -9,6 +9,9 @@
   color: #F28C18;
   background:rgba(255,247,237,1);
 }
+.el-select-dropdown{
+  top: 122px !important;
+}
 .el-select-dropdown__item.selected{
   color: #F28C18;
 }
@@ -36,8 +39,8 @@
   background:#fff;
   border-collapse: collapse;
   /* box-shadow:5px 5px 5px 5px rgba(247,151,39,1); */
-  box-shadow: 0 0 10px rgba(247,151,39,1);
-  border:1px solid #ccc;
+  box-shadow: 0 0 8px #ff8426 inset;
+  border:1px solid #EDEFF2;
 }
 .mytest .el-table .tableRow:hover td {
   background-color: initial !important;
