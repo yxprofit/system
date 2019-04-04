@@ -48,11 +48,11 @@
       <div>
         <div>
           <h2>我的课程</h2>
-          <span class="active">当前课程</span>
-          <span>历史课程</span>
+          <span :class="{active:isTab===0}" @click="changeTab(0)">当前课程</span>
+          <span :class="{active:isTab===1}" @click="changeTab(1)">历史课程</span>
         </div>
         <section class='list'>
-          <ul>
+          <ul v-show='isTab===0'>
             <router-link to="mycourse/view" tag="li">
               <img src="../../../../assets/images/img1.png" alt="">
               <h4>课程名称课程名称</h4>
@@ -142,6 +142,39 @@
             <li class="bai"></li>
             <li class="bai"></li>
           </ul>
+          <ul v-show='isTab===1'>
+            <router-link to="mycourse/view" tag="li">
+              <img src="../../../../assets/images/img4.png" alt="">
+              <h4>课程名称课程名称</h4>
+              <p>开始时间：2019.01.01</p>
+              <p>结束时间：2019.01.01</p>
+            </router-link>
+            <router-link to="mycourse/view" tag="li">
+              <img src="../../../../assets/images/img5.png" alt="">
+              <h4>课程名称课程名称</h4>
+              <p>开始时间：2019.01.01</p>
+              <p>结束时间：2019.01.01</p>
+            </router-link>
+            <router-link to="mycourse/view" tag="li">
+              <img src="../../../../assets/images/img1.png" alt="">
+              <h4>课程名称课程名称</h4>
+              <p>开始时间：2019.01.01</p>
+              <p>结束时间：2019.01.01</p>
+            </router-link>
+            <router-link to="mycourse/view" tag="li">
+              <img src="../../../../assets/images/img2.png" alt="">
+              <h4>课程名称课程名称</h4>
+              <p>开始时间：2019.01.01</p>
+              <p>结束时间：2019.01.01</p>
+            </router-link>
+            <router-link to="mycourse/view" tag="li">
+              <img src="../../../../assets/images/img3.png" alt="">
+              <h4>课程名称课程名称</h4>
+              <p>开始时间：2019.01.01</p>
+              <p>结束时间：2019.01.01</p>
+            </router-link>
+
+          </ul>
         </section>
       </div>
     </section>
@@ -154,7 +187,8 @@ export default {
   data() {
     return {
       loading: true,
-      isHidden: false
+      isHidden: false,
+      isTab: 0
     }
   },
   created() {
@@ -166,6 +200,9 @@ export default {
   methods: {
     changeIsHidden() {
       this.isHidden = !this.isHidden
+    },
+    changeTab(num) {
+      this.isTab = num
     }
   }
 }
