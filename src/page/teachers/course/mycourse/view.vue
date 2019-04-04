@@ -233,8 +233,11 @@ export default {
 
 <style lang="scss" scoped>
 .mycourseview {
+	height: calc(100% - 10px);
 	.view {
 		margin-top: 15px;
+		height: calc(100% - 29px);
+		overflow: auto;
 		.des, .li {
 			margin: 0;
 			background: #fff;

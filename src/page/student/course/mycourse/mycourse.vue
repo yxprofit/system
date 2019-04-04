@@ -286,15 +286,17 @@ export default {
         ul {
           display: flex;
           display: -webkit-flex;
-          justify-content: space-between;
+          justify-content: space-around;
           flex-direction: row;
           flex-wrap: wrap;
           li {
+            box-sizing: border-box;
             width: 260px;
+            height: 310px;
             border-radius: 4px;
             overflow: hidden;
             border: 1px solid rgba(228, 232, 237, 1);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             padding-bottom: 3px;
             cursor: pointer;
             img{
@@ -345,14 +347,13 @@ export default {
   }
   hgroup {
     width: 210px;
-    // min-height: 700px;
     height: 100%;
     float: right;
     border-left: 1px solid rgba(228, 232, 237, 1);
     transition: width 0.3s;
     background-color: #fff;
     .more {
-      margin: 64px auto;
+      margin: 30px auto 0;
       background: #fff;
       width: 110px;
       height: 33px;
@@ -471,7 +472,7 @@ export default {
   .center {
     padding-top: 14px;
     .list {
-      max-height: calc(100vh - 143px);
+      max-height: calc(100vh - 130px);
       overflow: auto;
     }
   }
