@@ -61,7 +61,7 @@
             </h4>
           </li>
         </ul>
-        <ul class="operation">
+        <!-- <ul class="operation">
           <li class="edit">
             <span>
               <i class="el-icon-check"></i>保存修改
@@ -72,7 +72,7 @@
               <i class="el-icon-plus"></i>添加任务
             </span>
           </li>
-        </ul>
+        </ul> -->
         <img class='bottom' @click="changeIsHidden" src="../../assets/images/icon/icon_open.png" alt="">
       </hgroup>
     </div>
