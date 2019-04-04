@@ -290,13 +290,19 @@ export default {
           flex-direction: row;
           flex-wrap: wrap;
           li {
-            width: 190px;
+            width: 260px;
             border-radius: 4px;
             overflow: hidden;
             border: 1px solid rgba(228, 232, 237, 1);
             margin-bottom: 20px;
             padding-bottom: 3px;
             cursor: pointer;
+            img{
+              width: 190px;
+              height: 200px;
+              display: block;
+              margin: 0 auto;
+            }
             h4 {
               margin: 16px 13px 15px;
               font-size: 15px;

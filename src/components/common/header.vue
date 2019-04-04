@@ -31,8 +31,8 @@ export default {
 
 <style lang="scss" scoped>
 header {
-  height: 59px;
-  line-height: 59px;
+  height: 50px;
+  line-height: 50px;
   background-color: #fff;
   padding: 0 30px;
   overflow: hidden;
@@ -58,10 +58,10 @@ header {
       display: flex;
       align-items: center;
       & > div:nth-child(1) {
-        margin-top: 6px;
-        width: 40px;
-        height: 40px;
-        line-height: 40px;
+        // margin-top: 6px;
+        width: 36px;
+        height: 36px;
+        line-height: 36px;
         margin-right: 12px;
         float: left;
         img {
@@ -69,12 +69,12 @@ header {
         }
       }
       & > div:nth-child(2) {
-        float: left;
+        // float: left;
         position: relative;
         h3 {
           font-size: 14px;
           line-height: 12px;
-          margin: 18px 0 6px;
+          // margin: 18px 0 6px;
         }
         p {
           font-size: 12px;

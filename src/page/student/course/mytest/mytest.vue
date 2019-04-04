@@ -253,7 +253,8 @@ export default {
       margin-bottom: 30px;
       .look {
         color: #f80;
-        visibility:hidden;
+        // visibility:hidden;
+        display: none;
       }
       ul {
         width: 100%;
