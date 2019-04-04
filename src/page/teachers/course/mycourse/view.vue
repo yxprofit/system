@@ -188,13 +188,15 @@
 		</div>
 
     <!-- 课程资料弹窗 -->
-    <prepare-lesson :showLesson.sync="showLesson"></prepare-lesson>
+    <!-- <prepare-lesson :showLesson.sync="showLesson"></prepare-lesson> -->
+    <class-list :showLesson.sync="showLesson"></class-list>
 	</div>
 </template>
 
 <script>
 import breadcrumb from '@/components/common/breadcrumb.vue'
 import PrepareLesson from '../prepareLesson';
+import ClassList from '../classList';
 import breadcrumb_address from 'assets/images/student/breadcrumb_address.png'
 import workimg from 'assets/images/student/workimg.png'
 
@@ -202,7 +204,8 @@ export default {
 	name: "MyCourseView",
 	components: {
     breadcrumb,
-    PrepareLesson
+    PrepareLesson,
+    ClassList
 	},
 	data() {
 		return {
