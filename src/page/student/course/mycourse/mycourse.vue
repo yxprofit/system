@@ -173,7 +173,10 @@
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
-
+            <li class="bai"></li>
+            <li class="bai"></li>
+            <li class="bai"></li>
+            <li class="bai"></li>
           </ul>
         </section>
       </div>
@@ -299,7 +302,7 @@ export default {
             margin-bottom: 15px;
             padding-bottom: 3px;
             cursor: pointer;
-            img{
+            img {
               width: 190px;
               height: 200px;
               display: block;
