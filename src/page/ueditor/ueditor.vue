@@ -1,5 +1,5 @@
 <template>
-  <div class="teacher_editor" v-loading="loading">
+  <div class="teacher_editor" v-loading="loading" v-show="state">
     <el-dialog :visible.sync="state" width="82%" :before-close="handleClose">
       <span slot="title" class="teacher_editor_title">
         <h3>

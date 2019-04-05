@@ -1,5 +1,5 @@
 <template>
-  <div class="deletework" v-loading="loading">
+  <div class="deletework" v-loading="loading" v-show="state">
     <el-dialog :visible.sync="state" width="38%" :before-close="handleClose">
       <span slot="title" class="deletework_title">
         <h3>删除任务</h3>
@@ -8,7 +8,7 @@
         <img src="@/assets/images/teacher/21.png" alt>
         <p>删除后不可撤销，请谨慎操作</p>
         <div class="buttons">
-          <button @click="cancel">取消</button>
+          <button @click="handleClose">取消</button>
           <button @click="confirm">确认</button>
         </div>
       </div>
@@ -38,9 +38,6 @@ export default {
     },
     check(id) {
       this.ischeck = id;
-    },
-    cancel(){
-      this.state = false
     },
     confirm(){}
   }

@@ -125,7 +125,7 @@
 							<div class="workdes">
 								<span>课件名称课件名称课件名称课件名称01</span>
 								<router-link to="#" tag="var" >开放课件 ></router-link>
-								<router-link to="#" tag="var" style="margin-left: 20px;" >编辑课件 ></router-link>
+								<router-link to="/courseware?type=teacherTask" tag="var" style="margin-left: 20px;" >编辑课件 ></router-link>
 							</div>
 							<div class="myteam">
 								<span class="i" @click="handleGrouping">小组分配</span>
