@@ -62,11 +62,7 @@
     </hgroup>
 
     <popup-modal v-model="isShowSaveTask">
-<<<<<<< HEAD
-      <save-task @taskClose="handleTaskClose"></save-task>
-=======
-      <save-task @confirmDel='confirmDel'></save-task>
->>>>>>> 4db64cc55f6c5d0bcb2d145d67f2db60631afcbc
+      <save-task @taskClose="handleTaskClose"  @confirmDel='confirmDel'></save-task>
     </popup-modal>
     <delete-work :state='isdelete' @close='handleClose'></delete-work>
     <add-works :state='addwork' @close='addworkClose' @handleJump='jump'></add-works>
