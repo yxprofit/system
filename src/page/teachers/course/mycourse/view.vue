@@ -128,8 +128,8 @@
 								<router-link to="#" tag="var" style="margin-left: 20px;" >编辑课件 ></router-link>
 							</div>
 							<div class="myteam">
-								<span class="i">小组分配</span>
-								<span class="classstart" tag="span" @click="handleStartClass">开始上课</span>
+								<span class="i" @click="handleGrouping">小组分配</span>
+								<router-link to="/courseware?type=teacherTask" class="classstart" tag="span" >开始上课</router-link>
 								<span class="classdata" @click="handlePrepareLesson">备课资料</span>
 							</div>
 						</div>
@@ -189,15 +189,17 @@
 
     <!-- 课程资料弹窗 -->
     <prepare-lesson :showLesson.sync="showLesson"></prepare-lesson>
-    <!-- 班级列表弹窗 -->
-    <open-class ref="OpenClass"></Open-class>
+    <popup-modal v-model="isShowGroup" :close-on-click-overlay="closeOverLay">
+      <group-class @closeModal="handleCloseModal"></group-class>
+    </popup-modal>
 	</div>
 </template>
 
 <script>
 import breadcrumb from '@/components/common/breadcrumb.vue'
+import PopupModal from '@/components/popup'
 import PrepareLesson from '../prepareLesson';
-import OpenClass from './openclass';
+import GroupClass from '../groupClass';
 import breadcrumb_address from 'assets/images/student/breadcrumb_address.png'
 import workimg from 'assets/images/student/workimg.png'
 
@@ -206,7 +208,8 @@ export default {
 	components: {
     breadcrumb,
     PrepareLesson,
-    OpenClass
+    PopupModal,
+    GroupClass
 	},
 	data() {
 		return {
@@ -215,7 +218,9 @@ export default {
 			data: [1,2,3,4,5,6,7],
       desState: false,
       showLesson: false,
-      showClass: false
+      isShowGroup: false,
+      closeOverLay: false,
+      visible: false,
 		};
 	},
 	created() {
@@ -225,11 +230,15 @@ export default {
 		}, 1000);
 	},
 	methods: {
+    handleCloseModal (bool) {
+      this.isShowGroup = bool;
+    },
     handlePrepareLesson() {
       this.showLesson = true;
     },
-    handleStartClass () {
-    	this.$refs.OpenClass.show()
+    handleGrouping() {
+      // console.log(11111111111)
+      this.isShowGroup = !this.isShowGroup;
     },
 		fitlerdes(){
 			let text = '外教英语培训班 , 外教英语培训班 , 每天45分钟 , 随时纠正 , 学英语上TutorABC , 随时随地对话全球外教 , 生活,职场，外教英语培训班 , 外教英语培训班 , 每天45分钟 , 随时纠正 , 学英语上TutorABC，外教英语培训班 , 外教英语培训班 , 每天45分';
