@@ -6,14 +6,17 @@
       </span>
       <div class="types">
         <div class="types_img">
-          <img src="@/assets/images/teacher/46.png" alt>
+          <img v-if="ischeck===1" src="@/assets/images/teacher/4.png" alt>
+          <img v-if="ischeck===2" src="@/assets/images/teacher/3.png" alt>
+          
           <p :class="ischeck===1?'active':''">图文信息/超链接</p>
           <div :class="ischeck===1?'select':'radio'" @click="check(1)">
             <div class="dot"></div>
           </div>
         </div>
         <div class="types_img">
-          <img src="@/assets/images/teacher/47.png" alt>
+          <img v-if="ischeck===1" src="@/assets/images/teacher/1.png" alt>
+          <img v-if="ischeck===2" src="@/assets/images/teacher/2.png" alt>
           <p :class="ischeck===2?'active':''">优势打卡</p>
            <div :class="ischeck===2?'select':'radio'" @click="check(2)">
             <div class="dot"></div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="container-tends">
+  <div class="student-works container-tends">
     <div class="tendsHead">
       <section>
         <h2>课堂作品</h2>
@@ -322,7 +322,12 @@ export default{
 </script>
 
 <style lang="scss" scoped>
-.container-tends{
+.student-works.container-tends {
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
   .tendsHead {
     background-color: #fff;
     border-radius: 6px;
@@ -433,7 +438,7 @@ export default{
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 17px;
-    margin-top: 20px;
+    margin: 20px auto 0;
     color: #999;
     font-size: 13px;
     font-family: '微软雅黑';
@@ -469,7 +474,7 @@ export default{
       .dianzan{
         display: flex;
         position: relative;
-        .dianzan-head{
+        .dianzan-head {
           float: 1;
           display: flex;
           span:nth-child(1){
@@ -520,7 +525,20 @@ export default{
   }
 }
 .waterfall-wraper {
-  width: calc(100% - 10px);
+  overflow: auto;
+  padding-right: 24px;
+  margin-right: 14px;
+  max-height: calc(100vh - 259px);
+  background-color: transparent;
+}
+.waterfall-wraper::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.waterfall-wraper::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: #fff;
+  color: #fff;
 }
 .vue-waterfall-column {
   img{
