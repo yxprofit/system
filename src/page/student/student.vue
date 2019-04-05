@@ -1,23 +1,33 @@
 <template>
   <div class="g_main">
-    <BHeader></BHeader>
     <section class="main">
       <aside>
-        <img src="../../assets/images/head.png" alt="">
-        <div class="user">余周周
-          <span><img src="../../assets/images/icon/icon_sex_nv.png" alt=""></span>
+        <router-link :to="{path:'student'}" class="logo">
+          <img src="../../assets/images/logo.png" alt>
+        </router-link>
+        <img src="../../assets/images/head.png" alt>
+        <div class="user">
+          余周周
+          <span>
+            <img src="../../assets/images/icon/icon_sex_nv.png" alt>
+          </span>
         </div>
         <p>高中三年级</p>
         <div class="nav active">
-          <span><img src="../../assets/images/icon/icon_course.png" alt=""></span>
+          <span>
+            <img src="../../assets/images/icon/icon_course.png" alt>
+          </span>
           <span>课程中心</span>
         </div>
         <div class="nav">
-          <span><img src="../../assets/images/icon/icon_task.png" alt=""></span>
+          <span>
+            <img src="../../assets/images/icon/icon_task.png" alt>
+          </span>
           <span>任务中心</span>
         </div>
       </aside>
       <section class="content">
+        <BHeader></BHeader>
         <router-view></router-view>
       </section>
     </section>
@@ -25,24 +35,24 @@
 </template>
 
 <script>
-import BHeader from '@/components/common/header.vue'
+import BHeader from "@/components/common/header.vue";
 export default {
-  name: 'Student',
+  name: "Student",
   components: {
     BHeader
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
 .g_main {
-  width:1366px;
+  width: 1366px;
   height: 100%;
   margin: 0 auto;
 }
 .main {
   display: flex;
-  height: calc(100% - 59px);
+  height: 100%;
   & > aside {
     width: 150px;
     height: 100%;
@@ -51,10 +61,17 @@ export default {
     margin-top: 1px;
     border-right: 1px solid rgba(228, 232, 237, 1);
     text-align: center;
-    padding-top: 40px;
+    padding-top: 20px;
     & > img {
       width: 80px;
       border-radius: 50%;
+    }
+    & .logo {
+      width: 49px;
+      height: 49px;
+      display: block;
+      margin: 0 auto;
+      margin-bottom: 32px;
     }
     & > .user {
       text-align: center;

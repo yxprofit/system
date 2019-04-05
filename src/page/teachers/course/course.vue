@@ -6,10 +6,10 @@
         <a :class="{'active':current==1,'over': over==1}" @click="toCurrent(1, 'mycourse')" @mouseenter="addover(1)" @mouseleave="addover(0)">
           <span><img src="../../../assets/images/icon/s1.png" v-if="current==1"><img src="../../../assets/images/icon/icon_course_name.png" v-else></span><span>我的课程</span>
         </a>
-        <a :class="{'active':current==2,'over': over==2}" @click="toCurrent(2, 'trends')" @mouseenter="addover(2)" @mouseleave="addover(0)">
+        <!-- <a :class="{'active':current==2,'over': over==2}" @click="toCurrent(2, 'trends')" @mouseenter="addover(2)" @mouseleave="addover(0)">
           <span><img src="../../../assets/images/icon/icon_course_test_selected.png" v-if="current==2"><img src="../../../assets/images/icon/s2.png" v-else></span><span>班级动态</span>
-        </a>
-        <a :class="{'active':current==3,'over': over==3}" @click="toCurrent(3, 'works')" @mouseenter="addover(3)" @mouseleave="addover(0)">
+        </a> -->
+        <a :class="{'active':current==3,'over': over==3}" @click="toCurrent(3, '/teachers/course/works')" @mouseenter="addover(3)" @mouseleave="addover(0)">
           <span><img src="../../../assets/images/icon/icon_course_works_selected.png" v-if="current==3"><img src="../../../assets/images/icon/s3.png" v-else></span><span></span><span>课堂作品</span>
         </a>
       </div>
@@ -57,7 +57,7 @@ export default {
 <style lang="scss" scoped>
 .course{
   // width: 100%;
-  height: 500px;
+  height: 100%;
   // background: #eee;
   display: flex;
   aside{
@@ -85,7 +85,7 @@ export default {
         overflow: hidden;
         background-color: #fff;
         position: relative;
-        z-index: 9999;
+        z-index: 3000;
         span{
           &:nth-child(1){
             display: inline-block;
@@ -115,6 +115,7 @@ export default {
   }
   &>section {
     flex: 1;
+    height: 100%;
   }
 }
 </style>

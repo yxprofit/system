@@ -1,8 +1,8 @@
 <template>
   <header>
-    <router-link :to="{path:'student'}" class="logo">
+    <!-- <router-link :to="{path:'student'}" class="logo">
       <img src="../../assets/images/logo.png" alt="">
-    </router-link>
+    </router-link> -->
     <div class="userinfo">
       <span class='msg'><img src="../../assets/images/icon/icon_message.png" alt=""></span>
       <span @click='faq'><img src="../../assets/images/icon/icon_problem.png" alt=""></span>
@@ -10,7 +10,7 @@
         <div><img src="../../assets/images/head.png" alt=""></div>
         <div>
           <h3>余周周</h3>
-          <p>高中三年级</p>
+          <!-- <p>高中三年级</p> -->
         </div>
         <!-- <span><img src="../../assets/images/icon/icon_arrow_bottom.png" alt=""></span> -->
       </div>
@@ -31,15 +31,14 @@ export default {
 
 <style lang="scss" scoped>
 header {
-  height: 59px;
-  line-height: 59px;
+  height: 50px;
+  line-height: 50px;
   background-color: #fff;
   padding: 0 30px;
   overflow: hidden;
   .logo {
     display: block;
     width: 209px;
-    // margin-top: 12px;
     float: left;
     img {
       width: 100%;
@@ -56,11 +55,13 @@ header {
       overflow: hidden;
       width: 146px;
       margin-left: 40px;
+      display: flex;
+      align-items: center;
       & > div:nth-child(1) {
-        margin-top: 10px;
-        width: 40px;
-        height: 40px;
-        line-height: 40px;
+        // margin-top: 6px;
+        width: 36px;
+        height: 36px;
+        line-height: 36px;
         margin-right: 12px;
         float: left;
         img {
@@ -68,12 +69,12 @@ header {
         }
       }
       & > div:nth-child(2) {
-        float: left;
+        // float: left;
         position: relative;
         h3 {
           font-size: 14px;
           line-height: 12px;
-          margin: 17px 0 6px;
+          // margin: 18px 0 6px;
         }
         p {
           font-size: 12px;
@@ -91,16 +92,16 @@ header {
   }
   .msg {
     position: relative;
-    &::after {
-      position: absolute;
-      content: "";
-      width: 7px;
-      height: 7px;
-      background: rgba(242, 42, 24, 1);
-      border-radius: 50%;
-      top: 40%;
-      right: 0;
-    }
+    // &::after {
+    //   position: absolute;
+    //   content: "";
+    //   width: 7px;
+    //   height: 7px;
+    //   background: rgba(242, 42, 24, 1);
+    //   border-radius: 50%;
+    //   top: 40%;
+    //   right: 0;
+    // }
   }
 }
 </style>

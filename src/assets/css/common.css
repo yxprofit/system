@@ -31,16 +31,32 @@
 }
 
 /* mytest */
-
+.mytest .el-table .tableRow{
+  height: 70px;
+}
 .mytest .el-table .tableRow:hover {
   background:#fff;
   border-collapse: collapse;
   /* box-shadow:5px 5px 5px 5px rgba(247,151,39,1); */
-  box-shadow: 0 0 10px rgba(247,151,39,1);
-  border:1px solid #ccc;
+  box-shadow: 0 0 7px #FE7B00 inset;
+  border:1px solid #EDEFF2;
+  height: 70px;
+}
+.mytest .el-table .tableRow:hover .look{
+  /* visibility: visible; */
+  display: block;
+}
+.mytest .el-table .tableRow:hover td:nth-of-type(4){
+  color: #FE7B00;
+}
+.mytest .el-table .tableRow:hover td:nth-of-type(5){
+  color: #FE7B00;
 }
 .mytest .el-table .tableRow:hover td {
   background-color: initial !important;
+}
+.mytest .el-select-dropdown{
+  top:53px !important;
 }
 
 .upload .el-upload {width: 100%}

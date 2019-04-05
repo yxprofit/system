@@ -9,11 +9,11 @@ import './assets/css/base.css'
 import './assets/css/common.css'
 // 入口文件引入路由
 import router from './router'
-// ueditor 富文本编辑器
-import '../static/Ueditor/ueditor.config.js'
-import '../static/Ueditor/ueditor.all.min.js'
-import '../static/Ueditor/lang/zh-cn/zh-cn.js'
-import '../static/Ueditor/ueditor.parse.min.js'
+// // ueditor 富文本编辑器
+// import '../static/Ueditor/ueditor.config.js'
+// import '../static/Ueditor/ueditor.all.min.js'
+// import '../static/Ueditor/lang/zh-cn/zh-cn.js'
+// import '../static/Ueditor/ueditor.parse.min.js'
 // element ui组件按需加载
 import {
   Button,

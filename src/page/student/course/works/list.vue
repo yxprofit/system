@@ -1,5 +1,5 @@
 <template>
-  <div class="container-tends">
+  <div class="student-works container-tends">
     <div class="tendsHead">
       <section>
         <h2>课堂作品</h2>
@@ -9,34 +9,54 @@
       </section>
       <div class="head">
         <h3>当前课时：<span>课时1名称</span></h3>
-        <div>
-          <el-select class="search" v-model="value" placeholder="课时">
+        <div class="search-panel">
+          <el-select
+            class="search"
+            v-model="classHoure"
+            placeholder="课时"
+            clearable
+            @change="handleConditionChange">
             <el-option
-              v-for="item in options"
+              v-for="item in classHoureOptions"
               :key="item.value"
               :label="item.label"
               :value="item.value">
             </el-option>
           </el-select>
-          <el-select class="search"  v-model="value" placeholder="课程筛选">
+          <el-select
+            class="search"
+            v-model="course"
+            placeholder="课程筛选"
+            clearable
+            @change="handleConditionChange">
             <el-option
-              v-for="item in options"
+              v-for="item in courseOptions"
               :key="item.value"
               :label="item.label"
               :value="item.value">
             </el-option>
           </el-select>
-          <el-select class="search"  v-model="value" placeholder="作品分类">
+          <el-select
+            class="search"
+            v-model="works"
+            placeholder="作品分类"
+            clearable
+            @change="handleConditionChange">
             <el-option
-              v-for="item in options"
+              v-for="item in worksOptions"
               :key="item.value"
               :label="item.label"
               :value="item.value">
             </el-option>
           </el-select>
-          <el-select class="search"  v-model="value" placeholder="班级筛选">
+          <el-select
+            class="search"
+            v-model="classes"
+            placeholder="班级筛选"
+            clearable
+            @change="handleConditionChange">
             <el-option
-              v-for="item in options"
+              v-for="item in classesOptions"
               :key="item.value"
               :label="item.label"
               :value="item.value">
@@ -45,53 +65,59 @@
         </div>
       </div>
     </div>
-    <waterfall :col='col' :gutterWidth="gutterWidth"  :data="data"  @loadmore="loadmore"  v-loading="loading">
-      <template >
-        <div class="cell-item" v-for="(item,index) in data" :key="index">
-          <div>
-            <div class="taskimg">
-              <img :src="item.img" />
-              <div class="but">
-                <el-tooltip effect="dark" content="删除" placement="top">
-                  <i><img :src="icon_40" /></i>
-                </el-tooltip>
-                <el-tooltip effect="dark" content="下载" placement="top">
-                  <i @click="changedetails"><img :src="icon_39" /></i>
-                </el-tooltip>
-                <el-tooltip effect="dark" content="添加" placement="top">
-                  <i><img :src="icon_42" /></i>
-                </el-tooltip>
-              </div>
-            </div>
-            <div class="item-body" @click="changedetails">
-              <div class="item-desc">{{item.title}}</div>
-              <div class="task-name">{{item.user}}</div>
-              <div class="name">课时1：课时名称</div>
-              <div class="dianzan">
-                <div class="head">
-                  <span><img src="../../../../assets/images/head.png" alt=""></span>
-                  <span class="tname">余周周</span>
+    <div class="waterfall-wraper">   
+      <waterfall :col='col' :gutterWidth="gutterWidth"  :data="data"  @loadmore="loadmore"  v-loading="loading">
+        <template >
+          <div class="cell-item" v-for="(item,index) in data" :key="index">
+            <div>
+              <div class="taskimg">
+                <img :src="item.img" />
+                <div class="but">
+                  <el-tooltip effect="dark" @click="deleteHandler(item)" content="删除" placement="top">
+                    <i><img :src="icon_40" /></i>
+                  </el-tooltip>
+                  <el-tooltip effect="dark" content="下载" placement="top">
+                    <i @click="changedetails(item)"><img :src="icon_39" /></i>
+                  </el-tooltip>
+                  <el-tooltip effect="dark" content="添加" placement="top">
+                    <i><img class="add" :src="icon_42" /></i>
+                  </el-tooltip>
                 </div>
-                <div class="good">
-                  <span>6</span>
+              </div>
+              <div class="item-body">
+                <div class="item-desc">{{item.worksTitle}}</div>
+                <div class="task-name">{{item.jobTitle ? '任务名称： ' + item.jobTitle : ''}}</div>
+                <div class="name">课时1：课时名称</div>
+                <div class="dianzan">
+                  <div class="dianzan-head">
+                    <span><img src="../../../../assets/images/head.png" alt=""></span>
+                    <span class="tname">{{item.tname}}</span>
+                  </div>
+                  <div class="good" :class="{'is-zan':item.isLike}">
+                    <span @click="handleLike(item)">
+                      <img class="like-img" v-show="item.isLike" :src="zan">
+                      <img class="like-img" v-show="!item.isLike" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo1QTJGRjhGMjU1MzcxMUU5QUU2OUVDQjlGOTkzNEQ3QSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo1QTJGRjhGMzU1MzcxMUU5QUU2OUVDQjlGOTkzNEQ3QSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjVBMkZGOEYwNTUzNzExRTlBRTY5RUNCOUY5OTM0RDdBIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjVBMkZGOEYxNTUzNzExRTlBRTY5RUNCOUY5OTM0RDdBIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+tjw++AAAANlJREFUeNqUkUsPRTAQhZV6LDxC0p3/4P+v7e1FbCywk8hFxKMOTUTEvbfOojnT9utMZwjnXHlSlmV1XUdR5LrudV9VvqhpmnEc0zS97T8Dy7J0XQfTtq0UUJYlGBh+6A/Q932e58IbhkEI+QUMw5AkyTzPIvQ873aBoBvTNME5jhOGYRzH+Ot5bNv2lUHHaFEU67oisCwLwPU29Dl0hlVVqbquK9LCoyqlVB5A2e8A/OddSb7vv8hgmuZeknyGIAj2wclnYIztADolYk3TsGIUwtyEkQlgE2AAwPpTUmAwyA0AAAAASUVORK5CYII=" alt="">
+                    </span>
+                    <span>{{item.liked}}</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </template>
-    </waterfall>
-    <button  @click="loadmore">查看更多</button>
+        </template>
+      </waterfall>
+    </div>
+    <button class="more-btn" @click="loadmore">查看更多</button>
 
     <!--  -->
-    <Details :state="detailsShow" v-on:close="changedetails" />
+    <work-details :info="itemInfo" :state="detailsShow" v-on:close="changedetails" />
     <upload :state="uploadShow" v-on:close="changeUpload" />
 
   </div>
 </template>
 
 <script>
-import Details from './details.vue'
+import WorkDetails from './details.vue'
 import Upload from './upload.vue'
 import pic1 from 'assets/images/pic1.png'
 import pic2 from 'assets/images/pic2.png'
@@ -104,51 +130,43 @@ import icon_39 from 'assets/images/icon/icon_39.png'
 import icon_40 from 'assets/images/icon/icon_40.png'
 import icon_42 from 'assets/images/icon/icon_42.png'
 import icon_task_close from 'assets/images/icon/icon_task_close.png'
+import zan from 'assets/images/student/zan.png'
+
 
 export default{
 	components: {
-    Details,
+    WorkDetails,
     Upload
 	},
   data () {
     return {
+      itemInfo: {},
       icon_39,
       icon_40,
       icon_42,
+      zan,
       icon_task_close,
       detailsShow: false,
       uploadShow: false,
       data: [],
       loading: true,
       col: 3,
-      value: '',
-      options: [{
-        value: '选项1',
-        label: '课程1'
-      }, {
-        value: '选项2',
-        label: '课程2'
-      }, {
-        value: '选项3',
-        label: '课程3'
-      }, {
-        value: '选项4',
-        label: '课程4'
-      }, {
-        value: '选项5',
-        label: '课程5'
-      }]
+      classHoure: '',
+      course: '',
+      works: '',
+      classes: '',
+      classHoureOptions: [],
+      courseOptions: [],
+      worksOptions: [],
+      classesOptions: []
     }
   },
-  // components: {
-  //   waterfall
-  // },
   created () {
     setTimeout(() => {
       this.loading = false
       this.loadmore()
-      this.loadmore()
     }, 1000)
+    this.getSearchOptions()
   },
   computed: {
     itemWidth () {
@@ -159,6 +177,59 @@ export default{
     }
   },
   methods: {
+    handleLike(listItem) {
+      console.log(listItem);
+      let index = this.data.findIndex(item => listItem.id === item.id)
+      if (listItem.isLike) {
+        this.data[index]['liked'] -= 1
+      } else {
+        this.data[index]['liked'] += 1
+      }
+      this.data[index]['isLike'] = !this.data[index]['isLike']
+    },
+    handleConditionChange() {
+      let data = {
+        classHoure: this.classHoure,
+        course: this.course,
+        works: this.works,
+        classes: this.classes
+      }
+      // 发送请求筛选Lists
+
+    },
+    getSearchOptions() {
+      // 发送请求获取搜索框选项
+      setTimeout(()=>{
+        this.classHoureOptions = [{
+          value: '1',
+          label: '课时1'
+        }, {
+          value: '2',
+          label: '课时2'
+        }]
+        this.courseOptions = [{
+          value: '1',
+          label: '课程1'
+        }, {
+          value: '2',
+          label: '课程2'
+        }]
+        this.worksOptions = [{
+           value: '1',
+          label: '作品1'
+        }, {
+          value: '2',
+          label: '作品2'
+        }]
+        this.classesOptions=[{
+          value: '1',
+          label: '班级1'
+        }, {
+          value: '2',
+          label: '班级1'
+        }]
+      }, 100)
+    },
     mix () {
       this.$waterfall.mix()
     },
@@ -169,57 +240,78 @@ export default{
       let arr = [
         {
           img: pic1,
-          title: '作品名称作品名称.jpg',
+          worksTitle: '作品名称作品名称.jpg',
           avatar: '33',
-          user: '任务名称：完成课时测试',
-          liked: '12'
+          jobTitle: '完成课时测试',
+          liked: 52,
+          isLike: true,
+          tname: '余周周',
+          id: 1111
         },
         {
           img: pic2,
-          title: 'wewq',
+          worksTitle: '作品名称作品名称.jpg',
           avatar: '33',
-          user: '33',
-          liked: '12'
+          jobTitle: '完成课时测试,复习先下功课完成测试',
+          liked: 12,
+          isLike: false,
+          tname: '白月初',
+          id: 1112
         },
         {
           img: pic3,
-          title: '33333',
+          worksTitle: '作品名称作品名称.jpg',
           avatar: '33',
-          user: '33',
-          liked: '12'
+          jobTitle: '完成课时测试,复习先下功课完成测试',
+          liked: 12,
+          tname: '涂涂',
+          isLike: true,
+          id: 1113
         },
         {
           img: pic4,
-          title: 'wewq',
+          worksTitle: '作品名称作品名称.jpg',
           avatar: '33',
-          user: '33',
-          liked: '12'
+          jobTitle: '33',
+          liked: 15,
+          isLike: false,
+          tname: '张三',
+          id: 1114
         },
         {
           img: pic5,
-          title: '33333',
+          worksTitle: '作品名称作品名称.jpg',
           avatar: '33',
-          user: '33',
-          liked: '12'
+          jobTitle: '完成课时测试,复习先下功课完成测试',
+          liked: 12,
+          isLike: false,
+          tname: '张依依',
+          id: 1115
         },
         {
           img: pic6,
-          title: '33333',
+          worksTitle: '作品名称作品名称.jpg',
           avatar: '33',
-          user: '33',
-          liked: '12'
+          jobTitle: '完成课时测试,复习先下功课完成测试',
+          liked: 12,
+          isLike: false,
+          tname: '王小二',
+          id: 1116
         },
         {
           img: pic8,
-          title: '33333',
+          worksitle: '作品名称作品名称.jpg',
           avatar: '33',
-          user: '33',
-          liked: '12'
+          jobTitle: '完成课时测试,复习先下功课完成测试',
+          liked: 12,
+          isLike: false,
+          id: 1117
         }
       ]
       this.data = this.data.concat(arr)
     },
-    changedetails(){
+    changedetails(data){
+      this.itemInfo = data;
       this.detailsShow = !this.detailsShow;
     },
     changeUpload(){
@@ -230,41 +322,58 @@ export default{
 </script>
 
 <style lang="scss" scoped>
-.container-tends{
+.student-works.container-tends {
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
   .tendsHead {
     background-color: #fff;
-    border-radius: 6px 6px 0 0;
+    border-radius: 6px;
     margin-bottom: 20px;
     padding-left: 20px;
     padding-right: 10px;
     margin-top: 20px;
-    padding-bottom: 10px;
+    padding: 12px 20px 14px;
+    margin-right: 14px;
+    border:1px solid rgba(228,232,237,1);
   }
   section {
     display: flex;
-    margin-right: 10px;
-    height: 70px;
-    line-height: 70px;
+    height: 51px;
+    line-height: 50px;
     border-bottom: 1px solid #E4E8ED;
     h2{
       flex: 1;
       display: block;
-      height: 20px;
+      height: 40px;
+      line-height: 40px;
       text-indent: 40px;
       position: relative;
       font-size: 18px;
-      font-weight: 600;
+      font-weight: bold;
+      color: #333;
       &:after{
         content: '';
         position: absolute;
         width: 18px;
         height: 20px;
-        top: 25px;
-        left: 8px;
+        top: 11px;
+        left: 10px;
         background-image: url('../../../../assets/images/icon/icon_mycourse.png');
       }
     }
     .teandsearch {
+      width: 137px;
+      cursor: pointer;
+      height: 40px;
+      line-height: 40px;
+      border-radius: 20px;
+      box-sizing: border-box;
+      background-color: #F79727;
+      padding: 0 20px;
+      margin-right: 20px;
       .el-input {
         float: left;
         width:242px;
@@ -278,20 +387,15 @@ export default{
       a {
         float: left;
         height: 40px;
-        cursor: pointer;
-        line-height: 40px;
-        margin-top: 15px;
-        margin-left: 15px;
+        font-size: 15px;
+        font-weight: bold;
         color: #fff;
         text-align: center;
-        border-radius: 20px;
-        background-color: #F79727;
-        padding: 0 20px;
       }
       .upload {
         img {
-          width: 24px;
-          height: 24px;
+          width: 22px;
+          height: 22px;
           transform: rotate(-90deg);
           margin-right: 10px;
         }
@@ -299,23 +403,30 @@ export default{
     }
   }
   .head{
-    height: 58px;
-    line-height: 58px;
+    height: 32px;
+    line-height: 32px;
     display: flex;
-    margin-right: 10px;
+    align-items: center;
+    font-size: 0;
+    margin-top: 13px;
     h3{
       color: #888;
       flex: 1;
+      height: 32px;
+      line-height: 32px;
+      font-size: 14px;
+      text-indent: 10px;
       span{
         color:#333;
-        font-weight: 600;
+        font-weight: bold;
       }
     }
     .search {
       width: 150px;
+      height: 32px;
     }
     img {border-radius: 100%}
-    .tname {margin-left: 5px}
+    .tname {margin-left: 8px}
   }
   &>button {
     display: block;
@@ -327,7 +438,7 @@ export default{
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 17px;
-    margin-top: 20px;
+    margin: 20px auto 0;
     color: #999;
     font-size: 13px;
     font-family: '微软雅黑';
@@ -335,11 +446,11 @@ export default{
   }
   .cell-item {
     padding-right: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 14px;
     .item-body{
-      padding: 11px;
+      padding: 16px;
       background: #fff;
-      border-radius: 5px;
+      border-radius: 4px;
       .item-desc{
         font-size: 13px;
         line-height: 14px;
@@ -363,40 +474,71 @@ export default{
       .dianzan{
         display: flex;
         position: relative;
-        .head{
+        .dianzan-head {
           float: 1;
           display: flex;
           span:nth-child(1){
             display: inline-block;
             width: 30px;
+            height: 30px;
             border-radius: 50%;
             overflow: hidden;
+          }
+          .tname {
+            display: inline-block;
+            line-height: 30px;
+            margin-left: 8px;
+            font-size: 12px;
           }
         }
         .good {
           position: absolute;
-          right: 0px;
-          bottom: 20px;
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          height: 16px;
+          line-height: 16px;
+          font-size: 0;
           span {
             position: relative;
-            text-indent: 25px;
+            margin-left: 10px;
             display: inline-block;
             color: #999;
             font-size: 12px;
-            &:after {
-              content: '';
-              position: absolute;
-              width: 16px;
-              height: 16px;
-              top: -2px;
-              left: 0;
-              background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo1QTJGRjhGMjU1MzcxMUU5QUU2OUVDQjlGOTkzNEQ3QSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo1QTJGRjhGMzU1MzcxMUU5QUU2OUVDQjlGOTkzNEQ3QSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjVBMkZGOEYwNTUzNzExRTlBRTY5RUNCOUY5OTM0RDdBIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjVBMkZGOEYxNTUzNzExRTlBRTY5RUNCOUY5OTM0RDdBIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+tjw++AAAANlJREFUeNqUkUsPRTAQhZV6LDxC0p3/4P+v7e1FbCywk8hFxKMOTUTEvbfOojnT9utMZwjnXHlSlmV1XUdR5LrudV9VvqhpmnEc0zS97T8Dy7J0XQfTtq0UUJYlGBh+6A/Q932e58IbhkEI+QUMw5AkyTzPIvQ873aBoBvTNME5jhOGYRzH+Ot5bNv2lUHHaFEU67oisCwLwPU29Dl0hlVVqbquK9LCoyqlVB5A2e8A/OddSb7vv8hgmuZeknyGIAj2wclnYIztADolYk3TsGIUwtyEkQlgE2AAwPpTUmAwyA0AAAAASUVORK5CYII=);
-            }
+            vertical-align: middle;
+          }
+          .like-img {
+            height: 16px;
+            width: 16px;
+            vertical-align: top;
           }
         }
       }
     }
   }
+}
+
+.search-panel {
+  margin-right: 20px;
+  .el-select + .el-select {
+    margin-left: 10px;
+  }
+}
+.waterfall-wraper {
+  overflow: auto;
+  padding-right: 24px;
+  margin-right: 14px;
+  max-height: calc(100vh - 259px);
+  background-color: transparent;
+}
+.waterfall-wraper::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.waterfall-wraper::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: #fff;
+  color: #fff;
 }
 .vue-waterfall-column {
   img{
@@ -409,6 +551,7 @@ export default{
   }
 }
 .cell-item>div{
+  overflow: hidden;
   border-radius:4px;
   border:1px solid rgba(228,232,237,1)
 }
@@ -422,7 +565,10 @@ export default{
     text-align: center;
     cursor: pointer;
     display: none;
-    img {width: auto}
+    img {width: 20px}
+    .add {
+      width: 26px;
+    }
     i {
       background: #fff;
       width: 58px;
@@ -439,5 +585,9 @@ export default{
       display: block;
     }
   }
+}
+
+.more-btn {
+  background-color: #EEF2F5!important;
 }
 </style>
