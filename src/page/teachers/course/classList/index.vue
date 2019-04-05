@@ -2,7 +2,12 @@
   <div class="fillcontain category" ref="category" v-show="visible">
     <section class="category-wrap">
       <h2 class="lesson-main-title">
-        备课资料
+        <div class="class-title">
+          <div class="class-title-left">班级列表</div>
+          <div class="class-title-right">
+            <input type="text" placeholder="搜索班级">
+          </div>
+        </div>
         <i class="el-icon-close close-icon" @click="close"></i>
       </h2>
       <div class="lesson-content">
