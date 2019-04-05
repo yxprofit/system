@@ -9,7 +9,7 @@
 
       <div class="group-opeator clearfix">
         <!-- <div class="group-min is-inline"></div>
-        <div class="group-max is-inline"></div> -->
+        <div class="group-max is-inline"></div>-->
         <div class="group-close is-inline" @click="closeModal">
           <i class="el-dialog__close el-icon el-icon-close"></i>
         </div>
@@ -17,8 +17,29 @@
     </div>
 
     <div class="group-content">
-      <draggable class="list-group" :list="list1" group="people" @change="log"></draggable>
-      <draggable class="list-group" :list="list2" group="people" @change="log"></draggable>
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <draggable class="list-group" :list="list1" group="people" @change="log">
+            <div
+              class="list-group-item"
+              v-for="element in list1"
+              :key="element.id"
+              style="width: 100px; height: 10px; background: green;"
+            >{{ element.name }}</div>
+          </draggable>
+        </div>
+      </div>
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <draggable class="list-group" :list="list1" group="people" @change="log">
+            <div
+              class="list-group-item"
+              v-for="element in list2"
+              :key="element.id"
+            >{{ element.name }}</div>
+          </draggable>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -26,7 +47,11 @@
 <script>
 /*组件方式引用*/
 import draggable from "vuedraggable";
+let idGlobal = 8;
 export default {
+  display: "Clone on Control",
+  instruction: "Press Ctrl to clone element from list 1",
+  order: 4,
   props: {
     showLesson: {
       type: Boolean,
@@ -64,13 +89,9 @@ export default {
         { name: "Juan", id: 5 },
         { name: "Edgard", id: 6 },
         { name: "Johnson", id: 7 }
-      ]
+      ],
+      controlOnStart: true
     };
-  },
-  computed: {
-    swiper() {
-      return this.$refs.mySwiper.swiper;
-    }
   },
   watch: {
     showLesson(newVal, oldVal) {
@@ -80,19 +101,14 @@ export default {
   },
   created() {},
   methods: {
-    add: function() {
-      this.list.push({ name: "Juan" });
+    clone({ name }) {
+      return { name, id: idGlobal++ };
     },
-    replace: function() {
-      this.list = [{ name: "Edgard" }];
+    pullFunction() {
+      return this.controlOnStart ? "clone" : true;
     },
-    clone: function(el) {
-      return {
-        name: el.name + " cloned"
-      };
-    },
-    log: function(evt) {
-      window.console.log(evt);
+    start({ originalEvent }) {
+      this.controlOnStart = originalEvent.ctrlKey;
     },
     closeModal() {
       this.$emit("closeModal", false);
