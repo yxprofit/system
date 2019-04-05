@@ -57,8 +57,7 @@ export default {
 <style lang="scss" scoped>
 .course{
   // width: 100%;
-  height: 100%;
-  // background: #eee;
+  height: calc(100% - 50px);
   display: flex;
   aside{
     width: 114px;
