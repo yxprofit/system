@@ -10,7 +10,9 @@
         <div class="group-opeator clearfix">
           <div class="group-min is-inline"></div>
           <div class="group-max is-inline"></div>
-          <div class="group-close is-inline" @click="close">x</div>
+          <div class=" is-inline" @click="close">
+            <i class="el-dialog__close el-icon el-icon-close  group-close"></i>
+          </div>
         </div>
       </div>
       <div class="lesson-content">
@@ -96,6 +98,7 @@ export default {
   left: 0;
   background: rgba(0, 0, 0, 0.5);
   z-index: 9999;
+  overflow: auto;
 
   .category-wrap {
     position: absolute;
@@ -275,7 +278,7 @@ export default {
   font-size: 18px;
   font-size: 18px;
   position: absolute;
-  top: 49%;
+  top: 50%;
   transform: translateY(-50%);
   right: 0;
 }

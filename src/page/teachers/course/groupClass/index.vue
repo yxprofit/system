@@ -10,7 +10,9 @@
       <div class="group-opeator clearfix">
         <div class="group-min is-inline"></div>
         <div class="group-max is-inline"></div>
-        <div class="group-close is-inline" @click="closeModal">x</div>
+        <div class="group-close is-inline" @click="closeModal">
+          <i class="el-dialog__close el-icon el-icon-close"></i>
+        </div>
       </div>
     </div>
 

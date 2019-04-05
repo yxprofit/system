@@ -13,7 +13,9 @@
         <!-- <div style="background: green; height:400px; width: 500px;"></div> -->
       </div>
     </div>
-    <div class="task-close" @click="taskClose">x</div>
+    <div class="task-close" @click="taskClose">
+      <i class="el-dialog__close el-icon el-icon-close"></i>
+    </div>
   </div>
 </template>
 
