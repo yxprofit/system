@@ -109,22 +109,25 @@ export default {
 
 <style lang="scss" scoped>
 .group {
-  width: 550px;
-  height: 310px;
+  width: 1100px;
+  height: 620px;
 
   .group-header-wrap {
-    height: 42px;
+    height: 60px;
+    line-height: 60px;
     border-bottom: 1px solid #cccc;
+    position: relative;
   }
 
   .group-header {
-    float: left;
-    padding: 12px 0 12px 15px;
+    padding-left: 30px;
   }
   .group-opeator {
-    float: right;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
     padding: 12px 0;
-    position: relative;
     margin-right: 12px;
   }
 
@@ -134,8 +137,8 @@ export default {
   }
 
   .group-line {
-    width: 2px;
-    height: 8px;
+    width: 4px;
+    height: 16px;
     background: orange;
     display: inline-block;
     width: 3px;
@@ -145,13 +148,13 @@ export default {
   }
 
   .group-title-1 {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
     padding: 0 8px 0 5px;
   }
 
   .group-title-2 {
-    font-size: 12px;
+    font-size: 14px;
     color: rgba(247, 151, 39, 1);
   }
 
@@ -179,7 +182,7 @@ export default {
     font-size: 18px;
     font-size: 18px;
     position: absolute;
-    top: 50%;
+    top: 49%;
     transform: translateY(-50%);
     right: 0;
   }
