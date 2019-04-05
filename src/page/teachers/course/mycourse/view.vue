@@ -124,7 +124,7 @@
 							<h4>第{{index + 2}}课时：课时名称课时名称课时名称课时名称<i></i></h4>
 							<div class="workdes">
 								<span>课件名称课件名称课件名称课件名称01</span>
-								<router-link to="#" tag="var" >开放课件 ></router-link>
+								<var @click="handleOpenCourseware">开放课件 ></var>
 								<router-link to="/courseware?type=teacherTask" tag="var" style="margin-left: 20px;" >编辑课件 ></router-link>
 							</div>
 							<div class="myteam">
@@ -191,6 +191,8 @@
     <prepare-lesson :showLesson.sync="showLesson"></prepare-lesson>
     <!-- 班级列表弹窗 -->
     <open-class ref="ClassBeginDialog"></Open-class>
+    <!-- 开放课件弹框 -->
+    <open-courseware ref="OpenCoursewarDialog"></open-courseware>
 		<!-- 编辑课程组件 -->
     <popup-modal v-model="isShowGroup" :close-on-click-overlay="closeOverLay">
       <group-class @closeModal="handleCloseModal"></group-class>
@@ -203,6 +205,7 @@ import breadcrumb from '@/components/common/breadcrumb.vue'
 import PopupModal from '@/components/popup'
 import PrepareLesson from '../prepareLesson';
 import OpenClass from './openclass';
+import OpenCourseware from './openCourseware';
 import GroupClass from '../groupClass';
 import breadcrumb_address from 'assets/images/student/breadcrumb_address.png'
 import workimg from 'assets/images/student/workimg.png'
@@ -213,6 +216,7 @@ export default {
     breadcrumb,
     PrepareLesson,
 		OpenClass,
+		OpenCourseware,
     PopupModal,
     GroupClass
 	},
@@ -244,6 +248,9 @@ export default {
 		},
 		handleBeginClass() {
 			this.$refs.ClassBeginDialog.show()
+		},
+		handleOpenCourseware() {
+      this.$refs.OpenCoursewarDialog.show()
 		},
     handleGrouping() {
       // console.log(11111111111)
