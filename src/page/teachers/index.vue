@@ -1,8 +1,10 @@
 <template>
   <div class="g_main">
-    <BHeader></BHeader>
-    <section class="main">
+     <section class="main">
       <aside>
+        <router-link :to="{path:'/teachers'}" class="logo">
+          <img src="../../assets/images/logo.png" alt>
+        </router-link>
         <img src="../../assets/images/head.png" alt="">
         <div class="user">余老师
           <span><img src="../../assets/images/icon/icon_sex_nv.png" alt=""></span>
@@ -18,9 +20,11 @@
         </div>
       </aside>
       <section class="content">
+        <BHeader></BHeader>
         <router-view></router-view>
       </section>
     </section>
+    <BHeader></BHeader>
   </div>
 </template>
 
@@ -37,22 +41,31 @@ export default {
 <style lang="scss" scoped>
 .g_main {
   width: 1366px;
+  height: 100%;
   margin: 0 auto;
 }
 .main {
   display: flex;
-  height: calc(100vh - 50px);
+  height: 100%;
   & > aside {
     width: 150px;
     height: 100%;
+    min-height: 700px;
     background-color: #fff;
     margin-top: 1px;
     border-right: 1px solid rgba(228, 232, 237, 1);
     text-align: center;
-    padding-top: 40px;
+    padding-top: 20px;
     & > img {
       width: 80px;
       border-radius: 50%;
+    }
+    & .logo {
+      width: 49px;
+      height: 49px;
+      display: block;
+      margin: 0 auto;
+      margin-bottom: 32px;
     }
     & > .user {
       text-align: center;
@@ -100,8 +113,8 @@ export default {
   }
   & > section {
     flex: 1;
-    height: 100%;
     width: calc(100% - 150px);
+    height: 100%;
   }
 }
 </style>

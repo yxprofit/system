@@ -2,7 +2,7 @@
   <div class="g_main">
     <section class="main">
       <aside>
-        <router-link :to="{path:'student'}" class="logo">
+        <router-link :to="{path:'/student'}" class="logo">
           <img src="../../assets/images/logo.png" alt>
         </router-link>
         <img src="../../assets/images/head.png" alt>
