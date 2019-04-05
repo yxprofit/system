@@ -9,9 +9,9 @@
 
         <div class="group-opeator clearfix">
           <!-- <div class="group-min is-inline"></div>
-          <div class="group-max is-inline"></div> -->
-          <div class=" is-inline" @click="close">
-            <i class="el-dialog__close el-icon el-icon-close  group-close"></i>
+          <div class="group-max is-inline"></div>-->
+          <div class="is-inline" @click="close">
+            <i class="el-dialog__close el-icon el-icon-close group-close"></i>
           </div>
         </div>
       </div>
@@ -27,8 +27,14 @@
             </div>
             <div class="lesson-intro">
               <div class="lesson-title">课程名称课程名称</div>
-              <div class="lesson-data">2019.01.01</div>
-              <div class="lesson-teacher">刘青云老师</div>
+              <div class="lesson-data">
+                <img class="lesson-icon" src="../../../../assets/images/icon/43.png" alt>
+                <span class="lesson-text">2019.01.01</span>
+              </div>
+              <div class="lesson-teacher">
+                <img class="lesson-icon" src="../../../../assets/images/icon/44.png" alt>
+                <span class="lesson-text">刘青云老师</span>
+              </div>
             </div>
           </li>
         </ul>
@@ -205,6 +211,16 @@ export default {
     padding-bottom: 10px;
     color: #666666;
     font-size: 14px;
+  }
+
+  .lesson-icon,
+  .lesson-text {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .lesson-icon {
+    width: 12px;
   }
 }
 

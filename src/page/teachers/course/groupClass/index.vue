@@ -25,9 +25,6 @@
 
 <script>
 /*组件方式引用*/
-import VueAwesomeSwiper from 'vue-awesome-swiper'
-// require styles
-import 'swiper/dist/css/swiper.css'
 import draggable from "vuedraggable";
 export default {
   props: {
@@ -103,8 +100,6 @@ export default {
   },
   mounted() {},
   components: {
-    swiper,
-    swiperSlide,
     draggable
   }
 };
