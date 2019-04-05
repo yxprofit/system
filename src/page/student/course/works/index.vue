@@ -1,5 +1,5 @@
 <template>
-  <div v-loading="loading">
+  <div style="height: 100%" v-loading="loading">
     <List></List>
   </div>
 </template>

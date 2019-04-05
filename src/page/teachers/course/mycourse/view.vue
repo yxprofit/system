@@ -128,8 +128,13 @@
 								<router-link to="#" tag="var" style="margin-left: 20px;" >编辑课件 ></router-link>
 							</div>
 							<div class="myteam">
+<<<<<<< HEAD
 								<span class="i" @click="handleGrouping">小组分配</span>
 								<router-link to="/courseware" class="classstart" tag="span" >开始上课</router-link>
+=======
+								<span class="i">小组分配</span>
+								<span class="classstart" tag="span" @click="handleStartClass">开始上课</span>
+>>>>>>> 20883745ab6394ff4a26d4a7f1bc18c91ccb9a95
 								<span class="classdata" @click="handlePrepareLesson">备课资料</span>
 							</div>
 						</div>
