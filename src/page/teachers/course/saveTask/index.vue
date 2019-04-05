@@ -13,6 +13,7 @@
         <!-- <div style="background: green; height:400px; width: 500px;"></div> -->
       </div>
     </div>
+    <div class="task-close" @click="taskClose">x</div>
   </div>
 </template>
 
@@ -20,20 +21,25 @@
 export default {
   data() {
     return {};
+  },
+  methods: {
+    taskClose() {
+      this.$emit('taskClose', false);
+    }
   }
 };
 </script>
 
 <style lang="scss" scoped>
 .save-task {
-  width: 440px;
-  padding: 15px 18px 17px 18px;
+  width: 880px;
+  padding: 30px 36px 34px 36px;
 }
 
 .save-header {
-  height: 48px;
-  line-height: 48px;
-  padding: 0 10px;
+  height: 75px;
+  line-height: 75px;
+  padding: 0 20px;
   box-sizing: border-box;
 }
 
@@ -42,7 +48,7 @@ export default {
 }
 
 .preview {
-  height: 220px;
+  height: 425px;
   overflow: auto;
 }
 
@@ -59,9 +65,9 @@ export default {
   font-size: 12px;
   border-radius: 2px;
   color: #fff;
-  width: 70px;
-  height: 30px;
-  line-height: 30px;
+  width: 120px;
+  height: 42px;
+  line-height: 42px;
 }
 
 .btn-wrap {
@@ -71,7 +77,7 @@ export default {
 .task-delete {
   color: #999;
   border: 1px solid rgba(204, 204, 204, 1);
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
 .task-save {
@@ -80,6 +86,13 @@ export default {
     rgba(255, 183, 38, 1),
     rgba(255, 129, 38, 1)
   );
+}
+
+.task-close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 18px;
 }
 </style>
 

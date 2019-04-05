@@ -62,7 +62,7 @@
     </hgroup>
 
     <popup-modal v-model="isShowSaveTask">
-      <save-task></save-task>
+      <save-task @taskClose="handleTaskClose"></save-task>
     </popup-modal>
   </div>
 </template>
@@ -151,6 +151,9 @@ export default {
     }, 1000);
   },
   methods: {
+    handleTaskClose (bool)  {
+      this.isShowSaveTask = bool;
+    },
     handleTaskList(type) {
       let queryType = this.$route.query.type;
       if (queryType === 'teacherTask') {
