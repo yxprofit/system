@@ -8,8 +8,8 @@
         </div>
 
         <div class="group-opeator clearfix">
-          <div class="group-min is-inline"></div>
-          <div class="group-max is-inline"></div>
+          <!-- <div class="group-min is-inline"></div>
+          <div class="group-max is-inline"></div> -->
           <div class=" is-inline" @click="close">
             <i class="el-dialog__close el-icon el-icon-close  group-close"></i>
           </div>

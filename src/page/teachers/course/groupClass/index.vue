@@ -8,8 +8,8 @@
       </div>
 
       <div class="group-opeator clearfix">
-        <div class="group-min is-inline"></div>
-        <div class="group-max is-inline"></div>
+        <!-- <div class="group-min is-inline"></div>
+        <div class="group-max is-inline"></div> -->
         <div class="group-close is-inline" @click="closeModal">
           <i class="el-dialog__close el-icon el-icon-close"></i>
         </div>
@@ -25,8 +25,9 @@
 
 <script>
 /*组件方式引用*/
-// import "swiper/dist/css/swiper.css"; ////这里注意具体看使用的版本是否需要引入样式，以及具体位置。
-import { swiper, swiperSlide } from "vue-awesome-swiper";
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+// require styles
+import 'swiper/dist/css/swiper.css'
 import draggable from "vuedraggable";
 export default {
   props: {
@@ -112,7 +113,7 @@ export default {
 <style lang="scss" scoped>
 .group {
   width: 1100px;
-  height: 620px;
+  height: 520px;
 
   .group-header-wrap {
     height: 60px;
