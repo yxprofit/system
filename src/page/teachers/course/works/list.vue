@@ -71,7 +71,7 @@
         </div>
       </div>
     </div>
-    <div v-show="showResult" class="serach-result">共找到相关作品：<span>978件</span></div>
+    <div v-show="showResult" class="serach-result">共找到相关作品：<span>{{ worksCount + '件'}}</span></div>
     <div class="waterfall-wraper">
       <waterfall :col='col' :gutterWidth="gutterWidth" :data="data" @loadmore="loadmore"  v-loading="loading">
         <template >
@@ -103,7 +103,10 @@
         </template>
       </waterfall>
     </div>
-    <button  @click="loadmore">查看更多</button>
+    <div class="loader-btn-wraper">
+      <button class="load-btn" @click="loadmore">查看更多</button>
+    </div>
+    
 
   </div>
 </template>
@@ -123,9 +126,9 @@ import icon_task_close from 'assets/images/icon/icon_task_close.png'
 import zan from 'assets/images/student/zan.png'
 
 export default{
-	components: {
+  components: {
 
-	},
+  },
   data () {
     return {
       icon_39,
@@ -136,12 +139,12 @@ export default{
       data: [],
       loading: true,
       col: 3,
-      showResult: false,
       nameKey: '',
       classHoure: '',
       course: '',
       works: '',
-      classes: '',
+      classes: '1',
+      worksCount: 978,
       classHoureOptions: [],
       courseOptions: [],
       worksOptions: [],
@@ -162,6 +165,9 @@ export default{
     },
     gutterWidth () {
       return (9 * 0.5 * (document.documentElement.clientWidth / 375))
+    },
+    showResult () {
+      return this.classHoure || this.course || this.works || this.classes || this.nameKey;
     }
   },
   methods: {
@@ -176,7 +182,6 @@ export default{
       this.data[index]['isLike'] = !this.data[index]['isLike']
     },
     handleConditionChange() {
-      this.showResult = this.classHoure || this.course || this.works || this.classes
       let data = {
         classHoure: this.classHoure,
         course: this.course,
@@ -184,10 +189,11 @@ export default{
         classes: this.classes
       }
       // 发送请求筛选Lists
+      this.worksCount = 529 
 
     },
     searchByName() {
-      this.showResult = true;
+      this.worksCount = 120
     },
     getSearchOptions() {
       // 发送请求获取搜索框选项
@@ -359,6 +365,9 @@ export default{
     }
     .search-panel {
       font-size: 0;
+      height: 32px;
+      line-height: 32px;
+      margin-top: 13px;
       padding-right: 10px;
       .search {
         width: 150px;
@@ -368,21 +377,27 @@ export default{
     img {border-radius: 100%}
     .tname {margin-left: 5px}
   }
-  &>button {
-    display: block;
-    width: 120px;
-    height: 34px;
-    line-height: 34px;
+  .loader-btn-wraper {
+    margin: 20px 0 0;
     text-align: center;
-    background-color: transparent;
-    border: 1px solid #ccc;
-    border-radius: 17px;
-    margin: 20px auto 0;
-    color: #999;
-    font-size: 13px;
-    font-family: '微软雅黑';
-    cursor: pointer;
+    height: 34px;
+    .load-btn {
+      display: inline-block;
+      width: 120px;
+      height: 34px;
+      line-height: 32px;
+      text-align: center;
+      background-color: transparent;
+      border: 1px solid #ccc;
+      border-radius: 17px;
+      
+      color: #999;
+      font-size: 13px;
+      font-family: 'MicrosoftYaHei';
+      cursor: pointer;
+    }
   }
+  
   .cell-item {
     padding-right: 10px;
     margin-bottom: 10px;
