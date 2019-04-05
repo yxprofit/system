@@ -24,7 +24,6 @@
         <router-view></router-view>
       </section>
     </section>
-    <BHeader></BHeader>
   </div>
 </template>
 
