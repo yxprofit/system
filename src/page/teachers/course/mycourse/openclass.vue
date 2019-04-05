@@ -133,6 +133,10 @@ import inclass from 'assets/images/icon/inclass.png'
 </script>
 <style lang="scss" >
 .open-class-dialog {
+	.el-dialog {
+		border-radius: 6px;
+	}
+	
 	.el-dialog__header {
 		padding: 11px 22px 0;
 		.header-wraper {
@@ -175,6 +179,8 @@ import inclass from 'assets/images/icon/inclass.png'
   .el-dialog__body {
   	padding: 16px 58px;
   	.class-list {
+  		height:352px;
+  		border-sizing: border-box;
   		border:1px solid rgba(245,246,247,1);
   		.class-item {
   			height: 50px;

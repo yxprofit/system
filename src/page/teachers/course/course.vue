@@ -85,7 +85,7 @@ export default {
         overflow: hidden;
         background-color: #fff;
         position: relative;
-        z-index: 9999;
+        z-index: 3000;
         span{
           &:nth-child(1){
             display: inline-block;
