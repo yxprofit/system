@@ -25,7 +25,7 @@
 
 <script>
 /*组件方式引用*/
-import "swiper/dist/css/swiper.css"; ////这里注意具体看使用的版本是否需要引入样式，以及具体位置。
+// import "swiper/dist/css/swiper.css"; ////这里注意具体看使用的版本是否需要引入样式，以及具体位置。
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 import draggable from "vuedraggable";
 export default {

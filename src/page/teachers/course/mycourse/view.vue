@@ -125,11 +125,11 @@
 							<div class="workdes">
 								<span>课件名称课件名称课件名称课件名称01</span>
 								<router-link to="#" tag="var" >开放课件 ></router-link>
-								<b style="margin-left: 20px;"  @click='handleUeditor'>编辑课件 ></b>
+								<router-link to="/courseware?type=teacherTask" tag="var" style="margin-left: 20px;" >编辑课件 ></router-link>
 							</div>
 							<div class="myteam">
 								<span class="i" @click="handleGrouping">小组分配</span>
-								<router-link to="/courseware?type=teacherTask" class="classstart" tag="span" >开始上课</router-link>
+								<router-link to="" class="classstart" tag="span" >开始上课</router-link>
 								<span class="classdata" @click="handlePrepareLesson">备课资料</span>
 							</div>
 						</div>
@@ -192,7 +192,6 @@
     <!-- 班级列表弹窗 -->
     <open-class ref="OpenClass"></Open-class>
 		<!-- 编辑课程组件 -->
-		<ueditor :state='isUeditor' v-show='isUeditor' @close='handleUeditor'></ueditor>
     <popup-modal v-model="isShowGroup" :close-on-click-overlay="closeOverLay">
       <group-class @closeModal="handleCloseModal"></group-class>
     </popup-modal>
@@ -201,7 +200,6 @@
 
 <script>
 import breadcrumb from '@/components/common/breadcrumb.vue'
-import Ueditor from '@/page/ueditor/ueditor';
 import PopupModal from '@/components/popup'
 import PrepareLesson from '../prepareLesson';
 import OpenClass from './openclass';
@@ -215,7 +213,6 @@ export default {
     breadcrumb,
     PrepareLesson,
 		OpenClass,
-		Ueditor,
     PopupModal,
     GroupClass
 	},
@@ -227,7 +224,6 @@ export default {
       desState: false,
       showLesson: false,
 			showClass: false,
-			isUeditor:false,
       isShowGroup: false,
       closeOverLay: false,
       visible: false,
@@ -246,9 +242,6 @@ export default {
     handlePrepareLesson() {
       this.showLesson = true;
 		},
-		handleUeditor() {
-      this.isUeditor = !this.isUeditor;
-    },
     handleGrouping() {
       // console.log(11111111111)
       this.isShowGroup = !this.isShowGroup;

@@ -47,7 +47,7 @@
             <i class="el-icon-check"></i>保存修改
           </span>
         </li>
-        <li class="add">
+        <li class="add" @click="addworks">
           <span>
             <i class="el-icon-plus"></i>添加任务
           </span>
@@ -62,8 +62,15 @@
     </hgroup>
 
     <popup-modal v-model="isShowSaveTask">
+<<<<<<< HEAD
       <save-task @taskClose="handleTaskClose"></save-task>
+=======
+      <save-task @confirmDel='confirmDel'></save-task>
+>>>>>>> 4db64cc55f6c5d0bcb2d145d67f2db60631afcbc
     </popup-modal>
+    <delete-work :state='isdelete' @close='handleClose'></delete-work>
+    <add-works :state='addwork' @close='addworkClose' @handleJump='jump'></add-works>
+    <teacher-editor :state='editor' @close='editorClose'></teacher-editor>
   </div>
 </template>
 
@@ -74,12 +81,18 @@ import details1 from "assets/images/details1.png";
 import allprint from "assets/images/allprint.png";
 import PopupModal from '@/components/popup';
 import SaveTask from "@/page/teachers/course/saveTask";
+import DeleteWork from "@/page/teachers/course/deleteWork/deleteWork";
+import AddWorks from "@/page/teachers/course/addworks/addWorkTypes";
+import TeacherEditor from "@/page/ueditor/ueditor";
+
 
 export default {
   name: "tasks",
-  components: {},
   data() {
     return {
+      editor:false,
+      addwork:false,
+      isdelete:false,
       loading: true,
       material,
       details1,
@@ -172,11 +185,33 @@ export default {
     },
     changeIsHidden() {
       this.isHidden = !this.isHidden;
+    },
+    handleClose(){
+      this.isdelete = false
+    },
+    confirmDel(){
+      this.isdelete = true
+    },
+    addworkClose(){
+      this.addwork = false
+    },
+    addworks(){
+      this.addwork = true
+    },
+    editorClose(){
+      this.editor = false
+    },
+    jump(){
+      this.editor = true
+      this.addwork = false
     }
   },
   components: {
     PopupModal,
-    SaveTask
+    SaveTask,
+    DeleteWork,
+    AddWorks,
+    TeacherEditor
   }
 };
 </script>

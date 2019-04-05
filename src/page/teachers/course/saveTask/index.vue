@@ -4,7 +4,7 @@
       <el-row class="save-header">
         <el-col :span="12" class="task-name">SDFFFFFFFFFFFFFFFFFFF</el-col>
         <el-col :span="12" class="btn-wrap">
-          <div class="task-delete">删除</div>
+          <div class="task-delete" @click="confirmDelete">删除</div>
           <div class="task-save">保存任务</div>
         </el-col>
       </el-row>
@@ -26,7 +26,10 @@ export default {
   },
   methods: {
     taskClose() {
-      this.$emit('taskClose', false);
+      this.$emit("taskClose", false);
+    },
+    confirmDelete() {
+      this.$emit("confirmDel");
     }
   }
 };

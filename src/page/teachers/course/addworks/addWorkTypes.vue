@@ -1,5 +1,5 @@
 <template>
-  <div class="addwork" v-loading="loading">
+  <div class="addwork" v-loading="loading" v-show="state">
     <el-dialog :visible.sync="state" width="38%" :before-close="handleClose">
       <span slot="title" class="taddwork_title">
         <h3>选择添加任务类型</h3>
@@ -23,7 +23,7 @@
           </div>
         </div>
       </div>
-      <button>下一步</button>
+      <button @click='handleClick'>下一步</button>
     </el-dialog>
   </div>
 </template>
@@ -50,6 +50,9 @@ export default {
     },
     check(id){
       this.ischeck = id
+    },
+    handleClick(){
+      this.$emit('handleJump')
     }
   }
 };
