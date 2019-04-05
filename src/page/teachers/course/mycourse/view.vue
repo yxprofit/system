@@ -190,7 +190,7 @@
     <!-- 课程资料弹窗 -->
     <prepare-lesson :showLesson.sync="showLesson"></prepare-lesson>
     <popup-modal v-model="isShowGroup" :close-on-click-overlay="closeOverLay">
-      这里是内容与
+      <group-class @closeModal="handleCloseModal"></group-class>
     </popup-modal>
 	</div>
 </template>
@@ -199,6 +199,7 @@
 import breadcrumb from '@/components/common/breadcrumb.vue'
 import PopupModal from '@/components/popup'
 import PrepareLesson from '../prepareLesson';
+import GroupClass from '../groupClass';
 import breadcrumb_address from 'assets/images/student/breadcrumb_address.png'
 import workimg from 'assets/images/student/workimg.png'
 
@@ -207,7 +208,8 @@ export default {
 	components: {
     breadcrumb,
     PrepareLesson,
-    PopupModal
+    PopupModal,
+    GroupClass
 	},
 	data() {
 		return {
@@ -217,7 +219,8 @@ export default {
       desState: false,
       showLesson: false,
       isShowGroup: false,
-      closeOverLay: false
+      closeOverLay: false,
+      visible: false,
 		};
 	},
 	created() {
@@ -227,6 +230,9 @@ export default {
 		}, 1000);
 	},
 	methods: {
+    handleCloseModal (bool) {
+      this.isShowGroup = bool;
+    },
     handlePrepareLesson() {
       this.showLesson = true;
     },

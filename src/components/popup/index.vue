@@ -4,7 +4,7 @@
       <div class="popup-mask" v-show="value && !hideMask" @click="$_cancel"></div>
     </transition>
     <transition name="slide">
-      <div class="popup-content" v-show="value" :class="positionClass">
+      <div class="popup-content" v-show="value" :class="positionClass" :style="{ contentStyle }">
         <slot></slot>
       </div>
     </transition>
@@ -22,21 +22,32 @@ const objTransitionSlideType = {
 export default {
   name: "popup",
   props: {
+    // 弹唱位置， 暂时只开放中间弹窗
     position: {
       type: String,
       default: "center"
     },
+    // 是否显示 ，  页面中可使用v-model
     value: {
       type: Boolean,
       required: true
     },
+    // 点击遮罩层是否关闭弹窗
     closeOnClickOverlay: {
       type: Boolean,
       default: true
     },
+    // 是否显示遮罩层
     hideMask: {
       type: Boolean,
       default: false
+    },
+    // 弹窗内容样式
+    contentStyle: {
+      type: Object,
+      default: () => {
+        return {}
+      }
     }
   },
 
@@ -77,6 +88,7 @@ $prefixCls: popup;
     position: fixed;
     background-color: #fff;
     z-index: 9999;
+    border-radius: 5px;
     &.#{$prefixCls}-top {
       left: 0;
       right: 0;
