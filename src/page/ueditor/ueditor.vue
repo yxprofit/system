@@ -11,8 +11,8 @@
           <el-form-item label="活动名称" prop="name">
             <el-input></el-input>
           </el-form-item>
-          <el-form-item label="内容" prop="name" label-width='55px'>
-             <div id="editor"></div>
+          <el-form-item label="内容" prop="name" label-width="55px">
+            <div id="editor"></div>
           </el-form-item>
 
           <el-form-item>
@@ -20,9 +20,7 @@
           </el-form-item>
         </el-form>
       </div>
-    
     </el-dialog>
-
   </div>
 </template>
 
@@ -32,7 +30,24 @@ export default {
     return {
       editor: null,
       loading: true,
-      state: true
+      state: true,
+      config: {
+        /*//可以在此处定义工具栏的内容
+            toolbars: [
+              ['fullscreen', 'source','|', 'undo', 'redo','|','bold', 'italic', 'underline', 'fontborder', 'strikethrough',
+                '|','superscript','subscript','|', 'forecolor', 'backcolor','|', 'removeformat','|', 'insertorderedlist', 'insertunorderedlist',
+                '|','selectall', 'cleardoc','fontfamily','fontsize','justifyleft','justifyright','justifycenter','justifyjustify','|',
+                'link','unlink']
+            ],*/
+        autoHeightEnabled: false,
+        autoFloatEnabled: true, //是否工具栏可浮动
+        initialContent: "六神磊磊的唐诗课上线两个月，已经有数万名孩子通过小鹅通在学习。感谢小鹅通把我们便捷地连接起来。而且它每一天都在进步，提供更好的体验。六神磊磊的唐诗课上线两个月，已经有数万名孩子通过小鹅通在学习。感谢小鹅通把我们便捷地连接起来。而且它每一天都在进步，提供更好的体验。六神磊磊的唐诗课上线两个月，已经有数万名孩子通过小鹅通在学习。感谢小鹅通把我们便捷地连接起来。而且它每一天都在进步，提供更好的体验。", //初始化编辑器的内容,也可以通过textarea/script给值，看官网例子
+        autoClearinitialContent: true, //是否自动清除编辑器初始内容，注意：如果focus属性设置为true,这个也为真，那么编辑器一上来就会触发导致初始化的内容看不到了
+        initialFrameWidth: 902,
+        initialFrameHeight: 460,
+        BaseUrl: "",
+        UEDITOR_HOME_URL: "/static/Ueditor/"
+      }
     };
   },
   // props: ["state"],
@@ -47,6 +62,7 @@ export default {
     // UEDITOR_CONFIG.UEDITOR_HOME_URL = '../../static/Ueditor/'
     // // 实例化editor编辑器
     // this.editor = UE.getEditor('editor')
+    this.editor = UE.getEditor("editor", this.config);
   },
   methods: {
     gettext() {
@@ -73,6 +89,7 @@ export default {
   background: rgba(0, 0, 0, 0.4);
   z-index: 9999;
 }
+// dialog样式修改
 .teacher_editor /deep/ .el-dialog__header {
   height: 60px;
   border-bottom: 1px solid rgba(228, 232, 237, 1);
@@ -94,6 +111,29 @@ export default {
     }
   }
 }
+#editor {
+  width: 902px;
+  height: 460px;
+  margin-left: 25px;
+  
+}
+#editor /deep/ .edui-editor-toolbarboxinner{
+  height: 64px;
+}
+#editor /deep/ .edui-toolbar{
+  height: 64px;
+  // line-height: 64px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+#editor /deep/ #edui1_iframeholder{
+    height: 364px !important;
+  }
+  #editor /deep/ #edui1_bottombar{
+    display:  none;
+  }
+// form 表单样式修改
 .teacher_editor /deep/ .el-form-item__label {
   position: relative;
   &:after {
@@ -107,9 +147,18 @@ export default {
     left: 0;
     margin-top: -3px;
   }
-  .el-el-input {
-    width: 700px !important;
-  }
+}
+.teacher_editor /deep/ .el-input {
+  width: 370px;
+}
+.teacher_editor /deep/ .el-button{
+  width:120px;
+height:36px;
+background:linear-gradient(-90deg,rgba(255,183,38,1),rgba(255,129,38,1));
+border-radius:4px;
+border: none;
+float: right;
+margin-right: 50px;
 }
 </style>
 

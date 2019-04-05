@@ -156,6 +156,15 @@ let router = new Router({
         title: '富文本'
       }
     },
+    {
+      path: '/addworks',
+      components: {
+        default: resolve => require(['@/page/teachers/course/addworks/addWorkTypes.vue'], resolve)
+      },
+      meta: {
+        title: '添加任务'
+      }
+    },
     // 找不到路由的错误页面
     {
       path: '/*',
