@@ -129,7 +129,7 @@
 							</div>
 							<div class="myteam">
 								<span class="i" @click="handleGrouping">小组分配</span>
-								<router-link to="" class="classstart" tag="span" >开始上课</router-link>
+								<span class="classstart" @click="handleBeginClass">开始上课</span>
 								<span class="classdata" @click="handlePrepareLesson">备课资料</span>
 							</div>
 						</div>
@@ -190,7 +190,7 @@
     <!-- 课程资料弹窗 -->
     <prepare-lesson :showLesson.sync="showLesson"></prepare-lesson>
     <!-- 班级列表弹窗 -->
-    <open-class ref="OpenClass"></Open-class>
+    <open-class ref="ClassBeginDialog"></Open-class>
 		<!-- 编辑课程组件 -->
     <popup-modal v-model="isShowGroup" :close-on-click-overlay="closeOverLay">
       <group-class @closeModal="handleCloseModal"></group-class>
@@ -241,6 +241,9 @@ export default {
     },
     handlePrepareLesson() {
       this.showLesson = true;
+		},
+		handleBeginClass() {
+			this.$refs.ClassBeginDialog.show()
 		},
     handleGrouping() {
       // console.log(11111111111)
