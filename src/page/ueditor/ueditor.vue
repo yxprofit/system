@@ -11,56 +11,77 @@
           <el-form-item label="活动名称" prop="name">
             <el-input></el-input>
           </el-form-item>
-          <el-form-item label="内容" prop="name" label-width='55px'>
-             <div id="editor"></div>
+          <el-form-item label="内容" prop="name" label-width="55px">
+            <div id="editor">
+              <!-- <vue-html5-editor :content="content" :height="425"></vue-html5-editor> -->
+              <smeditor :config="config"></smeditor>
+            </div>
           </el-form-item>
 
+          <el-form-item label="相关文件" prop="name">
+            <div class="upload-item">余周周的课件作品.doc</div>
+          </el-form-item>
           <el-form-item>
             <el-button type="primary">确认添加</el-button>
           </el-form-item>
         </el-form>
       </div>
-    
     </el-dialog>
-
   </div>
 </template>
 
 <script>
+import SMEditor from "../../components/editor/SMEditor";
+const config = {
+  // 接口地址
+  uploadUrl: "https://jsonplaceholder.typicode.com/posts/",
+  // form 里的 filename
+  uploadName: "upload_file",
+  // 其他参数
+  uploadParams: {},
+  sticky: true,
+  // 上传成功回调
+  uploadCallback: data => {
+    // console.log(data)
+    return (
+      data.image.url ||
+      "https://ws1.sinaimg.cn/large/006tNc79gy1fp1rdw7e90j30rs0rsacb.jpg"
+    );
+  },
+  // 上传失败回调, 可选
+  uploadFailed: err => {
+    // console.log('仅供测试, 并非真正上传')
+    alert("仅供测试, 并非真正上传!", err);
+  }
+};
 export default {
   data() {
     return {
       editor: null,
       loading: true,
-      state: true
+      content: "",
+      config: config
     };
   },
-  // props: ["state"],
+  props: ["state"],
   created() {
     let _this = this;
     setTimeout(() => {
       _this.loading = false;
     }, 1000);
   },
-  mounted() {
-    // // 引入url
-    // UEDITOR_CONFIG.UEDITOR_HOME_URL = '../../static/Ueditor/'
-    // // 实例化editor编辑器
-    // this.editor = UE.getEditor('editor')
-  },
+  mounted() {},
   methods: {
-    gettext() {
-      // 获取editor中的文本
-      console.log(this.editor.getContent());
-    },
+    gettext() {},
     handleClose() {
       this.$emit("close");
+      console.log(this.content);
     }
   },
-  destroyed() {
-    // 将editor进行销毁
-    this.editor.destroy();
-  }
+  components: {
+    smeditor: SMEditor
+  },
+  destroyed() {}
 };
 </script>
 <style lang="scss" scoped>
@@ -73,6 +94,7 @@ export default {
   background: rgba(0, 0, 0, 0.4);
   z-index: 9999;
 }
+// dialog样式修改
 .teacher_editor /deep/ .el-dialog__header {
   height: 60px;
   border-bottom: 1px solid rgba(228, 232, 237, 1);
@@ -94,6 +116,28 @@ export default {
     }
   }
 }
+#editor {
+  width: 902px;
+  height: 460px;
+  margin-left: 25px;
+}
+#editor /deep/ .edui-editor-toolbarboxinner {
+  height: 64px;
+}
+#editor /deep/ .edui-toolbar {
+  height: 64px;
+  // line-height: 64px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+#editor /deep/ #edui1_iframeholder {
+  height: 364px !important;
+}
+#editor /deep/ #edui1_bottombar {
+  display: none;
+}
+// form 表单样式修改
 .teacher_editor /deep/ .el-form-item__label {
   position: relative;
   &:after {
@@ -107,9 +151,32 @@ export default {
     left: 0;
     margin-top: -3px;
   }
-  .el-el-input {
-    width: 700px !important;
-  }
+}
+.teacher_editor /deep/ .el-input {
+  width: 370px;
+}
+.teacher_editor /deep/ .el-button {
+  width: 120px;
+  height: 36px;
+  background: linear-gradient(
+    -90deg,
+    rgba(255, 183, 38, 1),
+    rgba(255, 129, 38, 1)
+  );
+  border-radius: 4px;
+  border: none;
+  float: right;
+  margin-right: 50px;
+}
+.upload-item {
+  display: inline-block;
+  padding: 8px;
+  color: #2691ff;
+  border: 1px solid #e4e4e4;
+  border-radius: 2px;
+  line-height: 14px;
+  background-color: #f5f6f8;
+  cursor: pointer;
 }
 </style>
 
