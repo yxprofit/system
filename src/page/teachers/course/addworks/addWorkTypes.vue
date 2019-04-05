@@ -32,11 +32,11 @@
 export default {
   data() {
     return {
-      state: true,
       loading: true,
       ischeck:1
     };
   },
+  props:['state'],
   created() {
     let _this = this;
     setTimeout(() => {

@@ -59,12 +59,11 @@ export default {
     return {
       editor: null,
       loading: true,
-      state: true,
       content: "",
       config: config
     };
   },
-  // props: ["state"],
+  props: ["state"],
   created() {
     let _this = this;
     setTimeout(() => {
