@@ -27,10 +27,17 @@
         <p>本课时任务</p>
       </div>
       <ul class="task">
-        <li v-for="(item, index) in $route.query.type === 'teacherTask' ? teacherTask : studentTask" :key="index">
+        <li
+          v-for="(item, index) in $route.query.type === 'teacherTask' ? teacherTask : studentTask"
+          :key="index"
+        >
           <h4 :class="'icon-' + item.type">
             <b>{{ item.name }}</b>
-            <span :class="item.type" v-if="item.btn">{{ item.btn }}</span>
+            <span
+              :class="item.type"
+              v-if="item.btn"
+              @click="handleTaskList(item.type)"
+            >{{ item.btn }}</span>
           </h4>
         </li>
       </ul>
@@ -53,6 +60,10 @@
         alt
       >
     </hgroup>
+
+    <popup-modal v-model="isShowSaveTask">
+      <save-task></save-task>
+    </popup-modal>
   </div>
 </template>
 
@@ -61,6 +72,8 @@ import screenfull from "screenfull";
 import material from "assets/images/student/material.png";
 import details1 from "assets/images/details1.png";
 import allprint from "assets/images/allprint.png";
+import PopupModal from '@/components/popup';
+import SaveTask from "@/page/teachers/course/saveTask";
 
 export default {
   name: "tasks",
@@ -74,58 +87,59 @@ export default {
       fullShow: false,
       page: 1,
       isHidden: false,
+      isShowSaveTask: false,
       teacherTask: [
         {
           name: "课件任务名称",
           btn: "查看结果",
-          type: 'course'
+          type: "course"
         },
         {
           name: "测试任务名称",
           btn: "",
-          type: 'test'
+          type: "test"
         },
         {
           name: "问卷任务名称",
           btn: "删除",
-          type: 'questionnaire'
+          type: "questionnaire"
         },
         {
           name: "作品上传",
           btn: "删除",
-          type: 'works'
+          type: "works"
         },
         {
           name: "优势打卡",
           btn: "删除",
-          type: 'clock'
+          type: "clock"
         }
       ],
       studentTask: [
         {
           name: "课件任务名称",
           btn: "去完成",
-          type: 'course'
+          type: "course"
         },
         {
           name: "测试任务名称",
           btn: "去完成",
-          type: 'test'
+          type: "test"
         },
         {
           name: "问卷任务名称",
           btn: "已完成",
-          type: 'questionnaire'
+          type: "questionnaire"
         },
         {
           name: "作品上传",
           btn: "已完成",
-          type: 'works'
+          type: "works"
         },
         {
           name: "优势打卡任务名称",
           btn: "已完成",
-          type: 'clock'
+          type: "clock"
         }
       ]
     };
@@ -137,6 +151,14 @@ export default {
     }, 1000);
   },
   methods: {
+    handleTaskList(type) {
+      let queryType = this.$route.query.type;
+      if (queryType === 'teacherTask') {
+        if (type === 'works') {
+          this.isShowSaveTask = !this.isShowSaveTask;
+        }
+      }
+    },
     goback() {
       screenfull.exit();
       this.$router.go(-1);
@@ -148,6 +170,10 @@ export default {
     changeIsHidden() {
       this.isHidden = !this.isHidden;
     }
+  },
+  components: {
+    PopupModal,
+    SaveTask
   }
 };
 </script>

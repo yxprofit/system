@@ -148,20 +148,20 @@ $prefixCls: popup;
 
 .ry-fade {
   &-enter-active {
-    animation: ry-fade-enter 0.3s both ease;
+    animation: ry-fade-enter 0.5s both ease;
   }
 
   &-leave-active {
-    animation: ry-fade-leave 0.3s both ease;
+    animation: ry-fade-leave 0.5s both ease;
   }
 }
 
 .slide {
   &-enter-active {
-    animation: slide-enter 0.5s both ease-out;
+    animation: slide-enter 0.3s both ease-out;
   }
   &-leave-active {
-    animation: slide-leave 0.5s both ease-out;
+    animation: slide-leave 0.3s both ease-out;
   }
 }
 </style>
