@@ -129,7 +129,7 @@
 							</div>
 							<div class="myteam">
 								<span class="i" @click="handleGrouping">小组分配</span>
-								<router-link to="/courseware" class="classstart" tag="span" >开始上课</router-link>
+								<router-link to="/courseware?type=teacherTask" class="classstart" tag="span" >开始上课</router-link>
 								<span class="classdata" @click="handlePrepareLesson">备课资料</span>
 							</div>
 						</div>

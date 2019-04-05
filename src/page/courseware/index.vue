@@ -1,78 +1,59 @@
 <template>
   <div class="courseware" v-loading="loading">
     <div class="taskleft">
-      <div class="backclass" @click="goback">
-        < 返回课程</div>
-          <div class="step">
-            <div class="stepimg" v-if="page === 1">
-              <img :src="material">
-            </div>
-            <div class="stepimg" v-if="page === 2">
-              <img :src="details1">
-            </div>
-          </div>
-          <div class="stepbut">
-            <button class="pre" :class="{'active':page === 1}" @click="page = 1">上一页</button>
-            <span class="pages">
-              <var>{{page}}</var>/2
-            </span>
-            <button class="next" :class="{'active':page === 2}" @click="page = 2">下一页</button>
-          </div>
-          <div class="allprint" @click="screenF">
-            <img :src="allprint"> {{fullShow ? '退出全屏' : '全屏' }}
-          </div>
-      </div>
-      <hgroup :class="{'active':isHidden}">
-        <div>
-          <p>本课时任务</p>
+      <div class="backclass" @click="goback">< 返回课程</div>
+      <div class="step">
+        <div class="stepimg" v-if="page === 1">
+          <img :src="material">
         </div>
-        <ul class="task">
-          <li>
-            <h4 class="icon-course">
-              <b>课件任务名称</b>
-              <span class="active">去完成</span>
-            </h4>
-          </li>
-          <li>
-            <h4 class="icon-test">
-              <b>测试任务名称</b>
-              <span class="active">去完成</span>
-            </h4>
-          </li>
-          <li>
-            <h4 class="icon-questionnaire">
-              <b>问卷任务名称</b>
-              <span>已完成</span>
-            </h4>
-          </li>
-          <li>
-            <h4 class="icon-works">
-              <b>作品上传</b>
-              <span>已完成</span>
-            </h4>
-          </li>
-          <li>
-            <h4 class="icon-clock">
-              <b>优势打卡任务名称</b>
-              <span>已完成</span>
-            </h4>
-          </li>
-        </ul>
-        <!-- <ul class="operation">
-          <li class="edit">
-            <span>
-              <i class="el-icon-check"></i>保存修改
-            </span>
-          </li>
-          <li class="add">
-            <span>
-              <i class="el-icon-plus"></i>添加任务
-            </span>
-          </li>
-        </ul> -->
-        <img :class="['bottom',{'hidden':isHidden}]" @click="changeIsHidden" src="../../assets/images/icon/icon_open.png" alt="">
-      </hgroup>
+        <div class="stepimg" v-if="page === 2">
+          <img :src="details1">
+        </div>
+      </div>
+      <div class="stepbut">
+        <button class="pre" :class="{'active':page === 1}" @click="page = 1">上一页</button>
+        <span class="pages">
+          <var>{{page}}</var>/2
+        </span>
+        <button class="next" :class="{'active':page === 2}" @click="page = 2">下一页</button>
+      </div>
+      <div class="allprint" @click="screenF">
+        <img :src="allprint">
+        {{fullShow ? '退出全屏' : '全屏' }}
+      </div>
     </div>
+    <hgroup :class="{'active':isHidden}">
+      <div>
+        <p>本课时任务</p>
+      </div>
+      <ul class="task">
+        <li v-for="(item, index) in $route.query.type === 'teacherTask' ? teacherTask : studentTask" :key="index">
+          <h4 :class="'icon-' + item.type">
+            <b>{{ item.name }}</b>
+            <span :class="item.type" v-if="item.btn">{{ item.btn }}</span>
+          </h4>
+        </li>
+      </ul>
+      <ul class="operation" v-if="$route.query.type === 'teacherTask'">
+        <li class="edit">
+          <span>
+            <i class="el-icon-check"></i>保存修改
+          </span>
+        </li>
+        <li class="add">
+          <span>
+            <i class="el-icon-plus"></i>添加任务
+          </span>
+        </li>
+      </ul>
+      <img
+        :class="['bottom',{'hidden':isHidden}]"
+        @click="changeIsHidden"
+        src="../../assets/images/icon/icon_open.png"
+        alt
+      >
+    </hgroup>
+  </div>
 </template>
 
 <script>
@@ -92,7 +73,61 @@ export default {
       allprint,
       fullShow: false,
       page: 1,
-      isHidden: false
+      isHidden: false,
+      teacherTask: [
+        {
+          name: "课件任务名称",
+          btn: "查看结果",
+          type: 'course'
+        },
+        {
+          name: "测试任务名称",
+          btn: "",
+          type: 'test'
+        },
+        {
+          name: "问卷任务名称",
+          btn: "删除",
+          type: 'questionnaire'
+        },
+        {
+          name: "作品上传",
+          btn: "删除",
+          type: 'works'
+        },
+        {
+          name: "优势打卡",
+          btn: "删除",
+          type: 'clock'
+        }
+      ],
+      studentTask: [
+        {
+          name: "课件任务名称",
+          btn: "去完成",
+          type: 'course'
+        },
+        {
+          name: "测试任务名称",
+          btn: "去完成",
+          type: 'test'
+        },
+        {
+          name: "问卷任务名称",
+          btn: "已完成",
+          type: 'questionnaire'
+        },
+        {
+          name: "作品上传",
+          btn: "已完成",
+          type: 'works'
+        },
+        {
+          name: "优势打卡任务名称",
+          btn: "已完成",
+          type: 'clock'
+        }
+      ]
     };
   },
   created() {
@@ -111,7 +146,7 @@ export default {
       screenfull.toggle();
     },
     changeIsHidden() {
-      this.isHidden = !this.isHidden
+      this.isHidden = !this.isHidden;
     }
   }
 };
