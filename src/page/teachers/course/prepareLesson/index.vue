@@ -270,8 +270,8 @@ export default {
 
 .group-max {
   height: 10px;
-  margin: 0 10px;
-  margin-right: 20px;
+  margin: 0 20px;
+  margin-right: 30px;
 }
 
 .group-close {
