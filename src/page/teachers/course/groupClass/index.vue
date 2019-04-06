@@ -19,19 +19,19 @@
     <div class="group-content">
       <div class="group1-wrap">
         <div class="content-1">
-          <div class="content-1-wrap">
+          <div class="content-1-wrap" ref="listGroup">
             <draggable class="list-group" :list="list1" group="people" @change="log">
               <div class="list-group-item" v-for="(element, index) in list1" :key="element.name">
                 <img class="avatar-img" src="../../../../assets/images/logo.png" alt>
-                <div class="avatar-name">欧阳娜娜</div>
+                <div class="avatar-name">欧阳娜娜 {{ index }}</div>
               </div>
             </draggable>
           </div>
         </div>
-        <div class="group1-prev">
+        <div class="group1-prev" @click="handlePrev">
           <i class="el-icon-arrow-left"></i>
         </div>
-        <div class="group1-next">
+        <div class="group1-next" @click="handleNext">
           <i class="el-icon-arrow-right"></i>
         </div>
       </div>
@@ -39,7 +39,7 @@
       <div class="group1-wrap group2-wrap">
         <div class="content-1">
           <div class="content-1-wrap">
-            <div class="group-slide" v-for="item in  10" :key="item">
+            <div class="group-slide" v-for="item in  2" :key="item">
               <div class="group-slide-innder">
                 <div class="group-title">09级2班 01组</div>
                 <div class="group2-inner">
@@ -55,6 +55,13 @@
                     </div>
                   </draggable>
                 </div>
+              </div>
+            </div>
+
+            <div class="group-slide">
+              <div class="add-btn">
+                <i class="el-icon-plus"></i>
+                <span class="add-text">添加小组</span>
               </div>
             </div>
           </div>
@@ -133,7 +140,9 @@ export default {
         { name: "Juan3", id: 8 },
         { name: "Edgard3", id: 9 },
         { name: "Johnson9", id: 10 }
-      ]
+      ],
+      group1Index: 0,
+      group2Index: 0
     };
   },
   watch: {
@@ -144,6 +153,29 @@ export default {
   },
   created() {},
   methods: {
+    handlePrev() {
+      console.log(1111);
+      if (this.group1Index <= 0) {
+      } else {
+        this.group1Index--;
+        this.list1.splice(this.group1Index, 1)
+        var list = JSON.parse(JSON.stringify(this.list1));
+        var current = list.splice(this.group1Index, 0);
+        list.push(current)
+        console.log(list, 'list')
+        console.log(this.group1Index)
+      }
+    },
+    handleNext() {
+      if (this.group1Index <= this.list1.length - 1) {
+        this.group1Index++;
+        var list = JSON.parse(JSON.stringify(this.list1));
+        console.log(this.group1Index)
+        var current = this.list1[this.group1Index - 1]
+        this.list1.splice(this.group1Index, 1)
+        // this.list1.unshift(current)
+      }
+    },
     add: function() {
       this.list.push({ name: "Juan" });
     },
@@ -279,6 +311,22 @@ export default {
   border: 1px solid #e4e8ed;
   margin-right: 12px;
   box-sizing: border-box;
+  position: relative;
+}
+
+.add-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  width: 150px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  background: rgba(153, 153, 153, 0.1);
+  border-radius: 20px;
+  font-size: 16px;
+  color: #bfbfbf;
 }
 
 .group1-wrap {
