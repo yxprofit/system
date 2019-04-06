@@ -93,12 +93,16 @@ export default {
   left: 0;
   background: rgba(0, 0, 0, 0.4);
   z-index: 9999;
-  overflow: hidden;
 }
 // dialog样式修改
 .teacher_editor /deep/ .el-dialog{
-  margin-top: 27px !important;
+  margin-top: 0 !important;
+}
+.teacher_editor /deep/ .el-dialog__wrapper{
+  padding-top: 25px;
+  box-sizing: border-box;
   overflow: hidden;
+
 }
 .teacher_editor /deep/ .el-dialog__header {
   height: 60px;
