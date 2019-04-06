@@ -28,13 +28,14 @@
       </div>
       <ul class="task">
         <li
-          v-for="(item, index) in $route.query.type === 'teacherTask' ? teacherTask : studentTask"
+          v-for="(item, index) in $route.query.type === 'teacherTask' ? teacherTask : ($route.query.type === 'classTask' ? classTask: studentTask)"
           :key="index"
         >
           <h4 :class="'icon-' + item.type">
             <b>{{ item.name }}</b>
             <span
               :class="item.type"
+              class="action-btn"
               v-if="item.btn"
               @click="handleTaskList(item.type)"
             >{{ item.btn }}</span>
@@ -148,6 +149,33 @@ export default {
         {
           name: "优势打卡任务名称",
           btn: "已完成",
+          type: "clock"
+        }
+      ],
+      classTask: [
+        {
+          name: "课件任务名称",
+          btn: "查看结果",
+          type: "course"
+        },
+        {
+          name: "测试任务名称",
+          btn: "",
+          type: "test"
+        },
+        {
+          name: "问卷任务名称",
+          btn: "查看结果",
+          type: "questionnaire"
+        },
+        {
+          name: "作品上传",
+          btn: "查看结果",
+          type: "works"
+        },
+        {
+          name: "优势打卡",
+          btn: "查看结果",
           type: "clock"
         }
       ]

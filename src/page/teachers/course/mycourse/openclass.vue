@@ -61,6 +61,12 @@ import inclass from 'assets/images/icon/inclass.png'
  			}
  			let index = this.classList.findIndex(item => item.id === classItem.id)
  			this.classList[index].isInclass = true;
+      this.$router.push({
+        path: '/courseware',
+        query: {
+          type: 'classTask'
+        }
+      })
  		},
  		goPage(num) {
       if (num === 1) {
@@ -84,7 +90,7 @@ import inclass from 'assets/images/icon/inclass.png'
  				className: '高三英语七班',
  				isInclass: true
  			},
- 			{ 
+ 			{
  				id: 'w222222',
  				className: '高三数学一班',
  				isInclass: false
@@ -136,7 +142,7 @@ import inclass from 'assets/images/icon/inclass.png'
 	.el-dialog {
 		border-radius: 6px;
 	}
-	
+
 	.el-dialog__header {
 		padding: 11px 22px 0;
 		.header-wraper {
@@ -161,7 +167,7 @@ import inclass from 'assets/images/icon/inclass.png'
       		width:285px;
           height:38px;
           background:rgba(238,238,238,1);
-          border-radius: 19px; 
+          border-radius: 19px;
           border: none;
           padding-left: 31px;
           padding-right: 45px;
