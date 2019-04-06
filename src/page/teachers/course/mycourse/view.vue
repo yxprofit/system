@@ -32,7 +32,7 @@
 			</div>
 			<div class="workList">
 				<el-row :gutter="10">
-					<el-col :span="12">
+					<!-- <el-col :span="12">
 						<div class="li nowork">
 							<h4>第1课时：课时名称课时名称课时名称课时名称</h4>
 							<div class="icon_no">
@@ -40,6 +40,21 @@
 									<i></i>
 									<span>已禁用控件</span>
 								</div>
+							</div>
+						</div>
+					</el-col> -->
+					<el-col :span="12">
+						<div class="li">
+							<h4>第{{index + 2}}课时：课时名称课时名称课时名称课时名称<i></i></h4>
+							<div class="workdes">
+								<span>课件名称课件名称课件名称课件名称01</span>
+								<var @click="handleOpenCourseware">开放课件 ></var>
+								<router-link to="/courseware?type=teacherTask" tag="var" style="margin-left: 20px;" >编辑课件 ></router-link>
+							</div>
+							<div class="myteam">
+								<span class="i" @click="handleGrouping">小组分配</span>
+								<span class="classstart" @click="handleBeginClass">开始上课</span>
+								<span class="classdata" @click="handlePrepareLesson">备课资料</span>
 							</div>
 						</div>
 					</el-col>
