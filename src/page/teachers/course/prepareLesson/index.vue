@@ -17,23 +17,34 @@
       </div>
       <div class="lesson-content">
         <ul class="lesson-list">
-          <li class="lesson-item" v-for="item in 20" :key="item">
+          <li
+            class="lesson-item"
+            :class="{ 'is-mousemove': item.isHover == true }"
+            v-for="(item, index) in lessonList"
+            :key="index"
+            @mouseover="handleOver(index)"
+            @mouseleave="handleLeave(index)"
+          >
             <div class="lesson-img">
               <img class="less-image" src="../../../../assets/images/img3.png" alt>
-              <div class="img-hover" v-if="false">
-                <div class="online-view">在线查看</div>
-                <div class="click-download">点击下载</div>
+              <div class="image-layer" v-show="item.isHover == true"></div>
+              <div class="img-hover" v-show="item.isHover == true">
+                <img src="../../../../assets/images/teacher/41.png" alt class="online-view">
+                <img src="../../../../assets/images/teacher/42.png" alt class="click-download">
               </div>
             </div>
             <div class="lesson-intro">
-              <div class="lesson-title">课程名称课程名称</div>
+              <div
+                class="lesson-title"
+                :class="{ 'is-select': item.isHover == true }"
+              >{{ item.lesson_title }}</div>
               <div class="lesson-data">
                 <img class="lesson-icon" src="../../../../assets/images/icon/43.png" alt>
-                <span class="lesson-text">2019.01.01</span>
+                <span class="lesson-text">{{ item.lesson_date }}</span>
               </div>
               <div class="lesson-teacher">
                 <img class="lesson-icon" src="../../../../assets/images/icon/44.png" alt>
-                <span class="lesson-text">刘青云老师</span>
+                <span class="lesson-text">{{ item.lesson_teacher }}</span>
               </div>
             </div>
           </li>
@@ -67,11 +78,7 @@ export default {
     return {
       labelPosition: "left",
       visible: false,
-      feedback: {
-        type: "SG",
-        title: "",
-        content: ""
-      }
+      lessonList: []
     };
   },
   watch: {
@@ -82,6 +89,12 @@ export default {
   },
   created() {},
   methods: {
+    handleOver(index) {
+      this.lessonList[index].isHover = true;
+    },
+    handleLeave(index) {
+      this.lessonList[index].isHover = false;
+    },
     closeModal() {
       this.$emit("closeModal", false);
     },
@@ -91,7 +104,16 @@ export default {
       this.handleClose && this.handleClose();
     }
   },
-  mounted() {}
+  mounted() {
+    for (let i = 0; i < 20; i++) {
+      this.lessonList.push({
+        lesson_title: "课程名称课程名称",
+        lesson_date: "2019.01.01",
+        lesson_teacher: "刘青云老师",
+        isHover: false
+      });
+    }
+  }
 };
 </script>
 
@@ -188,11 +210,36 @@ export default {
   border-radius: 4px;
   cursor: pointer;
 
+  &.is-mousemove {
+    border-color: #f79727;
+  }
+
   .lesson-img {
+    position: relative;
     .less-image {
       width: 100%;
       height: 150px;
     }
+  }
+
+  .image-layer {
+    width: 100%;
+    height: 150px;
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .img-hover {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+  }
+
+  .online-view {
+    margin-bottom: 14px;
   }
 }
 
@@ -203,6 +250,10 @@ export default {
 
   .lesson-title {
     font-weight: bold;
+
+    &.is-select {
+      color: #f79727;
+    }
   }
 
   .lesson-title,
