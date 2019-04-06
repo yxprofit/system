@@ -1,6 +1,6 @@
 <template>
 	<div class="mycourseview" v-loading="loading">
-		<breadcrumb />
+		<breadcrumb :address='address' />
 
 		<div class="view">
 			<div class="des">
@@ -230,7 +230,11 @@ export default {
 			showClass: false,
       isShowGroup: false,
       closeOverLay: false,
-      visible: false,
+			visible: false,
+			address:{
+				onePath:'/teachers/course/mycourse',
+				text:'1对1英语课程'
+			}
 		};
 	},
 	created() {
@@ -475,8 +479,11 @@ export default {
 						color: #666666;
 					}
 					&:hover {
-						background: #F5F6F7;
+						background: rgba(245,246,247,1);
 						a {color: #F79727}
+						span{
+							color:rgba(247,151,39,1);
+						}
 					}
 					.active {color: #999}
 					.el-col-6 {
