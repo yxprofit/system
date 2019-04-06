@@ -60,6 +60,16 @@ export default {
     }
   },
 
+  watch: {
+    value(newVal, oldVal)  {
+      if (newVal) {
+        document.body.style.overflow = 'hidden'
+      } else {
+        document.body.style.overflow = 'auto'
+      }
+    }
+  },
+
   methods: {
     $_cancel() {
       if (!this.closeOnClickOverlay) return;

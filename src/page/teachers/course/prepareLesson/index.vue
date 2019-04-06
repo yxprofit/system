@@ -85,6 +85,12 @@ export default {
     showLesson(newVal, oldVal) {
       this.visible = newVal;
       this.$emit("update:showLesson", newVal);
+
+      if (this.visible) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = 'auto';
+      }
     }
   },
   created() {},
