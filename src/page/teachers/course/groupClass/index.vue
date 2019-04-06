@@ -22,8 +22,15 @@
           <div class="content-1-wrap" ref="listGroup">
             <draggable class="list-group" :list="list1" group="people" @change="log">
               <div class="list-group-item" v-for="(element, index) in list1" :key="element.name">
-                <img class="avatar-img" src="../../../../assets/images/logo.png" alt>
-                <div class="avatar-name">欧阳娜娜 {{ index }}</div>
+                <div class="group1-list-inner">
+                  <img class="avatar-img" src="../../../../assets/images/teacher/g1.png" alt>
+                  <div class="avatar-name">欧阳娜娜 {{ index }}</div>
+                  <div class="icon-list">
+                    <img class="icon-item" src="../../../../assets/images/teacher/g2.png" alt>
+                    <img class="icon-item" src="../../../../assets/images/teacher/g3.png" alt>
+                    <img class="icon-item" src="../../../../assets/images/teacher/g4.png" alt>
+                  </div>
+                </div>
               </div>
             </draggable>
           </div>
@@ -50,7 +57,7 @@
                     @change="log"
                   >
                     <div class="avatar-list" v-for="(element, index) in list2" :key="element.name">
-                      <img class="avatar-img" src="../../../../assets/images/logo.png" alt>
+                      <img class="avatar-img" src="../../../../assets/images/teacher/g1.png" alt>
                       <div class="avatar-name">欧阳娜娜</div>
                     </div>
                   </draggable>
@@ -158,21 +165,21 @@ export default {
       if (this.group1Index <= 0) {
       } else {
         this.group1Index--;
-        this.list1.splice(this.group1Index, 1)
+        this.list1.splice(this.group1Index, 1);
         var list = JSON.parse(JSON.stringify(this.list1));
         var current = list.splice(this.group1Index, 0);
-        list.push(current)
-        console.log(list, 'list')
-        console.log(this.group1Index)
+        list.push(current);
+        console.log(list, "list");
+        console.log(this.group1Index);
       }
     },
     handleNext() {
       if (this.group1Index <= this.list1.length - 1) {
         this.group1Index++;
         var list = JSON.parse(JSON.stringify(this.list1));
-        console.log(this.group1Index)
-        var current = this.list1[this.group1Index - 1]
-        this.list1.splice(this.group1Index, 1)
+        console.log(this.group1Index);
+        var current = this.list1[this.group1Index - 1];
+        this.list1.splice(this.group1Index, 1);
         // this.list1.unshift(current)
       }
     },
@@ -290,6 +297,9 @@ export default {
   width: 954px;
   margin: 0 auto;
   overflow-x: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   .content-1-wrap {
     width: 100%;
@@ -297,6 +307,9 @@ export default {
     overflow-y: hidden;
     white-space: nowrap;
     box-sizing: border-box;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 }
 
@@ -312,6 +325,13 @@ export default {
   margin-right: 12px;
   box-sizing: border-box;
   position: relative;
+}
+
+.group1-list-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
 }
 
 .add-btn {
@@ -409,6 +429,10 @@ export default {
   height: 215px;
   text-align: left;
   white-space: pre-wrap;
+  padding-top: 20px;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .group-btn {
@@ -435,6 +459,12 @@ export default {
 .reset {
   border: 1px solid #999;
   color: #ccc;
+}
+
+.icon-item {
+  width: 22px;
+  margin-top: 10px;
+  margin-right: 5px;
 }
 </style>
 
