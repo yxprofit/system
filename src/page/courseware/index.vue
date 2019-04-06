@@ -555,6 +555,7 @@
     text-align: center;
     margin-left: 54px;;
     color: #999;
+    cursor: pointer;
   }
   .edit {
     border-color: rgba(247, 151, 39, 1);
