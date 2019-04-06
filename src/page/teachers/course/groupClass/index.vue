@@ -164,22 +164,22 @@ export default {
       console.log(1111);
       if (this.group1Index <= 0) {
       } else {
-        this.group1Index--;
-        this.list1.splice(this.group1Index, 1);
-        var list = JSON.parse(JSON.stringify(this.list1));
-        var current = list.splice(this.group1Index, 0);
-        list.push(current);
-        console.log(list, "list");
-        console.log(this.group1Index);
+        // this.group1Index--;
+        // this.list1.splice(this.group1Index, 1);
+        // var list = JSON.parse(JSON.stringify(this.list1));
+        // var current = list.splice(this.group1Index, 0);
+        // list.push(current);
+        // console.log(list, "list");
+        // console.log(this.group1Index);
       }
     },
     handleNext() {
       if (this.group1Index <= this.list1.length - 1) {
-        this.group1Index++;
-        var list = JSON.parse(JSON.stringify(this.list1));
-        console.log(this.group1Index);
-        var current = this.list1[this.group1Index - 1];
-        this.list1.splice(this.group1Index, 1);
+        // this.group1Index++;
+        // var list = JSON.parse(JSON.stringify(this.list1));
+        // console.log(this.group1Index);
+        // var current = this.list1[this.group1Index - 1];
+        // this.list1.splice(this.group1Index, 1);
         // this.list1.unshift(current)
       }
     },
