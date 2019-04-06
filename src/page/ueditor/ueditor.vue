@@ -95,6 +95,15 @@ export default {
   z-index: 9999;
 }
 // dialog样式修改
+.teacher_editor /deep/ .el-dialog{
+  margin-top: 0 !important;
+}
+.teacher_editor /deep/ .el-dialog__wrapper{
+  padding-top: 25px;
+  box-sizing: border-box;
+  overflow: hidden;
+
+}
 .teacher_editor /deep/ .el-dialog__header {
   height: 60px;
   border-bottom: 1px solid rgba(228, 232, 237, 1);

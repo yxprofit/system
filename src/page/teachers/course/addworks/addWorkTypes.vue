@@ -52,7 +52,9 @@ export default {
       this.ischeck = id
     },
     handleClick(){
-      this.$emit('handleJump')
+      if(this.ischeck===1){
+        this.$emit('handleJump')
+      }
     }
   }
 };
