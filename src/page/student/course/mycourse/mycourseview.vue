@@ -1,6 +1,6 @@
 <template>
 	<div class="mycourseview" v-loading="loading">
-		<breadcrumb />
+		<breadcrumb :address='address' />
 
 		<div class="view">
 			<div class="des">
@@ -208,7 +208,11 @@ export default {
 			workimg,
 			teamShow: false,
 			data: [1, 2, 3, 4, 5, 6, 7],
-			desState: false
+      desState: false,
+      address:{
+        onePath:'/',
+        text:'1对1英语课程'
+			}
 		};
 	},
 	created() {
