@@ -106,7 +106,7 @@
     <div class="loader-btn-wraper">
       <button class="load-btn" @click="loadmore">查看更多</button>
     </div>
-    
+
 
   </div>
 </template>
@@ -189,7 +189,7 @@ export default{
         classes: this.classes
       }
       // 发送请求筛选Lists
-      this.worksCount = 529 
+      this.worksCount = 529
 
     },
     searchByName() {
@@ -235,6 +235,9 @@ export default{
       this.col = col
     },
     loadmore (index) {
+      const generateId = function() {
+        return Math.floor(Math.random() * 10000);
+      };
       let arr = [
         {
           img: pic1,
@@ -244,7 +247,7 @@ export default{
           liked: 52,
           isLike: true,
           tname: '余周周',
-          id: 1111
+          id: generateId()
         },
         {
           img: pic2,
@@ -254,7 +257,7 @@ export default{
           liked: 12,
           isLike: false,
           tname: '白月初',
-          id: 1112
+          id: generateId()
         },
         {
           worksTitle: '作品名称作品名称.jpg',
@@ -262,8 +265,8 @@ export default{
           jobTitle: '完成课时测试,复习先下功课完成测试',
           liked: 12,
           tname: '涂涂',
-          isLike: true,
-          id: 1113
+          isLike: false,
+          id: generateId()
         },
         {
           img: pic4,
@@ -273,7 +276,7 @@ export default{
           liked: 15,
           isLike: false,
           tname: '张三',
-          id: 1114
+          id: generateId()
         },
         {
           img: pic5,
@@ -283,7 +286,7 @@ export default{
           liked: 12,
           isLike: false,
           tname: '张依依',
-          id: 1115
+          id: generateId()
         },
         {
           img: pic6,
@@ -293,7 +296,7 @@ export default{
           liked: 12,
           isLike: false,
           tname: '王小二',
-          id: 1116
+          id: generateId()
         },
         {
           img: pic8,
@@ -302,7 +305,7 @@ export default{
           jobTitle: '完成课时测试,复习先下功课完成测试',
           liked: 12,
           isLike: false,
-          id: 1117
+          id: generateId()
         }
       ]
       this.data = this.data.concat(arr)
@@ -390,14 +393,14 @@ export default{
       background-color: transparent;
       border: 1px solid #ccc;
       border-radius: 17px;
-      
+
       color: #999;
       font-size: 13px;
       font-family: 'MicrosoftYaHei';
       cursor: pointer;
     }
   }
-  
+
   .cell-item {
     padding-right: 10px;
     margin-bottom: 10px;
