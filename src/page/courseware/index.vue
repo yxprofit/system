@@ -22,7 +22,7 @@
         </div>
       </div>
     </div>
-    <hgroup :class="{'active':isHidden}">
+    <hgroup :class="{'active':isHidden, 'has-btn': $route.query.type !== 'studentTask'}">
       <div>
         <p>本课时任务</p>
       </div>
@@ -186,7 +186,7 @@
     computed: {
       showCloseIcon() {
         let queryType = this.$route.query.type;
-        if (queryType === 'teacherTask') {
+        if (queryType === 'studentTask') {
           return true;
         } else {
           return false;
@@ -348,9 +348,14 @@
   }
   }
   }
-  hgroup {
+  hgroup.has-btn {
     display: flex;
     flex-direction: column;
+    .task {
+      flex: 1;
+    }
+  }
+  hgroup {
     flex: 1;
     max-width: 275px;
     width: 275px;
@@ -488,10 +493,13 @@
     display: block;
   }
   }
+  .has-btn.task {
+
+  }
   .task {
-    flex: 1;
     overflow: auto;
     margin-right: 10px;
+    max-height: (100vh - 140 px);
   b {
     font-weight: 700;
   }
@@ -566,8 +574,6 @@
     margin: 56px 0 0 21px;
     width: 22px;
     height: 14px;
-    position: absolute;
-    top: 26%;
   &.hidden {
      transform: rotate(180deg);
    }
