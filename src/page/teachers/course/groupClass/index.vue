@@ -374,6 +374,11 @@ export default {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+
+  &:hover {
+    background: rgba(247, 151, 39, 1);
+    color: #fff;
+  }
 }
 
 .group1-prev {
