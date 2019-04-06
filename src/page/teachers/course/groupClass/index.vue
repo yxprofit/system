@@ -35,48 +35,57 @@
             </draggable>
           </div>
         </div>
-        <div class="group1-prev" @click="handlePrev">
+        <div class="group1-prev" @click="handlePrev('.list-group', 'group1Index', -138)">
           <i class="el-icon-arrow-left"></i>
         </div>
-        <div class="group1-next" @click="handleNext">
+        <div
+          class="group1-next"
+          @click="handleNext('.list-group', 'group1Index', -138, 'list1', 7)"
+        >
           <i class="el-icon-arrow-right"></i>
         </div>
       </div>
 
       <div class="group1-wrap group2-wrap">
         <div class="content-1">
-          <div class="content-1-wrap">
-            <div class="group-slide" v-for="item in  2" :key="item">
+          <div class="content-1-wrap content-group2-list">
+            <div class="group-slide" v-for="(item, index) in  list3" :key="index">
               <div class="group-slide-innder">
-                <div class="group-title">09级2班 01组</div>
-                <div class="group2-inner">
-                  <draggable
-                    class="list-group list-group2"
-                    :list="list2"
-                    group="people"
-                    @change="log"
-                  >
-                    <div class="avatar-list" v-for="(element, index) in list2" :key="element.name">
-                      <img class="avatar-img" src="../../../../assets/images/teacher/g1.png" alt>
-                      <div class="avatar-name">欧阳娜娜</div>
-                    </div>
-                  </draggable>
+                <div class="add-btn" v-if="index === list3.length - 1">
+                  <i class="el-icon-plus"></i>
+                  <span class="add-text">添加小组</span>
                 </div>
-              </div>
-            </div>
-
-            <div class="group-slide">
-              <div class="add-btn">
-                <i class="el-icon-plus"></i>
-                <span class="add-text">添加小组</span>
+                <div v-else>
+                  <div class="group-title">09级2班 01组</div>
+                  <div class="group2-inner">
+                    <draggable
+                      class="list-group list-group2"
+                      :list="list2"
+                      group="people"
+                      @change="log"
+                    >
+                      <div
+                        class="avatar-list"
+                        v-for="(element, index) in list2"
+                        :key="element.name"
+                      >
+                        <img class="avatar-img" src="../../../../assets/images/teacher/g1.png" alt>
+                        <div class="avatar-name">欧阳娜娜</div>
+                      </div>
+                    </draggable>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="group1-prev">
+        <div class="group1-prev" @click="handlePrev('.content-group2-list', 'group2Index', -310)">
           <i class="el-icon-arrow-left"></i>
         </div>
-        <div class="group1-next">
+        <div
+          class="group1-next"
+          @click="handleNext('.content-group2-list', 'group2Index', -310,  'list3', 3)"
+        >
           <i class="el-icon-arrow-right"></i>
         </div>
       </div>
@@ -146,7 +155,7 @@ export default {
       list3: [
         { name: "Juan3", id: 8 },
         { name: "Edgard3", id: 9 },
-        { name: "Johnson9", id: 10 }
+        { name: "Johnson9", id: 10 },
       ],
       group1Index: 0,
       group2Index: 0
@@ -160,27 +169,21 @@ export default {
   },
   created() {},
   methods: {
-    handlePrev() {
-      console.log(1111);
-      if (this.group1Index <= 0) {
+    handlePrev(el, listIndex, distance) {
+      if (this[listIndex] <= 0) {
       } else {
-        // this.group1Index--;
-        // this.list1.splice(this.group1Index, 1);
-        // var list = JSON.parse(JSON.stringify(this.list1));
-        // var current = list.splice(this.group1Index, 0);
-        // list.push(current);
-        // console.log(list, "list");
-        // console.log(this.group1Index);
+        this[listIndex]--;
+        let ele = document.querySelector(el);
+        ele.style.transform = `translateX( ${distance * this[listIndex]}px)`;
+        ele.style.transition = "all 0.3s ease";
       }
     },
-    handleNext() {
-      if (this.group1Index <= this.list1.length - 1) {
-        // this.group1Index++;
-        // var list = JSON.parse(JSON.stringify(this.list1));
-        // console.log(this.group1Index);
-        // var current = this.list1[this.group1Index - 1];
-        // this.list1.splice(this.group1Index, 1);
-        // this.list1.unshift(current)
+    handleNext(el, listIndex, distance, list, baseIndex) {
+      if (this[listIndex] < this[list].length - baseIndex) {
+        this[listIndex]++;
+        let ele = document.querySelector(el);
+        ele.style.transform = `translateX( ${distance * this[listIndex]}px)`;
+        ele.style.transition = "all 0.3s ease";
       }
     },
     add: function() {
