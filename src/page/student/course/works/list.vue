@@ -65,7 +65,7 @@
         </div>
       </div>
     </div>
-    <div class="waterfall-wraper">   
+    <div class="waterfall-wraper">
       <waterfall :col='col' :gutterWidth="gutterWidth"  :data="data"  @loadmore="loadmore"  v-loading="loading">
         <template >
           <div class="cell-item" v-for="(item,index) in data" :key="index">
@@ -237,6 +237,9 @@ export default{
       this.col = col
     },
     loadmore (index) {
+      const generateId = function() {
+        return Math.floor(Math.random() * 10000);
+      };
       let arr = [
         {
           img: pic1,
@@ -246,7 +249,7 @@ export default{
           liked: 52,
           isLike: true,
           tname: '余周周',
-          id: 1111
+          id: generateId()
         },
         {
           img: pic2,
@@ -256,7 +259,7 @@ export default{
           liked: 12,
           isLike: false,
           tname: '白月初',
-          id: 1112
+          id: generateId()
         },
         {
           img: pic3,
@@ -265,8 +268,8 @@ export default{
           jobTitle: '完成课时测试,复习先下功课完成测试',
           liked: 12,
           tname: '涂涂',
-          isLike: true,
-          id: 1113
+          isLike: false,
+          id: generateId()
         },
         {
           img: pic4,
@@ -276,7 +279,7 @@ export default{
           liked: 15,
           isLike: false,
           tname: '张三',
-          id: 1114
+          id: generateId()
         },
         {
           img: pic5,
@@ -286,7 +289,7 @@ export default{
           liked: 12,
           isLike: false,
           tname: '张依依',
-          id: 1115
+          id: generateId()
         },
         {
           img: pic6,
@@ -296,7 +299,7 @@ export default{
           liked: 12,
           isLike: false,
           tname: '王小二',
-          id: 1116
+          id: generateId()
         },
         {
           img: pic8,
@@ -305,7 +308,7 @@ export default{
           jobTitle: '完成课时测试,复习先下功课完成测试',
           liked: 12,
           isLike: false,
-          id: 1117
+          id: generateId()
         }
       ]
       this.data = this.data.concat(arr)
