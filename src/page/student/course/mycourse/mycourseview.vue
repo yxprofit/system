@@ -382,6 +382,9 @@ export default {
             a {
               color: #f79727;
             }
+            span{
+							color:rgba(247,151,39,1);
+						}
           }
           .active {
             color: #999;
