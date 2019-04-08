@@ -329,7 +329,7 @@ export default {
         }
       }
       & > section {
-        padding-bottom: 30px;
+        // padding-bottom: 30px;
         ul {
           display: flex;
           display: -webkit-flex;
@@ -518,7 +518,7 @@ export default {
     }
   }
   .list {
-    max-height: calc(100vh - 130px);
+    max-height: calc(100vh - 180px);
     overflow: auto;
   }
 }
