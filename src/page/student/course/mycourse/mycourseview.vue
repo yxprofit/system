@@ -1,6 +1,6 @@
 <template>
 	<div class="mycourseview" v-loading="loading">
-		<breadcrumb />
+		<breadcrumb :address='address' />
 
 		<div class="view">
 			<div class="des">
@@ -123,7 +123,7 @@
 							<h4>第{{index + 2}}课时：课时名称课时名称课时名称课时名称</h4>
 							<div class="workdes">
 								<span>课件名称课件名称课件名称课件名称01</span>
-								<router-link to="/courseware" tag="var">查看课件 ></router-link>
+								<router-link to="/courseware?type=studentTask" tag="var">查看课件 ></router-link>
 							</div>
 							<div class="myteam">
 								<span class="i">我的小组</span>
@@ -208,7 +208,11 @@ export default {
 			workimg,
 			teamShow: false,
 			data: [1, 2, 3, 4, 5, 6, 7],
-			desState: false
+      desState: false,
+      address:{
+        onePath:'/',
+        text:'1对1英语课程'
+			}
 		};
 	},
 	created() {

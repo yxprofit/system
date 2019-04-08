@@ -3,7 +3,7 @@
     <aside :class="{'active':isNavShow}">
       <span @click="changeIsNavShow"><img src="../../../assets/images/icon/icon_open_n.png" v-if="!isNavShow" alt=""><img src="../../../assets/images/icon/icon_open.png" v-else alt=""></span>
       <div>
-        <a :class="{'active':current==1,'over': over==1}" @click="toCurrent(1, 'mycourse')" @mouseenter="addover(1)" @mouseleave="addover(0)">
+        <a :class="{'active':current==1,'over': over==1}" @click="toCurrent(1, '/teachers/course/mycourse')" @mouseenter="addover(1)" @mouseleave="addover(0)">
           <span><img src="../../../assets/images/icon/s1.png" v-if="current==1"><img src="../../../assets/images/icon/icon_course_name.png" v-else></span><span>我的课程</span>
         </a>
         <!-- <a :class="{'active':current==2,'over': over==2}" @click="toCurrent(2, 'trends')" @mouseenter="addover(2)" @mouseleave="addover(0)">
@@ -57,8 +57,7 @@ export default {
 <style lang="scss" scoped>
 .course{
   // width: 100%;
-  height: 100%;
-  // background: #eee;
+  height: calc(100% - 50px);
   display: flex;
   aside{
     width: 114px;
@@ -85,7 +84,7 @@ export default {
         overflow: hidden;
         background-color: #fff;
         position: relative;
-        z-index: 9999;
+        z-index: 3000;
         span{
           &:nth-child(1){
             display: inline-block;

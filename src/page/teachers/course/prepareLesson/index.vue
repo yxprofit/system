@@ -1,26 +1,55 @@
 <template>
   <div class="fillcontain category" ref="category" v-show="visible">
     <section class="category-wrap">
-      <h2 class="lesson-main-title">备课资料</h2>
+      <div class="group-header-wrap">
+        <div class="group-header clearfix">
+          <div class="group-line is-inline"></div>
+          <div class="group-title-1 is-inline">备课资料</div>
+        </div>
+
+        <div class="group-opeator clearfix">
+          <!-- <div class="group-min is-inline"></div>
+          <div class="group-max is-inline"></div>-->
+          <div class="is-inline" @click="close">
+            <i class="el-dialog__close el-icon el-icon-close group-close"></i>
+          </div>
+        </div>
+      </div>
       <div class="lesson-content">
         <ul class="lesson-list">
-          <li class="lesson-item" v-for="item in 20" :key="item">
+          <li
+            class="lesson-item"
+            :class="{ 'is-mousemove': item.isHover == true }"
+            v-for="(item, index) in lessonList"
+            :key="index"
+            @mouseover="handleOver(index)"
+            @mouseleave="handleLeave(index)"
+          >
             <div class="lesson-img">
               <img class="less-image" src="../../../../assets/images/img3.png" alt>
-              <div class="img-hover" v-if="false">
-                <div class="online-view">在线查看</div>
-                <div class="click-download">点击下载</div>
+              <div class="image-layer" v-show="item.isHover == true"></div>
+              <div class="img-hover" v-show="item.isHover == true">
+                <img src="../../../../assets/images/teacher/41.png" alt class="online-view">
+                <img src="../../../../assets/images/teacher/42.png" alt class="click-download">
               </div>
             </div>
             <div class="lesson-intro">
-              <div class="lesson-title">课程名称课程名称</div>
-              <div class="lesson-data">2019.01.01</div>
-              <div class="lesson-teacher">刘青云老师</div>
+              <div
+                class="lesson-title"
+                :class="{ 'is-select': item.isHover == true }"
+              >{{ item.lesson_title }}</div>
+              <div class="lesson-data">
+                <img class="lesson-icon" src="../../../../assets/images/icon/43.png" alt>
+                <span class="lesson-text">{{ item.lesson_date }}</span>
+              </div>
+              <div class="lesson-teacher">
+                <img class="lesson-icon" src="../../../../assets/images/icon/44.png" alt>
+                <span class="lesson-text">{{ item.lesson_teacher }}</span>
+              </div>
             </div>
           </li>
         </ul>
       </div>
-      <i class="el-icon-close close-icon" @click="close"></i>
     </section>
   </div>
 </template>
@@ -49,28 +78,48 @@ export default {
     return {
       labelPosition: "left",
       visible: false,
-      feedback: {
-        type: "SG",
-        title: "",
-        content: ""
-      }
+      lessonList: []
     };
   },
   watch: {
     showLesson(newVal, oldVal) {
       this.visible = newVal;
       this.$emit("update:showLesson", newVal);
+
+      if (this.visible) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = 'auto';
+      }
     }
   },
   created() {},
   methods: {
+    handleOver(index) {
+      this.lessonList[index].isHover = true;
+    },
+    handleLeave(index) {
+      this.lessonList[index].isHover = false;
+    },
+    closeModal() {
+      this.$emit("closeModal", false);
+    },
     close() {
       this.visible = false;
       this.$emit("update:showLesson", false);
       this.handleClose && this.handleClose();
     }
   },
-  mounted() {}
+  mounted() {
+    for (let i = 0; i < 20; i++) {
+      this.lessonList.push({
+        lesson_title: "课程名称课程名称",
+        lesson_date: "2019.01.01",
+        lesson_teacher: "刘青云老师",
+        isHover: false
+      });
+    }
+  }
 };
 </script>
 
@@ -83,6 +132,7 @@ export default {
   left: 0;
   background: rgba(0, 0, 0, 0.5);
   z-index: 9999;
+  overflow: auto;
 
   .category-wrap {
     position: absolute;
@@ -90,9 +140,8 @@ export default {
     left: 50%;
     transform: translate(-50%, -50%);
     background: #fff;
-    // max-height: 80%;
-    // min-width: 640px;
-    max-width: 80%;
+    width: 1100px;
+    max-height: 584px;
     border-radius: 5px;
     z-index: 4445;
     animation: slide 0.5s ease-out;
@@ -106,17 +155,14 @@ export default {
 
     .close-icon {
       position: absolute;
-      top: 10px;
+      top: 50%;
+      transform: translateY(-50%);
       right: 10px;
-      font-size: 30px;
+      font-size: 20px;
       color: #999;
       display: block;
       transition: all 0.5s ease;
-
-      &:hover {
-        transform: rotateZ(-180deg);
-        color: red;
-      }
+      cursor: pointer;
     }
   }
 }
@@ -138,9 +184,10 @@ export default {
   &:before {
     content: "";
     display: inline-block;
-    width: 2px;
+    width: 3px;
     height: 10px;
     background: #f79727;
+    border-radius: 3px;
     vertical-align: middle;
     position: absolute;
     top: 50%;
@@ -151,65 +198,162 @@ export default {
 }
 
 .lesson-list {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  display: -webkit-flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -moz-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-  -moz-box-orient: horizontal;
-  -moz-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  max-height: 400px;
   width: 100%;
   overflow: auto;
   margin-bottom: 30px;
   padding: 0 5px;
   box-sizing: border-box;
+  max-height: 500px;
+  padding-left: 20px;
 }
 .lesson-item {
-  width: 110px;
-  height: 140px;
+  width: 190px;
+  height: 240px;
   flex: 1;
   display: inline-block;
-  margin: 10px 5px;
+  margin: 10px 10px;
   border: 1px solid #e4e8ed;
   border-radius: 4px;
   cursor: pointer;
 
+  &.is-mousemove {
+    border-color: #f79727;
+  }
+
   .lesson-img {
+    position: relative;
     .less-image {
       width: 100%;
-      height: 75px;
+      height: 150px;
     }
+  }
+
+  .image-layer {
+    width: 100%;
+    height: 150px;
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .img-hover {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+  }
+
+  .online-view {
+    margin-bottom: 14px;
   }
 }
 
 .lesson-intro {
-  padding: 5px;
+  padding: 10px 0 0 12px;
   text-align: left;
-  font-size: 12px;
+  font-size: 16px;
 
   .lesson-title {
     font-weight: bold;
+
+    &.is-select {
+      color: #f79727;
+    }
   }
 
   .lesson-title,
-  .lesson-data {
-    padding-bottom: 5px;
+  .lesson-data,
+  .lesson-teacher {
+    padding-bottom: 10px;
     color: #666666;
+    font-size: 14px;
   }
+
+  .lesson-icon,
+  .lesson-text {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .lesson-icon {
+    width: 12px;
+  }
+}
+
+.group-header-wrap {
+  height: 60px;
+  line-height: 60px;
+  border-bottom: 1px solid #cccc;
+  position: relative;
+}
+
+.group-header {
+  padding-left: 30px;
+}
+.group-opeator {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+  padding: 12px 0;
+  margin-right: 12px;
+}
+
+.is-inline {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.group-line {
+  width: 4px;
+  height: 16px;
+  background: orange;
+  display: inline-block;
+  width: 3px;
+  height: 10px;
+  background: rgba(247, 151, 39, 1);
+  border-radius: 3px;
+}
+
+.group-title-1 {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 0 8px 0 5px;
+}
+
+.group-title-2 {
+  font-size: 14px;
+  color: rgba(247, 151, 39, 1);
+}
+
+.group-min,
+.group-max {
+  width: 10px;
+  height: 1px;
+  border: 1px solid #000;
+  box-sizing: border-box;
+}
+
+.group-min,
+.group-max,
+.group-close {
+  vertical-align: middle;
+}
+
+.group-max {
+  height: 10px;
+  margin: 0 20px;
+  margin-right: 30px;
+}
+
+.group-close {
+  font-size: 18px;
+  font-size: 18px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
 }
 
 @keyframes slide {

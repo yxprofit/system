@@ -15,9 +15,9 @@
       <span class="class-item__title">{{item.className}}</span>
       <span
         class="class-item__btn"
-        :class="{'is-inclass': item.isInclass}"
+        :class="{'is-inclass': item.isUnloked}"
         @click="handleClassBegin(item)">
-        <img :src="item.isInclass ? inclass : beginClass"/>
+        <img :src="!item.isUnloked ? openCourseware: lock"/>
       </span>
     </li>
   </ul>
@@ -28,16 +28,16 @@
 </el-dialog>
 </template>
 <script>
-import beginClass from 'assets/images/icon/begin-class.png'
-import inclass from 'assets/images/icon/inclass.png'
+import openCourseware from 'assets/images/teacher/openCourseware.png'
+import lock from 'assets/images/teacher/lock.png'
  export default {
  	name: 'OpenClass',
  	props: {
  	},
  	data() {
  		return {
- 			beginClass,
- 			inclass,
+ 			openCourseware,
+ 			lock,
  			allData: [],
  			showClass: false,
  			className: '',
@@ -56,17 +56,11 @@ import inclass from 'assets/images/icon/inclass.png'
  			this.currentPage = 1
  		},
  		handleClassBegin(classItem) {
- 			if (classItem.isInclass) {
+ 			if (classItem.isUnloked) {
  				return
  			}
  			let index = this.classList.findIndex(item => item.id === classItem.id)
- 			this.classList[index].isInclass = true;
-      this.$router.push({
-        path: '/courseware',
-        query: {
-          type: 'classTask'
-        }
-      })
+ 			this.classList[index].isUnloked = true;
  		},
  		goPage(num) {
       if (num === 1) {
@@ -88,42 +82,42 @@ import inclass from 'assets/images/icon/inclass.png'
  			let arr = [{
  				id: '1111',
  				className: '高三英语七班',
- 				isInclass: true
+ 				isUnloked: true
  			},
- 			{
+ 			{ 
  				id: 'w222222',
  				className: '高三数学一班',
- 				isInclass: false
+ 				isUnloked: false
  			},
  			{
  				id: '22455',
  				className: '高三物理五班',
- 				isInclass: false
+ 				isUnloked: false
  			},
  			{
  				id: '55555',
  				className: '高一美术五班',
- 				isInclass: false
+ 				isUnloked: false
  			},
  			{
  				id: '784554',
  				className: '高二物理化学',
- 				isInclass: false
+ 				isUnloked: false
  			},
  			{
  				id: '566666',
  				className: '高二物理化学',
- 				isInclass: true
+ 				isUnloked: true
  			},
  			{
  				id: '9787867',
  				className: '高二物理化学',
- 				isInclass: false
+ 				isUnloked: false
  			},
  			{
  				id: '66686878',
  				className: '高二语文化学',
- 				isInclass: false
+ 				isUnloked: false
  			},]
  			this.allData = arr;
  			this.total = Math.ceil(this.allData.length/this.pageSize);
@@ -142,7 +136,7 @@ import inclass from 'assets/images/icon/inclass.png'
 	.el-dialog {
 		border-radius: 6px;
 	}
-
+	
 	.el-dialog__header {
 		padding: 11px 22px 0;
 		.header-wraper {
@@ -167,7 +161,7 @@ import inclass from 'assets/images/icon/inclass.png'
       		width:285px;
           height:38px;
           background:rgba(238,238,238,1);
-          border-radius: 19px;
+          border-radius: 19px; 
           border: none;
           padding-left: 31px;
           padding-right: 45px;

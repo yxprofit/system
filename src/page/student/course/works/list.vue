@@ -1,5 +1,5 @@
 <template>
-  <div class="container-tends">
+  <div class="student-works container-tends">
     <div class="tendsHead">
       <section>
         <h2>课堂作品</h2>
@@ -65,7 +65,7 @@
         </div>
       </div>
     </div>
-    <div class="waterfall-wraper">   
+    <div class="waterfall-wraper">
       <waterfall :col='col' :gutterWidth="gutterWidth"  :data="data"  @loadmore="loadmore"  v-loading="loading">
         <template >
           <div class="cell-item" v-for="(item,index) in data" :key="index">
@@ -237,6 +237,9 @@ export default{
       this.col = col
     },
     loadmore (index) {
+      const generateId = function() {
+        return Math.floor(Math.random() * 10000);
+      };
       let arr = [
         {
           img: pic1,
@@ -246,7 +249,7 @@ export default{
           liked: 52,
           isLike: true,
           tname: '余周周',
-          id: 1111
+          id: generateId()
         },
         {
           img: pic2,
@@ -256,7 +259,7 @@ export default{
           liked: 12,
           isLike: false,
           tname: '白月初',
-          id: 1112
+          id: generateId()
         },
         {
           img: pic3,
@@ -265,8 +268,8 @@ export default{
           jobTitle: '完成课时测试,复习先下功课完成测试',
           liked: 12,
           tname: '涂涂',
-          isLike: true,
-          id: 1113
+          isLike: false,
+          id: generateId()
         },
         {
           img: pic4,
@@ -276,7 +279,7 @@ export default{
           liked: 15,
           isLike: false,
           tname: '张三',
-          id: 1114
+          id: generateId()
         },
         {
           img: pic5,
@@ -286,7 +289,7 @@ export default{
           liked: 12,
           isLike: false,
           tname: '张依依',
-          id: 1115
+          id: generateId()
         },
         {
           img: pic6,
@@ -296,7 +299,7 @@ export default{
           liked: 12,
           isLike: false,
           tname: '王小二',
-          id: 1116
+          id: generateId()
         },
         {
           img: pic8,
@@ -305,7 +308,7 @@ export default{
           jobTitle: '完成课时测试,复习先下功课完成测试',
           liked: 12,
           isLike: false,
-          id: 1117
+          id: generateId()
         }
       ]
       this.data = this.data.concat(arr)
@@ -322,7 +325,12 @@ export default{
 </script>
 
 <style lang="scss" scoped>
-.container-tends{
+.student-works.container-tends {
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
   .tendsHead {
     background-color: #fff;
     border-radius: 6px;
@@ -433,7 +441,7 @@ export default{
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 17px;
-    margin-top: 20px;
+    margin: 20px auto 0;
     color: #999;
     font-size: 13px;
     font-family: '微软雅黑';
@@ -469,7 +477,7 @@ export default{
       .dianzan{
         display: flex;
         position: relative;
-        .dianzan-head{
+        .dianzan-head {
           float: 1;
           display: flex;
           span:nth-child(1){
@@ -520,7 +528,20 @@ export default{
   }
 }
 .waterfall-wraper {
-  width: calc(100% - 10px);
+  overflow: auto;
+  padding-right: 24px;
+  margin-right: 14px;
+  max-height: calc(100vh - 259px);
+  background-color: transparent;
+}
+.waterfall-wraper::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.waterfall-wraper::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: #fff;
+  color: #fff;
 }
 .vue-waterfall-column {
   img{

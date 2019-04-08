@@ -1,6 +1,6 @@
 <template>
 	<div class="mycourseview" v-loading="loading">
-		<breadcrumb />
+		<breadcrumb :address='address' />
 
 		<div class="view">
 			<div class="des">
@@ -31,7 +31,7 @@
 				</el-row>
 			</div>
 			<div class="workList">
-				<el-row :gutter="10">
+				<!-- <el-row :gutter="10">
 					<el-col :span="12">
 						<div class="li nowork">
 							<h4>第1课时：课时名称课时名称课时名称课时名称</h4>
@@ -117,19 +117,19 @@
 							</div>
 						</div>
 					</el-col>					
-				</el-row>
+				</el-row> -->
 				<el-row :gutter="10" v-for="(item, index) in data" :key="item">
 					<el-col :span="12">
 						<div class="li">
-							<h4>第{{index + 2}}课时：课时名称课时名称课时名称课时名称<i></i></h4>
+							<h4>第{{index + 1}}课时：课时名称课时名称课时名称课时名称<i></i></h4>
 							<div class="workdes">
-								<span>课件名称课件名称课件名称课件名称01</span>
-								<router-link to="#" tag="var" >开放课件 ></router-link>
-								<router-link to="#" tag="var" style="margin-left: 20px;" >编辑课件 ></router-link>
+								<router-link tag='span' to="/courseware?type=teacherTask">课件名称课件名称课件名称课件名称01</router-link>
+								<var @click="handleOpenCourseware">开放课件 ></var>
+								<router-link to="/courseware?type=teacherTask" tag="var" style="margin-left: 20px;" >编辑课件 ></router-link>
 							</div>
 							<div class="myteam">
-								<span class="i">小组分配</span>
-								<router-link to="/courseware" class="classstart" tag="span" >开始上课</router-link>
+								<span class="i" @click="handleGrouping">小组分配</span>
+								<span class="classstart" @click="handleBeginClass">开始上课</span>
 								<span class="classdata" @click="handlePrepareLesson">备课资料</span>
 							</div>
 						</div>
@@ -179,7 +179,7 @@
 										</el-row>
 									</li>
 								</ul>
-								<div class="tasksall">查看全部<i>》</i></div>
+								<div class="tasksall" @click='searchMore(item)'>查看全部<i>》</i></div>
 							</div>
 						</div>
 					</el-col>
@@ -189,12 +189,24 @@
 
     <!-- 课程资料弹窗 -->
     <prepare-lesson :showLesson.sync="showLesson"></prepare-lesson>
+    <!-- 班级列表弹窗 -->
+    <open-class ref="ClassBeginDialog"></Open-class>
+    <!-- 开放课件弹框 -->
+    <open-courseware ref="OpenCoursewarDialog"></open-courseware>
+		<!-- 编辑课程组件 -->
+    <popup-modal v-model="isShowGroup" :close-on-click-overlay="closeOverLay">
+      <group-class @closeModal="handleCloseModal"></group-class>
+    </popup-modal>
 	</div>
 </template>
 
 <script>
 import breadcrumb from '@/components/common/breadcrumb.vue'
+import PopupModal from '@/components/popup'
 import PrepareLesson from '../prepareLesson';
+import OpenClass from './openclass';
+import OpenCourseware from './openCourseware';
+import GroupClass from '../groupClass';
 import breadcrumb_address from 'assets/images/student/breadcrumb_address.png'
 import workimg from 'assets/images/student/workimg.png'
 
@@ -202,7 +214,11 @@ export default {
 	name: "MyCourseView",
 	components: {
     breadcrumb,
-    PrepareLesson
+    PrepareLesson,
+		OpenClass,
+		OpenCourseware,
+    PopupModal,
+    GroupClass
 	},
 	data() {
 		return {
@@ -210,7 +226,15 @@ export default {
 			workimg,
 			data: [1,2,3,4,5,6,7],
       desState: false,
-      showLesson: false
+      showLesson: false,
+			showClass: false,
+      isShowGroup: false,
+      closeOverLay: false,
+			visible: false,
+			address:{
+				onePath:'/teachers/course/mycourse',
+				text:'1对1英语课程'
+			}
 		};
 	},
 	created() {
@@ -220,8 +244,24 @@ export default {
 		}, 1000);
 	},
 	methods: {
+		searchMore(id){
+			console.log(id)
+
+		},
+    handleCloseModal (bool) {
+      this.isShowGroup = bool;
+    },
     handlePrepareLesson() {
       this.showLesson = true;
+		},
+		handleBeginClass() {
+			this.$refs.ClassBeginDialog.show()
+		},
+		handleOpenCourseware() {
+      this.$refs.OpenCoursewarDialog.show()
+		},
+    handleGrouping() {
+      this.isShowGroup = !this.isShowGroup;
     },
 		fitlerdes(){
 			let text = '外教英语培训班 , 外教英语培训班 , 每天45分钟 , 随时纠正 , 学英语上TutorABC , 随时随地对话全球外教 , 生活,职场，外教英语培训班 , 外教英语培训班 , 每天45分钟 , 随时纠正 , 学英语上TutorABC，外教英语培训班 , 外教英语培训班 , 每天45分';
@@ -321,7 +361,6 @@ export default {
 			}
 		}
 
-		// 
 		.workList {
 			height: 360px;
 			.li {
@@ -361,15 +400,17 @@ export default {
 				span {
 					font-size:14px;
 					color:rgba(51,51,51,1);
+					cursor: pointer;
 					display: block;
 					text-indent: 25px;
 					background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAOCAIAAACpTQvdAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDowQTU0QUU3RDUwNzMxMUU5OUZDQUM0RTFBODkyNENCMyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDowQTU0QUU3RTUwNzMxMUU5OUZDQUM0RTFBODkyNENCMyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjBBNTRBRTdCNTA3MzExRTk5RkNBQzRFMUE4OTI0Q0IzIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjBBNTRBRTdDNTA3MzExRTk5RkNBQzRFMUE4OTI0Q0IzIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+F0AhiQAAAK1JREFUeNpi/H2s88/lxQz/fjOAASO3GJvrBEZBZQZc4Pss3b+3t/7/8QGC/j7Y/2OF17/XV+AiaIiF4e8vJllruH4mCUNW09xf29L/f3uDZjSjgBKbYysLpp1M0pbs4Vsxxf89OfbrYB0TA9GAScbq/7vbIBt+zDcnXhtIA0fiSSJVA40mwUlQhw0LDcxs/x4dIkYpMOKAihl/H+/6c2khw78/RBjOwqIbCxBgAC7BV5pZEouKAAAAAElFTkSuQmCC) top left no-repeat;
 				}
-				var {
+				var,b {
 					font-size:14px;
 					color:rgba(153,153,153,1);
 					margin-top: 25px;
-					display: inline-block
+					display: inline-block;
+					cursor: pointer;
 				}
 			}
 			.myteam {
@@ -441,8 +482,11 @@ export default {
 						color: #666666;
 					}
 					&:hover {
-						background: #F5F6F7;
+						background: rgba(245,246,247,1);
 						a {color: #F79727}
+						span{
+							color:rgba(247,151,39,1);
+						}
 					}
 					.active {color: #999}
 					.el-col-6 {
@@ -469,6 +513,7 @@ export default {
 					text-align: center;
 					color: #F79727;
 					margin-top: 10px;
+					cursor: pointer;
 					i {
 						transform:rotate(90deg);
 						display: inline-block;
