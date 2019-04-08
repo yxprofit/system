@@ -38,14 +38,14 @@
                 class="lesson-title"
                 :class="{ 'is-select': item.isHover == true }"
               >{{ item.lesson_title }}</div>
-              <div class="lesson-data">
+              <!-- <div class="lesson-data">
                 <img class="lesson-icon" src="../../../../assets/images/icon/43.png" alt>
                 <span class="lesson-text">{{ item.lesson_date }}</span>
               </div>
               <div class="lesson-teacher">
                 <img class="lesson-icon" src="../../../../assets/images/icon/44.png" alt>
                 <span class="lesson-text">{{ item.lesson_teacher }}</span>
-              </div>
+              </div> -->
             </div>
           </li>
         </ul>
@@ -203,12 +203,13 @@ export default {
   margin-bottom: 30px;
   padding: 0 5px;
   box-sizing: border-box;
-  max-height: 500px;
+  // max-height: 500px;
+  max-height: 420px;
   padding-left: 20px;
 }
 .lesson-item {
   width: 190px;
-  height: 240px;
+  // height: 240px;
   flex: 1;
   display: inline-block;
   margin: 10px 10px;
@@ -265,7 +266,7 @@ export default {
   .lesson-title,
   .lesson-data,
   .lesson-teacher {
-    padding-bottom: 10px;
+    padding-bottom: 16px;
     color: #666666;
     font-size: 14px;
   }
