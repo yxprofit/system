@@ -7,14 +7,14 @@
         <span @click="goTrends"><img src="../../../../assets/images/icon/icon_task_close.png" alt=""></span>
       </div>
       <ul>
-        <li>
-          <h4 class="icon-course">课件任务名称</h4>
+        <li v-for="(item,index) in tasklist" :key="index">
+          <h4 :class="item.classname">{{item.title}}</h4>
           <div>
-            <p>截止时间：2019.03.11</p>
-            <p>发起人：张丹丹老师</p>
+            <p>截止时间：{{item.time}}</p>
+            <p>发起人：{{item.teacher}}</p>
           </div>
         </li>
-        <li>
+        <!-- <li>
           <h4 class="icon-test">测试任务名称</h4>
           <div>
             <p>截止时间：2019.03.11</p>
@@ -41,9 +41,9 @@
             <p>截止时间：2019.03.11</p>
             <p>发起人：张丹丹老师</p>
           </div>
-        </li>
+        </li> -->
       </ul>
-      <var class="taskmore" v-show='!isHidden' @click="goTrends">查看更多</var>
+      <var class="taskmore" v-show='!isHidden' @click="loadMore">查看更多</var>
     </hgroup>
     <section :class="{'active':isHidden}">
       <div>
@@ -236,7 +236,39 @@ export default {
     return {
       loading: true,
       isHidden: false,
-      isTab: 0
+      isTab: 0,
+      tasklist:[
+        {
+          title:'课件任务名称',
+          time:'2019.03.11',
+          teacher:'张丹丹老师',
+          classname:'icon-course'
+        },
+        {
+          title:'测试任务名称',
+          time:'2019.03.11',
+          teacher:'张丹丹老师',
+          classname:'icon-test'
+        },
+        {
+          title:'问卷任务名称',
+          time:'2019.03.11',
+          teacher:'张丹丹老师',
+          classname:'icon-questionnaire'
+        },
+        {
+          title:'作品上传',
+          time:'2019.03.11',
+          teacher:'张丹丹老师',
+          classname:'icon-works'
+        },
+        {
+          title:'优势打卡任务名称',
+          time:'2019.03.11',
+          teacher:'张丹丹老师',
+          classname:'icon-clock'
+        }
+      ]
     }
   },
   created() {
@@ -254,6 +286,14 @@ export default {
     },
     changeTab(num) {
       this.isTab = num
+    },
+    loadMore(){
+      this.tasklist.push( {
+          title:`课件任务名称${parseInt(Math.random()*10)}`,
+          time:'2019.03.11',
+          teacher:'张丹丹老师',
+          classname:'icon-course'
+        })
     }
   }
 }
@@ -401,6 +441,7 @@ export default {
   hgroup {
     width: 2.1rem;
     height: 100%;
+    overflow: scroll;
     padding-bottom: 0.5rem;
     float: right;
     border-left: 0.01rem solid rgba(228, 232, 237, 1);
