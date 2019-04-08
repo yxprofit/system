@@ -22,7 +22,7 @@
         </div>
       </div>
     </div>
-    <hgroup :class="{'active':isHidden, 'has-btn': $route.query.type !== 'studentTask'}">
+    <hgroup :class="{'active':isHidden}">
       <div>
         <p>本课时任务</p>
       </div>
@@ -43,6 +43,12 @@
           </h4>
         </li>
       </ul>
+      <img
+        :class="['bottom',{'hidden':isHidden}]"
+        @click="changeIsHidden"
+        src="../../assets/images/icon/icon_open.png"
+        alt
+      >
       <ul class="operation" v-if="$route.query.type === 'teacherTask'">
         <li class="edit">
           <span>
@@ -55,13 +61,7 @@
           </span>
         </li>
       </ul>
-      <img
-        v-if="showCloseIcon"
-        :class="['bottom',{'hidden':isHidden}]"
-        @click="changeIsHidden"
-        src="../../assets/images/icon/icon_open.png"
-        alt
-      >
+
     </hgroup>
 
     <popup-modal v-model="isShowSaveTask">
@@ -186,10 +186,10 @@
     computed: {
       showCloseIcon() {
         let queryType = this.$route.query.type;
-        if (queryType === 'studentTask') {
-          return true;
-        } else {
+        if (queryType === 'teacherTask') {
           return false;
+        } else {
+          return true;
         }
       }
     },
@@ -533,8 +533,8 @@
   }
   }
   .operation {
-    margin-bottom: 70px;
-    margin-top: 20px;
+    margin-bottom: 50px;
+    margin-top: 130px;
     text-align: center;
   span {
     font-size: 16px;
