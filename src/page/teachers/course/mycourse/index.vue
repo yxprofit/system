@@ -54,85 +54,98 @@
         <section class='list'>
           <ul v-show='isTab===0'>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img1.png" alt="">
+              <img src="../../../../assets/images/student/workimg.png" alt="">
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img2.png" alt="">
+              <!-- <img src="../../../../assets/images/img2.png" alt=""> -->
+              <img src="../../../../assets/images/student/workimg.png" alt="">
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img3.png" alt="">
+              <!-- <img src="../../../../assets/images/img3.png" alt=""> -->
+               <img src="../../../../assets/images/student/workimg.png" alt="">
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img4.png" alt="">
+              <!-- <img src="../../../../assets/images/img4.png" alt=""> -->
+               <img src="../../../../assets/images/student/workimg.png" alt="">
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img5.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img5.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img1.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img1.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img3.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img3.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img4.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img4.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img5.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img5.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img1.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img1.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img3.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img3.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img4.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img4.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img5.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img5.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img1.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img1.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
@@ -144,31 +157,36 @@
           </ul>
           <ul v-show='isTab===1'>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img4.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img4.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img5.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img5.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img1.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img1.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img2.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img2.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img3.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img3.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
@@ -303,8 +321,9 @@ export default {
             padding-bottom: 3px;
             cursor: pointer;
             img {
-              width: 190px;
+              // width: 190px;
               height: 200px;
+              width: auto;
               display: block;
               margin: 0 auto;
             }
