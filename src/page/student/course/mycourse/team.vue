@@ -5,7 +5,7 @@
         <h3>我的小组</h3>
       </span>
       <div class="group">
-        <ul>
+        <ul class="list-group">
           <li v-for="(item, index) in data" :key="index">
             <h4>09级2班 03组</h4>
             <div class="teamMain">
@@ -23,12 +23,21 @@
           </li>
         </ul>
       </div>
+      <div class="group1-prev" @click="handlePrev('.list-group', 'group1Index', -320)">
+          <i class="el-icon-arrow-left"></i>
+        </div>
+        <div
+          class="group1-next"
+          @click="handleNext('.list-group', 'group1Index', -310, 'data', 3)"
+        >
+          <i class="el-icon-arrow-right"></i>
+        </div>
     </el-dialog>
   </div>
 </template>
 
 <script>
-import head from "assets/images/head.png";
+import head from "assets/images/head.png"; 
 export default {
   name: "team",
   props: ["state"],
@@ -37,7 +46,8 @@ export default {
     return {
       loading: true,
       head,
-      data: [1, 2, 3, 4, 5, 6, 7]
+      data: [1, 2, 3, 4, 5, 6, 7],
+      group1Index:0
     };
   },
   created() {
@@ -49,7 +59,24 @@ export default {
   methods: {
     handleClose() {
       this.$emit("close");
-    }
+    },
+     handlePrev(el, listIndex, distance) {
+      if (this[listIndex] <= 0) {
+      } else {
+        this[listIndex]--;
+        let ele = document.querySelector(el);
+        ele.style.transform = `translateX( ${distance * this[listIndex]}px)`;
+        ele.style.transition = "all 0.3s ease";
+      }
+    },
+    handleNext(el, listIndex, distance, list, baseIndex) {
+      if (this[listIndex] < this[list].length - baseIndex) {
+        this[listIndex]++;
+        let ele = document.querySelector(el);
+        ele.style.transform = `translateX( ${distance * this[listIndex]}px)`;
+        ele.style.transition = "all 0.3s ease";
+      }
+    },
   }
 };
 </script>
@@ -146,10 +173,39 @@ export default {
     }
   }
 }
+.group1-prev,
+.group1-next {
+  width: 34px;
+  height: 34px;
+  background: #eee;
+  border-radius: 34px;
+  text-align: center;
+  line-height: 34px;
+  font-size: 18px;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9999;
+
+  &:hover {
+    background: rgba(247, 151, 39, 1);
+    color: #fff;
+  }
+}
+.group1-prev{
+  left: -60px;
+}
+.group1-next{
+  right: -60px;
+}
 .team /deep/ .el-dialog {
   margin-top: 45px !important;
-  overflow: hidden !important;
   height: 645px;
+}
+.team /deep/ .el-dialog__body {
+  overflow: hidden !important;
+  max-height: 594px;
 }
 .team /deep/ .el-dialog__wrapper {
   overflow: hidden !important;
