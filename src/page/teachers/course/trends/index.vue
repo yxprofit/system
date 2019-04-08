@@ -1,7 +1,7 @@
 <template>
   <div class="trends">
     <section>
-      <h2>班级动态</h2>
+      <h2>任务中心</h2>
       <p>待定</p>
     </section>
     <div>
