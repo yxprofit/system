@@ -3,7 +3,8 @@
     <hgroup :class="{'active':isHidden}">
       <div>
         <span>我的任务</span>
-        <span @click="changeIsHidden"><img src="../../../../assets/images/icon/icon_task_close.png" alt=""></span>
+        <!-- <span @click="changeIsHidden"><img src="../../../../assets/images/icon/icon_task_close.png" alt=""></span> -->
+        <span @click="goTrends"><img src="../../../../assets/images/icon/icon_task_close.png" alt=""></span>
       </div>
       <ul>
         <li>
@@ -42,7 +43,7 @@
           </div>
         </li>
       </ul>
-      <var class="taskmore" v-show='!isHidden'>查看更多</var>
+      <var class="taskmore" v-show='!isHidden' @click="goTrends">查看更多</var>
     </hgroup>
     <section :class="{'active':isHidden}">
       <div>
@@ -245,6 +246,9 @@ export default {
     }, 1000)
   },
   methods: {
+    goTrends(){
+      this.$router.push('/teachers/course/trends')
+    },
     changeIsHidden() {
       this.isHidden = !this.isHidden
     },
