@@ -180,7 +180,7 @@ import lock from 'assets/images/teacher/lock.png'
   	padding: 16px 58px;
   	.class-list {
   		height:352px;
-  		border-sizing: border-box;
+  		box-sizing: border-box;
   		border:1px solid rgba(245,246,247,1);
   		.class-item {
   			height: 50px;
