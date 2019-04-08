@@ -74,72 +74,72 @@ export default {
 
 <style lang="scss" scoped>
 .details {
-  img {width: auto;}
+  img {width: 100%;}
   .detailsHead {
     display: flex;
-    margin-right: 30px;
-    padding: 10px 0;
-    border-right: 1px solid rgba(228, 232, 237, 1);
+    margin-right: 0.3rem;
+    padding: 0.1rem 0;
+    border-right: 0.01rem solid rgba(228, 232, 237, 1);
     
     .avatar {
-      width: 40px;
-      height: 40px;
+      width: 0.4rem;
+      height: 0.4rem;
       border-radius: 100%;
-      img { width: 40px; height: 40px; border-radius: 100%}
+      img { width: 0.4rem; height: 0.4rem; border-radius: 100%}
     }
 
     .name {
      flex: 1;
-     font-size: 14px;
-     margin-left: 10px;
-     h3{color: #333; font-weight: bold; margin: 4px 0 7px 0;}
+     font-size: 0.14rem;
+     margin-left: 0.1rem;
+     h3{color: #333; font-weight: bold; margin: 0.04rem 0 0.07rem 0;}
      span {
       color: #999;
-      time {margin-left: 11px;}
+      time {margin-left: 0.11rem;}
      }
     }
 
     .but {
       flex: 1;
       text-align: right;
-      height: 40px;
-      line-height: 40px;
+      height: 0.4rem;
+      line-height: 0.4rem;
       .action-btn {
         display: inline-block;
         color: #666;
-        font-size: 13px;
+        font-size: 0.13rem;
         cursor: pointer;
         vertical-align: middle;
-        margin-right: 20px;
+        margin-right: 0.2rem;
         .text {
           display: inline-block;
           vertical-align: middle;
         }
       }
       img {
-        height: 20px;
-        margin-right: 10px;
+        height: 0.2rem;
+        margin-right: 0.1rem;
         vertical-align: middle;
       }
-      .bimg39 {width: 15px;}
-      .bimg40 {width: 16px;}
-      .bimg42 {width: 20px;}
+      .bimg39 {width: 0.15rem;}
+      .bimg40 {width: 0.16rem;}
+      .bimg42 {width: 0.2rem;}
     }
     .time {
-      font-size: 13px;
+      font-size: 0.13rem;
       color: #999;
     }
   }
 
   .group {
     overflow-x: scroll;
-    max-height: 600px;
-    margin-top: -30px;
-    margin-bottom: -30px;
+    max-height: 6rem;
+    margin-top: -0.3rem;
+    margin-bottom: -0.3rem;
     text-align: center;
-    padding-bottom: 20px;
-    border-left:1px solid rgba(228,232,237,1);
-    border-right:1px solid rgba(228,232,237,1);
+    padding-bottom: 0.2rem;
+    border-left:0.01rem solid rgba(228,232,237,1);
+    border-right:0.01rem solid rgba(228,232,237,1);
 
     video{
         width: 80%;
@@ -152,15 +152,15 @@ export default {
 .details {
   .el-dialog__header {
     position: relative;
-    padding: 0 20px;
-    border-bottom: #E4E8ED 1px solid;
+    padding: 0 0.2rem;
+    border-bottom: #E4E8ED 0.01rem solid;
     .el-dialog__headerbtn {
       top: 50%;
       transform: translateY(-50%);
     }
   }
   .details-dialog .el-dialog__body {
-    padding: 30px 50px;
+    padding: 0.3rem 0.5rem;
   }
 }
 </style>

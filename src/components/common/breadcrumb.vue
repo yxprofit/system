@@ -22,7 +22,7 @@ export default {
 
 <style lang="scss" scoped>
 .breadcrumb {
-    margin-top: 10px;
+    margin-top: 0.1rem;
     font-weight:400;
     color:#666;
     .nowaddress {

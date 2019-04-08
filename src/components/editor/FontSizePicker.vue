@@ -27,27 +27,27 @@ export default {
 
 <style type="text/css">
 .font-size-picker-options {
-  width: 60px;
+  width: 0.6rem;
   text-align: justify;
-  padding: 5px 0px;
-  border-radius: 2px;
+  padding: 0.05rem 0rem;
+  border-radius: 0.02rem;
   position: absolute;
-  box-shadow: 0 1px 2px #ccc;
+  box-shadow: 0 0.01rem 0.02rem #ccc;
   background-color: #fff;
-  margin-top: 10px;
+  margin-top: 0.1rem;
   text-align: center;
 }
 
 .font-size-picker-options ul {
   list-style: none;
-  padding: 0px;
-  margin: 0px;
-  font-size: 14px;
+  padding: 0rem;
+  margin: 0rem;
+  font-size: 0.14rem;
   color: #333;
 }
 
 .font-size-picker-options ul li {
-  padding: 5px;
+  padding: 0.05rem;
   transition: all 0.3s;
 }
 

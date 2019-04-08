@@ -5,7 +5,7 @@
 				<h3>我的小组</h3>
 			</span>
 			<div class="group">
-				<ul :style="{ width: (data.length - 3) * 350 + 'px' }">
+				<ul :style="{ width: (data.length - 3) * 3.5 + 'rem' }">
 					<li v-for="(item, index) in data" v-if="index < 4">
 						<h4>09级2班 03组</h4>
 						<div class="teamMain">
@@ -60,20 +60,20 @@ export default {
 <style lang="scss" scoped>
 .team {
 	.teamTitle {
-		font-size:16px;
+		font-size:0.16rem;
 		font-weight:bold;
 		color:rgba(51,51,51,1);
 		position: relative;
-		text-indent: 15px;
+		text-indent: 0.15rem;
 		h3 {
 			font-weight: bold;
 			&:after {
 				content: '';
 				display: block;
-				width: 4px;
-				height: 16px;
+				width: 0.04rem;
+				height: 0.16rem;
 				background-color: #F79727;
-				border-radius: 2px;
+				border-radius: 0.02rem;
 				position: absolute;
 				left: 0;
 				top: 0;
@@ -84,47 +84,47 @@ export default {
 		overflow-x: scroll;
 		overflow-y: hidden;
 		li {
-			border: #E4E8ED 1px solid;
-			width: 332px;
+			border: #E4E8ED 0.01rem solid;
+			width: 3.32rem;
 			display: inline-block;
-			margin-right: 15px;
+			margin-right: 0.15rem;
 			&:last-child {
 				margin-right: 0
 			}
 			h4 {
 				background:rgba(245,246,248,1);
 				color: #333;
-				font-size: 14px;
-				padding: 20px;
+				font-size: 0.14rem;
+				padding: 0.2rem;
 			}
 			.teamMain {
-				margin: 15px 10px 0 15px;
-				max-height: 520px;
+				margin: 0.15rem 0.1rem 0 0.15rem;
+				max-height: 5.2rem;
 				overflow-y: scroll;
 			}
 			.teamBlock {
-				margin-bottom: 10px;
+				margin-bottom: 0.1rem;
 				display: flex;
 			}
 			.teamAvatar {
 				flex: 1;
-				max-width: 80px;
-				img { width: 50px; height: 50px; border-radius: 100%}
+				max-width: 0.8rem;
+				img { width: 0.5rem; height: 0.5rem; border-radius: 100%}
 				span {
 					color: #333;
-					font-size: 14px;
+					font-size: 0.14rem;
 					display: block;
-					margin-top: 10px;
+					margin-top: 0.1rem;
 					font-weight: bold;
 				}
 			}
 			.teamText {
 				flex: 1;
-				width: 230px;
-				font-size:12px;
+				width: 2.3rem;
+				font-size:0.12rem;
 				font-family:ArialMT;
 				color:#999;
-				line-height:20px;
+				line-height:0.2rem;
 			}
 			&:hover {
 				h4 {

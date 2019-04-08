@@ -340,7 +340,7 @@ export default {
               <br><div class="image-desc" style="text-align: center; color: #333;">
                 <img class="uploaded-img" src=${url} max-width="100%" width="auto" height="auto">
                 <br>
-                <div class="image-caption" style="min-width: 20%; max-width: 80%; height: 35px; display: inline-block; padding: 10px 10px 0px 10px; margin: 0 auto; border-bottom: 1px solid #d9d9d9; font-size: 16px; color: #999; content: "";"></div>
+                <div class="image-caption" style="min-width: 20%; max-width: 80%; height: 0.35rem; display: inline-block; padding: 0.1rem 0.1rem 0rem 0.1rem; margin: 0 auto; border-bottom: 0.01rem solid #d9d9d9; font-size: 0.16rem; color: #999; content: "";"></div>
               </div>`)
     },
     // 点击插入链接
@@ -416,10 +416,10 @@ export default {
         node.className !== 'smeditor' &&
         node.className !== editorElement().className &&
         node.className !== 'blockquote') {
-        document.execCommand('insertHTML', false, `<div class="blockquote"><blockquote style="color: #B2B2B2; padding-left: 15px; border-left: 5px solid #B2B2B2; margin-top: 0px; margin-bottom: 0px;">${node.innerHTML}</blockquote></div>`)
+        document.execCommand('insertHTML', false, `<div class="blockquote"><blockquote style="color: #B2B2B2; padding-left: 0.15rem; border-left: 0.05rem solid #B2B2B2; margin-top: 0rem; margin-bottom: 0rem;">${node.innerHTML}</blockquote></div>`)
         node.outerHTML = ''
       } else {
-        document.execCommand('insertHTML', false, `<div class="blockquote"><blockquote style="color: #B2B2B2; padding-left: 15px; border-left: 5px solid #B2B2B2; margin-top: 0px; margin-bottom: 0px;"><span><br></span></blockquote></div>`)
+        document.execCommand('insertHTML', false, `<div class="blockquote"><blockquote style="color: #B2B2B2; padding-left: 0.15rem; border-left: 0.05rem solid #B2B2B2; margin-top: 0rem; margin-bottom: 0rem;"><span><br></span></blockquote></div>`)
       }
     },
     // 插入 有序/无序 列表
@@ -628,15 +628,15 @@ function restoreCursor (self) {
 }
 .smeditor .input-area {
   outline: none;
-  min-height: 400px;
-  padding: 10px;
+  min-height: 4rem;
+  padding: 0.1rem;
   text-align: left;
   background-color: #ffffff;
   border-color: transparent;
-  letter-spacing: 1.5px;
+  letter-spacing: 0.015rem;
   color: rgb(44, 62, 80);
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  border: 1px solid #eee;
+  border: 0.01rem solid #eee;
   border-top: 0 none;
 }
 
@@ -646,22 +646,22 @@ function restoreCursor (self) {
   justify-content: baseline;
   align-items: center;
   width: 100%;
-  padding: 10px 0;
+  padding: 0.1rem 0;
   background-color: #F8F8F8;
   transition: position 0.3s;
 }
 
 .smeditor .isFixed {
   position: fixed;
-  top: 0px;
+  top: 0rem;
   width: 70%;
 }
 
 .smeditor .buttons button {
   border: none;
   color: #000000;
-  height: 27px;
-  width: 30px;
+  height: 0.27rem;
+  width: 0.3rem;
   padding: 0;
   display: flex;
   justify-content: center;
@@ -669,11 +669,11 @@ function restoreCursor (self) {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 0.16rem;
   outline: none;
   cursor: pointer;
   background-color: transparent;
-  border: 1px solid transparent;
+  border: 0.01rem solid transparent;
   position: relative;
 }
 
@@ -682,7 +682,7 @@ function restoreCursor (self) {
 }
 
 .smeditor .buttonsActive {
-  border: 1px solid #BFBFBF !important;
+  border: 0.01rem solid #BFBFBF !important;
 }
 
 .smeditor svg {
@@ -694,7 +694,7 @@ function restoreCursor (self) {
 .smeditor input {
   border: none;
   color: #333;
-  font-size: 16px;
+  font-size: 0.16rem;
   text-align: center;
   width: 100%;
 }
@@ -708,8 +708,8 @@ function restoreCursor (self) {
 }
 
 .smeditor p {
-  padding: 2px 0;
-  margin: 0px;
+  padding: 0.02rem 0;
+  margin: 0rem;
 }
 
 .smeditor svg {
@@ -718,40 +718,40 @@ function restoreCursor (self) {
 
 .smeditor a {
   color: #87AA99;
-  margin-right: 3px;
+  margin-right: 0.03rem;
 }
 
 .smeditor pre {
   display: block;
-  padding: 9.5px;
-  margin: 0 0 10px;
-  font-size: 13px;
+  padding: 0.095rem;
+  margin: 0 0 0.1rem;
+  font-size: 0.13rem;
   line-height: 1.42857143;
   color: #333;
   word-break: break-all;
   word-wrap: break-word;
   background-color: #f5f5f5;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 0.01rem solid #ccc;
+  border-radius: 0.04rem;
 }
 
 .smeditor pre code  {
   display: block;
   background-color: #f1f1f1;
-  border-radius: 3px;
-  padding: 3px 5px;
-  margin: 0 3px;
+  border-radius: 0.03rem;
+  padding: 0.03rem 0.05rem;
+  margin: 0 0.03rem;
 }
 
 .smeditor .blockquote {
-  margin: 15px 0px;
+  margin: 0.15rem 0rem;
 }
 
 
 .smeditor .backup,
 .smeditor .restore,
 .smeditor .preview{
-  min-width: 40px !important;
+  min-width: 0.4rem !important;
 }
 
 .smeditor .backup:before,
@@ -759,10 +759,10 @@ function restoreCursor (self) {
 .smeditor .preview:before {
   color: rgb(51, 51, 51);
   font-family: Helvetica, Tahoma, Arial, "Hiragino Sans GB", "Microsoft YaHei", SimSun, sans-serif;
-  line-height: 28px;
-  font-size: 12px;
+  line-height: 0.28rem;
+  font-size: 0.12rem;
   float: left;
-  margin-left: 8px;
+  margin-left: 0.08rem;
 }
 
 .smeditor .backup:before {
@@ -779,38 +779,38 @@ function restoreCursor (self) {
 
 .smeditor .select-words {
   position: fixed;
-  right: calc(50% - 0px);
-  margin-right: -100px;
-  bottom: 60px;
-  width: 200px;
-  height: 30px;
-  line-height: 30px;
+  right: calc(50% - 0rem);
+  margin-right: -1rem;
+  bottom: 0.6rem;
+  width: 2rem;
+  height: 0.3rem;
+  line-height: 0.3rem;
   text-align: center;
   color: #898989;
   opacity: 1;
   z-index: 1;
   background-color: #fff;
-  border-radius: 1px;
-  -webkit-border-radius: 1px;
-  -moz-border-radius: 1px;
+  border-radius: 0.01rem;
+  -webkit-border-radius: 0.01rem;
+  -moz-border-radius: 0.01rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-transition: all .2s ease-in;
   -moz-transition: all .2s ease-in;
   transition: all .2s ease-in;
-  -webkit-box-shadow: 0 2px 8px hsla(0,0%,70%,.8);
-  -moz-box-shadow: 0 2px 8px hsla(0,0%,70%,.8);
-  -ms-box-shadow: 0 2px 8px hsla(0,0%,70%,.8);
-  -o-box-shadow: 0 2px 8px hsla(0,0%,70%,.8);
-  box-shadow: 0 2px 8px hsla(0,0%,70%,.8);
+  -webkit-box-shadow: 0 0.02rem 0.08rem hsla(0,0%,70%,.8);
+  -moz-box-shadow: 0 0.02rem 0.08rem hsla(0,0%,70%,.8);
+  -ms-box-shadow: 0 0.02rem 0.08rem hsla(0,0%,70%,.8);
+  -o-box-shadow: 0 0.02rem 0.08rem hsla(0,0%,70%,.8);
+  box-shadow: 0 0.02rem 0.08rem hsla(0,0%,70%,.8);
   transition-property: right;
   transition: all 0.3s;
-  font-size: 14px;
+  font-size: 0.14rem;
 }
 
 .smeditor .font-size, .smeditor .insert-options {
-  min-width: 40px !important;
+  min-width: 0.4rem !important;
 }
 
 .smeditor .font-size,
@@ -824,9 +824,9 @@ function restoreCursor (self) {
 
 .smeditor .font-size span,
 .smeditor .set-font span {
-  font-size: 14px;
+  font-size: 0.14rem;
   color: #333;
-  bottom: -0.5px;
+  bottom: -0.005rem;
   font-family: 'Helvetica,Tahoma,Arial,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif';
   position: relative;
 }
@@ -835,15 +835,15 @@ function restoreCursor (self) {
   content: "\63D2\5165";
   color: #333;
   font-family: 'Helvetica,Tahoma,Arial,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif';
-  line-height: 28px;
-  font-size: 12px;
+  line-height: 0.28rem;
+  font-size: 0.12rem;
   float: left;
-  margin-left: 8px;
+  margin-left: 0.08rem;
 }
 
 .smeditor .insert-quote img {
-  width: 20px;
-  margin-bottom: 1px;
+  width: 0.2rem;
+  margin-bottom: 0.01rem;
 }
 
 .unchecked-list {
@@ -854,8 +854,8 @@ function restoreCursor (self) {
 
 .unchecked:before {
   content: "\F402";
-  padding-left: 3px;
-  margin-right: 6px;
+  padding-left: 0.03rem;
+  margin-right: 0.06rem;
   cursor: pointer;
   box-sizing: border-box;
 }

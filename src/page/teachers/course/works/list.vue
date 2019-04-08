@@ -322,43 +322,43 @@ export default{
   display: flex;
   flex-direction: column;
   .tendsHead {
-    height: 124px;
+    height: 1.24rem;
     background-color: #fff;
-    border-radius: 6px;
-    margin: 30px 14px 20px 0;
-    padding: 0 20px;
+    border-radius: 0.06rem;
+    margin: 0.3rem 0.14rem 0.2rem 0;
+    padding: 0 0.2rem;
   }
   section {
     display: flex;
-    height: 65px;
-    line-height: 65px;
-    border-bottom: 1px solid #E4E8ED;
+    height: 0.65rem;
+    line-height: 0.65rem;
+    border-bottom: 0.01rem solid #E4E8ED;
     .title{
       flex: 1;
-      height: 64px;
+      height: 0.64rem;
       color: #333;
       position: relative;
-      font-size: 18px;
+      font-size: 0.18rem;
       font-weight: bold;
-      padding-left: 40px;
+      padding-left: 0.4rem;
       &:after{
         content: '';
         position: absolute;
-        width: 18px;
-        height: 20px;
-        top: 25px;
-        left: 10px;
+        width: 0.18rem;
+        height: 0.2rem;
+        top: 0.25rem;
+        left: 0.1rem;
         background-image: url('../../../../assets/images/icon/icon_mycourse.png');
       }
     }
   }
   .head{
-    height: 58px;
-    line-height: 58px;
+    height: 0.58rem;
+    line-height: 0.58rem;
     display: flex;
     h3{
       color: #888;
-      padding-left: 10px;
+      padding-left: 0.1rem;
       flex: 1;
       span{
         color:#333;
@@ -367,67 +367,67 @@ export default{
     }
     .search-panel {
       font-size: 0;
-      height: 32px;
-      line-height: 32px;
-      margin-top: 13px;
-      padding-right: 10px;
+      height: 0.32rem;
+      line-height: 0.32rem;
+      margin-top: 0.13rem;
+      padding-right: 0.1rem;
       .search {
-        width: 150px;
-        margin-left: 10px;
+        width: 1.5rem;
+        margin-left: 0.1rem;
       }
     }
     img {border-radius: 100%}
-    .tname {margin-left: 5px}
+    .tname {margin-left: 0.05rem}
   }
   .loader-btn-wraper {
-    margin: 20px 0;
+    margin: 0.2rem 0;
     text-align: center;
-    height: 34px;
+    height: 0.34rem;
     .load-btn {
       display: inline-block;
-      width: 120px;
-      height: 34px;
-      line-height: 32px;
+      width: 1.2rem;
+      height: 0.34rem;
+      line-height: 0.32rem;
       text-align: center;
       background-color: transparent;
-      border: 1px solid #ccc;
-      border-radius: 17px;
+      border: 0.01rem solid #ccc;
+      border-radius: 0.17rem;
 
       color: #999;
-      font-size: 13px;
+      font-size: 0.13rem;
       font-family: 'MicrosoftYaHei';
       cursor: pointer;
     }
   }
 
   .cell-item {
-    padding-right: 10px;
-    margin-bottom: 10px;
+    padding-right: 0.1rem;
+    margin-bottom: 0.1rem;
     .item-body{
-      padding: 17px;
+      padding: 0.17rem;
       background: #fff;
-      border-radius: 5px;
+      border-radius: 0.05rem;
       .item-desc{
         color: #333;
-        font-size: 13px;
-        line-height: 14px;
-        margin-bottom: 10px;
+        font-size: 0.13rem;
+        line-height: 0.14rem;
+        margin-bottom: 0.1rem;
       }
       .task-name{
-        font-size: 13px;
+        font-size: 0.13rem;
         color:#999;
-        margin-bottom: 10px;
+        margin-bottom: 0.1rem;
       }
       .name {
         background-color: rgba(153,153,153,.1);
         display: inline-block;
-        height: 24px;
-        line-height: 24px;
-        padding: 0 10px;
-        font-size: 12px;
+        height: 0.24rem;
+        line-height: 0.24rem;
+        padding: 0 0.1rem;
+        font-size: 0.12rem;
         font-weight:bold;
         color: rgba(153,153,153,1);
-        margin-bottom: 10px;
+        margin-bottom: 0.1rem;
       }
       .dianzan{
         display: flex;
@@ -437,37 +437,37 @@ export default{
           display: flex;
           .avatar {
             display: inline-block;
-            width: 30px;
-            height: 30px;
-            line-height: 30px;
+            width: 0.3rem;
+            height: 0.3rem;
+            line-height: 0.3rem;
             border-radius: 50%;
             overflow: hidden;
           }
           .tname {
-            height: 30px;
-            line-height: 30px;
-            margin-left: 8px;
+            height: 0.3rem;
+            line-height: 0.3rem;
+            margin-left: 0.08rem;
           }
         }
         .good {
           position: absolute;
-          right: 0px;
+          right: 0rem;
           top: 50%;
           transform: translateY(-50%);
-          height: 16px;
-          line-height: 16px;
+          height: 0.16rem;
+          line-height: 0.16rem;
           font-size: 0;
           span {
             position: relative;
-            margin-left: 10px;
+            margin-left: 0.1rem;
             display: inline-block;
             color: #999;
-            font-size: 12px;
+            font-size: 0.12rem;
             vertical-align: middle;
           }
           .like-img {
-            height: 16px;
-            width: 16px;
+            height: 0.16rem;
+            width: 0.16rem;
             vertical-align: top;
           }
         }
@@ -477,17 +477,17 @@ export default{
 }
 .waterfall-wraper {
   overflow: auto;
-  padding-right: 24px;
-  margin-right: 14px;
-  max-height: calc(100vh - 259px);
+  padding-right: 0.24rem;
+  margin-right: 0.14rem;
+  max-height: calc(100vh - 2.59rem);
   background-color: transparent;
 }
 .waterfall-wraper::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 0.06rem;
+  height: 0.06rem;
 }
 .waterfall-wraper::-webkit-scrollbar-thumb {
-  border-radius: 3px;
+  border-radius: 0.03rem;
   background: #fff;
   color: #fff;
 }
@@ -503,22 +503,22 @@ export default{
 }
 .cell-item>div{
   overflow: hidden;
-  border-radius:4px;
-  border:1px solid rgba(228,232,237,1)
+  border-radius:0.04rem;
+  border:0.01rem solid rgba(228,232,237,1)
 }
 .serach-result {
-  height: 68px;
-  line-height: 68px;
+  height: 0.68rem;
+  line-height: 0.68rem;
   background:rgba(255,255,255,1);
-  border:1px solid rgba(228,232,237,1);
-  border-radius:6px;
-  font-size: 14px;
+  border:0.01rem solid rgba(228,232,237,1);
+  border-radius:0.06rem;
+  font-size: 0.14rem;
   color: #333;
-  margin-bottom: 10px;
-  margin-top: -10px;
-  padding-left: 20px;
+  margin-bottom: 0.1rem;
+  margin-top: -0.1rem;
+  padding-left: 0.2rem;
   font-weight: bold;
-  margin-right: 14px;
+  margin-right: 0.14rem;
   span {
     color: #F79727;
     font-weight: normal;
@@ -528,20 +528,20 @@ export default{
 <style lang="scss">
 .teacher-works {
   .search-by-name {
-    padding: 12px 10px 12px 0;
+    padding: 0.12rem 0.1rem 0.12rem 0;
     height: 100%;
     box-sizing: border-box;
     font-size: 0;
     .teandsearchInput.el-input--small {
       float: left;
-      width:242px;
-      line-height: 40px;
+      width:2.42rem;
+      line-height: 0.4rem;
       .el-input__inner {
-        width:242px;
-        height:40px;
-        line-height: 40px;
-        border-radius: 20px;
-        padding-left:53px;
+        width:2.42rem;
+        height:0.4rem;
+        line-height: 0.4rem;
+        border-radius: 0.2rem;
+        padding-left:0.53rem;
         border-color: rgba(238,242,245,1);
         background: rgba(238,242,245,1);
         &::placeholder {
@@ -549,25 +549,25 @@ export default{
         }
       }
       .el-input__prefix {
-        left: 26px;
+        left: 0.26rem;
         .el-icon-search {
-          width: 18px;
-          font-size: 18px;
+          width: 0.18rem;
+          font-size: 0.18rem;
           color: #ccc;
         }
       }
     }
     a {
       float: left;
-      width: 70px;
-      height: 40px;
+      width: 0.7rem;
+      height: 0.4rem;
       cursor: pointer;
-      font-size: 15px;
-      line-height: 40px;
-      margin-left: 12px;
+      font-size: 0.15rem;
+      line-height: 0.4rem;
+      margin-left: 0.12rem;
       color: #fff;
       text-align: center;
-      border-radius: 20px;
+      border-radius: 0.2rem;
       background-color: #F79727;
     }
   }

@@ -31,14 +31,14 @@ export default {
 
 <style lang="scss" scoped>
 header {
-  height: 50px;
-  line-height: 50px;
+  height: 0.5rem;
+  line-height: 0.5rem;
   background-color: #fff;
-  padding: 0 30px;
+  padding: 0 0.3rem;
   overflow: hidden;
   .logo {
     display: block;
-    width: 209px;
+    width: 2.09rem;
     float: left;
     img {
       width: 100%;
@@ -48,21 +48,21 @@ header {
     float: right;
     display: flex;
     & > span {
-      margin-left: 40px;
+      margin-left: 0.4rem;
       cursor: pointer;
     }
     .userinfo-menu {
       overflow: hidden;
-      width: 146px;
-      margin-left: 40px;
+      width: 1.46rem;
+      margin-left: 0.4rem;
       display: flex;
       align-items: center;
       & > div:nth-child(1) {
-        // margin-top: 6px;
-        width: 36px;
-        height: 36px;
-        line-height: 36px;
-        margin-right: 12px;
+        // margin-top: 0.06rem;
+        width: 0.36rem;
+        height: 0.36rem;
+        line-height: 0.36rem;
+        margin-right: 0.12rem;
         float: left;
         img {
           border-radius: 50%;
@@ -72,20 +72,20 @@ header {
         // float: left;
         position: relative;
         h3 {
-          font-size: 14px;
-          line-height: 12px;
-          // margin: 18px 0 6px;
+          font-size: 0.14rem;
+          line-height: 0.12rem;
+          // margin: 0.18rem 0 0.06rem;
         }
         p {
-          font-size: 12px;
-          line-height: 12px;
+          font-size: 0.12rem;
+          line-height: 0.12rem;
           color: #888;
         }
       }
       & > span {
-        height: 20px;
-        line-height: 20px;
-        margin-top: 20px;
+        height: 0.2rem;
+        line-height: 0.2rem;
+        margin-top: 0.2rem;
         float: right;
       }
     }
@@ -95,8 +95,8 @@ header {
     // &::after {
     //   position: absolute;
     //   content: "";
-    //   width: 7px;
-    //   height: 7px;
+    //   width: 0.07rem;
+    //   height: 0.07rem;
     //   background: rgba(242, 42, 24, 1);
     //   border-radius: 50%;
     //   top: 40%;

@@ -255,9 +255,9 @@
 <style lang="scss" scoped>
   .courseware {
     background: #EEF2F5;
-    border: 1px solid rgba(228, 232, 237, 1);
-    border-radius: 6px;
-    padding: 20px 0 20px 20px;
+    border: 0.01rem solid rgba(228, 232, 237, 1);
+    border-radius: 0.06rem;
+    padding: 0.2rem 0 0.2rem 0.2rem;
     display: flex;
     height: 100vh;
     position: relative;
@@ -267,36 +267,36 @@
     display: flex;
     flex-direction: column;
     background-color: #fff;
-    border-radius: 6px;
-    padding: 20px;
-    margin-right: 12px;
+    border-radius: 0.06rem;
+    padding: 0.2rem;
+    margin-right: 0.12rem;
   }
   .step {
     background: rgba(255, 255, 255, 1);
-    border: 1px solid rgba(228, 232, 237, 1);
-    border-radius: 6px;
+    border: 0.01rem solid rgba(228, 232, 237, 1);
+    border-radius: 0.06rem;
     flex: 1;
   .stepimg {
-  // width: 992px;
+  // width: 9.92rem;
     text-align: center;
   img {
     width: auto;
-    max-height: 600px;
+    max-height: 6rem;
   }
   }
   }
   .stepbut {
     margin: 0 auto;
     text-align: center;
-    margin-top: 19px;
+    margin-top: 0.19rem;
   button {
-    margin: 0 20px;
+    margin: 0 0.2rem;
     cursor: pointer;
-    width: 170px;
-    height: 44px;
-    border-radius: 4px;
-    font-size: 16px;
-    border: 1px solid rgba(0, 0, 0, 1);
+    width: 1.7rem;
+    height: 0.44rem;
+    border-radius: 0.04rem;
+    font-size: 0.16rem;
+    border: 0.01rem solid rgba(0, 0, 0, 1);
     background: linear-gradient(
       -90deg,
       rgba(255, 183, 38, 1),
@@ -307,11 +307,11 @@
   }
   .active {
     background: transparent;
-    border: rgba(255, 129, 38, 1) 1px solid;
+    border: rgba(255, 129, 38, 1) 0.01rem solid;
     color: #ff8126;
   }
   .pages {
-    font-size: 12px;
+    font-size: 0.12rem;
     color: #666;
   var {
     color: #f79727;
@@ -320,29 +320,29 @@
   }
   .backclass {
     color: #666666;
-    font-size: 16px;
-    line-height: 16px;
-    height: 16px;
+    font-size: 0.16rem;
+    line-height: 0.16rem;
+    height: 0.16rem;
     cursor: pointer;
-    margin-bottom: 18px;
+    margin-bottom: 0.18rem;
   }
   .allprint {
     color: #666;
     font-size: 0;
     position: absolute;
-    right: 20px;
-    bottom: 30px;
+    right: 0.2rem;
+    bottom: 0.3rem;
     z-index: 10;
-    height: 20px;
-    line-height: 20px;
+    height: 0.2rem;
+    line-height: 0.2rem;
     cursor: pointer;
   img {
-    width: 20px;
-    margin-right: 10px;
+    width: 0.2rem;
+    margin-right: 0.1rem;
     vertical-align: middle;
   }
   span {
-    font-size: 18px;
+    font-size: 0.18rem;
     display: inline-block;
     vertical-align: middle;
   }
@@ -357,23 +357,23 @@
   }
   hgroup {
     flex: 1;
-    max-width: 275px;
-    width: 275px;
-    min-height: 700px;
-    padding-bottom: 20px;
+    max-width: 2.75rem;
+    width: 2.75rem;
+    min-height: 7rem;
+    padding-bottom: 0.2rem;
     float: right;
-    border-left: 1px solid rgba(228, 232, 237, 1);
+    border-left: 0.01rem solid rgba(228, 232, 237, 1);
     transition: width 0.3s;
     background-color: #fff;
     position: relative;
-  /*padding-bottom: 205px;*/
+  /*padding-bottom: 2.05rem;*/
   & > div {
-        padding: 0 20px;
-        height: 70px;
-        line-height: 70px;
+        padding: 0 0.2rem;
+        height: 0.7rem;
+        line-height: 0.7rem;
         background-image: url("../../assets/images/task_bg.png");
         display: flex;
-        font-size: 18px;
+        font-size: 0.18rem;
         color: #fff;
         font-weight: 600;
   p {
@@ -382,13 +382,13 @@
   }
   }
   & > ul > li.task-item {
-        padding: 20px 10px 0 20px;
+        padding: 0.2rem 0.1rem 0 0.2rem;
   h4 {
-    height: 30px;
-    line-height: 30px;
+    height: 0.3rem;
+    line-height: 0.3rem;
     font-weight: 600;
-    text-indent: 26px;
-    background-size: 16px 16px;
+    text-indent: 0.26rem;
+    background-size: 0.16rem 0.16rem;
     background-position: 0 0;
     background-repeat: no-repeat;
     position: relative;
@@ -398,8 +398,8 @@
      left: 0;
      top: 50%;
      transform: translateY(-50%);
-     height: 16px ;
-     width: 16px;
+     height: 0.16rem ;
+     width: 0.16rem;
    }
   &.icon-course:after {
      background-image: url("../../assets/images/icon/icon_course_name.png");
@@ -410,13 +410,13 @@
    }
   &.icon-questionnaire:after {
      content: '';
-     background-size: 14px 16px;
+     background-size: 0.14rem 0.16rem;
      /*background-image: url("../../assets/images/icon/icon_course_look.png");*/
      background-image: url("../../assets/images/icon/icon_course_question.png");
    }
   &.icon-works:after {
-     background-size: 16px 14px;
-     background-position: 1px 0;
+     background-size: 0.16rem 0.14rem;
+     background-position: 0.01rem 0;
      /*background-image: url("../../assets/images/icon/icon_course_completed.png");*/
      background-image: url("../../assets/images/icon/icon_course_pic.png");
    }
@@ -427,40 +427,40 @@
   }
   div {
     background-color: #f2f5f7;
-    padding: 15px 12px 3px;
+    padding: 0.15rem 0.12rem 0.03rem;
   p {
     display: block;
-    font-size: 12px;
-    line-height: 12px;
-    text-indent: 16px;
+    font-size: 0.12rem;
+    line-height: 0.12rem;
+    text-indent: 0.16rem;
     position: relative;
     color: #888;
-    margin-bottom: 11px;
+    margin-bottom: 0.11rem;
   &:after {
      content: "";
      display: block;
      position: absolute;
-     width: 4px;
-     height: 4px;
+     width: 0.04rem;
+     height: 0.04rem;
      background-color: #c2c8cc;
-     top: 3px;
+     top: 0.03rem;
      left: 0;
    }
   }
   }
   }
   &.active {
-     max-width: 103px;
-     width: 103px;
+     max-width: 1.03rem;
+     width: 1.03rem;
      padding-bottom: 0;
-   // margin-top: 28px;
+   // margin-top: 0.28rem;
      background-color: #fff;
    // border: none;
   & > div {
         padding: 0;
         width: 100%;
-        height: 70px;
-        font-size: 14px;
+        height: 0.7rem;
+        font-size: 0.14rem;
         text-align: center;
   span:nth-child(2) {
     display: none;
@@ -472,13 +472,13 @@
   &::before {
      position: absolute;
      content: "";
-     width: 6px;
-     height: 6px;
+     width: 0.06rem;
+     height: 0.06rem;
      background: rgba(39, 137, 247, 1);
      background: rgba(204, 204, 204, 1);
      border-radius: 50%;
      top: 60%;
-     right: 29px;
+     right: 0.29rem;
    }
   b,
   span {
@@ -498,8 +498,8 @@
   }
   .task {
     overflow: auto;
-    margin-right: 10px;
-    max-height: (100vh - 140 px);
+    margin-right: 0.1rem;
+    max-height: calc(100vh - 1.4rem);
   b {
     font-weight: 700;
   }
@@ -511,19 +511,19 @@
   }
   span.task-item__btn {
     float: right;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border: 0.01rem solid #ccc;
+    border-radius: 0.04rem;
     color: #ccc;
     font-weight: normal;
     text-indent: 0;
     display: inline-block;
-    padding: 6px 14px;
-    font-size: 12px;
-    line-height: 12px;
-    margin-top: 2px;
+    padding: 0.06rem 0.14rem;
+    font-size: 0.12rem;
+    line-height: 0.12rem;
+    margin-top: 0.02rem;
     cursor: pointer;
   &.active {
-     border: 1px solid #f79727;
+     border: 0.01rem solid #f79727;
      color: #f79727;
    }
   &:hover {
@@ -533,48 +533,48 @@
   }
   }
   .operation {
-    margin-bottom: 50px;
-    margin-top: 130px;
+    margin-bottom: 0.5rem;
+    margin-top: 1.3rem;
     text-align: center;
   span {
-    font-size: 16px;
-    line-height: 42px;
+    font-size: 0.16rem;
+    line-height: 0.42rem;
     display: inline-block;
   }
   i {
-    margin-right: 10px;
+    margin-right: 0.1rem;
   }
   .edit,
   .add {
-    width: 170px;
-    height: 44px;
+    width: 1.7rem;
+    height: 0.44rem;
     box-sizing: border-box;
-    border: 1px solid rgba(187, 187, 187, 1);
-    border-radius: 22px;
-    line-height: 42px;
+    border: 0.01rem solid rgba(187, 187, 187, 1);
+    border-radius: 0.22rem;
+    line-height: 0.42rem;
     text-align: center;
-    margin-left: 54px;;
+    margin-left: 0.54rem;;
     color: #999;
     cursor: pointer;
   }
   .edit {
     border-color: rgba(247, 151, 39, 1);
     color: #f79727;
-    margin-bottom: 14px;
+    margin-bottom: 0.14rem;
   }
   .add {
   }
   }
   // .bottom {
-     //   margin: 56px auto;
-     //   width: 22px;
-     //   height: 14px;
+     //   margin: 0.56rem auto;
+     //   width: 0.22rem;
+     //   height: 0.14rem;
      //   // transform:rotate(180deg);
      // }
   .bottom {
-    margin: 56px 0 0 21px;
-    width: 22px;
-    height: 14px;
+    margin: 0.56rem 0 0 0.21rem;
+    width: 0.22rem;
+    height: 0.14rem;
   &.hidden {
      transform: rotate(180deg);
    }

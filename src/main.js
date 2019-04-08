@@ -7,6 +7,7 @@ import App from './App'
 // 基础css
 import './assets/css/base.css'
 import './assets/css/common.css'
+import './assets/js/rem.js'
 // 入口文件引入路由
 import router from './router'
 // // ueditor 富文本编辑器

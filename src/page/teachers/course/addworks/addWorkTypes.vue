@@ -71,45 +71,45 @@ export default {
 }
 // dialog样式修改
 .addwork /deep/ .el-dialog__header {
-  height: 60px;
-  border-bottom: 1px solid rgba(228, 232, 237, 1);
-  padding: 22px 30px;
+  height: 0.6rem;
+  border-bottom: 0.01rem solid rgba(228, 232, 237, 1);
+  padding: 0.22rem 0.3rem;
   box-sizing: border-box;
   .addwork_title {
-    font-size: 16px;
+    font-size: 0.16rem;
     font-family: MicrosoftYaHei-Bold;
     font-weight: bold;
     color: rgba(51, 51, 51, 1);
     h3 {
-      font-size: 16px;
+      font-size: 0.16rem;
       font-family: MicrosoftYaHei-Bold;
       font-weight: bold;
       color: rgba(51, 51, 51, 1);
-      line-height: 26px;
+      line-height: 0.26rem;
     }
   }
 }
 .addwork /deep/ .el-dialog__body {
-  padding: 29px 106px 26px;
+  padding: 0.29rem 1.06rem 0.26rem;
 }
 .types {
   display: flex;
   justify-content: space-between;
   align-items: center;
   .types_img {
-    width: 130px;
+    width: 1.3rem;
     img {
-      width: 94px;
-      height: 94px;
+      width: 0.94rem;
+      height: 0.94rem;
       background: rgba(242, 242, 242, 1);
-      border-radius: 8px;
+      border-radius: 0.08rem;
       margin: 0 auto;
       display: block;
     }
     p {
       text-align: center;
-      margin: 20px 0 24px;
-      font-size: 16px;
+      margin: 0.2rem 0 0.24rem;
+      font-size: 0.16rem;
       font-family: MicrosoftYaHei;
       font-weight: 400;
       color: rgba(153, 153, 153, 1);
@@ -118,48 +118,48 @@ export default {
       }
     }
     // .radio {
-    //   width: 16px;
-    //   height: 16px;
+    //   width: 0.16rem;
+    //   height: 0.16rem;
     //   margin: 0 auto;
     //   display: block;
     // }
     .radio{
-      width: 16px;
-      height: 16px;
+      width: 0.16rem;
+      height: 0.16rem;
       margin: 0 auto;
-      border: 1px solid #bbb;
+      border: 0.01rem solid #bbb;
       border-radius: 50%;
     }
     .select{
-      width: 16px;
-      height: 16px;
+      width: 0.16rem;
+      height: 0.16rem;
       margin: 0 auto;
-      border: 1px solid #F79727;
+      border: 0.01rem solid #F79727;
       border-radius: 50%;
       .dot{
-        height: 8px;
-        width: 8px;
+        height: 0.08rem;
+        width: 0.08rem;
         border-radius: 50%;
         background-color: #F79727;
-        margin: 3px auto;
+        margin: 0.03rem auto;
         
       }
     }
   }
 }
 .addwork button {
-  width: 120px;
-  height: 36px;
+  width: 1.2rem;
+  height: 0.36rem;
   background: linear-gradient(
     -90deg,
     rgba(255, 183, 38, 1),
     rgba(255, 129, 38, 1)
   );
-  border-radius: 4px;
-  margin: 34px auto 0;
+  border-radius: 0.04rem;
+  margin: 0.34rem auto 0;
   display: block;
   color: #fff;
-  font-size: 14px;
+  font-size: 0.14rem;
   font-family: MicrosoftYaHei;
 }
 </style>

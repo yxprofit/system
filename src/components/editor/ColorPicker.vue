@@ -33,24 +33,24 @@ export default {
 
 <style type="text/css">
 .color-picker-options {
-  width: 200px;
+  width: 2rem;
   text-align: justify;
-  padding: 10px 10px 12px;
-  border-radius: 2px;
+  padding: 0.1rem 0.1rem 0.12rem;
+  border-radius: 0.02rem;
   position: absolute;
-  left: -80px;
-  box-shadow: 0 1px 2px #ccc;
+  left: -0.8rem;
+  box-shadow: 0 0.01rem 0.02rem #ccc;
   background-color: #fff;
-  margin-top: 10px;
+  margin-top: 0.1rem;
 }
 
 .ql-picker-item {
-  border: 1px solid transparent;
+  border: 0.01rem solid transparent;
   float: left;
-  height: 16px;
-  margin: 2px;
+  height: 0.16rem;
+  margin: 0.02rem;
   padding: 0;
-  width: 16px;
+  width: 0.16rem;
   cursor: pointer;
   /*position: relative;*/
 }
