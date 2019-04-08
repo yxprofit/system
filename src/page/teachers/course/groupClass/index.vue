@@ -413,12 +413,15 @@ export default {
   display: inline-block;
   width: 25%;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .avatar-img {
   width: 50px;
   height: 50px;
   margin-bottom: 5px;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 .avatar-name {
