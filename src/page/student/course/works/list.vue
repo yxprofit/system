@@ -106,8 +106,11 @@
           </div>
         </template>
       </waterfall>
+      <div class="loader-btn-wraper">
+        <button class="load-btn" @click="loadmore">查看更多</button>
+      </div>
     </div>
-    <button class="more-btn" @click="loadmore">查看更多</button>
+    
 
     <!--  -->
     <work-details :info="itemInfo" :state="detailsShow" v-on:close="changedetails" />
@@ -330,7 +333,6 @@ export default{
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  padding-bottom: 20px;
   .tendsHead {
     background-color: #fff;
     border-radius: 6px;
@@ -528,10 +530,10 @@ export default{
   }
 }
 .waterfall-wraper {
+  flex: 1;
   overflow: auto;
   padding-right: 24px;
   margin-right: 14px;
-  max-height: calc(100vh - 259px);
   background-color: transparent;
 }
 .waterfall-wraper::-webkit-scrollbar {
@@ -590,7 +592,24 @@ export default{
   }
 }
 
-.more-btn {
-  background-color: #EEF2F5!important;
-}
+ .loader-btn-wraper {
+    margin: 20px 0;
+    text-align: center;
+    height: 34px;
+    .load-btn {
+      display: inline-block;
+      width: 120px;
+      height: 34px;
+      line-height: 32px;
+      text-align: center;
+      background-color: transparent;
+      border: 1px solid #ccc;
+      border-radius: 17px;
+
+      color: #999;
+      font-size: 13px;
+      font-family: 'MicrosoftYaHei';
+      cursor: pointer;
+    }
+  }
 </style>
