@@ -16,8 +16,9 @@
           <var>{{page}}</var>/2
         </span>
         <button class="next" :class="{'active':page === 2}" @click="page = 2">下一页</button>
-        <div class="allprint" @click="screenF">
-          <img :src="allprint">
+        <div class="allPrint" @click="screenF">
+          <!-- <img :src="fullShow ?closePrint:allPrint"> -->
+          <img :src="fullShow ?closePrint:allPrint">
           <span>{{fullShow ? '退出全屏' : '全屏' }}</span>
         </div>
       </div>
@@ -77,7 +78,8 @@
   import screenfull from "screenfull";
   import material from "assets/images/student/material.png";
   import details1 from "assets/images/details1.png";
-  import allprint from "assets/images/allprint.png";
+  import allPrint from "assets/images/48.png";
+  import closePrint from "assets/images/49.png";
   import PopupModal from '@/components/popup';
   import SaveTask from "@/page/teachers/course/saveTask";
   import DeleteWork from "@/page/teachers/course/deleteWork/deleteWork";
@@ -95,7 +97,8 @@
         loading: true,
         material,
         details1,
-        allprint,
+        allPrint,
+        closePrint,
         fullShow: false,
         page: 1,
         isHidden: false,
@@ -326,7 +329,7 @@
     cursor: pointer;
     margin-bottom: 0.18rem;
   }
-  .allprint {
+  .allPrint {
     color: #666;
     font-size: 0;
     position: absolute;
