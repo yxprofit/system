@@ -1,7 +1,7 @@
 <template>
   <div class="courseware" v-loading="loading">
     <div class="taskleft">
-      <div class="backclass" @click="goback">< 返回课程</div>
+      <div class="backclass" v-if="$route.query.type !== 'teacherTask'" @click="goback">< 返回课程</div>
       <div class="step">
         <div class="stepimg" v-if="page === 1">
           <img :src="material">

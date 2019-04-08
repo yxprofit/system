@@ -102,9 +102,9 @@
           </div>
         </template>
       </waterfall>
-    </div>
     <div class="loader-btn-wraper">
       <button class="load-btn" @click="loadmore">查看更多</button>
+    </div>
     </div>
 
 
@@ -317,7 +317,6 @@ export default{
 <style lang="scss" scoped>
 .teacher-works.container-tends{
   box-sizing: border-box;
-  padding-bottom: 30px;
   height: 100%;
   overflow: hidden;
   display: flex;
@@ -381,7 +380,7 @@ export default{
     .tname {margin-left: 5px}
   }
   .loader-btn-wraper {
-    margin: 20px 0 0;
+    margin: 20px 0;
     text-align: center;
     height: 34px;
     .load-btn {
