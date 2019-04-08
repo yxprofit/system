@@ -182,53 +182,53 @@ export default{
 
 <style lang="scss" scoped>
 .container-water-fall{
-  padding-left: 20px;
-  padding-right: 10px;
+  padding-left: 0.2rem;
+  padding-right: 0.1rem;
   background-color: #fff;
-  border-radius: 6px;
-  margin-top: 20px;
-  padding-bottom: 20px;
+  border-radius: 0.06rem;
+  margin-top: 0.2rem;
+  padding-bottom: 0.2rem;
   &>section {
     display: flex;
-    margin-right: 10px;
-    height: 70px;
-    line-height: 70px;
-    border-bottom: 1px solid #E4E8ED;
+    margin-right: 0.1rem;
+    height: 0.7rem;
+    line-height: 0.7rem;
+    border-bottom: 0.01rem solid #E4E8ED;
     h2{
       flex: 1;
       display: block;
-      height: 20px;
-      text-indent: 40px;
+      height: 0.2rem;
+      text-indent: 0.4rem;
       position: relative;
-      font-size: 18px;
+      font-size: 0.18rem;
       font-weight: 600;
       &:after{
         content: '';
         position: absolute;
-        width: 18px;
-        height: 20px;
-        top: 25px;
-        left: 8px;
+        width: 0.18rem;
+        height: 0.2rem;
+        top: 0.25rem;
+        left: 0.08rem;
         background-image: url('../../assets/images/icon/icon_mycourse.png');
       }
     }
     a {
-      width: 120px;
-      height: 40px;
+      width: 1.2rem;
+      height: 0.4rem;
       cursor: pointer;
-      line-height: 40px;
-      margin-top: 15px;
+      line-height: 0.4rem;
+      margin-top: 0.15rem;
       color: #fff;
       text-align: center;
-      border-radius: 20px;
+      border-radius: 0.2rem;
       background-color: #F79727;
     }
   }
   .head{
-    height: 58px;
-    line-height: 58px;
+    height: 0.58rem;
+    line-height: 0.58rem;
     display: flex;
-    margin-right: 10px;
+    margin-right: 0.1rem;
     h3{
       color: #888;
       flex: 1;
@@ -240,43 +240,43 @@ export default{
   }
   &>button {
     display: block;
-    width: 120px;
-    height: 34px;
-    line-height: 34px;
+    width: 1.2rem;
+    height: 0.34rem;
+    line-height: 0.34rem;
     text-align: center;
     margin: 0 auto;
     background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 17px;
-    margin-top: 20px;
+    border: 0.01rem solid #ccc;
+    border-radius: 0.17rem;
+    margin-top: 0.2rem;
     color: #999;
-    font-size: 13px;
+    font-size: 0.13rem;
     font-family: '微软雅黑';
     cursor: pointer;
   }
   .cell-item {
-    padding-right: 10px;
-    margin-bottom: 10px;
+    padding-right: 0.1rem;
+    margin-bottom: 0.1rem;
     .item-body{
-      padding: 11px;
+      padding: 0.11rem;
       .item-desc{
-        font-size: 13px;
-        line-height: 14px;
-        margin-bottom: 10px;
+        font-size: 0.13rem;
+        line-height: 0.14rem;
+        margin-bottom: 0.1rem;
       }
       .task-name{
-        font-size: 13px;
+        font-size: 0.13rem;
         color:#999;
-        margin-bottom: 10px;
+        margin-bottom: 0.1rem;
       }
       .name {
         background-color: #FFF2E5;
         display: inline-block;
-        height: 24px;
-        line-height: 24px;
-        padding: 0 10px;
+        height: 0.24rem;
+        line-height: 0.24rem;
+        padding: 0 0.1rem;
         color: #F79727;
-        margin-bottom: 10px;
+        margin-bottom: 0.1rem;
       }
       .dianzan{
         display: flex;
@@ -285,7 +285,7 @@ export default{
           display: flex;
           span:nth-child(1){
             display: inline-block;
-            width: 30px;
+            width: 0.3rem;
             border-radius: 50%;
             overflow: hidden;
           }
@@ -298,7 +298,7 @@ export default{
   width: 100%;
 }
 .cell-item>div{
-  border-radius:4px;
-  border:1px solid rgba(228,232,237,1)
+  border-radius:0.04rem;
+  border:0.01rem solid rgba(228,232,237,1)
 }
 </style>

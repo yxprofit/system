@@ -86,61 +86,61 @@ export default {
 <style lang="scss" scoped>
 .material {
     background:rgba(255,255,255,1);
-    border:1px solid rgba(228,232,237,1);
-    border-radius:6px;
-    padding: 5px 10px;
+    border:0.01rem solid rgba(228,232,237,1);
+    border-radius:0.06rem;
+    padding: 0.05rem 0.1rem;
     .step {
         background:rgba(255,255,255,1);
-        border:1px solid rgba(228,232,237,1);
-        border-radius:6px;
-        margin: 15px;
+        border:0.01rem solid rgba(228,232,237,1);
+        border-radius:0.06rem;
+        margin: 0.15rem;
         .stepimg {
-            width: 992px;
-            height: 500px;
+            width: 9.92rem;
+            height: 5rem;
         }
     }
         .stepbut {
-            margin: 40px 0;
+            margin: 0.4rem 0;
             text-align: center;
             button {
-                margin: 0 20px;
+                margin: 0 0.2rem;
             }
             .pre {
-                width:170px;
-                height:44px;
+                width:1.7rem;
+                height:0.44rem;
                 background:transparent;
-                border-radius:4px;
-                border: rgba(255,129,38,1) 1px solid;
+                border-radius:0.04rem;
+                border: rgba(255,129,38,1) 0.01rem solid;
                 color: #FF8126;
-                font-size: 16px;
+                font-size: 0.16rem;
             }   
             .next {
-                width:170px;
-                height:44px;
-                border:1px solid rgba(0,0,0,1);
+                width:1.7rem;
+                height:0.44rem;
+                border:0.01rem solid rgba(0,0,0,1);
                 background:linear-gradient(-90deg,rgba(255,183,38,1),rgba(255,129,38,1));
-                border-radius:4px;
+                border-radius:0.04rem;
                 border:none;
                 color: #fff;
-                font-size: 16px;
+                font-size: 0.16rem;
             }         
         }
 }
   hgroup{
-    width: 210px;
-    min-height: 700px;
-    padding-bottom: 50px;
+    width: 2.1rem;
+    min-height: 7rem;
+    padding-bottom: 0.5rem;
     float: right;
-    border-left:1px solid rgba(228,232,237,1);
+    border-left:0.01rem solid rgba(228,232,237,1);
     transition: width .3s;
     background-color: #fff;
     &>div{
-      padding: 0 20px;
-      height: 70px;
-      line-height: 70px;
+      padding: 0 0.2rem;
+      height: 0.7rem;
+      line-height: 0.7rem;
       background-image: url('../../../../assets/images/task_bg.png');
       display: flex;
-      font-size: 18px;
+      font-size: 0.18rem;
       color: #fff;
       font-weight: 600;
       &>span:first-child{
@@ -148,22 +148,22 @@ export default {
       }
       &>span:nth-child(2) {
         display: inline-block;
-        width: 24px;
-        height: 24px;
-        line-height: 24px;
-        margin-top: 23px;
+        width: 0.24rem;
+        height: 0.24rem;
+        line-height: 0.24rem;
+        margin-top: 0.23rem;
         cursor: pointer;
       }
     }
     &>ul>li{
-      padding: 15px 14px 0 16px;
+      padding: 0.15rem 0.14rem 0 0.16rem;
       h4{
-        height: 16px;
-        line-height: 16px;
+        height: 0.16rem;
+        line-height: 0.16rem;
         font-weight: 600;
-        text-indent: 26px;
-        background-size: 16px 16px;
-        margin-bottom: 15px;
+        text-indent: 0.26rem;
+        background-size: 0.16rem 0.16rem;
+        margin-bottom: 0.15rem;
         background-position: 0 0;
         background-repeat: no-repeat;
         &.icon-course{
@@ -173,12 +173,12 @@ export default {
           background-image: url('../../../../assets/images/icon/icon_course_content.png');
         }
         &.icon-questionnaire{
-          background-size: 14px 16px;
+          background-size: 0.14rem 0.16rem;
           background-image: url('../../../../assets/images/icon/icon_course_look.png');
         }
         &.icon-works{
-          background-size: 16px 14px;
-          background-position: 1px 0;
+          background-size: 0.16rem 0.14rem;
+          background-position: 0.01rem 0;
           background-image: url('../../../../assets/images/icon/icon_course_completed.png');
         }
         &.icon-clock{
@@ -187,40 +187,40 @@ export default {
       }
       div{
         background-color: #F2F5F7;
-        padding: 15px 12px 3px;
+        padding: 0.15rem 0.12rem 0.03rem;
         p{
           display: block;
-          font-size: 12px;
-          line-height: 12px;
-          text-indent: 16px;
+          font-size: 0.12rem;
+          line-height: 0.12rem;
+          text-indent: 0.16rem;
           position: relative;
           color: #888;
-          margin-bottom: 11px;
+          margin-bottom: 0.11rem;
           &:after {
             content: '';
             display: block;
             position: absolute;
-            width: 4px;
-            height: 4px;
+            width: 0.04rem;
+            height: 0.04rem;
             background-color: #C2C8CC;
-            top: 3px;
+            top: 0.03rem;
             left: 0;
           }
         }
       }
     }
     &.active {
-      width: 44px;
-      height: 44px;
-      min-height: 44px;
+      width: 0.44rem;
+      height: 0.44rem;
+      min-height: 0.44rem;
       padding-bottom: 0;
-      margin-top: 28px;
+      margin-top: 0.28rem;
       background-color: transparent;
       border: none;
       &>div{
-        width: 44px;
-        height: 44px;
-        padding: 10px;
+        width: 0.44rem;
+        height: 0.44rem;
+        padding: 0.1rem;
         text-align: center;
         border-radius: 50% 0 0 50%;
         span:nth-child(1){

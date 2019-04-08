@@ -98,25 +98,25 @@ export default {
     transform: translate(-50%, -50%);
     background: #fff;
     // max-height: 80%;
-    // min-width: 640px;
+    // min-width: 6.4rem;
     max-width: 80%;
-    border-radius: 5px;
+    border-radius: 0.05rem;
     z-index: 4445;
     animation: slide 0.5s ease-out;
-    border-radius: 8px;
+    border-radius: 0.08rem;
 
     .category-title {
-      font-size: 18px;
+      font-size: 0.18rem;
       text-align: center;
-      padding-bottom: 30px;
+      padding-bottom: 0.3rem;
     }
 
     .close-icon {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      right: 10px;
-      font-size: 20px;
+      right: 0.1rem;
+      font-size: 0.2rem;
       color: #999;
       display: block;
       transition: all 0.5s ease;
@@ -132,26 +132,26 @@ export default {
   width: 100%;
   box-sizing: border-box;
   text-align: left;
-  padding-left: 20px;
-  height: 50px;
-  line-height: 50px;
+  padding-left: 0.2rem;
+  height: 0.5rem;
+  line-height: 0.5rem;
   position: relative;
-  border-bottom: 1px solid #e4e8ed;
-  margin-bottom: 10px;
+  border-bottom: 0.01rem solid #e4e8ed;
+  margin-bottom: 0.1rem;
 
   &:before {
     content: "";
     display: inline-block;
-    width: 3px;
-    height: 10px;
+    width: 0.03rem;
+    height: 0.1rem;
     background: #f79727;
-    border-radius: 3px;
+    border-radius: 0.03rem;
     vertical-align: middle;
     position: absolute;
     top: 50%;
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
-    left: 10px;
+    left: 0.1rem;
   }
 }
 
@@ -176,35 +176,35 @@ export default {
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  max-height: 400px;
+  max-height: 4rem;
   width: 100%;
   overflow: auto;
-  margin-bottom: 30px;
-  padding: 0 5px;
+  margin-bottom: 0.3rem;
+  padding: 0 0.05rem;
   box-sizing: border-box;
 }
 .lesson-item {
-  width: 110px;
-  height: 140px;
+  width: 1.1rem;
+  height: 1.4rem;
   flex: 1;
   display: inline-block;
-  margin: 10px 5px;
-  border: 1px solid #e4e8ed;
-  border-radius: 4px;
+  margin: 0.1rem 0.05rem;
+  border: 0.01rem solid #e4e8ed;
+  border-radius: 0.04rem;
   cursor: pointer;
 
   .lesson-img {
     .less-image {
       width: 100%;
-      height: 75px;
+      height: 0.75rem;
     }
   }
 }
 
 .lesson-intro {
-  padding: 5px;
+  padding: 0.05rem;
   text-align: left;
-  font-size: 12px;
+  font-size: 0.12rem;
 
   .lesson-title {
     font-weight: bold;
@@ -212,7 +212,7 @@ export default {
 
   .lesson-title,
   .lesson-data {
-    padding-bottom: 5px;
+    padding-bottom: 0.05rem;
     color: #666666;
   }
 }

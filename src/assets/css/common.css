@@ -16,7 +16,7 @@
   background-color: #F5F6F7;
 }
 .el-table--small td{
-  padding: 16px 0;
+  padding: 0.16rem 0;
 }
 .el-table .descending .sort-caret.descending{
   border-top-color: #F28C18;
@@ -27,20 +27,20 @@
 
 /* team */
 .team .el-dialog__body {
-  padding: 20px 1px;
+  padding: 0.2rem 0.01rem;
 }
 
 /* mytest */
 .mytest .el-table .tableRow{
-  height: 70px;
+  height: 0.7rem;
 }
 .mytest .el-table .tableRow:hover {
   background:#fff;
   border-collapse: collapse;
-  /* box-shadow:5px 5px 5px 5px rgba(247,151,39,1); */
-  box-shadow: 0 0 7px #FE7B00 inset;
-  border:1px solid #EDEFF2;
-  height: 70px;
+  /* box-shadow:0.05rem 0.05rem 0.05rem 0.05rem rgba(247,151,39,1); */
+  box-shadow: 0 0 0.07rem #FE7B00 inset;
+  border:0.01rem solid #EDEFF2;
+  height: 0.7rem;
 }
 .mytest .el-table .tableRow:hover .look{
   /* visibility: visible; */
@@ -56,18 +56,18 @@
   background-color: initial !important;
 }
 .mytest .el-select-dropdown{
-  top:53px !important;
+  top:0.53rem !important;
 }
 
 .upload .el-upload {width: 100%}
 .upload .el-upload-list{
   background:rgba(245,246,248,1);
-  border:1px dotted rgba(228,228,228,1);
-  border-radius:2px;
+  border:0.01rem dotted rgba(228,228,228,1);
+  border-radius:0.02rem;
 }
 .upload .el-upload-list li {
- border: #F79727 1px solid;
- width: 60px;
+ border: #F79727 0.01rem solid;
+ width: 0.6rem;
  display: inline-block;
- margin: 10px;
+ margin: 0.1rem;
 }

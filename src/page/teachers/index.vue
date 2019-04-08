@@ -39,7 +39,7 @@ export default {
 
 <style lang="scss" scoped>
 .g_main {
-  width: 1366px;
+  width: 13.66rem;
   height: 100%;
   margin: 0 auto;
 }
@@ -47,72 +47,72 @@ export default {
   display: flex;
   height: 100%;
   & > aside {
-    width: 150px;
+    width: 1.5rem;
     height: 100%;
-    min-height: 700px;
+    min-height: 7rem;
     background-color: #fff;
-    margin-top: 1px;
-    border-right: 1px solid rgba(228, 232, 237, 1);
+    margin-top: 0.01rem;
+    border-right: 0.01rem solid rgba(228, 232, 237, 1);
     text-align: center;
-    padding-top: 20px;
+    padding-top: 0.2rem;
     & > img {
-      width: 80px;
+      width: 0.8rem;
       border-radius: 50%;
     }
     & .logo {
-      width: 49px;
-      height: 49px;
+      width: 0.49rem;
+      height: 0.49rem;
       display: block;
       margin: 0 auto;
-      margin-bottom: 32px;
+      margin-bottom: 0.32rem;
     }
     & > .user {
       text-align: center;
-      height: 16px;
-      line-height: 16px;
+      height: 0.16rem;
+      line-height: 0.16rem;
       font-weight: 600;
-      margin: 14px 0 12px;
+      margin: 0.14rem 0 0.12rem;
       & > span {
-        width: 16px;
+        width: 0.16rem;
         display: inline-block;
-        margin-left: 6px;
+        margin-left: 0.06rem;
         font-weight: 400;
       }
     }
     & > p {
-      font-size: 13px;
-      line-height: 13px;
-      margin-bottom: 36px;
+      font-size: 0.13rem;
+      line-height: 0.13rem;
+      margin-bottom: 0.36rem;
       color: #888;
     }
     & > .nav {
-      height: 66px;
-      margin-bottom: 11px;
+      height: 0.66rem;
+      margin-bottom: 0.11rem;
       text-align: left;
-      font-size: 15px;
+      font-size: 0.15rem;
       color: #666;
       &.active {
-        border-left: 3px solid #f79727;
+        border-left: 0.03rem solid #f79727;
         background: rgba(252, 244, 235, 1);
-        font-size: 16px;
+        font-size: 0.16rem;
         color: #f79727;
       }
       & > span:nth-child(1) {
         display: inline-block;
-        width: 20px;
-        height: 22px;
+        width: 0.2rem;
+        height: 0.22rem;
         line-height: 1;
-        margin: 22px 13px 0 25px;
+        margin: 0.22rem 0.13rem 0 0.25rem;
       }
       & > span:nth-child(2) {
         display: inline-block;
-        margin-top: 25px;
+        margin-top: 0.25rem;
       }
     }
   }
   & > section {
     flex: 1;
-    width: calc(100% - 150px);
+    width: calc(100% - 1.5rem);
     height: 100%;
   }
 }

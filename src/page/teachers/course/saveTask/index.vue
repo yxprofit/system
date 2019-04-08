@@ -10,7 +10,7 @@
       </el-row>
       <div class="preview">
         <img src="../../../../assets/images/preview.png" style="width: 110%;" alt>
-        <!-- <div style="background: green; height:400px; width: 500px;"></div> -->
+        <!-- <div style="background: green; height:4rem; width: 5rem;"></div> -->
       </div>
     </div>
     <div class="task-close" @click="taskClose">
@@ -37,23 +37,23 @@ export default {
 
 <style lang="scss" scoped>
 .save-task {
-  width: 880px;
-  padding: 30px 36px 34px 36px;
+  width: 8.8rem;
+  padding: 0.3rem 0.36rem 0.34rem 0.36rem;
 }
 
 .save-header {
-  height: 75px;
-  line-height: 75px;
-  padding: 0 20px;
+  height: 0.75rem;
+  line-height: 0.75rem;
+  padding: 0 0.2rem;
   box-sizing: border-box;
 }
 
 .task-wrap {
-  border: 1px solid rgba(228, 232, 237, 1);
+  border: 0.01rem solid rgba(228, 232, 237, 1);
 }
 
 .preview {
-  height: 425px;
+  height: 4.25rem;
   overflow: auto;
 }
 
@@ -67,12 +67,12 @@ export default {
   text-align: center;
   display: inline-block;
   vertical-align: middle;
-  font-size: 12px;
-  border-radius: 2px;
+  font-size: 0.12rem;
+  border-radius: 0.02rem;
   color: #fff;
-  width: 120px;
-  height: 42px;
-  line-height: 42px;
+  width: 1.2rem;
+  height: 0.42rem;
+  line-height: 0.42rem;
 }
 
 .btn-wrap {
@@ -81,8 +81,8 @@ export default {
 
 .task-delete {
   color: #999;
-  border: 1px solid rgba(204, 204, 204, 1);
-  margin-right: 10px;
+  border: 0.01rem solid rgba(204, 204, 204, 1);
+  margin-right: 0.1rem;
 }
 
 .task-save {
@@ -95,9 +95,9 @@ export default {
 
 .task-close {
   position: absolute;
-  right: 15px;
-  top: 10px;
-  font-size: 18px;
+  right: 0.15rem;
+  top: 0.1rem;
+  font-size: 0.18rem;
 }
 </style>
 

@@ -57,30 +57,30 @@ export default {
 <style lang="scss" scoped>
 .course{
   // width: 100%;
-  height:calc(100vh - 50px);
+  height:calc(100vh - 0.5rem);
   // background: #eee;
   display: flex;
   aside{
-    width: 114px;
+    width: 1.14rem;
     transition: width .3s;
-    padding-top: 20px;
-    margin: 0 10px;
+    padding-top: 0.2rem;
+    margin: 0 0.1rem;
     &>span{
       display: block;
-      width: 22px;
-      height: 14px;
-      margin-left: 10px;
-      margin-bottom: 20px;
+      width: 0.22rem;
+      height: 0.14rem;
+      margin-left: 0.1rem;
+      margin-bottom: 0.2rem;
       cursor: pointer;
     }
     div{
       a{
         display: block;
         width: 100%;
-        height: 40px;
-        border-radius:4px;
+        height: 0.4rem;
+        border-radius:0.04rem;
         cursor: pointer;
-        margin-bottom: 12px;
+        margin-bottom: 0.12rem;
         color: #666;
         overflow: hidden;
         background-color: #fff;
@@ -89,9 +89,9 @@ export default {
         span{
           &:nth-child(1){
             display: inline-block;
-            width: 16px;
-            height: 16px;
-            margin: 12px;
+            width: 0.16rem;
+            height: 0.16rem;
+            margin: 0.12rem;
           }
         }
         &.active{
@@ -101,11 +101,11 @@ export default {
       }
     }
     &.active{
-      width: 40px;
+      width: 0.4rem;
       div a{
         // transition: all .1s;
         &.over{
-          width: 114px;
+          width: 1.14rem;
           transition: width .2s;
           overflow-x: visible;
           position: relative;

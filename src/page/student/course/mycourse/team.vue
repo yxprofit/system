@@ -57,20 +57,20 @@ export default {
 <style lang="scss" scoped>
 .team {
   .teamTitle {
-    font-size: 16px;
+    font-size: 0.16rem;
     font-weight: bold;
     color: rgba(51, 51, 51, 1);
     position: relative;
-    text-indent: 15px;
+    text-indent: 0.15rem;
     h3 {
       font-weight: bold;
       &:after {
         content: "";
         display: block;
-        width: 4px;
-        height: 16px;
+        width: 0.04rem;
+        height: 0.16rem;
         background-color: #f79727;
-        border-radius: 2px;
+        border-radius: 0.02rem;
         position: absolute;
         left: 0;
         top: 0;
@@ -84,57 +84,57 @@ export default {
       display: flex;
       justify-content: flex-start;
       flex-wrap: nowrap;
-      height: 645px;
-      width: 1100px;
+      height: 6.45rem;
+      width: 11rem;
     }
     li {
-      border: 1px solid #e4e8ed;
-      width: 334px;
+      border: 0.01rem solid #e4e8ed;
+      width: 3.34rem;
       display: inline-block;
-      margin-right: 7px;
+      margin-right: 0.07rem;
       &:last-child {
         margin-right: 0;
       }
       h4 {
         background: rgba(245, 246, 248, 1);
         color: #333;
-        font-size: 14px;
-        padding: 20px;
+        font-size: 0.14rem;
+        padding: 0.2rem;
       }
       .teamMain {
-        padding: 10px 10px 10px 13px;
+        padding: 0.1rem 0.1rem 0.1rem 0.13rem;
         box-sizing: border-box;
-        max-height: 534px;
+        max-height: 5.34rem;
         overflow-y: scroll;
 
       }
       .teamBlock {
-        margin-bottom: 12px;
+        margin-bottom: 0.12rem;
         display: flex;
       }
       .teamAvatar {
         flex: 1;
-        max-width: 70px;
+        max-width: 0.7rem;
         img {
-          width: 50px;
-          height: 50px;
+          width: 0.5rem;
+          height: 0.5rem;
           border-radius: 100%;
         }
         span {
           color: #333;
-          font-size: 14px;
+          font-size: 0.14rem;
           display: block;
-          margin: 10px 0 0;
+          margin: 0.1rem 0 0;
           font-weight: bold;
         }
       }
       .teamText {
         flex: 1;
-        width: 230px;
-        font-size: 12px;
+        width: 2.3rem;
+        font-size: 0.12rem;
         font-family: ArialMT;
         color: #999;
-        line-height: 20px;
+        line-height: 0.2rem;
       }
       &:hover {
         h4 {
@@ -147,9 +147,9 @@ export default {
   }
 }
 .team /deep/ .el-dialog {
-  margin-top: 45px !important;
+  margin-top: 0.45rem !important;
   overflow: hidden !important;
-  height: 645px;
+  height: 6.45rem;
 }
 .team /deep/ .el-dialog__wrapper {
   overflow: hidden !important;
