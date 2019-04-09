@@ -3,17 +3,18 @@
     <hgroup :class="{'active':isHidden}">
       <div>
         <span>我的任务</span>
-        <span @click="changeIsHidden"><img src="../../../../assets/images/icon/icon_task_close.png" alt=""></span>
+        <!-- <span @click="changeIsHidden"><img src="../../../../assets/images/icon/icon_task_close.png" alt=""></span> -->
+        <span @click="goTrends"><img src="../../../../assets/images/icon/icon_task_close.png" alt=""></span>
       </div>
       <ul>
-        <li>
-          <h4 class="icon-course">课件任务名称</h4>
+        <li v-for="(item,index) in tasklist" :key="index">
+          <h4 :class="item.classname">{{item.title}}</h4>
           <div>
-            <p>截止时间：2019.03.11</p>
-            <p>发起人：张丹丹老师</p>
+            <p>截止时间：{{item.time}}</p>
+            <p>发起人：{{item.teacher}}</p>
           </div>
         </li>
-        <li>
+        <!-- <li>
           <h4 class="icon-test">测试任务名称</h4>
           <div>
             <p>截止时间：2019.03.11</p>
@@ -40,9 +41,9 @@
             <p>截止时间：2019.03.11</p>
             <p>发起人：张丹丹老师</p>
           </div>
-        </li>
+        </li> -->
       </ul>
-      <div class='more'>查看更多</div>
+      <var class="taskmore" v-show='!isHidden' @click="loadMore">查看更多</var>
     </hgroup>
     <section :class="{'center':1,'active':isHidden}">
       <div>
@@ -54,85 +55,141 @@
         <section class='list'>
           <ul v-show='isTab===0'>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img1.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img1.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img2.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img2.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img3.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img3.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img4.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img4.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img5.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img5.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img1.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img1.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img3.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img2.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img4.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img3.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img5.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img4.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img1.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img5.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img3.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img1.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img4.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img2.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img5.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img3.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img1.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img4.png" alt=""> -->
+              <h4>课程名称课程名称</h4>
+              <p>开始时间：2019.01.01</p>
+              <p>结束时间：2019.01.01</p>
+            </router-link>
+            <router-link to="mycourse/view" tag="li">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img5.png" alt=""> -->
+              <h4>课程名称课程名称</h4>
+              <p>开始时间：2019.01.01</p>
+              <p>结束时间：2019.01.01</p>
+            </router-link>
+            <router-link to="mycourse/view" tag="li">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img1.png" alt=""> -->
+              <h4>课程名称课程名称</h4>
+              <p>开始时间：2019.01.01</p>
+              <p>结束时间：2019.01.01</p>
+            </router-link>
+            <router-link to="mycourse/view" tag="li">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img2.png" alt=""> -->
+              <h4>课程名称课程名称</h4>
+              <p>开始时间：2019.01.01</p>
+              <p>结束时间：2019.01.01</p>
+            </router-link>
+            <router-link to="mycourse/view" tag="li">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img3.png" alt=""> -->
+              <h4>课程名称课程名称</h4>
+              <p>开始时间：2019.01.01</p>
+              <p>结束时间：2019.01.01</p>
+            </router-link>
+            <router-link to="mycourse/view" tag="li">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img4.png" alt=""> -->
+              <h4>课程名称课程名称</h4>
+              <p>开始时间：2019.01.01</p>
+              <p>结束时间：2019.01.01</p>
+            </router-link>
+            <router-link to="mycourse/view" tag="li">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img5.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
@@ -144,31 +201,36 @@
           </ul>
           <ul v-show='isTab===1'>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img4.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img1.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img5.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img2.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img1.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img3.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img2.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img4.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img3.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img5.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
@@ -191,7 +253,39 @@ export default {
     return {
       loading: true,
       isHidden: false,
-      isTab: 0
+      isTab: 0,
+      tasklist:[
+        {
+          title:'课件任务名称',
+          time:'2019.03.11',
+          teacher:'张丹丹老师',
+          classname:'icon-course'
+        },
+        {
+          title:'测试任务名称',
+          time:'2019.03.11',
+          teacher:'张丹丹老师',
+          classname:'icon-test'
+        },
+        {
+          title:'问卷任务名称',
+          time:'2019.03.11',
+          teacher:'张丹丹老师',
+          classname:'icon-questionnaire'
+        },
+        {
+          title:'作品上传',
+          time:'2019.03.11',
+          teacher:'张丹丹老师',
+          classname:'icon-works'
+        },
+        {
+          title:'优势打卡任务名称',
+          time:'2019.03.11',
+          teacher:'张丹丹老师',
+          classname:'icon-clock'
+        }
+      ]
     }
   },
   created() {
@@ -201,11 +295,22 @@ export default {
     }, 1000)
   },
   methods: {
+    goTrends(){
+      this.$router.push('/student/course/task')
+    },
     changeIsHidden() {
       this.isHidden = !this.isHidden
     },
     changeTab(num) {
       this.isTab = num
+    },
+    loadMore(){
+      this.tasklist.push( {
+          title:`课件任务名称${parseInt(Math.random()*10)}`,
+          time:'2019.03.11',
+          teacher:'张丹丹老师',
+          classname:'icon-course'
+        })
     }
   }
 }
@@ -217,47 +322,47 @@ export default {
   height: 100%;
   // overflow: auto;
   & > section {
-    width: calc(100% - 222px);
+    width: calc(100% - 2.22rem);
     height: 100%;
-    border: 1px solid rgba(228, 232, 237, 1);
+    border: 0.01rem solid rgba(228, 232, 237, 1);
     transition: width 0.3s;
-    // padding-right: 222px;
+    // padding-right: 2.22rem;
     & > div {
       height: 100%;
-      padding: 0 20px;
-      border-radius: 6px;
+      padding: 0 0.2rem;
+      border-radius: 0.06rem;
       background-color: #fff;
       & > div {
-        height: 70px;
-        line-height: 70px;
+        height: 0.7rem;
+        line-height: 0.7rem;
         display: flex;
         h2 {
           flex: 1;
           display: block;
-          height: 20px;
-          text-indent: 40px;
+          height: 0.2rem;
+          text-indent: 0.4rem;
           position: relative;
-          font-size: 18px;
+          font-size: 0.18rem;
           font-weight: 600;
           &:after {
             content: "";
             position: absolute;
-            width: 18px;
-            height: 20px;
-            top: 25px;
-            left: 8px;
+            width: 0.18rem;
+            height: 0.2rem;
+            top: 0.25rem;
+            left: 0.08rem;
             background-image: url("../../../../assets/images/icon/icon_mycourse.png");
           }
         }
         span {
           display: block;
-          width: 100px;
-          height: 32px;
+          width: 1rem;
+          height: 0.32rem;
           font-weight: bold;
-          line-height: 32px;
+          line-height: 0.32rem;
           text-align: center;
-          border-radius: 16px;
-          margin-top: 19px;
+          border-radius: 0.16rem;
+          margin-top: 0.19rem;
           color: #666;
           cursor: pointer;
           position: relative;
@@ -271,21 +376,21 @@ export default {
               position: absolute;
               bottom: 0;
               left: 50%;
-              width: 20px;
-              height: 4px;
-              margin-left: -10px;
+              width: 0.2rem;
+              height: 0.04rem;
+              margin-left: -0.1rem;
               background: linear-gradient(
                 -90deg,
                 rgba(255, 183, 38, 1),
                 rgba(255, 129, 38, 1)
               );
-              border-radius: 2px;
+              border-radius: 0.02rem;
             }
           }
         }
       }
       & > section {
-        padding-bottom: 30px;
+        padding-bottom: 0.3rem;
         ul {
           display: flex;
           display: -webkit-flex;
@@ -294,43 +399,43 @@ export default {
           flex-wrap: wrap;
           li {
             box-sizing: border-box;
-            width: 260px;
-            height: 310px;
-            border-radius: 4px;
+            width: 2.6rem;
+            height: 3.1rem;
+            border-radius: 0.04rem;
             overflow: hidden;
-            border: 1px solid rgba(228, 232, 237, 1);
-            margin-bottom: 15px;
-            padding-bottom: 3px;
+            border: 0.01rem solid rgba(228, 232, 237, 1);
+            margin-bottom: 0.15rem;
+            padding-bottom: 0.03rem;
             cursor: pointer;
             img {
-              width: 190px;
-              height: 200px;
+              width: 1.9rem;
+              height: 2rem;
               display: block;
               margin: 0 auto;
             }
             h4 {
-              margin: 16px 13px 15px;
-              font-size: 15px;
+              margin: 0.16rem 0.13rem 0.15rem;
+              font-size: 0.15rem;
               font-weight: 600;
             }
             p {
               display: block;
-              height: 12px;
-              margin-left: 13px;
-              margin-bottom: 9px;
-              font-size: 12px;
-              line-height: 12px;
-              text-indent: 9px;
+              height: 0.12rem;
+              margin-left: 0.13rem;
+              margin-bottom: 0.09rem;
+              font-size: 0.12rem;
+              line-height: 0.12rem;
+              text-indent: 0.09rem;
               position: relative;
               &:after {
                 content: "";
                 display: block;
-                width: 4px;
-                height: 4px;
+                width: 0.04rem;
+                height: 0.04rem;
                 background-color: #56bf79;
                 position: absolute;
                 left: 0;
-                top: 3px;
+                top: 0.03rem;
               }
               &:last-child:after {
                 background-color: #fa6464;
@@ -346,37 +451,25 @@ export default {
       }
     }
     &.active {
-      width: calc(100% - 14px);
+      width: calc(100% - 0.14rem);
     }
   }
   hgroup {
-    width: 210px;
+    width: 2.1rem;
     height: 100%;
+    overflow: scroll;
+    padding-bottom: 0.5rem;
     float: right;
-    border-left: 1px solid rgba(228, 232, 237, 1);
+    border-left: 0.01rem solid rgba(228, 232, 237, 1);
     transition: width 0.3s;
     background-color: #fff;
-    .more {
-      margin: 30px auto 0;
-      background: #fff;
-      width: 110px;
-      height: 33px;
-      border: 1px solid rgba(187, 187, 187, 1);
-      border-radius: 16px;
-      font-size: 13px;
-      font-family: MicrosoftYaHei;
-      font-weight: 400;
-      color: rgba(153, 153, 153, 1);
-      line-height: 33px;
-      text-align: center;
-    }
     & > div {
-      padding: 0 20px;
-      height: 70px;
-      line-height: 70px;
+      padding: 0 0.2rem;
+      height: 0.7rem;
+      line-height: 0.7rem;
       background-image: url("../../../../assets/images/task_bg.png");
       display: flex;
-      font-size: 18px;
+      font-size: 0.18rem;
       color: #fff;
       font-weight: 600;
       & > span:first-child {
@@ -384,22 +477,22 @@ export default {
       }
       & > span:nth-child(2) {
         display: inline-block;
-        width: 24px;
-        height: 24px;
-        line-height: 24px;
-        margin-top: 23px;
+        width: 0.24rem;
+        height: 0.24rem;
+        line-height: 0.24rem;
+        margin-top: 0.23rem;
         cursor: pointer;
       }
     }
     & > ul > li {
-      padding: 15px 14px 0 16px;
+      padding: 0.15rem 0.14rem 0 0.16rem;
       h4 {
-        height: 16px;
-        line-height: 16px;
+        height: 0.16rem;
+        line-height: 0.16rem;
         font-weight: 600;
-        text-indent: 26px;
-        background-size: 16px 16px;
-        margin-bottom: 15px;
+        text-indent: 0.26rem;
+        background-size: 0.16rem 0.16rem;
+        margin-bottom: 0.15rem;
         background-position: 0 0;
         background-repeat: no-repeat;
         &.icon-course {
@@ -409,12 +502,12 @@ export default {
           background-image: url("../../../../assets/images/icon/s5.png");
         }
         &.icon-questionnaire {
-          background-size: 14px 16px;
+          background-size: 0.14rem 0.16rem;
           background-image: url("../../../../assets/images/icon/s6.png");
         }
         &.icon-works {
-          background-size: 16px 14px;
-          background-position: 1px 0;
+          background-size: 0.16rem 0.14rem;
+          background-position: 0.01rem 0;
           background-image: url("../../../../assets/images/icon/s7.png");
         }
         &.icon-clock {
@@ -423,40 +516,40 @@ export default {
       }
       div {
         background-color: #f2f5f7;
-        padding: 15px 12px 3px;
+        padding: 0.15rem 0.12rem 0.03rem;
         p {
           display: block;
-          font-size: 12px;
-          line-height: 12px;
-          text-indent: 16px;
+          font-size: 0.12rem;
+          line-height: 0.12rem;
+          text-indent: 0.16rem;
           position: relative;
           color: #888;
-          margin-bottom: 11px;
+          margin-bottom: 0.11rem;
           &:after {
             content: "";
             display: block;
             position: absolute;
-            width: 4px;
-            height: 4px;
+            width: 0.04rem;
+            height: 0.04rem;
             background-color: #c2c8cc;
-            top: 3px;
+            top: 0.03rem;
             left: 0;
           }
         }
       }
     }
     &.active {
-      width: 44px;
-      height: 44px;
-      min-height: 44px;
+      width: 0.44rem;
+      height: 0.44rem;
+      min-height: 0.44rem;
       padding-bottom: 0;
-      margin-top: 28px;
+      margin-top: 0.28rem;
       background-color: transparent;
       border: none;
       & > div {
-        width: 44px;
-        height: 44px;
-        padding: 10px;
+        width: 0.44rem;
+        height: 0.44rem;
+        padding: 0.1rem;
         text-align: center;
         border-radius: 50% 0 0 50%;
         span:nth-child(1) {
@@ -467,18 +560,34 @@ export default {
           transform: rotate(180deg);
         }
       }
-      ul,
-      .more {
+      ul {
         display: none;
       }
     }
+    .taskmore {
+      border: 0.01rem solid rgba(187, 187, 187, 1);
+      border-radius: 0.16rem;
+      font-size: 0.12rem;
+      color: #999;
+      width: 1rem;
+      height: 0.3rem;
+      line-height: 0.3rem;
+      text-align: center;
+      display: block;
+      margin: 0.3rem auto 0;
+      cursor: pointer;
+    }
   }
   .center {
-    padding-top: 14px;
+    padding-top: 0.14rem;
     .list {
-      max-height: calc(100vh - 130px);
+      max-height: calc(100vh - 1.3rem);
       overflow: auto;
     }
+  }
+  .list {
+    max-height: calc(100vh - 1.8rem);
+    overflow: auto;
   }
 }
 </style>

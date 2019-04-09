@@ -1,4 +1,4 @@
-@charset "utf-8";html{background-color:#EEF2F5;color:#333;font-size:14px;font-family: Arial, "Microsoft Yahei", "Helvetica Neue", Helvetica, sans-serif;}
+@charset "utf-8";html{background-color:#EEF2F5;color:#333;font-family: Arial, "Microsoft Yahei", "Helvetica Neue", Helvetica, sans-serif;}
 body,ul,ol,dl,dd,h1,h2,h3,h4,h5,h6,figure,form,fieldset,legend,input,textarea,button,p,blockquote,th,td,pre,xmp{margin:0;padding:0}
 body,input,textarea,button,select,pre,xmp,tt,code,kbd,samp{line-height:1;font-family:tahoma,arial,"Hiragino Sans GB",simsun,sans-serif}
 h1,h2,h3,h4,h5,h6,small,big,input,textarea,button,select{font-size:100%}
@@ -21,7 +21,7 @@ mark{background-color:transparent}
 a,ins,s,u,del{text-decoration:none}
 sup,sub{vertical-align:baseline}
 html {height: 100%;-webkit-tap-highlight-color: transparent;}
-hr {height: .02rem;margin: .1rem 0;border: medium none;border-top: .02rem solid #cacaca;}
+hr {height: 0.02rem;margin: 0.1rem 0;border: medium none;border-top: 0.02rem solid #cacaca;}
 a {color: #F79727;text-decoration: none;}
 div{box-sizing: border-box}
 input{font-family:  'PingFangSC-Regular','Avenir', Helvetica, Arial, sans-serif;}
@@ -43,13 +43,13 @@ input{font-family:  'PingFangSC-Regular','Avenir', Helvetica, Arial, sans-serif;
 }
 
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 0.05rem;
+  height: 0.05rem;
 }
 ::-webkit-scrollbar-thumb {
   background-color: #E4E8ED;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 3px;
+  border: 0.01rem solid rgba(255, 255, 255, 0.3);
+  border-radius: 0.03rem;
 }
 ::-webkit-scrollbar-thumb:window-inactive {
   background-color: #E4E8ED;

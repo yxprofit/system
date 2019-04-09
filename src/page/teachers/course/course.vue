@@ -3,7 +3,7 @@
     <aside :class="{'active':isNavShow}">
       <span @click="changeIsNavShow"><img src="../../../assets/images/icon/icon_open_n.png" v-if="!isNavShow" alt=""><img src="../../../assets/images/icon/icon_open.png" v-else alt=""></span>
       <div>
-        <a :class="{'active':current==1,'over': over==1}" @click="toCurrent(1, 'mycourse')" @mouseenter="addover(1)" @mouseleave="addover(0)">
+        <a :class="{'active':current==1,'over': over==1}" @click="toCurrent(1, '/teachers/course/mycourse')" @mouseenter="addover(1)" @mouseleave="addover(0)">
           <span><img src="../../../assets/images/icon/s1.png" v-if="current==1"><img src="../../../assets/images/icon/icon_course_name.png" v-else></span><span>我的课程</span>
         </a>
         <!-- <a :class="{'active':current==2,'over': over==2}" @click="toCurrent(2, 'trends')" @mouseenter="addover(2)" @mouseleave="addover(0)">
@@ -57,29 +57,29 @@ export default {
 <style lang="scss" scoped>
 .course{
   // width: 100%;
-  height: calc(100% - 50px);
+  height: calc(100% - 0.5rem);
   display: flex;
   aside{
-    width: 114px;
+    width: 1.14rem;
     transition: width .3s;
-    padding-top: 20px;
-    margin: 0 10px;
+    padding-top: 0.2rem;
+    margin: 0 0.1rem;
     &>span{
       display: block;
-      width: 22px;
-      height: 14px;
-      margin-left: 10px;
-      margin-bottom: 20px;
+      width: 0.22rem;
+      height: 0.14rem;
+      margin-left: 0.1rem;
+      margin-bottom: 0.2rem;
       cursor: pointer;
     }
     div{
       a{
         display: block;
         width: 100%;
-        height: 40px;
-        border-radius:4px;
+        height: 0.4rem;
+        border-radius:0.04rem;
         cursor: pointer;
-        margin-bottom: 12px;
+        margin-bottom: 0.12rem;
         color: #666;
         overflow: hidden;
         background-color: #fff;
@@ -88,9 +88,9 @@ export default {
         span{
           &:nth-child(1){
             display: inline-block;
-            width: 16px;
-            height: 16px;
-            margin: 12px;
+            width: 0.16rem;
+            height: 0.16rem;
+            margin: 0.12rem;
           }
         }
         &.active{
@@ -100,11 +100,11 @@ export default {
       }
     }
     &.active{
-      width: 40px;
+      width: 0.4rem;
       div a{
         // transition: all .1s;
         &.over{
-          width: 114px;
+          width: 1.14rem;
           transition: width .2s;
           overflow-x: visible;
           position: relative;

@@ -1,7 +1,7 @@
 <template>
   <div class="trends">
     <section>
-      <h2>班级动态</h2>
+      <h2>任务中心</h2>
       <p>待定</p>
     </section>
     <div>
@@ -29,37 +29,37 @@ export default {
 
 <style lang="scss" scoped>
 .trends{
-  margin: 14px 14px 14px 0;
+  margin: 0.14rem 0.14rem 0.14rem 0;
   background-color: #fff;
-  border-radius: 6px;
-  padding: 0 20px;
+  border-radius: 0.06rem;
+  padding: 0 0.2rem;
   &>section {
     display: flex;
-    height: 70px;
-    line-height: 70px;
-    border-bottom: 1px solid #E4E8ED;
+    height: 0.7rem;
+    line-height: 0.7rem;
+    border-bottom: 0.01rem solid #E4E8ED;
     h2{
       flex: 1;
       display: block;
-      height: 20px;
-      text-indent: 40px;
+      height: 0.2rem;
+      text-indent: 0.4rem;
       position: relative;
-      font-size: 18px;
+      font-size: 0.18rem;
       font-weight: 600;
       &:after{
         content: '';
         position: absolute;
-        width: 18px;
-        height: 20px;
-        top: 25px;
-        left: 8px;
+        width: 0.18rem;
+        height: 0.2rem;
+        top: 0.25rem;
+        left: 0.08rem;
         background-image: url('../../../../assets/images/icon/icon_mycourse.png');
       }
     }
     .search {
-      margin-right: 10px;
-      width: 160px;
-      height: 32px;
+      margin-right: 0.1rem;
+      width: 1.6rem;
+      height: 0.32rem;
     }
   }
 }

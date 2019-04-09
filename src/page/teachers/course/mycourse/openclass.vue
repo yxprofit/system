@@ -2,7 +2,7 @@
  <el-dialog
  	class="open-class-dialog"
   :visible.sync="showClass"
-  width="496px">
+  width="4.96rem">
   <div class="header-wraper" slot="title">
     <div class="title">班级列表</div>
     <el-input placeholder="搜索班级" class="search-box" v-model="className" suffix-icon="el-icon-search"></el-input>
@@ -140,42 +140,42 @@ import inclass from 'assets/images/icon/inclass.png'
 <style lang="scss" >
 .open-class-dialog {
 	.el-dialog {
-		border-radius: 6px;
+		border-radius: 0.06rem;
 	}
 
 	.el-dialog__header {
-		padding: 11px 22px 0;
+		padding: 0.11rem 0.22rem 0;
 		.header-wraper {
-			height: 50px;
+			height: 0.5rem;
 			box-sizing: border-box;
-			padding-bottom: 11px;
-			border-bottom: 1px solid rgba(228,232,237,1);
+			padding-bottom: 0.11rem;
+			border-bottom: 0.01rem solid rgba(228,232,237,1);
 			.title {
-        height:16px;
-        font-size:16px;
+        height:0.16rem;
+        font-size:0.16rem;
         font-weight:bold;
-        margin-left: 36px;
+        margin-left: 0.36rem;
         color:rgba(51,51,51,1);
         display: inline-block;
         vertical-align: middle;
 	    }
       .search-box {
       	display: inline-block;
-      	margin-left: 28px;
-      	width: 285px;
+      	margin-left: 0.28rem;
+      	width: 2.85rem;
       	.el-input__inner {
-      		width:285px;
-          height:38px;
+      		width:2.85rem;
+          height:0.38rem;
           background:rgba(238,238,238,1);
-          border-radius: 19px;
+          border-radius: 0.19rem;
           border: none;
-          padding-left: 31px;
-          padding-right: 45px;
+          padding-left: 0.31rem;
+          padding-right: 0.45rem;
       	}
       	.el-input__suffix {
-      		right: 22px;
+      		right: 0.22rem;
       	  .el-icon-search {
-      	  	font-size: 16px;
+      	  	font-size: 0.16rem;
       	  }
       	}
       }
@@ -183,32 +183,32 @@ import inclass from 'assets/images/icon/inclass.png'
 	}
 
   .el-dialog__body {
-  	padding: 16px 58px;
+  	padding: 0.16rem 0.58rem;
   	.class-list {
-  		height:352px;
-  		border-sizing: border-box;
-  		border:1px solid rgba(245,246,247,1);
+  		height:3.52rem;
+  		box-sizing: border-box;
+  		border:0.01rem solid rgba(245,246,247,1);
   		.class-item {
-  			height: 50px;
-  			line-height: 50px;
-  			padding: 0 47px 0 49px;
+  			height: 0.5rem;
+  			line-height: 0.5rem;
+  			padding: 0 0.47rem 0 0.49rem;
   			.class-item__title {
-  				font-size: 16px;
+  				font-size: 0.16rem;
   				font-weight: bold;
   				color:#333;
   				float: left;
   			}
   			.class-item__btn {
   				float: right;
-  				width: 112px;
-  				height: 32px;
-  				line-height: 32px;
+  				width: 1.12rem;
+  				height: 0.32rem;
+  				line-height: 0.32rem;
   				color: #fff;
-  				font-size: 16px;
+  				font-size: 0.16rem;
   				text-align:center;
   				background-color: #F79727;
-  				border-radius: 4px;
-  				margin-top: 9px;
+  				border-radius: 0.04rem;
+  				margin-top: 0.09rem;
   				cursor: pointer;
   				font-size: 0;
   			}
@@ -225,19 +225,19 @@ import inclass from 'assets/images/icon/inclass.png'
   		}
   	}
   	.page-btn {
-      padding: 20px 0 10px;
+      padding: 0.2rem 0 0.1rem;
       text-align: center;
       font-size: 0;
       .prev-btn,
       .next-btn {
       	display: inline-block;
-        width:170px;
-        height: 44px;
-        line-height: 42px;
+        width:1.7rem;
+        height: 0.44rem;
+        line-height: 0.42rem;
         box-sizing: border-box;
-        border: 1px solid #FFB726;
-        border-radius:4px;
-        font-size:16px;
+        border: 0.01rem solid #FFB726;
+        border-radius:0.04rem;
+        font-size:0.16rem;
         font-weight: bold;
         text-align: center;
         cursor: pointer;
@@ -249,7 +249,7 @@ import inclass from 'assets/images/icon/inclass.png'
 
       .next-btn {
       	color: #fff;
-      	margin-left: 20px;
+      	margin-left: 0.2rem;
       	background:linear-gradient(-90deg,rgba(255,183,38,1),rgba(255,129,38,1));
       }
   	}

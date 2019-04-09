@@ -1,11 +1,11 @@
 <template>
 	<div class="upload" v-loading="loading">
-    <el-dialog :visible.sync="state" width="662px" :before-close="handleClose">
+    <el-dialog :visible.sync="state" width="6.62rem" :before-close="handleClose">
 			<div slot="title" class="uploadHead">
         <h3>上传作品</h3>
 			</div>
       <div class="form-wraper">
-        <el-form ref="form" :model="form" label-width="120px">
+        <el-form ref="form" :model="form" label-width="1.2rem">
             <el-form-item label="作品完成日期：">
               <el-date-picker type="date" placeholder="选择日期" v-model="form.date" style="width: 100%;"></el-date-picker>
             </el-form-item>
@@ -113,16 +113,16 @@ export default {
   .uploadHead {
     
     h3 {
-        margin-left: 20px;
-        font-size: 18px;
+        margin-left: 0.2rem;
+        font-size: 0.18rem;
     }
   }
 
   .el-form {
     .el-form-item {
-      margin-bottom: 14px;
+      margin-bottom: 0.14rem;
       textarea {
-        height: 122px;
+        height: 1.22rem;
       }
       .el-select {
         width: 100%;
@@ -131,41 +131,41 @@ export default {
   }
 
   .uploadFile {
-    border:1px solid rgba(220,224,230,1);
-    border-radius:2px;
-    padding: 10px;
+    border:0.01rem solid rgba(220,224,230,1);
+    border-radius:0.02rem;
+    padding: 0.1rem;
     .but {
-      font-size: 12px;
+      font-size: 0.12rem;
       color: #333;
-      height: 40px;
-      line-height: 38px;
+      height: 0.4rem;
+      line-height: 0.38rem;
       box-sizing: border-box;
       background:rgba(245,246,248,1);
-      border:1px dashed rgba(228,228,228,1);
-      border-radius:3px;
+      border:0.01rem dashed rgba(228,228,228,1);
+      border-radius:0.03rem;
       display: block;
-      padding: 0 10px;
+      padding: 0 0.1rem;
       text-align: center;
-      img {width: 14px; margin-right: 10px;}
+      img {width: 0.14rem; margin-right: 0.1rem;}
     }
     .but .text {
       display: inline-block;
       vertical-align: middle;
       color: #333;
-      font-size: 12px;
+      font-size: 0.12rem;
       margin: 0;
     }
 
     .picList {
-      padding: 15px 5px;
+      padding: 0.15rem 0.05rem;
       font-size: 0;
       background:rgba(245,246,248,1);
-      border: 1px dashed rgba(228,228,228,1);
-      margin-top: 10px;
+      border: 0.01rem dashed rgba(228,228,228,1);
+      margin-top: 0.1rem;
       .upok {
-        font-size: 12px;
-        line-height: 12px;
-        margin-bottom: 10px;
+        font-size: 0.12rem;
+        line-height: 0.12rem;
+        margin-bottom: 0.1rem;
         color: #333;
         box-sizing: border-box;
         text-align: center;
@@ -175,13 +175,13 @@ export default {
         justify-content: space-between;
       }
       li {
-        width: 56px;
-        height: 56px;
-        border: #F79727 1px solid;
+        width: 0.56rem;
+        height: 0.56rem;
+        border: #F79727 0.01rem solid;
         display: inline-block;
         img {
-            width: 56px;
-            height: 56px;
+            width: 0.56rem;
+            height: 0.56rem;
         }
       }
     }
@@ -190,18 +190,18 @@ export default {
             width: 50%;
             height: auto;
             border:none;
-            margin: 5px 0;
+            margin: 0.05rem 0;
         }
     }
     .changeUpdate {
-        width: 110px;
+        width: 1.1rem;
         color: #F79727;
-        font-size: 14px;
-        height: 38px;
-        line-height: 38px;
-        margin: 10px auto;
+        font-size: 0.14rem;
+        height: 0.38rem;
+        line-height: 0.38rem;
+        margin: 0.1rem auto;
         background:rgba(247,151,39,.1);
-        border-radius: 3px;
+        border-radius: 0.03rem;
         text-align: center;
     }
 
@@ -212,25 +212,25 @@ export default {
     .text {
       text-align: center;
       color: #999;
-      font-size: 12px;
-      line-height: 12px;
-      margin-bottom: 7px;
+      font-size: 0.12rem;
+      line-height: 0.12rem;
+      margin-bottom: 0.07rem;
     }
   }
 
   .uploadSubmit {
     text-align: center;
-    height: 40px;
-    line-height: 40px;
+    height: 0.4rem;
+    line-height: 0.4rem;
     span {
-      font-size: 15px;
+      font-size: 0.15rem;
       font-weight: bold;
       display: inline-block;
       height: 100%;
-      width: 200px;
+      width: 2rem;
       cursor: pointer;
       background:rgba(247,151,39,1);
-      border-radius:20px;
+      border-radius:0.2rem;
       color: #fff;
     }
   }
@@ -240,19 +240,19 @@ export default {
 <style lang="scss">
 .upload {
   .el-dialog__header {
-    padding: 20px;
-    height: 60px;
-    border-bottom: #E4E8ED 1px solid;
+    padding: 0.2rem;
+    height: 0.6rem;
+    border-bottom: #E4E8ED 0.01rem solid;
   }
   .el-dialog {
-    border-radius: 6px;
+    border-radius: 0.06rem;
   }
   .el-dialog__body {
-    padding: 22px 162px 20px 41px;
+    padding: 0.22rem 1.62rem 0.2rem 0.41rem;
     .el-form {
       .el-form-item__label {
         color:#666;
-        font-size: 15px;
+        font-size: 0.15rem;
       }
       .el-form-item:last-child {
         margin-bottom: 0;

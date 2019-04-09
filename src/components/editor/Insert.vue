@@ -47,13 +47,13 @@ export default {
 <style type="text/css">
 
 .insert-options-items {
-  width: 120px;
-  padding: 5px 0px;
-  border-radius: 2px;
+  width: 1.2rem;
+  padding: 0.05rem 0rem;
+  border-radius: 0.02rem;
   position: absolute;
-  box-shadow: 0 1px 2px #ccc;
+  box-shadow: 0 0.01rem 0.02rem #ccc;
   background-color: #fff;
-  margin-top: 35px;
+  margin-top: 0.35rem;
   text-align: left;
   z-index: 3;
 }
@@ -64,9 +64,9 @@ export default {
 }
 
 .insert-options-items ul li {
-  padding: 5px 20px;
+  padding: 0.05rem 0.2rem;
   color: #333;
-  font-size: 12px;
+  font-size: 0.12rem;
   position: relative;
   cursor: pointer;
   display: flex;
@@ -78,11 +78,11 @@ export default {
 }
 
 .insert-options-items img {
-  width: 20px;
-  height: 20px;
-  top: 1px;
+  width: 0.2rem;
+  height: 0.2rem;
+  top: 0.01rem;
   position: relative;
-  margin-right: 15px;
+  margin-right: 0.15rem;
 }
 
 .insert-options-items #images_upload {

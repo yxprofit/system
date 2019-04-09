@@ -74,14 +74,14 @@ let router = new Router({
               components: {
                 default: resolve => require(['@/page/student/course/works/index.vue'], resolve)
               }
-            },            
+            }, 
+            { // 任务中心
+              path: 'task',
+              components: {
+                default: resolve => require(['@/page/student/task/task.vue'], resolve)
+              }
+            }           
           ]
-        },
-        {
-          path: 'task',
-          components: {
-            default: resolve => require(['@/page/student/task/task.vue'], resolve)
-          }
         }
       ],
       meta: {
@@ -117,9 +117,9 @@ let router = new Router({
               }
             },
             {
-              path: 'trends',
+              path: 'task',
               components: {
-                default: resolve => require(['@/page/teachers/course/trends/index.vue'], resolve)
+                default: resolve => require(['@/page/teachers/course/task/index.vue'], resolve)
               }
             },
             {

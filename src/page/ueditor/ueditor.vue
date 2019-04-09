@@ -7,11 +7,11 @@
         </h3>
       </span>
       <div class="form-wraper">
-        <el-form ref="ruleForm" label-width="80px" class="demo-ruleForm">
+        <el-form ref="ruleForm" label-width="0.8rem" class="demo-ruleForm">
           <el-form-item label="活动名称" prop="name">
             <el-input></el-input>
           </el-form-item>
-          <el-form-item label="内容" prop="name" label-width="55px">
+          <el-form-item label="内容" prop="name" label-width="0.55rem">
             <div id="editor">
               <!-- <vue-html5-editor :content="content" :height="425"></vue-html5-editor> -->
               <smeditor :config="config"></smeditor>
@@ -95,44 +95,53 @@ export default {
   z-index: 9999;
 }
 // dialog样式修改
+.teacher_editor /deep/ .el-dialog{
+  margin-top: 0 !important;
+}
+.teacher_editor /deep/ .el-dialog__wrapper{
+  padding-top: 0.25rem;
+  box-sizing: border-box;
+  overflow: hidden;
+
+}
 .teacher_editor /deep/ .el-dialog__header {
-  height: 60px;
-  border-bottom: 1px solid rgba(228, 232, 237, 1);
+  height: 0.6rem;
+  border-bottom: 0.01rem solid rgba(228, 232, 237, 1);
   .teacher_editor_title {
-    font-size: 16px;
+    font-size: 0.16rem;
     font-family: MicrosoftYaHei-Bold;
     font-weight: bold;
     color: rgba(51, 51, 51, 1);
     h3 {
       i {
-        width: 4px;
-        height: 16px;
+        width: 0.04rem;
+        height: 0.16rem;
         background: rgba(247, 151, 39, 1);
-        border-radius: 2px;
+        border-radius: 0.02rem;
         display: inline-block;
         vertical-align: middle;
-        margin-right: 10px;
+        margin-right: 0.1rem;
       }
     }
   }
 }
 #editor {
-  width: 902px;
-  height: 460px;
-  margin-left: 25px;
+  width: 9.02rem;
+  height: 4.6rem;
+  margin-left: 0.25rem;
 }
 #editor /deep/ .edui-editor-toolbarboxinner {
-  height: 64px;
+  height: 0.64rem;
 }
 #editor /deep/ .edui-toolbar {
-  height: 64px;
-  // line-height: 64px;
+  height: 0.64rem;
+  // line-height: 0.64rem;
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
 #editor /deep/ #edui1_iframeholder {
-  height: 364px !important;
+  height: 3.64rem !important;
 }
 #editor /deep/ #edui1_bottombar {
   display: none;
@@ -143,38 +152,38 @@ export default {
   &:after {
     position: absolute;
     content: ".";
-    width: 6px;
-    height: 6px;
+    width: 0.06rem;
+    height: 0.06rem;
     background: rgba(242, 42, 24, 1);
     border-radius: 50%;
     top: 50%;
     left: 0;
-    margin-top: -3px;
+    margin-top: -0.03rem;
   }
 }
 .teacher_editor /deep/ .el-input {
-  width: 370px;
+  width: 3.7rem;
 }
 .teacher_editor /deep/ .el-button {
-  width: 120px;
-  height: 36px;
+  width: 1.2rem;
+  height: 0.36rem;
   background: linear-gradient(
     -90deg,
     rgba(255, 183, 38, 1),
     rgba(255, 129, 38, 1)
   );
-  border-radius: 4px;
+  border-radius: 0.04rem;
   border: none;
   float: right;
-  margin-right: 50px;
+  margin-right: 0.5rem;
 }
 .upload-item {
   display: inline-block;
-  padding: 8px;
+  padding: 0.08rem;
   color: #2691ff;
-  border: 1px solid #e4e4e4;
-  border-radius: 2px;
-  line-height: 14px;
+  border: 0.01rem solid #e4e4e4;
+  border-radius: 0.02rem;
+  line-height: 0.14rem;
   background-color: #f5f6f8;
   cursor: pointer;
 }

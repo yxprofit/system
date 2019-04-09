@@ -39,7 +39,7 @@ export default {
 <style type="text/css">
 .insert-link {
   position: fixed;
-  top: 0px;
+  top: 0rem;
   left: 0;
   background-color: rgba(255, 255, 255, 1);
   height: 100%;
@@ -52,66 +52,66 @@ export default {
 
 .insert-link-box {
   position: relative;
-  padding: 30px 20px;
-  border-radius: 6px;
-  margin: 0 auto 24px;
+  padding: 0.3rem 0.2rem;
+  border-radius: 0.06rem;
+  margin: 0 auto 0.24rem;
   background-clip: padding-box;
-  box-shadow: 0 2px 8px rgba(0,0,0,.2);
+  box-shadow: 0 0.02rem 0.08rem rgba(0,0,0,.2);
 }
 .insert-link p {
   text-align: center;
-  padding: 20px 0px;
-  font-size: 25px;
+  padding: 0.2rem 0rem;
+  font-size: 0.25rem;
 }
 .insert-link input {
   text-align: left;
-  margin: 5px 0px;
-  border: 1px solid rgb(200,200,200);
-  font-size: 14px;
-  padding: 10px 5px;
-  width: calc(100% - 20px);
+  margin: 0.05rem 0rem;
+  border: 0.01rem solid rgb(200,200,200);
+  font-size: 0.14rem;
+  padding: 0.1rem 0.05rem;
+  width: calc(100% - 0.2rem);
 }
 
 .insert-link button {
   outline: none;
   cursor: pointer;
-  margin-left: calc(50% - 40px);
-  margin-top: 10px;
-  width: 80px;
-  height: 40px;
+  margin-left: calc(50% - 0.4rem);
+  margin-top: 0.1rem;
+  width: 0.8rem;
+  height: 0.4rem;
   border: none;
   text-align: center;
   color: #898989;
   background-color: #fff;
-  font-size: 15px;
-  border-radius: 1px;
-  -webkit-border-radius: 1px;
-  -moz-border-radius: 1px;
+  font-size: 0.15rem;
+  border-radius: 0.01rem;
+  -webkit-border-radius: 0.01rem;
+  -moz-border-radius: 0.01rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-transition: all .2s ease-in;
   -moz-transition: all .2s ease-in;
   transition: all .2s ease-in;
-  -webkit-box-shadow: 0 2px 8px hsla(0,0%,70%,.8);
-  -moz-box-shadow: 0 2px 8px hsla(0,0%,70%,.8);
-  -ms-box-shadow: 0 2px 8px hsla(0,0%,70%,.8);
-  -o-box-shadow: 0 2px 8px hsla(0,0%,70%,.8);
-  box-shadow: 1px 2px 8px hsla(0,0%,70%,.8);
+  -webkit-box-shadow: 0 0.02rem 0.08rem hsla(0,0%,70%,.8);
+  -moz-box-shadow: 0 0.02rem 0.08rem hsla(0,0%,70%,.8);
+  -ms-box-shadow: 0 0.02rem 0.08rem hsla(0,0%,70%,.8);
+  -o-box-shadow: 0 0.02rem 0.08rem hsla(0,0%,70%,.8);
+  box-shadow: 0.01rem 0.02rem 0.08rem hsla(0,0%,70%,.8);
   transition-property: right;
   transition: all 0.3s;
 }
 
 .insert-link .cancel {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 0.1rem;
+  right: 0.1rem;
   z-index: 2;
-  font-size: 20px;
-  width: 40px;
-  height: 40px;
+  font-size: 0.2rem;
+  width: 0.4rem;
+  height: 0.4rem;
   text-align: center;
-  line-height: 40px;
+  line-height: 0.4rem;
   cursor: pointer;
 }
 </style>

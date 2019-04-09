@@ -60,6 +60,16 @@ export default {
     }
   },
 
+  watch: {
+    value(newVal, oldVal)  {
+      if (newVal) {
+        document.body.style.overflow = 'hidden'
+      } else {
+        document.body.style.overflow = 'auto'
+      }
+    }
+  },
+
   methods: {
     $_cancel() {
       if (!this.closeOnClickOverlay) return;
@@ -88,7 +98,7 @@ $prefixCls: popup;
     position: fixed;
     background-color: #fff;
     z-index: 9999;
-    border-radius: 5px;
+    border-radius: 0.05rem;
     &.#{$prefixCls}-top {
       left: 0;
       right: 0;

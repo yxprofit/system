@@ -65,7 +65,7 @@
         </div>
       </div>
     </div>
-    <div class="waterfall-wraper">   
+    <div class="waterfall-wraper">
       <waterfall :col='col' :gutterWidth="gutterWidth"  :data="data"  @loadmore="loadmore"  v-loading="loading">
         <template >
           <div class="cell-item" v-for="(item,index) in data" :key="index">
@@ -106,8 +106,11 @@
           </div>
         </template>
       </waterfall>
+      <div class="loader-btn-wraper">
+        <button class="load-btn" @click="loadmore">查看更多</button>
+      </div>
     </div>
-    <button class="more-btn" @click="loadmore">查看更多</button>
+    
 
     <!--  -->
     <work-details :info="itemInfo" :state="detailsShow" v-on:close="changedetails" />
@@ -237,6 +240,9 @@ export default{
       this.col = col
     },
     loadmore (index) {
+      const generateId = function() {
+        return Math.floor(Math.random() * 10000);
+      };
       let arr = [
         {
           img: pic1,
@@ -246,7 +252,7 @@ export default{
           liked: 52,
           isLike: true,
           tname: '余周周',
-          id: 1111
+          id: generateId()
         },
         {
           img: pic2,
@@ -256,7 +262,7 @@ export default{
           liked: 12,
           isLike: false,
           tname: '白月初',
-          id: 1112
+          id: generateId()
         },
         {
           img: pic3,
@@ -265,8 +271,8 @@ export default{
           jobTitle: '完成课时测试,复习先下功课完成测试',
           liked: 12,
           tname: '涂涂',
-          isLike: true,
-          id: 1113
+          isLike: false,
+          id: generateId()
         },
         {
           img: pic4,
@@ -276,7 +282,7 @@ export default{
           liked: 15,
           isLike: false,
           tname: '张三',
-          id: 1114
+          id: generateId()
         },
         {
           img: pic5,
@@ -286,7 +292,7 @@ export default{
           liked: 12,
           isLike: false,
           tname: '张依依',
-          id: 1115
+          id: generateId()
         },
         {
           img: pic6,
@@ -296,7 +302,7 @@ export default{
           liked: 12,
           isLike: false,
           tname: '王小二',
-          id: 1116
+          id: generateId()
         },
         {
           img: pic8,
@@ -305,7 +311,7 @@ export default{
           jobTitle: '完成课时测试,复习先下功课完成测试',
           liked: 12,
           isLike: false,
-          id: 1117
+          id: generateId()
         }
       ]
       this.data = this.data.concat(arr)
@@ -327,149 +333,148 @@ export default{
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  padding-bottom: 20px;
   .tendsHead {
     background-color: #fff;
-    border-radius: 6px;
-    margin-bottom: 20px;
-    padding-left: 20px;
-    padding-right: 10px;
-    margin-top: 20px;
-    padding: 12px 20px 14px;
-    margin-right: 14px;
-    border:1px solid rgba(228,232,237,1);
+    border-radius: 0.06rem;
+    margin-bottom: 0.2rem;
+    padding-left: 0.2rem;
+    padding-right: 0.1rem;
+    margin-top: 0.2rem;
+    padding: 0.12rem 0.2rem 0.14rem;
+    margin-right: 0.14rem;
+    border:0.01rem solid rgba(228,232,237,1);
   }
   section {
     display: flex;
-    height: 51px;
-    line-height: 50px;
-    border-bottom: 1px solid #E4E8ED;
+    height: 0.51rem;
+    line-height: 0.5rem;
+    border-bottom: 0.01rem solid #E4E8ED;
     h2{
       flex: 1;
       display: block;
-      height: 40px;
-      line-height: 40px;
-      text-indent: 40px;
+      height: 0.4rem;
+      line-height: 0.4rem;
+      text-indent: 0.4rem;
       position: relative;
-      font-size: 18px;
+      font-size: 0.18rem;
       font-weight: bold;
       color: #333;
       &:after{
         content: '';
         position: absolute;
-        width: 18px;
-        height: 20px;
-        top: 11px;
-        left: 10px;
+        width: 0.18rem;
+        height: 0.2rem;
+        top: 0.11rem;
+        left: 0.1rem;
         background-image: url('../../../../assets/images/icon/icon_mycourse.png');
       }
     }
     .teandsearch {
-      width: 137px;
+      width: 1.37rem;
       cursor: pointer;
-      height: 40px;
-      line-height: 40px;
-      border-radius: 20px;
+      height: 0.4rem;
+      line-height: 0.4rem;
+      border-radius: 0.2rem;
       box-sizing: border-box;
       background-color: #F79727;
-      padding: 0 20px;
-      margin-right: 20px;
+      padding: 0 0.2rem;
+      margin-right: 0.2rem;
       .el-input {
         float: left;
-        width:242px;
+        width:2.42rem;
         input.el-input__inner {
-          width:242px;
-          height:40px;
+          width:2.42rem;
+          height:0.4rem;
           background:rgba(238,242,245,1);
-          border-radius:10px;
+          border-radius:0.1rem;
         }
       }
       a {
         float: left;
-        height: 40px;
-        font-size: 15px;
+        height: 0.4rem;
+        font-size: 0.15rem;
         font-weight: bold;
         color: #fff;
         text-align: center;
       }
       .upload {
         img {
-          width: 22px;
-          height: 22px;
+          width: 0.22rem;
+          height: 0.22rem;
           transform: rotate(-90deg);
-          margin-right: 10px;
+          margin-right: 0.1rem;
         }
       }
     }
   }
   .head{
-    height: 32px;
-    line-height: 32px;
+    height: 0.32rem;
+    line-height: 0.32rem;
     display: flex;
     align-items: center;
     font-size: 0;
-    margin-top: 13px;
+    margin-top: 0.13rem;
     h3{
       color: #888;
       flex: 1;
-      height: 32px;
-      line-height: 32px;
-      font-size: 14px;
-      text-indent: 10px;
+      height: 0.32rem;
+      line-height: 0.32rem;
+      font-size: 0.14rem;
+      text-indent: 0.1rem;
       span{
         color:#333;
         font-weight: bold;
       }
     }
     .search {
-      width: 150px;
-      height: 32px;
+      width: 1.5rem;
+      height: 0.32rem;
     }
     img {border-radius: 100%}
-    .tname {margin-left: 8px}
+    .tname {margin-left: 0.08rem}
   }
   &>button {
     display: block;
-    width: 120px;
-    height: 34px;
-    line-height: 34px;
+    width: 1.2rem;
+    height: 0.34rem;
+    line-height: 0.34rem;
     text-align: center;
     margin: 0 auto;
     background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 17px;
-    margin: 20px auto 0;
+    border: 0.01rem solid #ccc;
+    border-radius: 0.17rem;
+    margin: 0.2rem auto 0;
     color: #999;
-    font-size: 13px;
+    font-size: 0.13rem;
     font-family: '微软雅黑';
     cursor: pointer;
   }
   .cell-item {
-    padding-right: 10px;
-    margin-bottom: 14px;
+    padding-right: 0.1rem;
+    margin-bottom: 0.14rem;
     .item-body{
-      padding: 16px;
+      padding: 0.16rem;
       background: #fff;
-      border-radius: 4px;
+      border-radius: 0.04rem;
       .item-desc{
-        font-size: 13px;
-        line-height: 14px;
-        margin-bottom: 10px;
+        font-size: 0.13rem;
+        line-height: 0.14rem;
+        margin-bottom: 0.1rem;
       }
       .task-name{
-        font-size: 13px;
+        font-size: 0.13rem;
         color:#999;
-        margin-bottom: 10px;
+        margin-bottom: 0.1rem;
       }
       .name {
         background-color: rgba(153,153,153,.1);
         display: inline-block;
-        height: 24px;
-        line-height: 24px;
-        padding: 0 10px;
+        height: 0.24rem;
+        line-height: 0.24rem;
+        padding: 0 0.1rem;
         font-weight:bold;
         color: rgba(153,153,153,1);
-        margin-bottom: 10px;
+        margin-bottom: 0.1rem;
       }
       .dianzan{
         display: flex;
@@ -479,16 +484,16 @@ export default{
           display: flex;
           span:nth-child(1){
             display: inline-block;
-            width: 30px;
-            height: 30px;
+            width: 0.3rem;
+            height: 0.3rem;
             border-radius: 50%;
             overflow: hidden;
           }
           .tname {
             display: inline-block;
-            line-height: 30px;
-            margin-left: 8px;
-            font-size: 12px;
+            line-height: 0.3rem;
+            margin-left: 0.08rem;
+            font-size: 0.12rem;
           }
         }
         .good {
@@ -496,20 +501,20 @@ export default{
           right: 0;
           top: 50%;
           transform: translateY(-50%);
-          height: 16px;
-          line-height: 16px;
+          height: 0.16rem;
+          line-height: 0.16rem;
           font-size: 0;
           span {
             position: relative;
-            margin-left: 10px;
+            margin-left: 0.1rem;
             display: inline-block;
             color: #999;
-            font-size: 12px;
+            font-size: 0.12rem;
             vertical-align: middle;
           }
           .like-img {
-            height: 16px;
-            width: 16px;
+            height: 0.16rem;
+            width: 0.16rem;
             vertical-align: top;
           }
         }
@@ -519,24 +524,24 @@ export default{
 }
 
 .search-panel {
-  margin-right: 20px;
+  margin-right: 0.2rem;
   .el-select + .el-select {
-    margin-left: 10px;
+    margin-left: 0.1rem;
   }
 }
 .waterfall-wraper {
+  flex: 1;
   overflow: auto;
-  padding-right: 24px;
-  margin-right: 14px;
-  max-height: calc(100vh - 259px);
+  padding-right: 0.24rem;
+  margin-right: 0.14rem;
   background-color: transparent;
 }
 .waterfall-wraper::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 0.06rem;
+  height: 0.06rem;
 }
 .waterfall-wraper::-webkit-scrollbar-thumb {
-  border-radius: 3px;
+  border-radius: 0.03rem;
   background: #fff;
   color: #fff;
 }
@@ -552,32 +557,32 @@ export default{
 }
 .cell-item>div{
   overflow: hidden;
-  border-radius:4px;
-  border:1px solid rgba(228,232,237,1)
+  border-radius:0.04rem;
+  border:0.01rem solid rgba(228,232,237,1)
 }
 
 .taskimg {
   position: relative;
   .but {
     position: absolute;
-    bottom: 10px;
+    bottom: 0.1rem;
     width: 100%;
     text-align: center;
     cursor: pointer;
     display: none;
-    img {width: 20px}
+    img {width: 0.2rem}
     .add {
-      width: 26px;
+      width: 0.26rem;
     }
     i {
       background: #fff;
-      width: 58px;
-      height: 58px;
-      line-height: 58px;
+      width: 0.58rem;
+      height: 0.58rem;
+      line-height: 0.58rem;
       text-align: center;
       border-radius: 100%;
       display: inline-block;
-      margin: 0 10px;
+      margin: 0 0.1rem;
     }
   }
   &:hover {
@@ -587,7 +592,24 @@ export default{
   }
 }
 
-.more-btn {
-  background-color: #EEF2F5!important;
-}
+ .loader-btn-wraper {
+    margin: 0.2rem 0;
+    text-align: center;
+    height: 0.34rem;
+    .load-btn {
+      display: inline-block;
+      width: 1.2rem;
+      height: 0.34rem;
+      line-height: 0.32rem;
+      text-align: center;
+      background-color: transparent;
+      border: 0.01rem solid #ccc;
+      border-radius: 0.17rem;
+
+      color: #999;
+      font-size: 0.13rem;
+      font-family: 'MicrosoftYaHei';
+      cursor: pointer;
+    }
+  }
 </style>

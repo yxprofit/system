@@ -73,7 +73,7 @@
                   <span class="add-text">添加小组</span>
                 </div>
                 <div v-else>
-                  <div class="group-title">09级2班 01组</div>
+                  <div class="group-title">0{{index+1}}组</div>
                   <div class="group2-inner">
                     <draggable
                       class="list-group list-group2"
@@ -219,7 +219,7 @@ export default {
       } else {
         this[listIndex]--;
         let ele = document.querySelector(el);
-        ele.style.transform = `translateX( ${distance * this[listIndex]}px)`;
+        ele.style.transform = `translateX( ${(distance*0.01) * this[listIndex]}rem)`;
         ele.style.transition = "all 0.3s ease";
       }
     },
@@ -227,7 +227,7 @@ export default {
       if (this[listIndex] < this[list].length - baseIndex) {
         this[listIndex]++;
         let ele = document.querySelector(el);
-        ele.style.transform = `translateX( ${distance * this[listIndex]}px)`;
+        ele.style.transform = `translateX( ${(distance*0.01) * this[listIndex]}rem)`;
         ele.style.transition = "all 0.3s ease";
       }
     },
@@ -259,26 +259,26 @@ export default {
 
 <style lang="scss" scoped>
 .group {
-  width: 1100px;
-  height: 620px;
+  width: 11rem;
+  height: 6.2rem;
 
   .group-header-wrap {
-    height: 60px;
-    line-height: 60px;
-    border-bottom: 1px solid #cccc;
+    height: 0.6rem;
+    line-height: 0.6rem;
+    border-bottom: 0.01rem solid #cccc;
     position: relative;
   }
 
   .group-header {
-    padding-left: 30px;
+    padding-left: 0.3rem;
   }
   .group-opeator {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 10px;
-    padding: 12px 0;
-    margin-right: 12px;
+    right: 0.1rem;
+    padding: 0.12rem 0;
+    margin-right: 0.12rem;
   }
 
   .is-inline {
@@ -287,32 +287,32 @@ export default {
   }
 
   .group-line {
-    width: 4px;
-    height: 16px;
+    width: 0.04rem;
+    height: 0.16rem;
     background: orange;
     display: inline-block;
-    width: 3px;
-    height: 10px;
+    width: 0.03rem;
+    height: 0.1rem;
     background: rgba(247, 151, 39, 1);
-    border-radius: 3px;
+    border-radius: 0.03rem;
   }
 
   .group-title-1 {
-    font-size: 16px;
+    font-size: 0.16rem;
     font-weight: bold;
-    padding: 0 8px 0 5px;
+    padding: 0 0.08rem 0 0.05rem;
   }
 
   .group-title-2 {
-    font-size: 14px;
+    font-size: 0.14rem;
     color: rgba(247, 151, 39, 1);
   }
 
   .group-min,
   .group-max {
-    width: 10px;
-    height: 1px;
-    border: 1px solid #000;
+    width: 0.1rem;
+    height: 0.01rem;
+    border: 0.01rem solid #000;
     box-sizing: border-box;
   }
 
@@ -323,14 +323,14 @@ export default {
   }
 
   .group-max {
-    height: 10px;
-    margin: 0 20px;
-    margin-right: 30px;
+    height: 0.1rem;
+    margin: 0 0.2rem;
+    margin-right: 0.3rem;
   }
 
   .group-close {
-    font-size: 18px;
-    font-size: 18px;
+    font-size: 0.18rem;
+    font-size: 0.18rem;
     position: absolute;
     top: 49%;
     transform: translateY(-50%);
@@ -339,11 +339,11 @@ export default {
 }
 
 .group-content {
-  padding-top: 20px;
+  padding-top: 0.2rem;
 }
 
 .content-1 {
-  width: 954px;
+  width: 9.54rem;
   margin: 0 auto;
   overflow-x: scroll;
   &::-webkit-scrollbar {
@@ -364,14 +364,14 @@ export default {
 
 .list-group-item,
 .group-slide {
-  width: 126px;
-  height: 146px;
+  width: 1.26rem;
+  height: 1.46rem;
   display: inline-block;
   text-align: center;
   vertical-align: middle;
   background: #fff;
-  border: 1px solid #e4e8ed;
-  margin-right: 12px;
+  border: 0.01rem solid #e4e8ed;
+  margin-right: 0.12rem;
   box-sizing: border-box;
   position: relative;
 }
@@ -388,13 +388,13 @@ export default {
   top: 50%;
   left: 50%;
   transform: translate3d(-50%, -50%, 0);
-  width: 150px;
-  height: 40px;
-  line-height: 40px;
+  width: 1.5rem;
+  height: 0.4rem;
+  line-height: 0.4rem;
   text-align: center;
   background: rgba(153, 153, 153, 0.1);
-  border-radius: 20px;
-  font-size: 16px;
+  border-radius: 0.2rem;
+  font-size: 0.16rem;
   color: #bfbfbf;
 }
 
@@ -404,18 +404,18 @@ export default {
 }
 
 .group2-wrap {
-  height: 265px;
+  height: 2.65rem;
 }
 
 .group1-prev,
 .group1-next {
-  width: 34px;
-  height: 34px;
+  width: 0.34rem;
+  height: 0.34rem;
   background: #eee;
-  border-radius: 34px;
+  border-radius: 0.34rem;
   text-align: center;
-  line-height: 34px;
-  font-size: 18px;
+  line-height: 0.34rem;
+  font-size: 0.18rem;
   color: #fff;
   position: absolute;
   top: 50%;
@@ -428,62 +428,65 @@ export default {
 }
 
 .group1-prev {
-  left: 20px;
+  left: 0.2rem;
 }
 
 .group1-next {
-  right: 20px;
+  right: 0.2rem;
 }
 
 .group-slide {
-  width: 310px;
-  height: 265px;
+  width: 3.1rem;
+  height: 2.65rem;
   background: #fafbfd;
-  margin-right: 12px;
-  margin-top: 20px;
+  margin-right: 0.12rem;
+  margin-top: 0.2rem;
 }
 
 .group-title {
-  height: 50px;
-  line-height: 50px;
-  font-size: 16px;
+  height: 0.5rem;
+  line-height: 0.5rem;
+  font-size: 0.16rem;
   font-weight: bold;
   background: rgba(255, 243, 229, 1);
 }
 
 .group-list {
-  height: 215px;
+  height: 2.15rem;
 }
 
 .avatar-list {
   display: inline-block;
   width: 25%;
   text-align: center;
+  margin-bottom: 0.2rem;
 }
 
 .avatar-img {
-  width: 50px;
-  height: 50px;
-  margin-bottom: 5px;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-bottom: 0.05rem;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 .avatar-name {
-  font-size: 14px;
+  font-size: 0.14rem;
   font-weight: bold;
   color: rgba(51, 51, 51, 1);
-  line-height: 26px;
+  line-height: 0.26rem;
 }
 
 .group2-inner {
-  height: 215px;
+  height: 2.15rem;
 }
 
 .list-group2 {
   overflow-y: scroll;
-  height: 215px;
+  height: 2.15rem;
   text-align: left;
   white-space: pre-wrap;
-  padding-top: 20px;
+  padding-top: 0.2rem;
   &::-webkit-scrollbar {
     display: none;
   }
@@ -491,34 +494,34 @@ export default {
 
 .group-btn {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 0.5rem;
 }
 
 .base-btn {
   display: inline-block;
   vertical-align: middle;
-  width: 150px;
-  height: 40px;
-  line-height: 40px;
+  width: 1.5rem;
+  height: 0.4rem;
+  line-height: 0.4rem;
   text-align: center;
-  border-radius: 20px;
+  border-radius: 0.2rem;
 }
 
 .submit {
   background: rgba(247, 151, 39, 1);
   color: #fff;
-  margin-right: 20px;
+  margin-right: 0.2rem;
 }
 
 .reset {
-  border: 1px solid #999;
+  border: 0.01rem solid #999;
   color: #ccc;
 }
 
 .icon-item {
-  width: 22px;
-  margin-top: 10px;
-  margin-right: 5px;
+  width: 0.22rem;
+  margin-top: 0.1rem;
+  margin-right: 0.05rem;
 }
 </style>
 

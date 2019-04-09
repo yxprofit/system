@@ -38,14 +38,14 @@
                 class="lesson-title"
                 :class="{ 'is-select': item.isHover == true }"
               >{{ item.lesson_title }}</div>
-              <div class="lesson-data">
+              <!-- <div class="lesson-data">
                 <img class="lesson-icon" src="../../../../assets/images/icon/43.png" alt>
                 <span class="lesson-text">{{ item.lesson_date }}</span>
               </div>
               <div class="lesson-teacher">
                 <img class="lesson-icon" src="../../../../assets/images/icon/44.png" alt>
                 <span class="lesson-text">{{ item.lesson_teacher }}</span>
-              </div>
+              </div> -->
             </div>
           </li>
         </ul>
@@ -85,6 +85,12 @@ export default {
     showLesson(newVal, oldVal) {
       this.visible = newVal;
       this.$emit("update:showLesson", newVal);
+
+      if (this.visible) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = 'auto';
+      }
     }
   },
   created() {},
@@ -134,25 +140,25 @@ export default {
     left: 50%;
     transform: translate(-50%, -50%);
     background: #fff;
-    width: 1100px;
-    max-height: 584px;
-    border-radius: 5px;
+    width: 11rem;
+    max-height: 5.84rem;
+    border-radius: 0.05rem;
     z-index: 4445;
     animation: slide 0.5s ease-out;
-    border-radius: 8px;
+    border-radius: 0.08rem;
 
     .category-title {
-      font-size: 18px;
+      font-size: 0.18rem;
       text-align: center;
-      padding-bottom: 30px;
+      padding-bottom: 0.3rem;
     }
 
     .close-icon {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      right: 10px;
-      font-size: 20px;
+      right: 0.1rem;
+      font-size: 0.2rem;
       color: #999;
       display: block;
       transition: all 0.5s ease;
@@ -168,46 +174,47 @@ export default {
   width: 100%;
   box-sizing: border-box;
   text-align: left;
-  padding-left: 20px;
-  height: 50px;
-  line-height: 50px;
+  padding-left: 0.2rem;
+  height: 0.5rem;
+  line-height: 0.5rem;
   position: relative;
-  border-bottom: 1px solid #e4e8ed;
-  margin-bottom: 10px;
+  border-bottom: 0.01rem solid #e4e8ed;
+  margin-bottom: 0.1rem;
 
   &:before {
     content: "";
     display: inline-block;
-    width: 3px;
-    height: 10px;
+    width: 0.03rem;
+    height: 0.1rem;
     background: #f79727;
-    border-radius: 3px;
+    border-radius: 0.03rem;
     vertical-align: middle;
     position: absolute;
     top: 50%;
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
-    left: 10px;
+    left: 0.1rem;
   }
 }
 
 .lesson-list {
   width: 100%;
   overflow: auto;
-  margin-bottom: 30px;
-  padding: 0 5px;
+  margin-bottom: 0.3rem;
+  padding: 0 0.05rem;
   box-sizing: border-box;
-  max-height: 500px;
-  padding-left: 20px;
+  // max-height: 5rem;
+  max-height: 4.2rem;
+  padding-left: 0.2rem;
 }
 .lesson-item {
-  width: 190px;
-  height: 240px;
+  width: 1.9rem;
+  // height: 2.4rem;
   flex: 1;
   display: inline-block;
-  margin: 10px 10px;
-  border: 1px solid #e4e8ed;
-  border-radius: 4px;
+  margin: 0.1rem 0.1rem;
+  border: 0.01rem solid #e4e8ed;
+  border-radius: 0.04rem;
   cursor: pointer;
 
   &.is-mousemove {
@@ -218,13 +225,13 @@ export default {
     position: relative;
     .less-image {
       width: 100%;
-      height: 150px;
+      height: 1.5rem;
     }
   }
 
   .image-layer {
     width: 100%;
-    height: 150px;
+    height: 1.5rem;
     background: rgba(0, 0, 0, 0.5);
     position: absolute;
     top: 0;
@@ -239,14 +246,14 @@ export default {
   }
 
   .online-view {
-    margin-bottom: 14px;
+    margin-bottom: 0.14rem;
   }
 }
 
 .lesson-intro {
-  padding: 10px 0 0 12px;
+  padding: 0.1rem 0 0 0.12rem;
   text-align: left;
-  font-size: 16px;
+  font-size: 0.16rem;
 
   .lesson-title {
     font-weight: bold;
@@ -259,9 +266,9 @@ export default {
   .lesson-title,
   .lesson-data,
   .lesson-teacher {
-    padding-bottom: 10px;
+    padding-bottom: 0.16rem;
     color: #666666;
-    font-size: 14px;
+    font-size: 0.14rem;
   }
 
   .lesson-icon,
@@ -271,27 +278,27 @@ export default {
   }
 
   .lesson-icon {
-    width: 12px;
+    width: 0.12rem;
   }
 }
 
 .group-header-wrap {
-  height: 60px;
-  line-height: 60px;
-  border-bottom: 1px solid #cccc;
+  height: 0.6rem;
+  line-height: 0.6rem;
+  border-bottom: 0.01rem solid #cccc;
   position: relative;
 }
 
 .group-header {
-  padding-left: 30px;
+  padding-left: 0.3rem;
 }
 .group-opeator {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  right: 10px;
-  padding: 12px 0;
-  margin-right: 12px;
+  right: 0.1rem;
+  padding: 0.12rem 0;
+  margin-right: 0.12rem;
 }
 
 .is-inline {
@@ -300,32 +307,32 @@ export default {
 }
 
 .group-line {
-  width: 4px;
-  height: 16px;
+  width: 0.04rem;
+  height: 0.16rem;
   background: orange;
   display: inline-block;
-  width: 3px;
-  height: 10px;
+  width: 0.03rem;
+  height: 0.1rem;
   background: rgba(247, 151, 39, 1);
-  border-radius: 3px;
+  border-radius: 0.03rem;
 }
 
 .group-title-1 {
-  font-size: 16px;
+  font-size: 0.16rem;
   font-weight: bold;
-  padding: 0 8px 0 5px;
+  padding: 0 0.08rem 0 0.05rem;
 }
 
 .group-title-2 {
-  font-size: 14px;
+  font-size: 0.14rem;
   color: rgba(247, 151, 39, 1);
 }
 
 .group-min,
 .group-max {
-  width: 10px;
-  height: 1px;
-  border: 1px solid #000;
+  width: 0.1rem;
+  height: 0.01rem;
+  border: 0.01rem solid #000;
   box-sizing: border-box;
 }
 
@@ -336,14 +343,14 @@ export default {
 }
 
 .group-max {
-  height: 10px;
-  margin: 0 20px;
-  margin-right: 30px;
+  height: 0.1rem;
+  margin: 0 0.2rem;
+  margin-right: 0.3rem;
 }
 
 .group-close {
-  font-size: 18px;
-  font-size: 18px;
+  font-size: 0.18rem;
+  font-size: 0.18rem;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
