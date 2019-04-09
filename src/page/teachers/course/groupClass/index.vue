@@ -19,8 +19,22 @@
     <div class="group-content">
       <div class="group1-wrap">
         <div class="content-1">
-          <div class="content-1-wrap" ref="listGroup">
-            <draggable class="list-group" :list="list1" group="people" @change="log">
+          <div
+            class="content-1-wrap"
+            ref="listGroup"
+            :style="{ width: 100*Number(list1.length) + '%' }"
+          >
+            <draggable
+              class="list-group"
+              :list="list1"
+              @change="log"
+              @start="start"
+              @end="handleEnd"
+              dragable="true"
+              :move="getdata"
+              :clone="clone"
+              :group="{ name: 'people', pull: pullFunction }"
+            >
               <div class="list-group-item" v-for="(element, index) in list1" :key="element.name">
                 <div class="group1-list-inner">
                   <img class="avatar-img" src="../../../../assets/images/teacher/g1.png" alt>
@@ -48,10 +62,13 @@
 
       <div class="group1-wrap group2-wrap">
         <div class="content-1">
-          <div class="content-1-wrap content-group2-list">
+          <div
+            class="content-1-wrap content-group2-list"
+            :style="{ width: 100*Number(list3.length) + '%' }"
+          >
             <div class="group-slide" v-for="(item, index) in  list3" :key="index">
               <div class="group-slide-innder">
-                <div class="add-btn" v-if="index === list3.length - 1">
+                <div class="add-btn" v-if="index === list3.length - 1" @mouseover="handleMouseMover">
                   <i class="el-icon-plus"></i>
                   <span class="add-text">添加小组</span>
                 </div>
@@ -155,8 +172,11 @@ export default {
       list3: [
         { name: "Juan3", id: 8 },
         { name: "Edgard3", id: 9 },
-        { name: "Johnson9", id: 10 },
+        { name: "Johnson9", id: 10 }
+        // { name: "Johnson10", id: 11 },
+        // { name: "Johnson11", id: 12 }
       ],
+      controlOnStart: true,
       group1Index: 0,
       group2Index: 0
     };
@@ -169,6 +189,31 @@ export default {
   },
   created() {},
   methods: {
+    handleMouseMover() {
+      console.log(111111111111)
+    },
+    clone({ name }) {
+      console.log(name, 'clone')
+      return { name, id: idGlobal++ };
+    },
+    pullFunction() {
+      console.log(this.controlOnStart, 'pullFunction')
+      return this.controlOnStart ? "clone" : true;
+    },
+    start({ originalEvent }) {
+      console.log(originalEvent, 'start-originalEvent')
+      this.controlOnStart = originalEvent.ctrlKey;
+    },
+    getdata(evt) {
+      console.log(evt.draggedContext);
+      //这里evt.draggedContext后续的内容根据具体的定义变量而定
+    },
+    handleStart({ originalEvent }) {
+      this.controlOnStart = originalEvent.ctrlKey;
+    },
+    handleEnd(e) {
+      console.log(e, "end");
+    },
     handlePrev(el, listIndex, distance) {
       if (this[listIndex] <= 0) {
       } else {
@@ -198,6 +243,7 @@ export default {
       };
     },
     log: function(evt) {
+      console.log(evt, "evt");
       window.console.log(evt);
     },
     closeModal() {
