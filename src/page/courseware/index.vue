@@ -102,13 +102,13 @@ export default {
         },
         {
           id: 2,
-          name: "测试任务名称",
+          name: "测试任务名称测试任务名称",
           btn: "",
           type: "test"
         },
         {
           id: 3,
-          name: "问卷任务名称",
+          name: "问卷任务名称问卷任务名称",
           btn: "删除",
           type: "questionnaire"
         },
@@ -128,7 +128,7 @@ export default {
       studentTask: [
         {
           id: 1,
-          name: "课件任务名称",
+          name: "课件任务名称课件任务名称",
           btn: "去完成",
           type: "course"
         },
@@ -140,7 +140,7 @@ export default {
         },
         {
           id: 3,
-          name: "问卷任务名称",
+          name: "问卷任务名称问卷任务名称",
           btn: "已完成",
           type: "questionnaire"
         },
@@ -203,7 +203,7 @@ export default {
     computedTask: {
       get() {
         let queryType = this.$route.query.type;
-        return queryType === 'teacherTask' ? this.teacherTask : ($route.query.type === 'classTask' ? this.classTask : this.studentTask)
+        return queryType === 'teacherTask' ? this.teacherTask : (this.$route.query.type === 'classTask' ? this.classTask : this.studentTask)
       },
       set(newValue) {
         //这个newValue能监听到methods里面从新赋值了，这个就是新值.
