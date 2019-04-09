@@ -10,7 +10,6 @@ var font = 100
 var ratio = ui / font
 
 var oHtml = document.documentElement
-console.log(oHtml)
 
 var screenWidth = oHtml.offsetWidth
 

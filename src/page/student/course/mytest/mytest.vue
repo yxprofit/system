@@ -134,6 +134,11 @@ export default {
       value: "课程1",
       tableData: [
         {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路"
+        },
+         {
           date: "2016-05-02",
           name: "王小虎",
           address: "上海市普陀区金沙江"
@@ -177,7 +182,8 @@ export default {
 
 <style lang="scss" scoped>
 .mytest {
-  margin: 0.14rem 0.14rem 0.14rem 0;
+  height: calc(100% - 0.14rem);
+  margin: 0.14rem 0.14rem 0 0;
   background-color: #fff;
   border-radius: 0.06rem;
   padding: 0 0.2rem;

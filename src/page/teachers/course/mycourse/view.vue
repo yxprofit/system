@@ -118,7 +118,7 @@
 						</div>
 					</el-col>					
 				</el-row> -->
-				<el-row :gutter="10" v-for="(item, index) in data" :key="item">
+				<el-row :gutter="10" v-for="(item, index) in computedData" :key="item.id">
 					<el-col :span="12">
 						<div class="li">
 							<h4>第{{index + 1}}课时：课时名称课时名称课时名称课时名称<i></i></h4>
@@ -139,7 +139,20 @@
 							<h4>相关任务</h4>
 							<div class="tasks">
 								<ul>
-									<li>
+									<li v-for='(i, index) in item.taskListStr' :key='index'>
+										<el-row>
+											<el-col :span="11">
+												<h5 :class="i.className">{{i.name}}</h5>
+											</el-col>
+											<el-col :span="7">
+												<small>截止时间：{{i.time}}</small>
+											</el-col>
+											<el-col :span="6">
+												<span v-text="i.status ? '已完成':'去完成 >'"></span>
+											</el-col>
+										</el-row>
+									</li>
+									<!-- <li>
 										<el-row>
 											<el-col :span="11">
 												<h5 class="li1">完成当前课时测试内容</h5>
@@ -177,9 +190,10 @@
 												<span class="active">去完成</span>
 											</el-col>
 										</el-row>
-									</li>
+									</li> -->
 								</ul>
-								<div class="tasksall" @click='searchMore(item)'>查看全部<i>》</i></div>
+								<div class="tasksall" @click='searchMore(item)' v-show="item.showMore">查看全部<i>》</i></div>
+								<div class="tasksall taskNoMore" v-show="!item.showMore"></div>
 							</div>
 						</div>
 					</el-col>
@@ -224,7 +238,178 @@ export default {
 		return {
 			loading: true,
 			workimg,
-			data: [1,2,3,4,5,6,7],
+			data: [{
+				id:1,
+				taskList:[
+					{
+						name:'完成当前课时测试内容',
+						time:'2019.03.11',
+						status:0,
+						className:'li1'
+					},
+					{
+						name:'完成当前课时问卷调查',
+						time:'2019.03.11',
+						status:0,
+						className:'li2'
+					},
+					{
+						name:'完成作品上传',
+						time:'2019.03.11',
+						status:1,
+						className:'li3'
+					},
+					{
+						name:'完成当前课时测试内容',
+						time:'2019.03.11',
+						status:0,
+						className:'li1'
+					},
+					{
+						name:'完成当前课时问卷调查',
+						time:'2019.03.11',
+						status:0,
+						className:'li2'
+					}
+				]
+			},
+			{
+				id:2,
+				taskList:[
+					{
+						name:'完成当前课时测试内容',
+						time:'2019.03.11',
+						status:0,
+						className:'li1'
+					},
+					{
+						name:'完成当前课时问卷调查',
+						time:'2019.03.11',
+						status:0,
+						className:'li2'
+					},
+					{
+						name:'完成作品上传',
+						time:'2019.03.11',
+						status:1,
+						className:'li3'
+					},
+					{
+						name:'完成当前课时测试内容',
+						time:'2019.03.11',
+						status:0,
+						className:'li1'
+					},
+					{
+						name:'完成当前课时问卷调查',
+						time:'2019.03.11',
+						status:0,
+						className:'li2'
+					}
+				]
+			},
+			{
+				id:3,
+				taskList:[
+					{
+						name:'完成当前课时测试内容',
+						time:'2019.03.11',
+						status:0
+					},
+					{
+						name:'完成当前课时测试内容',
+						time:'2019.03.11',
+						status:0
+					},
+					{
+						name:'完成当前课时测试内容',
+						time:'2019.03.11',
+						status:1
+					}
+				]
+			},
+			{
+				id:4,
+				taskList:[
+					{
+						name:'完成当前课时测试内容',
+						time:'2019.03.11',
+						status:0
+					},
+					{
+						name:'完成当前课时测试内容',
+						time:'2019.03.11',
+						status:0
+					},
+					{
+						name:'完成当前课时测试内容',
+						time:'2019.03.11',
+						status:1
+					}
+				]
+			},
+			{
+				id:5,
+				taskList:[
+					{
+						name:'完成当前课时测试内容',
+						time:'2019.03.11',
+						status:0
+					},
+					{
+						name:'完成当前课时测试内容',
+						time:'2019.03.11',
+						status:0
+					},
+					{
+						name:'完成当前课时测试内容',
+						time:'2019.03.11',
+						status:1
+					}
+				]
+			},
+			{
+				id:6,
+				taskList:[
+					{
+						name:'完成当前课时测试内容',
+						time:'2019.03.11',
+						status:0
+					},
+					{
+						name:'完成当前课时测试内容',
+						time:'2019.03.11',
+						status:0
+					},
+					{
+						name:'完成当前课时测试内容',
+						time:'2019.03.11',
+						status:1
+					}
+				]
+			},
+			{
+				id:7,
+				taskList:[
+					{
+						name:'完成当前课时测试内容',
+						time:'2019.03.11',
+						status:0
+					},
+					{
+						name:'完成当前课时测试内容',
+						time:'2019.03.11',
+						status:0
+					},
+					{
+						name:'完成当前课时测试内容',
+						time:'2019.03.11',
+						status:1
+					}
+				]
+			}],
+			computedData:[],
+			// data: [1,2,3,4,5,6,7],
       desState: false,
       showLesson: false,
 			showClass: false,
@@ -242,12 +427,9 @@ export default {
 		setTimeout(() => {
 			_this.loading = false;
 		}, 1000);
+		this.computedtaskList()
 	},
 	methods: {
-		searchMore(id){
-			console.log(id)
-
-		},
     handleCloseModal (bool) {
       this.isShowGroup = bool;
     },
@@ -266,6 +448,31 @@ export default {
 		fitlerdes(){
 			let text = '外教英语培训班 , 外教英语培训班 , 每天45分钟 , 随时纠正 , 学英语上TutorABC , 随时随地对话全球外教 , 生活,职场，外教英语培训班 , 外教英语培训班 , 每天45分钟 , 随时纠正 , 学英语上TutorABC，外教英语培训班 , 外教英语培训班 , 每天45分';
 			return this.desState ? text : text.slice(0, 133) + '...'
+		},
+		computedtaskList(){
+			let data = this.data
+			for(let i=0;i<data.length;i++){
+				if(data[i].taskList.length>3){
+					data[i].showMore = 1
+					data[i].taskListStr = data[i].taskList.slice(0,3)
+				}else{
+					data[i].showMore = 0
+					data[i].taskListStr = data[i].taskList
+				}
+			}
+			this.computedData = data
+			console.log(this.computedData)
+		},
+		searchMore(item){
+			let list = this.computedData
+			for(let i=0; i<list.length;i++){
+				if(list[i].id === item.id){
+					list[i].taskListStr = list[i].taskList
+					list[i].showMore = 0
+				}
+			}
+			this.computedData = list
+			console.log(this.computedData)
 		},
 	}
 };
@@ -520,6 +727,9 @@ export default {
 						margin: 0.03rem 0 0 0.05rem;
 						vertical-align: middle;
 					}
+				}
+				.taskNoMore{
+					height: 0.17rem;
 				}
 			}
 

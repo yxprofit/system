@@ -3,17 +3,18 @@
     <hgroup :class="{'active':isHidden}">
       <div>
         <span>我的任务</span>
-        <span @click="changeIsHidden"><img src="../../../../assets/images/icon/icon_task_close.png" alt=""></span>
+        <!-- <span @click="changeIsHidden"><img src="../../../../assets/images/icon/icon_task_close.png" alt=""></span> -->
+        <span @click="goTrends"><img src="../../../../assets/images/icon/icon_task_close.png" alt=""></span>
       </div>
       <ul>
-        <li>
-          <h4 class="icon-course">课件任务名称</h4>
+        <li v-for="(item,index) in tasklist" :key="index">
+          <h4 :class="item.classname">{{item.title}}</h4>
           <div>
-            <p>截止时间：2019.03.11</p>
-            <p>发起人：张丹丹老师</p>
+            <p>截止时间：{{item.time}}</p>
+            <p>发起人：{{item.teacher}}</p>
           </div>
         </li>
-        <li>
+        <!-- <li>
           <h4 class="icon-test">测试任务名称</h4>
           <div>
             <p>截止时间：2019.03.11</p>
@@ -40,9 +41,9 @@
             <p>截止时间：2019.03.11</p>
             <p>发起人：张丹丹老师</p>
           </div>
-        </li>
+        </li> -->
       </ul>
-      <div class='more'>查看更多</div>
+      <var class="taskmore" v-show='!isHidden' @click="loadMore">查看更多</var>
     </hgroup>
     <section :class="{'center':1,'active':isHidden}">
       <div>
@@ -54,85 +55,141 @@
         <section class='list'>
           <ul v-show='isTab===0'>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img1.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img1.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img2.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img2.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img3.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img3.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img4.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img4.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img5.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img5.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img1.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img1.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img3.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img2.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img4.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img3.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img5.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img4.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img1.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img5.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img3.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img1.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img4.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img2.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img5.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img3.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img1.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img4.png" alt=""> -->
+              <h4>课程名称课程名称</h4>
+              <p>开始时间：2019.01.01</p>
+              <p>结束时间：2019.01.01</p>
+            </router-link>
+            <router-link to="mycourse/view" tag="li">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img5.png" alt=""> -->
+              <h4>课程名称课程名称</h4>
+              <p>开始时间：2019.01.01</p>
+              <p>结束时间：2019.01.01</p>
+            </router-link>
+            <router-link to="mycourse/view" tag="li">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img1.png" alt=""> -->
+              <h4>课程名称课程名称</h4>
+              <p>开始时间：2019.01.01</p>
+              <p>结束时间：2019.01.01</p>
+            </router-link>
+            <router-link to="mycourse/view" tag="li">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img2.png" alt=""> -->
+              <h4>课程名称课程名称</h4>
+              <p>开始时间：2019.01.01</p>
+              <p>结束时间：2019.01.01</p>
+            </router-link>
+            <router-link to="mycourse/view" tag="li">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img3.png" alt=""> -->
+              <h4>课程名称课程名称</h4>
+              <p>开始时间：2019.01.01</p>
+              <p>结束时间：2019.01.01</p>
+            </router-link>
+            <router-link to="mycourse/view" tag="li">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img4.png" alt=""> -->
+              <h4>课程名称课程名称</h4>
+              <p>开始时间：2019.01.01</p>
+              <p>结束时间：2019.01.01</p>
+            </router-link>
+            <router-link to="mycourse/view" tag="li">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img5.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
@@ -144,31 +201,36 @@
           </ul>
           <ul v-show='isTab===1'>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img4.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img1.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img5.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img2.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img1.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img3.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img2.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img4.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
             </router-link>
             <router-link to="mycourse/view" tag="li">
-              <img src="../../../../assets/images/img3.png" alt="">
+             <img src="../../../../assets/images/student/workimg.png" alt="">
+              <!-- <img src="../../../../assets/images/img5.png" alt=""> -->
               <h4>课程名称课程名称</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
@@ -191,7 +253,39 @@ export default {
     return {
       loading: true,
       isHidden: false,
-      isTab: 0
+      isTab: 0,
+      tasklist:[
+        {
+          title:'课件任务名称',
+          time:'2019.03.11',
+          teacher:'张丹丹老师',
+          classname:'icon-course'
+        },
+        {
+          title:'测试任务名称',
+          time:'2019.03.11',
+          teacher:'张丹丹老师',
+          classname:'icon-test'
+        },
+        {
+          title:'问卷任务名称',
+          time:'2019.03.11',
+          teacher:'张丹丹老师',
+          classname:'icon-questionnaire'
+        },
+        {
+          title:'作品上传',
+          time:'2019.03.11',
+          teacher:'张丹丹老师',
+          classname:'icon-works'
+        },
+        {
+          title:'优势打卡任务名称',
+          time:'2019.03.11',
+          teacher:'张丹丹老师',
+          classname:'icon-clock'
+        }
+      ]
     }
   },
   created() {
@@ -201,11 +295,22 @@ export default {
     }, 1000)
   },
   methods: {
+    goTrends(){
+      this.$router.push('/student/course/task')
+    },
     changeIsHidden() {
       this.isHidden = !this.isHidden
     },
     changeTab(num) {
       this.isTab = num
+    },
+    loadMore(){
+      this.tasklist.push( {
+          title:`课件任务名称${parseInt(Math.random()*10)}`,
+          time:'2019.03.11',
+          teacher:'张丹丹老师',
+          classname:'icon-course'
+        })
     }
   }
 }
@@ -352,24 +457,12 @@ export default {
   hgroup {
     width: 2.1rem;
     height: 100%;
+    overflow: scroll;
+    padding-bottom: 0.5rem;
     float: right;
     border-left: 0.01rem solid rgba(228, 232, 237, 1);
     transition: width 0.3s;
     background-color: #fff;
-    .more {
-      margin: 0.3rem auto 0;
-      background: #fff;
-      width: 1.1rem;
-      height: 0.33rem;
-      border: 0.01rem solid rgba(187, 187, 187, 1);
-      border-radius: 0.16rem;
-      font-size: 0.13rem;
-      font-family: MicrosoftYaHei;
-      font-weight: 400;
-      color: rgba(153, 153, 153, 1);
-      line-height: 0.33rem;
-      text-align: center;
-    }
     & > div {
       padding: 0 0.2rem;
       height: 0.7rem;
@@ -467,10 +560,22 @@ export default {
           transform: rotate(180deg);
         }
       }
-      ul,
-      .more {
+      ul {
         display: none;
       }
+    }
+    .taskmore {
+      border: 0.01rem solid rgba(187, 187, 187, 1);
+      border-radius: 0.16rem;
+      font-size: 0.12rem;
+      color: #999;
+      width: 1rem;
+      height: 0.3rem;
+      line-height: 0.3rem;
+      text-align: center;
+      display: block;
+      margin: 0.3rem auto 0;
+      cursor: pointer;
     }
   }
   .center {
@@ -479,6 +584,10 @@ export default {
       max-height: calc(100vh - 1.3rem);
       overflow: auto;
     }
+  }
+  .list {
+    max-height: calc(100vh - 1.8rem);
+    overflow: auto;
   }
 }
 </style>
