@@ -271,7 +271,8 @@ export default {
 						status:0,
 						className:'li2'
 					}
-				]
+				],
+				taskListStr:[]
 			},
 			{
 				id:2,
@@ -306,7 +307,8 @@ export default {
 						status:0,
 						className:'li2'
 					}
-				]
+				],
+				taskListStr:[]
 			},
 			{
 				id:3,
@@ -326,7 +328,8 @@ export default {
 						time:'2019.03.11',
 						status:1
 					}
-				]
+				],
+				taskListStr:[]
 			},
 			{
 				id:4,
@@ -346,7 +349,8 @@ export default {
 						time:'2019.03.11',
 						status:1
 					}
-				]
+				],
+				taskListStr:[]
 			},
 			{
 				id:5,
@@ -366,7 +370,8 @@ export default {
 						time:'2019.03.11',
 						status:1
 					}
-				]
+				],
+				taskListStr:[]
 			},
 			{
 				id:6,
@@ -386,7 +391,8 @@ export default {
 						time:'2019.03.11',
 						status:1
 					}
-				]
+				],
+				taskListStr:[]
 			},
 			{
 				id:7,
@@ -406,7 +412,8 @@ export default {
 						time:'2019.03.11',
 						status:1
 					}
-				]
+				],
+				taskListStr:[]
 			}],
 			computedData:[],
 			// data: [1,2,3,4,5,6,7],
@@ -456,12 +463,11 @@ export default {
 					data[i].showMore = 1
 					data[i].taskListStr = data[i].taskList.slice(0,3)
 				}else{
-					data[i].showMore = 0
 					data[i].taskListStr = data[i].taskList
+					data[i].showMore = 0
 				}
 			}
 			this.computedData = data
-			console.log(this.computedData)
 		},
 		searchMore(item){
 			let list = this.computedData
@@ -472,7 +478,6 @@ export default {
 				}
 			}
 			this.computedData = list
-			console.log(this.computedData)
 		},
 	}
 };
