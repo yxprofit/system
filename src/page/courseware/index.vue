@@ -27,14 +27,17 @@
         <div>
           <p>本课时任务</p>
         </div>
-        <ul class="task">
-          <li class="task-item" v-for="(item, index) in $route.query.type === 'teacherTask' ? teacherTask : ($route.query.type === 'classTask' ? classTask: studentTask)" :key="index">
+        <draggable element="ul" class="task" @change="log" v-model="computedTask" draggable=".task-item">
+          <li class="task-item" v-for="(item, index) in computedTask" :key="index">
             <h4 :class="'icon-' + item.type">
-              <b class="task-item__title" v-show='!isHidden'>{{ item.name }}</b>
+              <!-- <span class="task-item__title" v-show='!isHidden'>{{ item.name }}</span> -->
+              <el-tooltip class="item" effect="dark" :content="item.name" placement="bottom">
+                <el-button class="task-item__title">{{item.name}}</el-button>
+              </el-tooltip>
               <span :class="[item.type, {'hidden':isHidden}]" class="task-item__btn" v-if="item.btn" @click="handleTaskList(item.type)">{{ item.btn }}</span>
             </h4>
           </li>
-        </ul>
+        </draggable>
         <img :class="['bottom',{'hidden':isHidden}]" @click="changeIsHidden" src="../../assets/images/icon/icon_open.png" alt>
         <ul class="operation" v-if="$route.query.type === 'teacherTask'">
           <li class="edit">
@@ -71,7 +74,8 @@ import SaveTask from "@/page/teachers/course/saveTask";
 import DeleteWork from "@/page/teachers/course/deleteWork/deleteWork";
 import AddWorks from "@/page/teachers/course/addworks/addWorkTypes";
 import TeacherEditor from "@/page/ueditor/ueditor";
-
+/*组件方式引用*/
+import draggable from "vuedraggable";
 
 export default {
   name: "tasks",
@@ -91,26 +95,31 @@ export default {
       isShowSaveTask: false,
       teacherTask: [
         {
+          id: 1,
           name: "课件任务名称课件任务名称",
           btn: "查看结果",
           type: "course"
         },
         {
+          id: 2,
           name: "测试任务名称",
           btn: "",
           type: "test"
         },
         {
+          id: 3,
           name: "问卷任务名称",
           btn: "删除",
           type: "questionnaire"
         },
         {
+          id: 4,
           name: "作品上传",
           btn: "删除",
           type: "works"
         },
         {
+          id: 5,
           name: "优势打卡",
           btn: "删除",
           type: "clock"
@@ -118,26 +127,31 @@ export default {
       ],
       studentTask: [
         {
+          id: 1,
           name: "课件任务名称",
           btn: "去完成",
           type: "course"
         },
         {
+          id: 2,
           name: "测试任务名称",
           btn: "去完成",
           type: "test"
         },
         {
+          id: 3,
           name: "问卷任务名称",
           btn: "已完成",
           type: "questionnaire"
         },
         {
+          id: 4,
           name: "作品上传",
           btn: "已完成",
           type: "works"
         },
         {
+          id: 5,
           name: "优势打卡任务名称",
           btn: "已完成",
           type: "clock"
@@ -145,26 +159,31 @@ export default {
       ],
       classTask: [
         {
+          id: 1,
           name: "课件任务名称",
           btn: "查看结果",
           type: "course"
         },
         {
+          id: 2,
           name: "测试任务名称",
           btn: "",
           type: "test"
         },
         {
+          id: 3,
           name: "问卷任务名称",
           btn: "查看结果",
           type: "questionnaire"
         },
         {
+          id: 4,
           name: "作品上传",
           btn: "查看结果",
           type: "works"
         },
         {
+          id: 5,
           name: "优势打卡",
           btn: "查看结果",
           type: "clock"
@@ -180,6 +199,16 @@ export default {
       } else {
         return true;
       }
+    },
+    computedTask: {
+      get() {
+        let queryType = this.$route.query.type;
+        return queryType === 'teacherTask' ? this.teacherTask : ($route.query.type === 'classTask' ? this.classTask : this.studentTask)
+      },
+      set(newValue) {
+        //这个newValue能监听到methods里面从新赋值了，这个就是新值.
+        return newValue
+      }
     }
   },
   created() {
@@ -189,6 +218,13 @@ export default {
     }, 1000);
   },
   methods: {
+    log: function (evt) {
+      let el = evt.moved
+      let list = this.computedTask
+      list.splice(el.oldIndex, 1)
+      list.splice(el.newIndex, 0, el.element)
+      this.computedTask = list
+    },
     handleTaskClose(bool) {
       this.isShowSaveTask = bool;
     },
@@ -236,7 +272,8 @@ export default {
     SaveTask,
     DeleteWork,
     AddWorks,
-    TeacherEditor
+    TeacherEditor,
+    draggable
   }
 };
 </script>
@@ -380,7 +417,7 @@ hgroup {
       text-align: center;
     }
   }
-  & > ul > li.task-item {
+  & > .task > .task-item {
     padding: 0.2rem 0.1rem 0 0.2rem;
     h4 {
       display: flex;
@@ -500,9 +537,6 @@ hgroup {
     overflow: auto;
     margin-right: 0.1rem;
     max-height: calc(100vh - 1.4rem);
-    b {
-      font-weight: 700;
-    }
     .task-item__title {
       flex: 1;
       text-align: left;
@@ -511,8 +545,13 @@ hgroup {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      padding: 0 0 0 .24rem;
+      border: none;
+      font-size: 12px;
+      font-weight: 700;
       &:hover {
         color: #f79727;
+        background: #fff;
       }
     }
     .task-item__btn.hidden {
