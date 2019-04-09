@@ -68,9 +68,21 @@
           >
             <div class="group-slide" v-for="(item, index) in  list3" :key="index">
               <div class="group-slide-innder">
-                <div class="add-btn" v-if="index === list3.length - 1" @mouseover="handleMouseMover">
+                <div
+                  class="add-btn"
+                  v-if="index === list3.length - 1"
+                  @mouseover="handleMouseMover"
+                >
                   <i class="el-icon-plus"></i>
                   <span class="add-text">添加小组</span>
+                  <draggable
+                    class="list-group list-group2"
+                    :list="list4"
+                    group="people"
+                  >
+                    <div class="avatar-list">
+                    </div>
+                  </draggable>
                 </div>
                 <div v-else>
                   <div class="group-title">0{{index+1}}组</div>
@@ -176,6 +188,7 @@ export default {
         // { name: "Johnson10", id: 11 },
         // { name: "Johnson11", id: 12 }
       ],
+      list4: [],
       controlOnStart: true,
       group1Index: 0,
       group2Index: 0
@@ -190,18 +203,18 @@ export default {
   created() {},
   methods: {
     handleMouseMover() {
-      console.log(111111111111)
+      console.log(111111111111);
     },
     clone({ name }) {
-      console.log(name, 'clone')
+      console.log(name, "clone");
       return { name, id: idGlobal++ };
     },
     pullFunction() {
-      console.log(this.controlOnStart, 'pullFunction')
+      console.log(this.controlOnStart, "pullFunction");
       return this.controlOnStart ? "clone" : true;
     },
     start({ originalEvent }) {
-      console.log(originalEvent, 'start-originalEvent')
+      console.log(originalEvent, "start-originalEvent");
       this.controlOnStart = originalEvent.ctrlKey;
     },
     getdata(evt) {
@@ -219,7 +232,9 @@ export default {
       } else {
         this[listIndex]--;
         let ele = document.querySelector(el);
-        ele.style.transform = `translateX( ${(distance*0.01) * this[listIndex]}rem)`;
+        ele.style.transform = `translateX( ${distance *
+          0.01 *
+          this[listIndex]}rem)`;
         ele.style.transition = "all 0.3s ease";
       }
     },
@@ -227,7 +242,9 @@ export default {
       if (this[listIndex] < this[list].length - baseIndex) {
         this[listIndex]++;
         let ele = document.querySelector(el);
-        ele.style.transform = `translateX( ${(distance*0.01) * this[listIndex]}rem)`;
+        ele.style.transform = `translateX( ${distance *
+          0.01 *
+          this[listIndex]}rem)`;
         ele.style.transition = "all 0.3s ease";
       }
     },
