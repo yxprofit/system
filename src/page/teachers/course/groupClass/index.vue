@@ -56,7 +56,7 @@
                   <span class="add-text">添加小组</span>
                 </div>
                 <div v-else>
-                  <div class="group-title">09级2班 01组</div>
+                  <div class="group-title">0{{index+1}}组</div>
                   <div class="group2-inner">
                     <draggable
                       class="list-group list-group2"
