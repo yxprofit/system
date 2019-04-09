@@ -35,10 +35,10 @@
               :clone="clone"
               :group="{ name: 'people', pull: pullFunction }"
             >
-              <div class="list-group-item" v-for="(element, index) in list1" :key="element.name">
+              <div class="list-group-item" v-for="(item, index) in list1" :key="index">
                 <div class="group1-list-inner">
-                  <img class="avatar-img" src="../../../../assets/images/teacher/g1.png" alt>
-                  <div class="avatar-name">欧阳娜娜 {{ index }}</div>
+                  <img class="avatar-img" :src="item.avatar" alt>
+                  <div class="avatar-name">{{ item.name }} {{ index }}</div>
                   <div class="icon-list">
                     <img class="icon-item" src="../../../../assets/images/teacher/g2.png" alt>
                     <img class="icon-item" src="../../../../assets/images/teacher/g3.png" alt>
@@ -64,47 +64,38 @@
         <div class="content-1">
           <div
             class="content-1-wrap content-group2-list"
-            :style="{ width: 100*Number(list3.length) + '%' }"
+            :style="{ width: 100*Number(list3.length + 1) + '%' }"
           >
             <div class="group-slide" v-for="(item, index) in  list3" :key="index">
               <div class="group-slide-innder">
-                <div
-                  class="add-btn"
-                  v-if="index === list3.length - 1"
-                  @mouseover="handleMouseMover"
-                >
-                  <i class="el-icon-plus"></i>
-                  <span class="add-text">添加小组</span>
-                  <draggable
-                    class="list-group list-group2"
-                    :list="list4"
-                    group="people"
-                  >
-                    <div class="avatar-list">
-                    </div>
-                  </draggable>
-                </div>
-                <div v-else>
+                <div>
                   <div class="group-title">0{{index+1}}组</div>
                   <div class="group2-inner">
                     <draggable
                       class="list-group list-group2"
-                      :list="list2"
+                      :list="list2[index]"
                       group="people"
                       @change="log"
                     >
                       <div
                         class="avatar-list"
-                        v-for="(element, index) in list2"
-                        :key="element.name"
+                        v-for="(gItem, gIndex) in list2[index]"
+                        :key="gIndex"
                       >
-                        <img class="avatar-img" src="../../../../assets/images/teacher/g1.png" alt>
-                        <div class="avatar-name">欧阳娜娜</div>
+                        <img class="avatar-img" :src="gItem.avatar" alt>
+                        <div class="avatar-name">{{ gItem.name }}</div>
                       </div>
                     </draggable>
                   </div>
                 </div>
               </div>
+            </div>
+            <div class="group-slide" ref="addSlide">
+              <div class="add-btn">
+                <i class="el-icon-plus"></i>
+                <span class="add-text">添加小组</span>
+              </div>
+              <draggable class="addGroupDistrict" group="people"></draggable>
             </div>
           </div>
         </div>
@@ -113,7 +104,7 @@
         </div>
         <div
           class="group1-next"
-          @click="handleNext('.content-group2-list', 'group2Index', -310,  'list3', 3)"
+          @click="handleNext('.content-group2-list', 'group2Index', -310,  'list3', 2)"
         >
           <i class="el-icon-arrow-right"></i>
         </div>
@@ -129,6 +120,7 @@
 <script>
 /*组件方式引用*/
 import draggable from "vuedraggable";
+import avatar from "@/assets/images/teacher/g1.png";
 export default {
   props: {
     showLesson: {
@@ -158,40 +150,56 @@ export default {
         content: ""
       },
       list1: [
-        { name: "John1", id: 1 },
-        { name: "Joao", id: 2 },
-        { name: "Jean", id: 3 },
-        { name: "Gerard", id: 4 },
-        { name: "Juan1", id: 5 },
-        { name: "Edgard", id: 6 },
-        { name: "Johnson", id: 7 },
-        { name: "Juan", id: 8 },
-        { name: "Edgard1", id: 9 },
-        { name: "Johnson0", id: 10 }
+        {
+          avatar: avatar,
+          name: "欧阳娜娜"
+        },
+        {
+          avatar: avatar,
+          name: "欧阳娜娜"
+        },
+        {
+          avatar: avatar,
+          name: "欧阳娜娜"
+        },
+        {
+          avatar: avatar,
+          name: "欧阳娜娜"
+        },
+        {
+          avatar: avatar,
+          name: "欧阳娜娜"
+        },
+        {
+          avatar: avatar,
+          name: "欧阳娜娜"
+        },
+        {
+          avatar: avatar,
+          name: "欧阳娜娜"
+        },
+        {
+          avatar: avatar,
+          name: "欧阳娜娜"
+        },
+        {
+          avatar: avatar,
+          name: "欧阳娜娜"
+        },
+        {
+          avatar: avatar,
+          name: "欧阳娜娜"
+        }
       ],
-      list2: [
-        { name: "Juan2", id: 11 },
-        { name: "Edgard2", id: 12 },
-        { name: "Johnson1", id: 13 },
-        { name: "Johnson2", id: 14 },
-        { name: "Johnson3", id: 15 },
-        { name: "Johnson4", id: 16 },
-        { name: "Johnson5", id: 17 },
-        { name: "Johnson6", id: 18 },
-        { name: "Johnson7", id: 19 },
-        { name: "Johnson8", id: 20 }
-      ],
-      list3: [
-        { name: "Juan3", id: 8 },
-        { name: "Edgard3", id: 9 },
-        { name: "Johnson9", id: 10 }
-        // { name: "Johnson10", id: 11 },
-        // { name: "Johnson11", id: 12 }
-      ],
+      list2: [],
+      list3: [],
       list4: [],
       controlOnStart: true,
       group1Index: 0,
-      group2Index: 0
+      group2Index: 0,
+      timer: null,
+      className: "",
+      currentEle: {}
     };
   },
   watch: {
@@ -202,13 +210,6 @@ export default {
   },
   created() {},
   methods: {
-    handleMouseMover() {
-      console.log(111111111111);
-    },
-    clone({ name }) {
-      console.log(name, "clone");
-      return { name, id: idGlobal++ };
-    },
     pullFunction() {
       console.log(this.controlOnStart, "pullFunction");
       return this.controlOnStart ? "clone" : true;
@@ -218,14 +219,30 @@ export default {
       this.controlOnStart = originalEvent.ctrlKey;
     },
     getdata(evt) {
-      console.log(evt.draggedContext);
-      //这里evt.draggedContext后续的内容根据具体的定义变量而定
-    },
-    handleStart({ originalEvent }) {
-      this.controlOnStart = originalEvent.ctrlKey;
+      let className = evt.to.className;
+      if (className && className === "addGroupDistrict") {
+        this.$refs.addSlide.style.borderColor = "red";
+        this.className = className;
+      }
+      // console.log(evt.to.className, 'move');
     },
     handleEnd(e) {
-      console.log(e, "end");
+      // console.log(e, "end");
+      if (this.className === "addGroupDistrict") {
+        this.className = "";
+        this.$refs.addSlide.style.borderColor = "#fafbfd";
+        this.list3.push({});
+        this.list2[this.list3.length - 1] = [this.currentEle];
+        this.timer = setTimeout(() => {
+          this.handleNext(
+            ".content-group2-list",
+            "group2Index",
+            -310,
+            "list3",
+            2
+          );
+        }, 100);
+      }
     },
     handlePrev(el, listIndex, distance) {
       if (this[listIndex] <= 0) {
@@ -249,19 +266,28 @@ export default {
       }
     },
     add: function() {
+      console.log("add");
       this.list.push({ name: "Juan" });
     },
     replace: function() {
+      console.log("replace");
       this.list = [{ name: "Edgard" }];
     },
     clone: function(el) {
+      console.log(el, "clone");
       return {
-        name: el.name + " cloned"
+        name: el.name,
+        avatar: el.avatar
       };
     },
     log: function(evt) {
-      console.log(evt, "evt");
-      window.console.log(evt);
+      try {
+        console.log(evt, "log");
+        if (this.className === "addGroupDistrict") {
+          this.currentEle = Object.assign({}, evt.removed.element);
+        } else {
+        }
+      } catch (err) {}
     },
     closeModal() {
       this.$emit("closeModal", false);
@@ -507,6 +533,11 @@ export default {
   &::-webkit-scrollbar {
     display: none;
   }
+}
+
+.addGroupDistrict {
+  width: 100%;
+  height: 100%;
 }
 
 .group-btn {
