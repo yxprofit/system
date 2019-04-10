@@ -334,10 +334,15 @@ export default {
     border-radius: 0.06rem;
     flex: 1;
     height: 5.94rem;
-    width: 10.18rem;
+    // width: 10.18rem;
+    min-width: 10.18rem;
     .stepimg {
+      max-height: 100%;
+      width: auto;
+      max-width: 100%;
+      margin: 0 auto;
       // width: 9.92rem;
-      height: 100%;
+      // height: 100%;
       text-align: center;
       display:flex;
       align-items:center;
