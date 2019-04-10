@@ -335,7 +335,7 @@ export default {
     flex: 1;
     height: 5.94rem;
     // width: 10.18rem;
-    min-width: 10.18rem;
+    // min-width: 10.18rem;
     .stepimg {
       max-height: 100%;
       width: auto;
@@ -427,6 +427,7 @@ hgroup.has-btn {
 hgroup {
   flex: 1;
   width: 2.75rem;
+  max-width: 2.75rem;
   height: 100%;
   padding-bottom: 0.2rem;
   float: right;
