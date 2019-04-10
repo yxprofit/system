@@ -53,6 +53,10 @@
           <el-table-column prop="name" label="分数" align="center" sortable></el-table-column>
           <el-table-column prop="name" label="总分" align="center" sortable></el-table-column>
         </el-table>
+        <div class="pagination">
+          <span class="prev-btn" @click="loadData(-1)">上一页</span>
+          <span class="next-btn" @click="loadData(1)">下一页</span>
+        </div>
       </section>
       <aside>
         <h3>测试完成率</h3>
@@ -99,6 +103,61 @@
 
 <script>
 import vs from "assets/images/vs.png";
+const mockTabledata1 = [
+  {
+    date: "2016-05-03",
+    name: "王小虎",
+    address: "上海市普陀区金沙江路"
+  },
+  {
+    date: "2016-05-02",
+    name: "王小虎",
+    address: "上海市普陀区金沙江"
+  },
+  {
+    date: "2016-05-04",
+    name: "王小虎",
+    address: "上海市普陀区金沙江路"
+  },
+  {
+    date: "2016-05-01",
+    name: "王小虎",
+    address: "上海市普陀区金沙江路"
+  },
+  {
+    date: "2016-05-03",
+    name: "王小虎",
+    address: "上海市普陀区金沙江路"
+  }
+]
+const mockTableData2 =  [
+  {
+    date: "2019-05-03",
+    name: "余周周1",
+    address: "上海市普陀区金沙江路"
+  },
+  {
+    date: "2019-05-02",
+    name: "余周周2",
+    address: "上海市普陀区金沙江"
+  },
+  {
+    date: "2016-05-04",
+    name: "余周周3",
+    address: "上海市普陀区金沙江路"
+  },
+  {
+    date: "2019-05-01",
+    name: "余周周4",
+    address: "上海市普陀区金沙江路"
+  },
+  {
+    date: "2019-05-03",
+    name: "余周周5",
+    address: "上海市普陀区金沙江路"
+  }
+]
+
 export default {
   name: "Mytest",
   data() {
@@ -106,6 +165,7 @@ export default {
       data: [1, 2, 3, 4],
       loading: true,
       vs,
+      currentPage: 1,
       pro1: 0,
       pro2: 0,
       pro3: 0,
@@ -132,33 +192,7 @@ export default {
         }
       ],
       value: "课程1",
-      tableData: [
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路"
-        },
-         {
-          date: "2016-05-02",
-          name: "王小虎",
-          address: "上海市普陀区金沙江"
-        },
-        {
-          date: "2016-05-04",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路"
-        },
-        {
-          date: "2016-05-01",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路"
-        },
-        {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路"
-        }
-      ]
+      tableData: []
     };
   },
   created() {
@@ -167,9 +201,24 @@ export default {
       this.pro1 = 80;
       this.pro2 = 75;
       this.pro3 = 60;
+      this.tableData = mockTabledata1;
     }, 1000);
   },
   methods: {
+    loadData(index) {
+      if (index === -1) { // 加载上一页
+        if (this.currentPage <= 1) {
+          return;
+        }
+        this.tableData = mockTabledata1;
+        //load ...
+        this.currentPage -= 1;
+      } else { // 加载下一页
+        this.currentPage += 1;
+        this.tableData = mockTableData2
+      }
+
+    },
     formatter(row, column) {
       return row.address;
     },
@@ -374,5 +423,25 @@ export default {
       }
     }
   }
+.pagination {
+  width: 100%;
+  text-align: center;
+  margin-top: 0.15rem;
+  margin-bottom: 0.15rem;
+  span {
+    display: inline-block;
+    height: 0.3rem;
+    line-height: 0.3rem;
+    cursor: pointer;
+    border: 0.01rem solid #bbbbbb;
+    border-radius: 0.05rem;
+    font-size: 0.12rem;
+    padding: 0 0.15rem;
+    color: #999;
+  }
+  span + span {
+    margin-left: 0.2rem;
+  }
+}
 }
 </style>
