@@ -51,7 +51,7 @@
 
       </hgroup>
 
-      <popup-modal v-model="isShowSaveTask">
+      <popup-modal v-model="isShowSaveTask" :contentStyle="{ width: '8.8rem' }">
         <save-task @taskClose="handleTaskClose" @confirmDel='confirmDel'></save-task>
       </popup-modal>
       <delete-work :state='isdelete' @close='handleClose'></delete-work>

@@ -39,6 +39,10 @@ export default {
 .save-task {
   width: 8.8rem;
   padding: 0.3rem 0.36rem 0.34rem 0.36rem;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 0.05rem;
+  position: relative;
 }
 
 .save-header {
