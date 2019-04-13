@@ -4,11 +4,8 @@
       <div class="backclass" v-if="$route.query.type !== 'teacherTask'" @click="goback">
         < 返回课程</div>
           <div class="step">
-            <div class="stepimg" v-if="page === 1">
-              <img :src="material">
-            </div>
-            <div class="stepimg" v-if="page === 2">
-              <img :src="details1">
+            <div ref="stepImg" class="stepimg" >
+              <img class="step-content" :style="imgClacStyle" :src="page === 1 ? material : details1">
             </div>
           </div>
           <div class="stepbut">
@@ -31,7 +28,7 @@
           <li class="task-item" v-for="(item, index) in computedTask" :key="index">
             <h4 :class="'icon-' + item.type">
               <!-- <span class="task-item__title" v-show='!isHidden'>{{ item.name }}</span> -->
-              <el-tooltip class="item" effect="dark" :content="item.name" placement="bottom">
+              <el-tooltip popper-class="hoverTip" class="item" effect="dark" :content="item.name" placement="bottom">
                 <el-button class="task-item__title">{{item.name}}</el-button>
               </el-tooltip>
               <span :class="[item.type, {'hidden':isHidden}]" class="task-item__btn" v-if="item.btn" @click="handleTaskList(item.type)">{{ item.btn }}</span>
@@ -89,6 +86,7 @@ export default {
       details1,
       allPrint,
       closePrint,
+      imgClacStyle: {},
       fullShow: false,
       page: 1,
       isHidden: false,
@@ -217,7 +215,35 @@ export default {
       _this.loading = false;
     }, 1000);
   },
+  updated() {
+    this.setImgStyle()
+  },
   methods: {
+    setImgStyle() {
+      if (!this.$refs.stepImg) {
+        return;
+      }
+      let img = this.$refs.stepImg.querySelector('img');
+      if (!img) {
+        return;
+      }
+      let parentWidth = this.$refs.stepImg.offsetWidth;
+      let parentHeight = this.$refs.stepImg.offsetHeight;
+      let orgPercent = parentWidth/parentHeight;
+      let that = this;
+      var imgtemp = new Image();
+      imgtemp.src = img.src;
+      imgtemp.onload = function() { //图片加载完成后执行
+        let realWidth = this.width;
+        let realHeight = this.height;
+        let upPercent = realWidth / realHeight;
+        if (upPercent < orgPercent) {
+          that.imgClacStyle = {width: "auto", height: parentHeight + "px"}
+        } else {
+          that.imgClacStyle = {height: "auto", width: parentWidth + "px"}
+        }
+      }
+    },
     log: function (evt) {
       let el = evt.moved
       let list = this.computedTask
@@ -308,15 +334,21 @@ export default {
     border-radius: 0.06rem;
     flex: 1;
     height: 5.94rem;
-    width: 10.18rem;
+    // width: 10.18rem;
+    // min-width: 10.18rem;
     .stepimg {
+      max-height: 100%;
+      width: auto;
+      max-width: 100%;
+      margin: 0 auto;
       // width: 9.92rem;
-      height: 100%;
+      // height: 100%;
       text-align: center;
-      img {
-        width: 100%;
-        height: auto;
-        max-height: 100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      .step-content {
+        max-width: 100%;
       }
     }
   }
@@ -395,6 +427,7 @@ hgroup.has-btn {
 hgroup {
   flex: 1;
   width: 2.75rem;
+  max-width: 2.75rem;
   height: 100%;
   padding-bottom: 0.2rem;
   float: right;
@@ -619,4 +652,17 @@ hgroup {
     }
   }
 }
+
+</style>
+<style lang="scss">
+  .el-tooltip__popper.is-dark.hoverTip {
+    background-color: #f5f6f7;
+    color: #666;
+    .popper__arrow {
+      border-bottom-color: #f5f6f7;
+      &:after {
+        border-bottom-color: #f5f6f7;
+      }
+    }
+  }
 </style>
