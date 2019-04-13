@@ -1,8 +1,8 @@
 <template>
-  <div class="popup">
-    <transition name="ry-fade">
+  <div class="popup" v-show="value">
+    <!-- <transition name="ry-fade">
       <div class="popup-mask" v-show="value && !hideMask" @click="$_cancel"></div>
-    </transition>
+    </transition>-->
     <transition name="slide">
       <div class="popup-content" v-show="value" :class="positionClass" :style="{ contentStyle }">
         <slot></slot>
@@ -46,7 +46,7 @@ export default {
     contentStyle: {
       type: Object,
       default: () => {
-        return {}
+        return {};
       }
     }
   },
@@ -61,11 +61,11 @@ export default {
   },
 
   watch: {
-    value(newVal, oldVal)  {
+    value(newVal, oldVal) {
       if (newVal) {
-        document.body.style.overflow = 'hidden'
+        document.body.style.overflow = "hidden";
       } else {
-        document.body.style.overflow = 'auto'
+        document.body.style.overflow = "auto";
       }
     }
   },
@@ -85,20 +85,28 @@ export default {
 $prefixCls: popup;
 
 .#{$prefixCls} {
-  &-mask {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 9999;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  overflow: auto;
+  // &-mask {
+  //   position: fixed;
+  //   top: 0;
+  //   left: 0;
+  //   right: 0;
+  //   bottom: 0;
+  //   background-color: rgba(0, 0, 0, 0.5);
+  //   z-index: 9999;
+  // }
   &-content {
-    position: fixed;
-    background-color: #fff;
+    // position: fixed;
+    // background-color: #fff;
     z-index: 9999;
-    border-radius: 0.05rem;
+    margin: 15vh auto;
     &.#{$prefixCls}-top {
       left: 0;
       right: 0;
@@ -122,9 +130,9 @@ $prefixCls: popup;
       bottom: 0;
     }
     &.#{$prefixCls}-center {
-      top: 50%;
-      left: 50%;
-      transform: translate3d(-50%, -50%, 0);
+      // top: 50%;
+      // left: 50%;
+      // transform: translate3d(-50%, -50%, 0);
     }
   }
 }
@@ -145,14 +153,28 @@ $prefixCls: popup;
 @keyframes slide-enter {
   from {
     opacity: 0;
-    transform: translate3d(-50%, 0, 0);
+    margin-top: 50vh;
+    // transform: translate3d(-50%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    margin-top: 15vh;
+    // transform: translate3d(-50%, -50%, 0);
   }
 }
 
 @keyframes slide-leave {
-  to {
+  from {
     opacity: 1;
-    transform: translate3d(-50%, -50%,  0);
+    margin-top: 15vh;
+    // transform: translate3d(-50%, -50%, 0);
+  }
+
+  to {
+    opacity: 0;
+    margin-top: 50vh;
+    // transform: translate3d(-50%, 0, 0);
   }
 }
 
@@ -168,10 +190,10 @@ $prefixCls: popup;
 
 .slide {
   &-enter-active {
-    animation: slide-enter 0.3s both ease-out;
+    animation: slide-enter 0.5s both ease-out;
   }
   &-leave-active {
-    animation: slide-leave 0.3s both ease-out;
+    animation: slide-leave 0.5s both ease-out;
   }
 }
 </style>

@@ -304,6 +304,9 @@ export default {
 .group {
   width: 11rem;
   height: 6.2rem;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 0.05rem;
 
   .group-header-wrap {
     height: 0.6rem;

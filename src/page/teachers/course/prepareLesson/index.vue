@@ -45,7 +45,7 @@
               <div class="lesson-teacher">
                 <img class="lesson-icon" src="../../../../assets/images/icon/44.png" alt>
                 <span class="lesson-text">{{ item.lesson_teacher }}</span>
-              </div> -->
+              </div>-->
             </div>
           </li>
         </ul>
@@ -87,9 +87,9 @@ export default {
       this.$emit("update:showLesson", newVal);
 
       if (this.visible) {
-        document.body.style.overflow = 'hidden';
+        document.body.style.overflow = "hidden";
       } else {
-        document.body.style.overflow = 'auto';
+        document.body.style.overflow = "auto";
       }
     }
   },
@@ -135,10 +135,11 @@ export default {
   overflow: auto;
 
   .category-wrap {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+    margin: 15vh auto;
     background: #fff;
     width: 11rem;
     max-height: 5.84rem;
@@ -360,11 +361,13 @@ export default {
 @keyframes slide {
   from {
     opacity: 0;
-    transform: translate(-50%, 0);
+    // transform: translate(-50%, 0);
+    margin-top: 50vh;
   }
   to {
     opacity: 1;
-    transform: translate(-50%, -50%);
+    // transform: translate(-50%, -50%);
+    margin-top: 15vh;
   }
 }
 </style>
