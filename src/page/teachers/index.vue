@@ -10,14 +10,14 @@
           <span><img src="../../assets/images/icon/icon_sex_nv.png" alt=""></span>
         </div>
         <p>高级教师</p>
-        <div :class="[{'active':isActive===1},'nav']" @click="change(1)">
+        <router-link to="/teachers/course/mycourse" tag="div" :class="[{'active':isActive===1},'nav']">
           <span><img src="../../assets/images/icon/icon_course.png" alt=""></span>
           <span>课程中心</span>
-        </div>
-        <div :class="[{'task':isActive===2},'nav']" @click="change(2)">
+        </router-link>
+        <router-link to="/teachers/course/task" tag="div" :class="[{'task':isActive===2},'nav']">
           <span><img src="../../assets/images/icon/icon_task.png" alt=""></span>
           <span>任务中心</span>
-        </div>
+        </router-link>
       </aside>
       <section class="content">
         <BHeader></BHeader>
@@ -28,28 +28,34 @@
 </template>
 
 <script>
-import BHeader from '@/components/common/header.vue'
+import BHeader from "@/components/common/header.vue";
 export default {
-  name: 'Teachers',
+  name: "Teachers",
   components: {
     BHeader
   },
-  data(){
+  data() {
     return {
-      isActive:1
+      isActive: 1
+    };
+  },
+  watch: {
+    "$route.path"(newVal, oldVal) {
+      if (newVal === "/teachers/course/task") {
+        this.isActive = 2;
+      } else if (newVal === "/teachers/course/mycourse") this.isActive = 1;
     }
   },
-  methods:{
-    change(num){
-      this.isActive = num
-      if(num===1){
-        this.$router.push('/teachers/course/mycourse')
-      }else if(num===2){
-        this.$router.push('/teachers/course/task')
-      }
+  created() {
+    if (this.$router.currentRoute.fullPath === "/teachers/course/mycourse") {
+      this.isActive = 1;
+    } else if (
+      this.$router.currentRoute.fullPath === "/teachers/course/task"
+    ) {
+      this.isActive = 2;
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -112,10 +118,10 @@ export default {
         font-size: 0.16rem;
         color: #f79727;
       }
-      &.task{
-        border-left: 0.03rem solid #3BD7BD;
-        background:rgba(219,253,247,1);
-        color: #2CC7AD;
+      &.task {
+        border-left: 0.03rem solid #3bd7bd;
+        background: rgba(219, 253, 247, 1);
+        color: #2cc7ad;
       }
       & > span:nth-child(1) {
         display: inline-block;
