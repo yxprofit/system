@@ -10,11 +10,11 @@
           <span><img src="../../assets/images/icon/icon_sex_nv.png" alt=""></span>
         </div>
         <p>高级教师</p>
-        <div class="nav active">
+        <div :class="[{'active':isActive===1},'nav']" @click="change(1)">
           <span><img src="../../assets/images/icon/icon_course.png" alt=""></span>
           <span>课程中心</span>
         </div>
-        <div class="nav">
+        <div :class="[{'task':isActive===2},'nav']" @click="change(2)">
           <span><img src="../../assets/images/icon/icon_task.png" alt=""></span>
           <span>任务中心</span>
         </div>
@@ -33,6 +33,21 @@ export default {
   name: 'Teachers',
   components: {
     BHeader
+  },
+  data(){
+    return {
+      isActive:1
+    }
+  },
+  methods:{
+    change(num){
+      this.isActive = num
+      if(num===1){
+        this.$router.push('/teachers/course/mycourse')
+      }else if(num===2){
+        this.$router.push('/teachers/course/task')
+      }
+    }
   }
 }
 </script>
@@ -96,6 +111,11 @@ export default {
         background: rgba(252, 244, 235, 1);
         font-size: 0.16rem;
         color: #f79727;
+      }
+      &.task{
+        border-left: 0.03rem solid #3BD7BD;
+        background:rgba(219,253,247,1);
+        color: #2CC7AD;
       }
       & > span:nth-child(1) {
         display: inline-block;
