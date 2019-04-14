@@ -35,24 +35,26 @@
             </section>
           </li>
         </ul>
-        <el-table
-          :data="tableData"
-          style="width: 100%"
-          @row-click="cellEnter"
-          :default-sort="{prop: 'date', order: 'descending'}"
-          row-class-name="tableRow"
-        >
-          <el-table-column label="课时名称" sortable align="center" width="180">
-            <template slot-scope="scope">
-              <span style="margin-left: 0.1rem">{{ scope.row.address }}</span>
-              <p class="look">查看明细 ></p>
-            </template>
-          </el-table-column>
-          <el-table-column prop="name" label="技能维度" sortable align="center" width="180"></el-table-column>
-          <el-table-column prop="date" label="完成时间" align="center"></el-table-column>
-          <el-table-column prop="name" label="分数" align="center" sortable></el-table-column>
-          <el-table-column prop="name" label="总分" align="center" sortable></el-table-column>
-        </el-table>
+        <div class="table-wrap">
+          <el-table
+            :data="tableData"
+            style="width: 100%"
+            @row-click="cellEnter"
+            :default-sort="{prop: 'date', order: 'descending'}"
+            row-class-name="tableRow"
+          >
+            <el-table-column label="课时名称" sortable align="center" width="180">
+              <template slot-scope="scope">
+                <span style="margin-left: 0.1rem">{{ scope.row.address }}</span>
+                <p class="look">查看明细 ></p>
+              </template>
+            </el-table-column>
+            <el-table-column prop="name" label="技能维度" sortable align="center" width="180"></el-table-column>
+            <el-table-column prop="date" label="完成时间" align="center"></el-table-column>
+            <el-table-column prop="name" label="分数" align="center" sortable></el-table-column>
+            <el-table-column prop="name" label="总分" align="center" sortable></el-table-column>
+          </el-table>
+        </div>
         <div class="pagination">
           <span class="prev-btn" @click="loadData(-1)">上一页</span>
           <span class="next-btn" @click="loadData(1)">下一页</span>
@@ -443,6 +445,10 @@ export default {
     span + span {
       margin-left: 0.2rem;
     }
+  }
+
+  .table-wrap {
+    height: 400px;
   }
 }
 </style>
