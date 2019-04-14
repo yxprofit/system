@@ -13,8 +13,7 @@
           </el-form-item>
           <el-form-item label="内容" prop="name" label-width="0.55rem">
             <div id="editor">
-              <!-- <vue-html5-editor :content="content" :height="425"></vue-html5-editor> -->
-              <smeditor :config="config"></smeditor>
+              <quill-editor v-model="content" @change="onEditorChange($event)" style="height: 400px;" :options="opt"></quill-editor>
             </div>
           </el-form-item>
 
@@ -31,36 +30,85 @@
 </template>
 
 <script>
-import SMEditor from "../../components/editor/SMEditor";
-const config = {
-  // 接口地址
-  uploadUrl: "https://jsonplaceholder.typicode.com/posts/",
-  // form 里的 filename
-  uploadName: "upload_file",
-  // 其他参数
-  uploadParams: {},
-  sticky: true,
-  // 上传成功回调
-  uploadCallback: data => {
-    // console.log(data)
-    return (
-      data.image.url ||
-      "https://ws1.sinaimg.cn/large/006tNc79gy1fp1rdw7e90j30rs0rsacb.jpg"
-    );
-  },
-  // 上传失败回调, 可选
-  uploadFailed: err => {
-    // console.log('仅供测试, 并非真正上传')
-    alert("仅供测试, 并非真正上传!", err);
-  }
-};
+
+import {quillEditor, Quill} from 'vue-quill-editor'
+import {container, ImageExtend, QuillWatch} from 'quill-image-extend-module'
+
+Quill.register('modules/ImageExtend', ImageExtend)
+
+// require styles
+import "quill/dist/quill.core.css";
+import "quill/dist/quill.snow.css";
+import "quill/dist/quill.bubble.css";
+
+
 export default {
   data() {
     return {
       editor: null,
       loading: true,
       content: "",
-      config: config
+      // state: true,
+      content: "",
+      opt: {
+        formula: true,
+        syntax: true,
+        modules: {
+           ImageExtend: {  
+             // 如果不作设置，即{}  则依然开启复制粘贴功能且以base64插入 
+              name: 'img',  // 图片参数名
+              size: 3,  // 可选参数 图片大小，单位为M，1M = 1024kb
+              action: '/a',  // 服务器地址, 如果action为空，则采用base64插入图片
+              // response 为一个函数用来获取服务器返回的具体图片地址
+              // 例如服务器返回{code: 200; data:{ url: 'baidu.com'}}
+              // 则 return res.data.url
+              response: (res) => {
+                  return res.info
+              },
+              headers: (xhr) => {
+              // xhr.setRequestHeader('myHeader','myValue')
+              },  // 可选参数 设置请求头部
+              sizeError: () => {},  // 图片超过大小的回调
+              start: () => {},  // 可选参数 自定义开始上传触发事件
+              end: () => {},  // 可选参数 自定义上传结束触发的事件，无论成功或者失败
+              error: () => {},  // 可选参数 上传失败触发的事件
+              success: () => {},  // 可选参数  上传成功触发的事件
+              change: (xhr, formData) => {
+              // xhr.setRequestHeader('myHeader','myValue')
+              // formData.append('token', 'myToken')
+              } // 可选参数 每次选择图片触发，也可用来设置头部，但比headers多了一个参数，可设置formData
+          },
+          toolbar: {
+            container: [
+              ["bold", "italic", "underline", "strike"],
+              // 标题大小
+              [{ header: [1, 2, 3, 4, 5, 6, false] }],
+              // 列表
+              [{ list: "ordered" }, { list: "bullet" }],
+              // 对齐方式
+              [{ align: [] }],
+              // 引用
+              ["blockquote"],
+              // 颜色
+              [{ color: [] }, { background: [] }],
+              // 链接图片
+              ["link", "image"],
+
+              ["code-block", "clean"]
+            ],
+            // 劫持原有图片上传 
+             // 如果不上传图片到服务器，此处不必配置
+            handlers: {
+              'image': function () {
+                QuillWatch.emit(this.quill.id)
+              }
+            }
+          },
+         
+        },
+        placeholder: "请在这里输入...",
+        
+      }
     };
   },
   props: ["state"],
@@ -76,10 +124,13 @@ export default {
     handleClose() {
       this.$emit("close");
       console.log(this.content);
+    },
+    onEditorChange () {
+      console.log(this.content);
     }
   },
   components: {
-    smeditor: SMEditor
+    quillEditor
   },
   destroyed() {}
 };
@@ -127,7 +178,7 @@ export default {
 }
 #editor {
   width: 9.02rem;
-  height: 4.6rem;
+  height: 4.5rem;
   margin-left: 0.25rem;
 }
 #editor /deep/ .edui-editor-toolbarboxinner {
