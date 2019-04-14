@@ -125,8 +125,7 @@
 										</el-row>
 									</li>
 								</ul>
-								<div class="tasksall" @click='searchMore(item)' v-show="item.showMore">查看全部<i>》</i></div>
-								<div class="tasksall taskNoMore" v-show="!item.showMore"></div>
+								<div :class="['tasksall',{'taskNo':!item.showText},{'icon':item.showText==='收取全部'}]" @click='searchMore(item)'>{{item.showText}}<i v-show='item.showText'>》</i></div>
 							</div>
 						</div>
 					</el-col>
@@ -360,21 +359,29 @@ export default {
 			let data = this.data
 			for(let i=0;i<data.length;i++){
 				if(data[i].taskList.length>3){
-					data[i].showMore = 1
+					data[i].showText = '查看全部'
 					data[i].taskListStr = data[i].taskList.slice(0,3)
 				}else{
 					data[i].taskListStr = data[i].taskList
-					data[i].showMore = 0
+					data[i].showText = ''
 				}
 			}
 			this.computedData = data
 		},
 		searchMore(item){
+			if(!item.showText){
+				return
+			}
 			let list = this.computedData
 			for(let i=0; i<list.length;i++){
 				if(list[i].id === item.id){
-					list[i].taskListStr = list[i].taskList
-					list[i].showMore = 0
+					if(item.showText === '查看全部'){
+						list[i].taskListStr = list[i].taskList
+						list[i].showText = '收取全部'
+					}else{
+						list[i].taskListStr = list[i].taskList.slice(0,3)
+						list[i].showText = '查看全部'
+					}
 				}
 			}
 			this.computedData = list
@@ -451,8 +458,6 @@ export default {
         cursor: pointer;
       }
     }
-
-    //
     .workList {
       height: 3.6rem;
       .li {
@@ -517,7 +522,6 @@ export default {
           }
         }
       }
-
       .tasks {
         border-top: #e4e8ed 0.01rem solid;
         margin: 0 -0.15rem;
@@ -566,15 +570,24 @@ export default {
           text-align: center;
           color: #f79727;
           margin-top: 0.1rem;
+					cursor: pointer;
           i {
             transform: rotate(90deg);
             display: inline-block;
             margin: 0.03rem 0 0 0.05rem;
             vertical-align: middle;
           }
+					&.icon{
+						i{
+							 transform: rotate(-90deg);
+							 margin:-0.08rem 0 0 0.05rem;
+						}
+					}
+					&.taskNo{
+						height: .16rem;
+					}
         }
       }
-
       .nowork {
         height: 1.92rem;
         position: relative;
