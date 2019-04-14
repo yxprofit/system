@@ -47,7 +47,7 @@
   border-collapse: collapse;
   box-shadow: 0 0 0.07rem #FE7B00 inset;
   border: 0.01rem solid #EDEFF2;
-  /* height: 0.7rem; */
+  height: 0.7rem;
   box-sizing: border-box;
 }
 
@@ -64,8 +64,11 @@
 }
 
 .mytest .el-table .tableRow:hover td {
-  background-color: initial !important;
+  /* background-color: initial !important; */
+  background: none !important;
+  /* border: none !important; */
 }
+
 .mytest .el-select-dropdown {
   top: 0.53rem !important;
 }
