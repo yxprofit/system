@@ -30,14 +30,8 @@ td,
 pre,
 xmp {
   margin: 0;
-<<<<<<< HEAD
-  padding: 0
-}
-
-=======
   padding: 0;
 }
->>>>>>> dhn
 body,
 input,
 textarea,
@@ -50,14 +44,8 @@ code,
 kbd,
 samp {
   line-height: 1;
-<<<<<<< HEAD
-  font-family: tahoma, arial, "Hiragino Sans GB", simsun, sans-serif
-}
-
-=======
   font-family: tahoma, arial, "Hiragino Sans GB", simsun, sans-serif;
 }
->>>>>>> dhn
 h1,
 h2,
 h3,
@@ -70,14 +58,8 @@ input,
 textarea,
 button,
 select {
-<<<<<<< HEAD
-  font-size: 100%
-}
-
-=======
   font-size: 100%;
 }
->>>>>>> dhn
 h1,
 h2,
 h3,
@@ -86,44 +68,11 @@ h5,
 h6 {
   font-family: "microsoft yahei", simsun, sans-serif;
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> dhn
 h1,
 h2,
 h3,
 h4,
 h5,
-<<<<<<< HEAD
-h6,
-b,
-strong {
-  font-weight: normal;
-}
-
-address,
-cite,
-dfn,
-em,
-i,
-optgroup,
-var {
-  font-style: normal
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  text-align: left
-}
-
-caption,
-th {
-  text-align: inherit
-}
-
-=======
 h6 {
   font-weight: normal;
 }
@@ -144,49 +93,27 @@ caption,
 th {
   text-align: inherit;
 }
->>>>>>> dhn
 ul,
 ol,
 menu,
 li {
-<<<<<<< HEAD
-  list-style: none
-}
-
-fieldset,
-img {
-  border: 0
-}
-
-=======
   list-style: none;
 }
 fieldset,
 img {
   border: 0;
 }
->>>>>>> dhn
 img,
 object,
 input,
 textarea,
 button,
 select {
-<<<<<<< HEAD
-  vertical-align: middle
-}
-
-img {
-  width: 100%;
-}
-
-=======
   vertical-align: middle;
 }
 img {
   width: 100%;
 }
->>>>>>> dhn
 article,
 aside,
 footer,
@@ -199,48 +126,25 @@ hgroup,
 details,
 menu {
   display: block;
-<<<<<<< HEAD
-  box-sizing: border-box
-}
-
-=======
   box-sizing: border-box;
 }
->>>>>>> dhn
 audio,
 canvas,
 video {
   display: inline-block;
   *display: inline;
-<<<<<<< HEAD
-  *zoom: 1
-}
-
-=======
   *zoom: 1;
 }
->>>>>>> dhn
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-<<<<<<< HEAD
-  content: "\0020"
-}
-
-textarea {
-  overflow: auto;
-  resize: vertical
-}
-
-=======
   content: "\0020";
 }
 textarea {
   overflow: auto;
   resize: vertical;
 }
->>>>>>> dhn
 input,
 textarea,
 button,
@@ -249,32 +153,6 @@ a {
   outline: 0 none;
   border: none;
 }
-<<<<<<< HEAD
-
-button::-moz-focus-inner,
-input::-moz-focus-inner {
-  padding: 0;
-  border: 0
-}
-
-mark {
-  background-color: transparent
-}
-
-a,
-ins,
-s,
-u,
-del {
-  text-decoration: none
-}
-
-sup,
-sub {
-  vertical-align: baseline
-}
-
-=======
 button::-moz-focus-inner,
 input::-moz-focus-inner {
   padding: 0;
@@ -290,37 +168,16 @@ sup,
 sub {
   vertical-align: baseline;
 }
->>>>>>> dhn
 html {
   height: 100%;
   -webkit-tap-highlight-color: transparent;
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> dhn
 hr {
   height: 0.02rem;
   margin: 0.1rem 0;
   border: medium none;
   border-top: 0.02rem solid #cacaca;
 }
-<<<<<<< HEAD
-
-a {
-  color: #F79727;
-  text-decoration: none;
-}
-
-div {
-  box-sizing: border-box
-}
-
-input {
-  font-family: 'PingFangSC-Regular', 'Avenir', Helvetica, Arial, sans-serif;
-}
-
-=======
 a {
   color: #f79727;
   text-decoration: none;
@@ -331,7 +188,6 @@ div {
 input {
   font-family: "PingFangSC-Regular", "Avenir", Helvetica, Arial, sans-serif;
 }
->>>>>>> dhn
 .clearfix:after {
   visibility: hidden;
   display: block;
@@ -340,32 +196,16 @@ input {
   clear: both;
   height: 0;
 }
-<<<<<<< HEAD
-
 .clearfix {
   display: inline-table;
 }
-
-=======
-.clearfix {
-  display: inline-table;
-}
->>>>>>> dhn
 /* Hides from IE-mac \*/
 * html .clearfix {
   height: 1%;
 }
-<<<<<<< HEAD
-
 .clearfix {
   display: block;
 }
-
-=======
-.clearfix {
-  display: block;
-}
->>>>>>> dhn
 /* End hide from IE-mac */
 .pointer {
   cursor: pointer;
@@ -383,13 +223,6 @@ input {
 }
 
 ::-webkit-scrollbar-thumb:window-inactive {
-<<<<<<< HEAD
-  background-color: #E4E8ED;
-}
-
-body {
-  overflow-y: scroll;
-=======
   background-color: #e4e8ed;
 }
 
@@ -398,5 +231,4 @@ body {
 }
 .ql-toolbar.ql-snow {
   background-color: #f8f8f8;
->>>>>>> dhn
 }
