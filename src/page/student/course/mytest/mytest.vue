@@ -235,9 +235,8 @@ export default {
 <style lang="scss" scoped>
 .mytest {
   // height: calc(100% - 0.14rem);
-  margin: 0.14rem 0.14rem 0 0;
   background-color: #fff;
-  border-radius: 0.06rem;
+  border-radius: 0.06rem 0.06rem 0 0;
   padding: 0 0.2rem;
   .vs {
     img {
@@ -429,8 +428,7 @@ export default {
   .pagination {
     width: 100%;
     text-align: center;
-    margin-top: 0.15rem;
-    margin-bottom: 0.15rem;
+    margin: 0.3rem 0;
     span {
       display: inline-block;
       height: 0.3rem;
@@ -448,7 +446,7 @@ export default {
   }
 
   .table-wrap {
-    height: 400px;
+    height: 4rem;
   }
 }
 

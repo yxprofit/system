@@ -11,6 +11,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "element-ui": "^2.4.11",
     "screenfull": "^4.2.0",
     "swiper": "^4.5.0",

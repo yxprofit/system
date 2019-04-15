@@ -64,9 +64,9 @@
 }
 
 .mytest .el-table .tableRow:hover td {
-  /* background-color: initial !important; */
+  background-color: initial !important;
   background: none !important;
-  /* border: none !important; */
+  border: none !important;
 }
 
 .mytest .el-select-dropdown {
