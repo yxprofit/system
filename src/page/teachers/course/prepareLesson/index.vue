@@ -209,7 +209,7 @@ export default {
   padding-left: 0.2rem;
 }
 .lesson-item {
-  width: 1.9rem;
+  width: 1.89rem;
   // height: 2.4rem;
   flex: 1;
   display: inline-block;
