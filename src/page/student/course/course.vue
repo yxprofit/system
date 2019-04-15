@@ -153,6 +153,7 @@ export default {
     margin-top: 0.14rem;
     background: #fff;
     border-radius: 0.06rem 0.06rem 0 0;
+    overflow: auto;
   }
 }
 </style>

@@ -36,6 +36,7 @@
           </li>
         </ul>
         <div class="table-wrap">
+          <!-- <div class="table-border"></div> -->
           <el-table
             :data="tableData"
             style="width: 100%"
@@ -447,6 +448,12 @@ export default {
 
   .table-wrap {
     height: 4rem;
+
+    .table-border {
+      width: 100%;
+      height: 0.7rem;
+      border: 1px solid #F28C18;
+    }
   }
 }
 
