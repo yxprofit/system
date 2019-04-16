@@ -21,18 +21,18 @@
 
 <script>
 export default {
-  data() {
-    return {};
+  data () {
+    return {}
   },
   methods: {
-    taskClose() {
-      this.$emit("taskClose", false);
+    taskClose () {
+      this.$emit('taskClose', false)
     },
-    confirmDelete() {
-      this.$emit("confirmDel");
+    confirmDelete () {
+      this.$emit('confirmDel')
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -101,14 +101,16 @@ export default {
   position: absolute;
   right: 0.15rem;
   top: 0.1rem;
-  font-size: 0.18rem;
-  width: 24px;
-  height: 24px;
+  width: 0.24rem;
+  height: 0.24rem;
   text-align: center;
-  line-height: 24px;
+  line-height: 0.24rem;
   color: #fff;
   background: #f79727;
   border-radius: 100px;
+
+  &:hover {
+    color: #333;
+  }
 }
 </style>
-

@@ -115,9 +115,9 @@
 </template>
 
 <script>
-/*组件方式引用*/
-import draggable from "vuedraggable";
-import avatar from "@/assets/images/teacher/g1.png";
+/* 组件方式引用 */
+import draggable from 'vuedraggable'
+import avatar from '@/assets/images/teacher/g1.png'
 export default {
   props: {
     showLesson: {
@@ -137,55 +137,55 @@ export default {
       default: () => {}
     }
   },
-  data() {
+  data () {
     return {
-      labelPosition: "left",
+      labelPosition: 'left',
       visible: false,
       feedback: {
-        type: "SG",
-        title: "",
-        content: ""
+        type: 'SG',
+        title: '',
+        content: ''
       },
       list1: [
         {
           avatar: avatar,
-          name: "欧阳娜娜"
+          name: '欧阳娜娜'
         },
         {
           avatar: avatar,
-          name: "欧阳娜娜"
+          name: '欧阳娜娜'
         },
         {
           avatar: avatar,
-          name: "欧阳娜娜"
+          name: '欧阳娜娜'
         },
         {
           avatar: avatar,
-          name: "欧阳娜娜"
+          name: '欧阳娜娜'
         },
         {
           avatar: avatar,
-          name: "欧阳娜娜"
+          name: '欧阳娜娜'
         },
         {
           avatar: avatar,
-          name: "欧阳娜娜"
+          name: '欧阳娜娜'
         },
         {
           avatar: avatar,
-          name: "欧阳娜娜"
+          name: '欧阳娜娜'
         },
         {
           avatar: avatar,
-          name: "欧阳娜娜"
+          name: '欧阳娜娜'
         },
         {
           avatar: avatar,
-          name: "欧阳娜娜"
+          name: '欧阳娜娜'
         },
         {
           avatar: avatar,
-          name: "欧阳娜娜"
+          name: '欧阳娜娜'
         }
       ],
       list2: [],
@@ -195,106 +195,106 @@ export default {
       group1Index: 0,
       group2Index: 0,
       timer: null,
-      className: "",
+      className: '',
       currentEle: {}
-    };
-  },
-  watch: {
-    showLesson(newVal, oldVal) {
-      this.visible = newVal;
-      this.$emit("update:showLesson", newVal);
     }
   },
-  created() {},
+  watch: {
+    showLesson (newVal, oldVal) {
+      this.visible = newVal
+      this.$emit('update:showLesson', newVal)
+    }
+  },
+  created () {},
   methods: {
-    pullFunction() {
-      console.log(this.controlOnStart, "pullFunction");
-      return this.controlOnStart ? "clone" : true;
+    pullFunction () {
+      console.log(this.controlOnStart, 'pullFunction')
+      return this.controlOnStart ? 'clone' : true
     },
-    start({ originalEvent }) {
-      console.log(originalEvent, "start-originalEvent");
-      this.controlOnStart = originalEvent.ctrlKey;
+    start ({ originalEvent }) {
+      console.log(originalEvent, 'start-originalEvent')
+      this.controlOnStart = originalEvent.ctrlKey
     },
-    getdata(evt) {
-      let className = evt.to.className;
-      if (className && className === "addGroupDistrict") {
-        this.$refs.addSlide.style.borderColor = "red";
-        this.className = className;
+    getdata (evt) {
+      let className = evt.to.className
+      if (className && className === 'addGroupDistrict') {
+        this.$refs.addSlide.style.borderColor = 'red'
+        this.className = className
       }
       // console.log(evt.to.className, 'move');
     },
-    handleEnd(e) {
+    handleEnd (e) {
       // console.log(e, "end");
-      if (this.className === "addGroupDistrict") {
-        this.className = "";
-        this.$refs.addSlide.style.borderColor = "#fafbfd";
-        this.list3.push({});
-        this.list2[this.list3.length - 1] = [this.currentEle];
+      if (this.className === 'addGroupDistrict') {
+        this.className = ''
+        this.$refs.addSlide.style.borderColor = '#fafbfd'
+        this.list3.push({})
+        this.list2[this.list3.length - 1] = [this.currentEle]
         this.timer = setTimeout(() => {
           this.handleNext(
-            ".content-group2-list",
-            "group2Index",
+            '.content-group2-list',
+            'group2Index',
             -310,
-            "list3",
+            'list3',
             2
-          );
-        }, 100);
+          )
+        }, 100)
       }
     },
-    handlePrev(el, listIndex, distance) {
+    handlePrev (el, listIndex, distance) {
       if (this[listIndex] <= 0) {
       } else {
-        this[listIndex]--;
-        let ele = document.querySelector(el);
+        this[listIndex]--
+        let ele = document.querySelector(el)
         ele.style.transform = `translateX( ${distance *
           0.01 *
-          this[listIndex]}rem)`;
-        ele.style.transition = "all 0.3s ease";
+          this[listIndex]}rem)`
+        ele.style.transition = 'all 0.3s ease'
       }
     },
-    handleNext(el, listIndex, distance, list, baseIndex) {
+    handleNext (el, listIndex, distance, list, baseIndex) {
       if (this[listIndex] < this[list].length - baseIndex) {
-        this[listIndex]++;
-        let ele = document.querySelector(el);
+        this[listIndex]++
+        let ele = document.querySelector(el)
         ele.style.transform = `translateX( ${distance *
           0.01 *
-          this[listIndex]}rem)`;
-        ele.style.transition = "all 0.3s ease";
+          this[listIndex]}rem)`
+        ele.style.transition = 'all 0.3s ease'
       }
     },
-    add: function() {
-      console.log("add");
-      this.list.push({ name: "Juan" });
+    add: function () {
+      console.log('add')
+      this.list.push({ name: 'Juan' })
     },
-    replace: function() {
-      console.log("replace");
-      this.list = [{ name: "Edgard" }];
+    replace: function () {
+      console.log('replace')
+      this.list = [{ name: 'Edgard' }]
     },
-    clone: function(el) {
-      console.log(el, "clone");
+    clone: function (el) {
+      console.log(el, 'clone')
       return {
         name: el.name,
         avatar: el.avatar
-      };
+      }
     },
-    log: function(evt) {
+    log: function (evt) {
       try {
-        console.log(evt, "log");
-        if (this.className === "addGroupDistrict") {
-          this.currentEle = Object.assign({}, evt.removed.element);
+        console.log(evt, 'log')
+        if (this.className === 'addGroupDistrict') {
+          this.currentEle = Object.assign({}, evt.removed.element)
         } else {
         }
       } catch (err) {}
     },
-    closeModal() {
-      this.$emit("closeModal", false);
+    closeModal () {
+      this.$emit('closeModal', false)
     }
   },
-  mounted() {},
+  mounted () {},
   components: {
     draggable
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -372,19 +372,21 @@ export default {
   }
 
   .group-close {
-    font-size: 0.18rem;
-    font-size: 0.18rem;
     position: absolute;
     top: 49%;
     transform: translateY(-50%);
     right: 0;
-    width: 24px;
-    height: 24px;
+    width: 0.24rem;
+    height: 0.24rem;
     text-align: center;
-    line-height: 24px;
+    line-height: 0.24rem;
     color: #fff;
     background: #f79727;
     border-radius: 100px;
+
+    &:hover {
+      color: #333;
+    }
   }
 }
 
@@ -676,5 +678,3 @@ export default {
   margin-right: 0.05rem;
 }
 </style>
-
-

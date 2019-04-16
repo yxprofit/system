@@ -74,53 +74,53 @@ export default {
       default: () => {}
     }
   },
-  data() {
+  data () {
     return {
-      labelPosition: "left",
+      labelPosition: 'left',
       visible: false,
       lessonList: []
-    };
+    }
   },
   watch: {
-    showLesson(newVal, oldVal) {
-      this.visible = newVal;
-      this.$emit("update:showLesson", newVal);
+    showLesson (newVal, oldVal) {
+      this.visible = newVal
+      this.$emit('update:showLesson', newVal)
 
       if (this.visible) {
-        document.body.style.overflow = "hidden";
+        document.body.style.overflow = 'hidden'
       } else {
-        document.body.style.overflow = "auto";
+        document.body.style.overflow = 'auto'
       }
     }
   },
-  created() {},
+  created () {},
   methods: {
-    handleOver(index) {
-      this.lessonList[index].isHover = true;
+    handleOver (index) {
+      this.lessonList[index].isHover = true
     },
-    handleLeave(index) {
-      this.lessonList[index].isHover = false;
+    handleLeave (index) {
+      this.lessonList[index].isHover = false
     },
-    closeModal() {
-      this.$emit("closeModal", false);
+    closeModal () {
+      this.$emit('closeModal', false)
     },
-    close() {
-      this.visible = false;
-      this.$emit("update:showLesson", false);
-      this.handleClose && this.handleClose();
+    close () {
+      this.visible = false
+      this.$emit('update:showLesson', false)
+      this.handleClose && this.handleClose()
     }
   },
-  mounted() {
+  mounted () {
     for (let i = 0; i < 20; i++) {
       this.lessonList.push({
-        lesson_title: "课程名称课程名称",
-        lesson_date: "2019.01.01",
-        lesson_teacher: "刘青云老师",
+        lesson_title: '课程名称课程名称',
+        lesson_date: '2019.01.01',
+        lesson_teacher: '刘青云老师',
         isHover: false
-      });
+      })
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -350,19 +350,21 @@ export default {
 }
 
 .group-close {
-  font-size: 0.18rem;
-  font-size: 0.18rem;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   right: 0;
-  width: 24px;
-  height: 24px;
+  width: 0.24rem;
+  height: 0.24rem;
   text-align: center;
-  line-height: 24px;
+  line-height: 0.24rem;
   color: #fff;
   background: #f79727;
   border-radius: 100px;
+
+  &:hover {
+      color: #333;
+    }
 }
 
 @keyframes slide {
@@ -378,5 +380,3 @@ export default {
   }
 }
 </style>
-
-

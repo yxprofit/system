@@ -37,6 +37,22 @@
   padding: 0.2rem 0.01rem;
 }
 
+.el-dialog__headerbtn {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  line-height: 24px;
+  color: #fff;
+  background: #f79727;
+  border-radius: 100px;
+  vertical-align: middle;
+}
+
+.el-dialog__headerbtn .el-dialog__close {
+  color: #fff;
+}
+
 /* mytest */
 .mytest .el-table .tableRow {
   height: 0.7rem;
