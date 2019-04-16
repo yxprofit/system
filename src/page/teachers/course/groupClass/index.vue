@@ -239,13 +239,17 @@ export default {
       group2Index: 0,
       timer: null,
       className: '',
-      currentEle: {}
+      currentEle: {},
+      currentLen: 0
     }
   },
   watch: {
     showLesson (newVal, oldVal) {
       this.visible = newVal
       this.$emit('update:showLesson', newVal)
+    },
+    list2 (newVal) {
+      console.log(newVal, 'list2')
     }
   },
   created () {},
@@ -267,19 +271,22 @@ export default {
       // console.log(evt.to.className, 'move');
     },
     handleEnd (e) {
-      // console.log(e, "end");
+      console.log(e, 'end')
       if (this.className === 'addGroupDistrict') {
         this.className = ''
         this.$refs.addSlide.style.borderColor = '#fafbfd'
         this.list3.push({})
         this.list2[this.list3.length - 1] = [this.currentEle]
+        console.log(this.list3, 'list3')
+        clearTimeout(this.timer)
         this.timer = setTimeout(() => {
           this.handleNext(
             '.content-group2-list',
             'group2Index',
             -310,
             'list3',
-            2
+            2,
+            'group2'
           )
         }, 100)
       }
@@ -292,12 +299,12 @@ export default {
           this[listIndex]--
         } else {
           if (this[listIndex] <= 5) {
-          this[listIndex] = 0
-        } else {
-          this[listIndex] -= 5
+            this[listIndex] = 0
+          } else {
+            this[listIndex] -= 5
+          }
         }
-        }
-
+        console.log(listIndex, this.list2)
         ele.style.transform = `translateX( ${distance *
           0.01 *
           this[listIndex]}rem)`
@@ -316,7 +323,7 @@ export default {
             this[listIndex] += 5
           }
         }
-
+        console.log(this[listIndex], list)
          ele.style.transform = `translateX( ${distance *
           0.01 *
           this[listIndex]}rem)`
@@ -340,11 +347,19 @@ export default {
     },
     log: function (evt) {
       try {
-        console.log(evt, 'log')
         if (this.className === 'addGroupDistrict') {
           this.currentEle = Object.assign({}, evt.removed.element)
         } else {
+          console.log(evt.removed, 'removed')
         }
+
+        this.currentLen = this.list2.filter(item => item.length)
+        this.list3 = JSON.parse(JSON.stringify(this.list2.filter(item => item.length)))
+        clearTimeout(this.timer)
+        this.timer = setTimeout(() => {
+          this.handlePrev('.content-group2-list', 'group2Index', -310, 'group2')
+        }, 100)
+        console.log(this.currentLen, 'currentLen')
       } catch (err) {}
     },
     closeModal () {
