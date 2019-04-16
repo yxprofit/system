@@ -8,8 +8,6 @@
       </div>
 
       <div class="group-opeator clearfix">
-        <!-- <div class="group-min is-inline"></div>
-        <div class="group-max is-inline"></div>-->
         <div class="group-close is-inline" @click="closeModal">
           <i class="el-dialog__close el-icon el-icon-close"></i>
         </div>
@@ -21,7 +19,7 @@
         <div class="content-1 group-content-1">
           <div class="content-1-wrap group1--1-wrap" ref="listGroup">
             <draggable
-              class="list-group"
+              class="list-group list-group-1"
               :list="list1"
               @change="log"
               @start="start"
@@ -46,12 +44,12 @@
             </draggable>
           </div>
         </div>
-        <div class="group1-prev" @click="handlePrev('.list-group', 'group1Index', -138)">
+        <div class="group1-prev" @click="handlePrev('.list-group', 'group1Index', -138, 'group1')">
           <i class="el-icon-arrow-left"></i>
         </div>
         <div
           class="group1-next"
-          @click="handleNext('.list-group', 'group1Index', -138, 'list1', 7)"
+          @click="handleNext('.list-group', 'group1Index', -138, 'list1', 7, 'group1')"
         >
           <i class="el-icon-arrow-right"></i>
         </div>
@@ -81,6 +79,11 @@
                       >
                         <img class="avatar-img" :src="gItem.avatar" alt>
                         <div class="avatar-name">{{ gItem.name }}</div>
+                        <div class="icon-list">
+                          <img class="icon-item icon-item-2" src="../../../../assets/images/teacher/g2.png" alt>
+                          <img class="icon-item icon-item-2" src="../../../../assets/images/teacher/g3.png" alt>
+                          <img class="icon-item icon-item-2" src="../../../../assets/images/teacher/g4.png" alt>
+                        </div>
                       </div>
                     </draggable>
                   </div>
@@ -96,12 +99,12 @@
             </div>
           </div>
         </div>
-        <div class="group1-prev" @click="handlePrev('.content-group2-list', 'group2Index', -310)">
+        <div class="group1-prev" @click="handlePrev('.content-group2-list', 'group2Index', -310, 'group2')">
           <i class="el-icon-arrow-left"></i>
         </div>
         <div
           class="group1-next"
-          @click="handleNext('.content-group2-list', 'group2Index', -310,  'list3', 2)"
+          @click="handleNext('.content-group2-list', 'group2Index', -310,  'list3', 2, 'group2')"
         >
           <i class="el-icon-arrow-right"></i>
         </div>
@@ -147,6 +150,46 @@ export default {
         content: ''
       },
       list1: [
+        {
+          avatar: avatar,
+          name: '欧阳娜娜'
+        },
+        {
+          avatar: avatar,
+          name: '欧阳娜娜'
+        },
+        {
+          avatar: avatar,
+          name: '欧阳娜娜'
+        },
+        {
+          avatar: avatar,
+          name: '欧阳娜娜'
+        },
+        {
+          avatar: avatar,
+          name: '欧阳娜娜'
+        },
+        {
+          avatar: avatar,
+          name: '欧阳娜娜'
+        },
+        {
+          avatar: avatar,
+          name: '欧阳娜娜'
+        },
+        {
+          avatar: avatar,
+          name: '欧阳娜娜'
+        },
+        {
+          avatar: avatar,
+          name: '欧阳娜娜'
+        },
+        {
+          avatar: avatar,
+          name: '欧阳娜娜'
+        },
         {
           avatar: avatar,
           name: '欧阳娜娜'
@@ -241,25 +284,43 @@ export default {
         }, 100)
       }
     },
-    handlePrev (el, listIndex, distance) {
+    handlePrev (el, listIndex, distance, type) {
       if (this[listIndex] <= 0) {
       } else {
-        this[listIndex]--
         let ele = document.querySelector(el)
+        if (type == 'group2') {
+          this[listIndex]--
+        } else {
+          if (this[listIndex] <= 5) {
+          this[listIndex] = 0
+        } else {
+          this[listIndex] -= 5
+        }
+        }
+
         ele.style.transform = `translateX( ${distance *
           0.01 *
           this[listIndex]}rem)`
-        ele.style.transition = 'all 0.3s ease'
+        ele.style.transition = 'all 0.5s ease'
       }
     },
-    handleNext (el, listIndex, distance, list, baseIndex) {
+    handleNext (el, listIndex, distance, list, baseIndex, type) {
+      let ele = document.querySelector(el)
       if (this[listIndex] < this[list].length - baseIndex) {
-        this[listIndex]++
-        let ele = document.querySelector(el)
-        ele.style.transform = `translateX( ${distance *
+        if (type == 'group2') {
+          this[listIndex]++
+        } else {
+          if (this[list].length - this[listIndex] - baseIndex <= 5) {
+            this[listIndex] += this[list].length - this[listIndex] - baseIndex
+          } else {
+            this[listIndex] += 5
+          }
+        }
+
+         ele.style.transform = `translateX( ${distance *
           0.01 *
           this[listIndex]}rem)`
-        ele.style.transition = 'all 0.3s ease'
+        ele.style.transition = 'all 0.5s ease'
       }
     },
     add: function () {
@@ -511,6 +572,12 @@ export default {
   overflow: hidden;
 }
 
+.list-group-1 {
+  min-width: 9.54rem;
+  margin-bottom: 0.05rem;
+  height: 1.46rem;
+}
+
 .list-group-item,
 .group-slide {
   width: 1.26rem;
@@ -523,6 +590,15 @@ export default {
   margin-right: 0.12rem;
   box-sizing: border-box;
   position: relative;
+}
+
+.list-group-item:hover {
+   background: #fff3e5;
+   border-color: #ffa711;
+}
+
+.icon-list {
+  display: inline-block;
 }
 
 .group1-list-inner {
@@ -609,7 +685,14 @@ export default {
   width: 25%;
   text-align: center;
   margin-bottom: 0.2rem;
+  padding: 0.05rem 0;
+  box-sizing: border-box;
 }
+
+.avatar-list:hover {
+    background: #fff3e5;
+    border: 0.01rem solid #ffa711;
+  }
 
 .avatar-img {
   width: 0.5rem;
@@ -666,7 +749,6 @@ export default {
   color: #fff;
   margin-right: 0.2rem;
 }
-
 .reset {
   border: 0.01rem solid #999;
   color: #ccc;
@@ -677,4 +759,10 @@ export default {
   margin-top: 0.1rem;
   margin-right: 0.05rem;
 }
+
+.icon-item-2 {
+  width: 0.20rem;
+  margin: 0 auto;
+}
+
 </style>
