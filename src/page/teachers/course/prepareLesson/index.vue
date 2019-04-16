@@ -356,6 +356,13 @@ export default {
   top: 50%;
   transform: translateY(-50%);
   right: 0;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  line-height: 24px;
+  color: #fff;
+  background: #f79727;
+  border-radius: 100px;
 }
 
 @keyframes slide {

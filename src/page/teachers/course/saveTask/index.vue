@@ -38,7 +38,7 @@ export default {
 <style lang="scss" scoped>
 .save-task {
   width: 8.8rem;
-  padding: 0.3rem 0.36rem 0.34rem 0.36rem;
+  padding: 0.4rem 0.36rem 0.34rem 0.36rem;
   margin: 0 auto;
   background: #fff;
   border-radius: 0.05rem;
@@ -102,6 +102,13 @@ export default {
   right: 0.15rem;
   top: 0.1rem;
   font-size: 0.18rem;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  line-height: 24px;
+  color: #fff;
+  background: #f79727;
+  border-radius: 100px;
 }
 </style>
 
