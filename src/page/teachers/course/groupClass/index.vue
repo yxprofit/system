@@ -63,7 +63,7 @@
             class="content-1-wrap content-group2-list"
             :style="{ width: 3.1*Number(list3.length + 1) + 'rem' }"
           >
-            <div class="group-slide" v-for="(item, index) in  list3" :key="index">
+            <div class="group-slide" v-for="(item, index) in  list3" :key="index" v-show="list2[index].length > 0">
               <div class="group-slide-innder">
                 <div>
                   <div class="group-title">0{{index+1}}组</div>
