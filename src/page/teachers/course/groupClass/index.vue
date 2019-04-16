@@ -18,12 +18,8 @@
 
     <div class="group-content">
       <div class="group1-wrap">
-        <div class="content-1">
-          <div
-            class="content-1-wrap"
-            ref="listGroup"
-            :style="{ width: 1.38*Number(list1.length) + 'rem' }"
-          >
+        <div class="content-1 group-content-1">
+          <div class="content-1-wrap group1--1-wrap" ref="listGroup">
             <draggable
               class="list-group"
               :list="list1"
@@ -34,6 +30,7 @@
               :move="getdata"
               :clone="clone"
               :group="{ name: 'people', pull: pullFunction }"
+              :style="{ width: 1.38*Number(list1.length - 1) + 'rem' }"
             >
               <div class="list-group-item" v-for="(item, index) in list1" :key="index">
                 <div class="group1-list-inner">
@@ -454,6 +451,62 @@ export default {
     white-space: nowrap;
     box-sizing: border-box;
   }
+
+  .group1--1-wrap {
+    overflow-x: auto;
+    /*三角箭头的颜色*/
+    // scrollbar-arrow-color: #f00;
+    /*滚动条滑块按钮的颜色*/
+    scrollbar-face-color: #f79727;
+    /*滚动条整体颜色*/
+    // scrollbar-highlight-color: #ccc;
+    /*滚动条阴影*/
+    scrollbar-shadow-color: #eee;
+    /*滚动条轨道颜色*/
+    scrollbar-track-color: #ccc;
+
+    &::-webkit-scrollbar {
+      /*滚动条整体部分，其中的属性有width,height,background,border等（就和一个块级元素一样）（位置1）*/
+      width: 5px;
+      height: 5px;
+    }
+
+    &::-ms-scrollbar {
+      /*滚动条整体部分，其中的属性有width,height,background,border等（就和一个块级元素一样）（位置1）*/
+      width: 5px;
+      height: 5px;
+    }
+
+    &::-webkit-scrollbar-button {
+      /*滚动条两端的按钮，可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果（位置2）*/
+      // background: #74d334;
+    }
+    &::-webkit-scrollbar-track {
+      /*外层轨道，可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果（位置3）*/
+      // background: #ff66d5;
+    }
+    &::-webkit-scrollbar-track-piece {
+      /*内层轨道，滚动条中间部分（位置4）*/
+      background: #ccc;
+    }
+    &::-webkit-scrollbar-thumb {
+      /*滚动条里面可以拖动的那部分（位置5）*/
+      background: #ffa711;
+      border-radius: 2px;
+    }
+    &::-webkit-scrollbar-corner {
+      /*边角（位置6）*/
+      background: #82afff;
+    }
+    &::-webkit-scrollbar-resizer {
+      /*定义右下角拖动块的样式（位置7）*/
+      // background: #ff0bee;
+    }
+  }
+}
+
+.group-content-1 {
+  overflow: hidden;
 }
 
 .list-group-item,
