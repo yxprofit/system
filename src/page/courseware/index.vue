@@ -450,6 +450,10 @@ hgroup {
       text-align: center;
     }
   }
+  & > .task{
+    overflow: hidden;
+    height: 100%;
+  }
   & > .task > .task-item {
     padding: 0.2rem 0.1rem 0 0.2rem;
     h4 {
