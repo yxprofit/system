@@ -42,7 +42,9 @@ import {
   FormItem,
   DatePicker,
   Upload,
-  Badge
+  Badge,
+  Radio,
+  RadioGroup
 } from 'element-ui'
 
 import waterfall from 'vue-waterfall2'
@@ -74,6 +76,8 @@ Vue.use(Button)
   .use(DatePicker)
   .use(Upload)
   .use(Badge)
+  .use(Radio)
+  .use(RadioGroup)
   .use(Input);
 /* eslint-disable no-new */
 new Vue({

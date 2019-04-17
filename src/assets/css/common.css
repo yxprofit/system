@@ -58,14 +58,6 @@
   height: 0.7rem;
 }
 
-.mytest .el-table .tableRow:hover {
-  background: #fff;
-  border-collapse: collapse;
-  box-shadow: 0 0 0.07rem #FE7B00 inset;
-  height: 0.7rem;
-  box-sizing: border-box;
-}
-
 .mytest .el-table .tableRow:hover .look {
   display: block;
 }
@@ -82,6 +74,22 @@
   background-color: initial !important;
   background: none !important;
   border: none !important;
+}
+
+.mytest .el-table .tableRow {
+  position: relative;
+}
+
+.mytest .el-table .tableRow:after {
+  position: absolute;
+  left: 0;
+  content: "";
+  height: 0.77rem;
+  width: 100%;
+  
+}
+.mytest .el-table .tableRow:hover:after {
+  box-shadow: 0 0 0.07rem #FE7B00 inset;
 }
 
 .mytest .el-select-dropdown {
@@ -103,4 +111,15 @@
   width: 0.6rem;
   display: inline-block;
   margin: 0.1rem;
+}
+
+.el-radio .el-radio__inner:hover {
+  border-color: #f79727;
+}
+.el-radio__input.is-checked .el-radio__inner {
+  border-color: #f79727;
+  background: #f79727;
+}
+.el-radio__input.is-checked+.el-radio__label {
+  color: #f79727;
 }
