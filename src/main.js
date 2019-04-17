@@ -44,7 +44,8 @@ import {
   Upload,
   Badge,
   Radio,
-  RadioGroup
+  RadioGroup,
+  Scrollbar
 } from 'element-ui'
 
 import waterfall from 'vue-waterfall2'
@@ -54,6 +55,7 @@ Vue.config.productionTip = false
 Vue.prototype.$ELEMENT = { size: 'small', zIndex: 3000 }
 Vue.use(Button)
   .use(Carousel)
+  .use(Scrollbar)
   .use(CarouselItem)
   .use(Slider)
   .use(Pagination)
