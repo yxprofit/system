@@ -8,7 +8,7 @@
         <ul class="list-group">
           <li v-for="(item, index) in data" :key="index">
             <h4>09级2班 03组</h4>
-            <div class="teamMain">
+            <el-scrollbar tag="div" class="teamMain" wrap-class="wrap">
               <div class="teamBlock" v-for="(item,index) in data" :key="index">
                 <div class="teamAvatar">
                   <img :src="head">
@@ -19,25 +19,23 @@
                   美与卓越
                 </div>
               </div>
-            </div>
+            </el-scrollbar>
           </li>
         </ul>
       </div>
-      <div class="group1-prev" @click="handlePrev('.list-group', 'group1Index', -320)">
-          <i class="el-icon-arrow-left"></i>
-        </div>
-        <div
-          class="group1-next"
-          @click="handleNext('.list-group', 'group1Index', -310, 'data', 3)"
-        >
-          <i class="el-icon-arrow-right"></i>
-        </div>
+
+      <div class="group1-prev" @click="handlePrev('.list-group', 'group1Index', -350)">
+        <i class="el-icon-arrow-left"></i>
+      </div>
+      <div class="group1-next" @click="handleNext('.list-group', 'group1Index', -350, 'data', 3)">
+        <i class="el-icon-arrow-right"></i>
+      </div>
     </el-dialog>
   </div>
 </template>
 
 <script>
-import head from "assets/images/head.png"; 
+import head from "assets/images/head.png";
 export default {
   name: "team",
   props: ["state"],
@@ -47,7 +45,7 @@ export default {
       loading: true,
       head,
       data: [1, 2, 3, 4, 5, 6, 7],
-      group1Index:0
+      group1Index: 0
     };
   },
   created() {
@@ -60,7 +58,7 @@ export default {
     handleClose() {
       this.$emit("close");
     },
-     handlePrev(el, listIndex, distance) {
+    handlePrev(el, listIndex, distance) {
       if (this[listIndex] <= 0) {
       } else {
         this[listIndex]--;
@@ -76,12 +74,28 @@ export default {
         ele.style.transform = `translateX( ${distance * this[listIndex]}px)`;
         ele.style.transition = "all 0.3s ease";
       }
-    },
+    }
   }
 };
 </script>
 
 <style lang="scss" scoped>
+.el-scrollbar {
+  height: 100%;
+  width: 3.4rem;
+  overflow-y: auto;
+  max-height: 5.45rem;
+}
+.el-scrollbar__wrap {
+  max-height: 6.45rem;
+  height: auto;
+}
+.team /deep/ .el-scrollbar__bar.is-horizontal {
+  display: none;
+}
+.team /deep/ .el-scrollbar__bar.is-vertical > div {
+  display: none !important;
+}
 .team {
   .teamTitle {
     font-size: 0.16rem;
@@ -105,8 +119,6 @@ export default {
     }
   }
   .group {
-    overflow-x: scroll;
-    overflow-y: scroll;
     ul {
       display: flex;
       justify-content: flex-start;
@@ -116,7 +128,6 @@ export default {
     }
     li {
       border: 0.01rem solid #e4e8ed;
-      width: 3.34rem;
       display: inline-block;
       margin-right: 0.07rem;
       &:last-child {
@@ -131,9 +142,9 @@ export default {
       .teamMain {
         padding: 0.1rem 0.1rem 0.1rem 0.13rem;
         box-sizing: border-box;
-        max-height: 5.34rem;
-        overflow-y: scroll;
-
+        // max-height: 5.34rem;
+        // overflow-y: scroll;
+        // height: auto;
       }
       .teamBlock {
         margin-bottom: 0.12rem;
@@ -193,10 +204,10 @@ export default {
     color: #fff;
   }
 }
-.group1-prev{
+.group1-prev {
   left: -60px;
 }
-.group1-next{
+.group1-next {
   right: -60px;
 }
 .team /deep/ .el-dialog {

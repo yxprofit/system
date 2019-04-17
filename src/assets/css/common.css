@@ -37,17 +37,25 @@
   padding: 0.2rem 0.01rem;
 }
 
+.el-dialog__headerbtn {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  line-height: 24px;
+  color: #fff;
+  background: #f79727;
+  border-radius: 100px;
+  vertical-align: middle;
+}
+
+.el-dialog__headerbtn .el-dialog__close {
+  color: #fff;
+}
+
 /* mytest */
 .mytest .el-table .tableRow {
   height: 0.7rem;
-}
-
-.mytest .el-table .tableRow:hover {
-  background: #fff;
-  border-collapse: collapse;
-  box-shadow: 0 0 0.07rem #FE7B00 inset;
-  height: 0.7rem;
-  box-sizing: border-box;
 }
 
 .mytest .el-table .tableRow:hover .look {
@@ -66,6 +74,22 @@
   background-color: initial !important;
   background: none !important;
   border: none !important;
+}
+
+.mytest .el-table .tableRow {
+  position: relative;
+}
+
+.mytest .el-table .tableRow:after {
+  position: absolute;
+  left: 0;
+  content: "";
+  height: 0.75rem;
+  width: 99.5%;
+  
+}
+.mytest .el-table .tableRow:hover:after {
+  border: 1px solid #FE7B00;
 }
 
 .mytest .el-select-dropdown {
@@ -87,4 +111,15 @@
   width: 0.6rem;
   display: inline-block;
   margin: 0.1rem;
+}
+
+.el-radio .el-radio__inner:hover {
+  border-color: #f79727;
+}
+.el-radio__input.is-checked .el-radio__inner {
+  border-color: #f79727;
+  background: #f79727;
+}
+.el-radio__input.is-checked+.el-radio__label {
+  color: #f79727;
 }

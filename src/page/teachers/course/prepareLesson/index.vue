@@ -198,6 +198,10 @@ export default {
   }
 }
 
+.lesson-content {
+  padding-bottom: 0.05rem;
+}
+
 .lesson-list {
   width: 100%;
   overflow: auto;
@@ -205,18 +209,25 @@ export default {
   padding: 0 0.05rem;
   box-sizing: border-box;
   // max-height: 5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
   max-height: 4.2rem;
-  padding-left: 0.2rem;
+  padding: 0.2rem;
 }
 .lesson-item {
   width: 1.89rem;
   // height: 2.4rem;
-  flex: 1;
+  flex: 0 0 1.89rem;
   display: inline-block;
-  margin: 0.1rem 0.1rem;
+  margin-top: 0.1rem;
   border: 0.01rem solid #e4e8ed;
   border-radius: 0.04rem;
   cursor: pointer;
+
+  &:nth-child(5n) {
+    margin-right: 0;
+  }
 
   &.is-mousemove {
     border-color: #f79727;
@@ -350,19 +361,21 @@ export default {
 }
 
 .group-close {
-  font-size: 0.18rem;
-  font-size: 0.18rem;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   right: 0;
-  width: 24px;
-  height: 24px;
+  width: 0.24rem;
+  height: 0.24rem;
   text-align: center;
-  line-height: 24px;
+  line-height: 0.24rem;
   color: #fff;
   background: #f79727;
   border-radius: 100px;
+
+  &:hover {
+    color: #333;
+  }
 }
 
 @keyframes slide {
@@ -378,5 +391,3 @@ export default {
   }
 }
 </style>
-
-

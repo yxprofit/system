@@ -42,7 +42,10 @@ import {
   FormItem,
   DatePicker,
   Upload,
-  Badge
+  Badge,
+  Radio,
+  RadioGroup,
+  Scrollbar
 } from 'element-ui'
 
 import waterfall from 'vue-waterfall2'
@@ -52,6 +55,7 @@ Vue.config.productionTip = false
 Vue.prototype.$ELEMENT = { size: 'small', zIndex: 3000 }
 Vue.use(Button)
   .use(Carousel)
+  .use(Scrollbar)
   .use(CarouselItem)
   .use(Slider)
   .use(Pagination)
@@ -74,6 +78,8 @@ Vue.use(Button)
   .use(DatePicker)
   .use(Upload)
   .use(Badge)
+  .use(Radio)
+  .use(RadioGroup)
   .use(Input);
 /* eslint-disable no-new */
 new Vue({
