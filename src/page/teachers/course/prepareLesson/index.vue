@@ -74,53 +74,53 @@ export default {
       default: () => {}
     }
   },
-  data () {
+  data() {
     return {
-      labelPosition: 'left',
+      labelPosition: "left",
       visible: false,
       lessonList: []
-    }
+    };
   },
   watch: {
-    showLesson (newVal, oldVal) {
-      this.visible = newVal
-      this.$emit('update:showLesson', newVal)
+    showLesson(newVal, oldVal) {
+      this.visible = newVal;
+      this.$emit("update:showLesson", newVal);
 
       if (this.visible) {
-        document.body.style.overflow = 'hidden'
+        document.body.style.overflow = "hidden";
       } else {
-        document.body.style.overflow = 'auto'
+        document.body.style.overflow = "auto";
       }
     }
   },
-  created () {},
+  created() {},
   methods: {
-    handleOver (index) {
-      this.lessonList[index].isHover = true
+    handleOver(index) {
+      this.lessonList[index].isHover = true;
     },
-    handleLeave (index) {
-      this.lessonList[index].isHover = false
+    handleLeave(index) {
+      this.lessonList[index].isHover = false;
     },
-    closeModal () {
-      this.$emit('closeModal', false)
+    closeModal() {
+      this.$emit("closeModal", false);
     },
-    close () {
-      this.visible = false
-      this.$emit('update:showLesson', false)
-      this.handleClose && this.handleClose()
+    close() {
+      this.visible = false;
+      this.$emit("update:showLesson", false);
+      this.handleClose && this.handleClose();
     }
   },
-  mounted () {
+  mounted() {
     for (let i = 0; i < 20; i++) {
       this.lessonList.push({
-        lesson_title: '课程名称课程名称',
-        lesson_date: '2019.01.01',
-        lesson_teacher: '刘青云老师',
+        lesson_title: "课程名称课程名称",
+        lesson_date: "2019.01.01",
+        lesson_teacher: "刘青云老师",
         isHover: false
-      })
+      });
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -198,6 +198,10 @@ export default {
   }
 }
 
+.lesson-content {
+  padding-bottom: 0.05rem;
+}
+
 .lesson-list {
   width: 100%;
   overflow: auto;
@@ -205,18 +209,25 @@ export default {
   padding: 0 0.05rem;
   box-sizing: border-box;
   // max-height: 5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
   max-height: 4.2rem;
-  padding-left: 0.2rem;
+  padding: 0.2rem;
 }
 .lesson-item {
   width: 1.89rem;
   // height: 2.4rem;
-  flex: 1;
+  flex: 0 0 1.89rem;
   display: inline-block;
-  margin: 0.1rem 0.1rem;
+  margin-top: 0.1rem;
   border: 0.01rem solid #e4e8ed;
   border-radius: 0.04rem;
   cursor: pointer;
+
+  &:nth-child(5n) {
+    margin-right: 0;
+  }
 
   &.is-mousemove {
     border-color: #f79727;
@@ -363,8 +374,8 @@ export default {
   border-radius: 100px;
 
   &:hover {
-      color: #333;
-    }
+    color: #333;
+  }
 }
 
 @keyframes slide {
