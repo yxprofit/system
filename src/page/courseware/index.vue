@@ -28,7 +28,7 @@
           <li class="task-item" v-for="(item, index) in computedTask" :key="index">
             <h4 :class="'icon-' + item.type">
               <!-- <span class="task-item__title" v-show='!isHidden'>{{ item.name }}</span> -->
-              <el-tooltip popper-class="hoverTip" class="item" effect="dark" :content="item.name" placement="bottom">
+              <el-tooltip popper-class="hoverTip" class="item" effect="dark" :content="item.name" placement="bottom" :hide-after='1000'>
                 <el-button class="task-item__title">{{item.name}}</el-button>
               </el-tooltip>
               <span :class="[item.type, {'hidden':isHidden}]" class="task-item__btn" v-if="item.btn" @click="handleTaskList(item.type)">{{ item.btn }}</span>
