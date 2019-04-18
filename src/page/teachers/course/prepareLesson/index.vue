@@ -1,18 +1,10 @@
 <template>
-  <div class="fillcontain category" ref="category" v-show="visible">
+  <div class="category" ref="category">
     <section class="category-wrap">
       <div class="group-header-wrap">
         <div class="group-header clearfix">
           <div class="group-line is-inline"></div>
           <div class="group-title-1 is-inline">备课资料</div>
-        </div>
-
-        <div class="group-opeator clearfix">
-          <!-- <div class="group-min is-inline"></div>
-          <div class="group-max is-inline"></div>-->
-          <div class="is-inline" @click="close">
-            <i class="el-dialog__close el-icon el-icon-close group-close"></i>
-          </div>
         </div>
       </div>
       <div class="lesson-content">
@@ -81,18 +73,6 @@ export default {
       lessonList: []
     };
   },
-  watch: {
-    showLesson(newVal, oldVal) {
-      this.visible = newVal;
-      this.$emit("update:showLesson", newVal);
-
-      if (this.visible) {
-        document.body.style.overflow = "hidden";
-      } else {
-        document.body.style.overflow = "auto";
-      }
-    }
-  },
   created() {},
   methods: {
     handleOver(index) {
@@ -101,14 +81,6 @@ export default {
     handleLeave(index) {
       this.lessonList[index].isHover = false;
     },
-    closeModal() {
-      this.$emit("closeModal", false);
-    },
-    close() {
-      this.visible = false;
-      this.$emit("update:showLesson", false);
-      this.handleClose && this.handleClose();
-    }
   },
   mounted() {
     for (let i = 0; i < 20; i++) {
@@ -125,26 +97,13 @@ export default {
 
 <style lang="scss" scoped>
 .category {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 9999;
-  overflow: auto;
-
   .category-wrap {
-    // position: absolute;
-    // top: 50%;
-    // left: 50%;
-    // transform: translate(-50%, -50%);
     margin: 15vh auto;
     background: #fff;
     width: 11rem;
     max-height: 5.84rem;
     border-radius: 0.05rem;
-    z-index: 4445;
+    // z-index: 4445;
     animation: slide 0.5s ease-out;
     border-radius: 0.08rem;
 

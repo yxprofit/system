@@ -47,6 +47,7 @@
   background: #f79727;
   border-radius: 100px;
   vertical-align: middle;
+  z-index: 4444;
 }
 
 .el-dialog__headerbtn .el-dialog__close {
