@@ -95,7 +95,7 @@
           <div class="cell-item" v-for="(item,index) in data" :key="index">
             <div>
               <div class="taskimg">
-                <img :src="item.img">
+                <img :src="item.img" @click="changedetails(item)">
               </div>
               <div class="item-body">
                 <div class="item-desc">{{item.worksTitle}}</div>
@@ -130,10 +130,13 @@
         <button class="load-btn" @click="loadmore">查看更多</button>
       </div>
     </div>
+    <work-details :info="itemInfo" :state="detailsShow" v-on:close="changedetails" />
   </div>
 </template>
 
 <script>
+import WorkDetails from '@/page/student/course/works/details'
+
 import pic1 from "assets/images/pic1.png";
 import pic2 from "assets/images/pic2.png";
 import pic3 from "assets/images/pic3.png";
@@ -148,9 +151,11 @@ import icon_task_close from "assets/images/icon/icon_task_close.png";
 import zan from "assets/images/student/zan.png";
 
 export default {
-  components: {},
+  components: {WorkDetails},
   data() {
     return {
+      itemInfo: {},
+      detailsShow: false,
       icon_39,
       icon_40,
       icon_42,
@@ -346,7 +351,11 @@ export default {
         }
       ];
       this.data = this.data.concat(arr);
-    }
+    },
+    changedetails(data){
+      this.itemInfo = data;
+      this.detailsShow = !this.detailsShow;
+    },
   }
 };
 </script>
