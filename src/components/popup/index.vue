@@ -1,8 +1,5 @@
 <template>
   <div class="popup" v-show="value">
-    <!-- <transition name="ry-fade">
-      <div class="popup-mask" v-show="value && !hideMask" @click="$_cancel"></div>
-    </transition>-->
     <transition name="slide">
       <div class="popup-content" v-show="value" :class="positionClass" :style="{ contentStyle }">
         <slot></slot>
@@ -137,63 +134,40 @@ $prefixCls: popup;
   }
 }
 
-// 蒙层渐变动画
-@keyframes ry-fade-enter {
-  from {
-    opacity: 0;
-  }
-}
-
-@keyframes ry-fade-leave {
-  to {
-    opacity: 0;
-  }
-}
-
 @keyframes slide-enter {
-  from {
+  0% {
+    -webkit-transform: translate3d(0, -20px, 0);
+    transform: translate3d(0, -20px, 0);
     opacity: 0;
-    margin-top: 50vh;
-    // transform: translate3d(-50%, 0, 0);
   }
 
-  to {
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
     opacity: 1;
-    margin-top: 15vh;
-    // transform: translate3d(-50%, -50%, 0);
   }
 }
 
 @keyframes slide-leave {
-  from {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
     opacity: 1;
-    margin-top: 15vh;
-    // transform: translate3d(-50%, -50%, 0);
   }
 
-  to {
+  100% {
+    -webkit-transform: translate3d(0, -20px, 0);
+    transform: translate3d(0, -20px, 0);
     opacity: 0;
-    margin-top: 50vh;
-    // transform: translate3d(-50%, 0, 0);
-  }
-}
-
-.ry-fade {
-  &-enter-active {
-    animation: ry-fade-enter 0.5s both ease;
-  }
-
-  &-leave-active {
-    animation: ry-fade-leave 0.5s both ease;
   }
 }
 
 .slide {
   &-enter-active {
-    animation: slide-enter 0.5s both ease-out;
+    animation: slide-enter 0.3s both ease-out;
   }
   &-leave-active {
-    animation: slide-leave 0.5s both ease-out;
+    animation: slide-leave 0.3s both ease-out;
   }
 }
 </style>

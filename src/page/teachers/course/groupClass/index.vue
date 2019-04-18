@@ -6,12 +6,6 @@
         <div class="group-title-1 is-inline">学习小组</div>
         <div class="group-title-2 is-inline">班级人数20人</div>
       </div>
-
-      <div class="group-opeator clearfix">
-        <div class="group-close is-inline" @click="closeModal">
-          <i class="el-dialog__close el-icon el-icon-close"></i>
-        </div>
-      </div>
     </div>
 
     <div class="group-content">
@@ -59,7 +53,7 @@
         <div class="content-1">
           <div
             class="content-1-wrap content-group2-list"
-            :style="{ width: 3.1*Number(list3.length + 1) + 'rem' }"
+            :style="{ width: 3.22*Number(list3.length + 1) + 'rem' }"
           >
             <div
               class="group-slide"
@@ -118,13 +112,13 @@
         </div>
         <div
           class="group1-prev"
-          @click="handlePrev('.content-group2-list', 'group2Index', -310, 'group2')"
+          @click="handlePrev('.content-group2-list', 'group2Index', -330, 'group2')"
         >
           <i class="el-icon-arrow-left"></i>
         </div>
         <div
           class="group1-next"
-          @click="handleNext('.content-group2-list', 'group2Index', -310,  'list3', 2, 'group2')"
+          @click="handleNext('.content-group2-list', 'group2Index', -330,  'list3', 2, 'group2')"
         >
           <i class="el-icon-arrow-right"></i>
         </div>
@@ -139,91 +133,91 @@
 
 <script>
 /* 组件方式引用 */
-import draggable from 'vuedraggable'
-import avatar from '@/assets/images/teacher/g1.png'
+import draggable from "vuedraggable";
+import avatar from "@/assets/images/teacher/g1.png";
 
 const groupList = [
-    {
-      avatar: avatar,
-      name: '欧阳娜娜'
-    },
-    {
-      avatar: avatar,
-      name: '欧阳娜娜'
-    },
-    {
-      avatar: avatar,
-      name: '欧阳娜娜'
-    },
-    {
-      avatar: avatar,
-      name: '欧阳娜娜'
-    },
-    {
-      avatar: avatar,
-      name: '欧阳娜娜'
-    },
-    {
-      avatar: avatar,
-      name: '欧阳娜娜'
-    },
-    {
-      avatar: avatar,
-      name: '欧阳娜娜'
-    },
-    {
-      avatar: avatar,
-      name: '欧阳娜娜'
-    },
-    {
-      avatar: avatar,
-      name: '欧阳娜娜'
-    },
-    {
-      avatar: avatar,
-      name: '欧阳娜娜'
-    },
-    {
-      avatar: avatar,
-      name: '欧阳娜娜'
-    },
-    {
-      avatar: avatar,
-      name: '欧阳娜娜'
-    },
-    {
-      avatar: avatar,
-      name: '欧阳娜娜'
-    },
-    {
-      avatar: avatar,
-      name: '欧阳娜娜'
-    },
-    {
-      avatar: avatar,
-      name: '欧阳娜娜'
-    },
-    {
-      avatar: avatar,
-      name: '欧阳娜娜'
-    },
-    {
-      avatar: avatar,
-      name: '欧阳娜娜'
-    },
-    {
-      avatar: avatar,
-      name: '欧阳娜娜'
-    },
-    {
-      avatar: avatar,
-      name: '欧阳娜娜'
-    },
-    {
-      avatar: avatar,
-      name: '欧阳娜娜'
-    }
-  ]
+  {
+    avatar: avatar,
+    name: "欧阳娜娜"
+  },
+  {
+    avatar: avatar,
+    name: "欧阳娜娜"
+  },
+  {
+    avatar: avatar,
+    name: "欧阳娜娜"
+  },
+  {
+    avatar: avatar,
+    name: "欧阳娜娜"
+  },
+  {
+    avatar: avatar,
+    name: "欧阳娜娜"
+  },
+  {
+    avatar: avatar,
+    name: "欧阳娜娜"
+  },
+  {
+    avatar: avatar,
+    name: "欧阳娜娜"
+  },
+  {
+    avatar: avatar,
+    name: "欧阳娜娜"
+  },
+  {
+    avatar: avatar,
+    name: "欧阳娜娜"
+  },
+  {
+    avatar: avatar,
+    name: "欧阳娜娜"
+  },
+  {
+    avatar: avatar,
+    name: "欧阳娜娜"
+  },
+  {
+    avatar: avatar,
+    name: "欧阳娜娜"
+  },
+  {
+    avatar: avatar,
+    name: "欧阳娜娜"
+  },
+  {
+    avatar: avatar,
+    name: "欧阳娜娜"
+  },
+  {
+    avatar: avatar,
+    name: "欧阳娜娜"
+  },
+  {
+    avatar: avatar,
+    name: "欧阳娜娜"
+  },
+  {
+    avatar: avatar,
+    name: "欧阳娜娜"
+  },
+  {
+    avatar: avatar,
+    name: "欧阳娜娜"
+  },
+  {
+    avatar: avatar,
+    name: "欧阳娜娜"
+  },
+  {
+    avatar: avatar,
+    name: "欧阳娜娜"
+  }
+];
 export default {
   props: {
     showLesson: {
@@ -243,14 +237,14 @@ export default {
       default: () => {}
     }
   },
-  data () {
+  data() {
     return {
-      labelPosition: 'left',
+      labelPosition: "left",
       visible: false,
       feedback: {
-        type: 'SG',
-        title: '',
-        content: ''
+        type: "SG",
+        title: "",
+        content: ""
       },
       list1: JSON.parse(JSON.stringify(groupList)),
       list2: [],
@@ -260,147 +254,144 @@ export default {
       group1Index: 0,
       group2Index: 0,
       timer: null,
-      className: '',
+      className: "",
       currentEle: {},
       currentLen: 0
-    }
+    };
   },
   watch: {
-    showLesson (newVal, oldVal) {
-      this.visible = newVal
-      this.$emit('update:showLesson', newVal)
+    showLesson(newVal, oldVal) {
+      this.visible = newVal;
+      this.$emit("update:showLesson", newVal);
     },
-    list2 (newVal) {
-      console.log(newVal, 'list2')
+    list2(newVal) {
+      console.log(newVal, "list2");
     }
   },
-  created () {
-
-  },
+  created() {},
   methods: {
     // 重置分组
-    resetGroup () {
-      this.list1 = JSON.parse(JSON.stringify(groupList))
-      this.list2 = []
-      this.list3 = []
+    resetGroup() {
+      this.list1 = JSON.parse(JSON.stringify(groupList));
+      this.list2 = [];
+      this.list3 = [];
     },
-    pullFunction () {
-      console.log(this.controlOnStart, 'pullFunction')
-      return this.controlOnStart ? 'clone' : true
+    pullFunction() {
+      console.log(this.controlOnStart, "pullFunction");
+      return this.controlOnStart ? "clone" : true;
     },
-    start ({ originalEvent }) {
-      console.log(originalEvent, 'start-originalEvent')
-      this.controlOnStart = originalEvent.ctrlKey
+    start({ originalEvent }) {
+      console.log(originalEvent, "start-originalEvent");
+      this.controlOnStart = originalEvent.ctrlKey;
     },
-    getdata (evt) {
-      let className = evt.to.className
-      if (className && className === 'addGroupDistrict') {
-        this.$refs.addSlide.style.borderColor = 'red'
-        this.className = className
+    getdata(evt) {
+      let className = evt.to.className;
+      if (className && className === "addGroupDistrict") {
+        this.$refs.addSlide.style.borderColor = "red";
       }
-      // console.log(evt.to.className, 'move');
     },
-    handleEnd (e) {
-      console.log(e, 'end')
-      if (this.className === 'addGroupDistrict') {
-        this.className = ''
-        this.$refs.addSlide.style.borderColor = '#fafbfd'
-        this.list3.push({})
-        this.list2[this.list3.length - 1] = [this.currentEle]
-        console.log(this.list3, 'list3')
-        clearTimeout(this.timer)
+    handleEnd(e) {
+      let className = e.to.className;
+      this.className = className;
+      this.$refs.addSlide.style.borderColor = "#fafbfd";
+      if (this.className === "addGroupDistrict") {
+        this.className = "";
+        this.list3.push({});
+        this.list2[this.list3.length - 1] = [this.currentEle];
+        clearTimeout(this.timer);
         this.timer = setTimeout(() => {
           this.handleNext(
-            '.content-group2-list',
-            'group2Index',
-            -310,
-            'list3',
+            ".content-group2-list",
+            "group2Index",
+            -330,
+            "list3",
             2,
-            'group2'
-          )
-        }, 100)
+            "group2"
+          );
+        }, 100);
       }
     },
-    handlePrev (el, listIndex, distance, type) {
+    handlePrev(el, listIndex, distance, type) {
       if (this[listIndex] <= 0) {
       } else {
-        let ele = document.querySelector(el)
-        if (type == 'group2') {
-          this[listIndex]--
+        let ele = document.querySelector(el);
+        if (type == "group2") {
+          this[listIndex]--;
         } else {
           if (this[listIndex] <= 5) {
-            this[listIndex] = 0
+            this[listIndex] = 0;
           } else {
-            this[listIndex] -= 5
+            this[listIndex] -= 5;
           }
         }
-        console.log(listIndex, this.list2)
+        console.log(listIndex, this.list2);
         ele.style.transform = `translateX( ${distance *
           0.01 *
-          this[listIndex]}rem)`
-        ele.style.transition = 'all 0.5s ease'
+          this[listIndex]}rem)`;
+        ele.style.transition = "all 0.5s ease";
       }
     },
-    handleNext (el, listIndex, distance, list, baseIndex, type) {
-      let ele = document.querySelector(el)
+    handleNext(el, listIndex, distance, list, baseIndex, type) {
+      let ele = document.querySelector(el);
       if (this[listIndex] < this[list].length - baseIndex) {
-        if (type == 'group2') {
-          this[listIndex]++
+        if (type == "group2") {
+          this[listIndex]++;
         } else {
           if (this[list].length - this[listIndex] - baseIndex <= 5) {
-            this[listIndex] += this[list].length - this[listIndex] - baseIndex
+            this[listIndex] += this[list].length - this[listIndex] - baseIndex;
           } else {
-            this[listIndex] += 5
+            this[listIndex] += 5;
           }
         }
-        console.log(this[listIndex], list)
-         ele.style.transform = `translateX( ${distance *
+        console.log(this[listIndex], list);
+        ele.style.transform = `translateX( ${distance *
           0.01 *
-          this[listIndex]}rem)`
-        ele.style.transition = 'all 0.5s ease'
+          this[listIndex]}rem)`;
+        ele.style.transition = "all 0.5s ease";
       }
     },
-    add: function () {
-      console.log('add')
-      this.list.push({ name: 'Juan' })
+    add: function() {
+      console.log("add");
+      if (this.className !== "addGroupDistrict") {
+        this.list.push({ name: "Juan" });
+      }
     },
-    replace: function () {
-      // console.log('replace')
-      // this.list = [{ name: 'Edgard' }]
+    replace: function() {
+      console.log("replace");
+      this.list = [{ name: "Edgard" }];
     },
-    clone: function (el) {
-      console.log(el, 'clone')
-      // return {
-      //   name: el.name,
-      //   avatar: el.avatar
-      // }
+    clone: function(el) {
+      console.log(el, "clone");
+      if (this.className !== "addGroupDistrict") {
+        return {
+          name: el.name,
+          avatar: el.avatar
+        };
+      }
     },
-    log: function (evt) {
+    log: function(evt) {
       try {
-        if (this.className === 'addGroupDistrict') {
-          this.currentEle = Object.assign({}, evt.removed.element)
-        } else {
-          console.log(evt.removed, 'removed')
-        }
-
-        this.currentLen = this.list2.filter(item => item.length)
-        this.list3 = JSON.parse(JSON.stringify(this.list2.filter(item => item.length)))
-        clearTimeout(this.timer)
+        this.currentEle = Object.assign({}, evt.removed.element);
+        this.list3 = JSON.parse(
+          JSON.stringify(this.list2.filter(item => item.length))
+        );
+        clearTimeout(this.timer);
         this.timer = setTimeout(() => {
-          this.handlePrev('.content-group2-list', 'group2Index', -310, 'group2')
-        }, 100)
-        console.log(this.currentLen, 'currentLen')
+          this.handlePrev(
+            ".content-group2-list",
+            "group2Index",
+            -330,
+            "group2"
+          );
+        }, 100);
       } catch (err) {}
     },
-    closeModal () {
-      this.$emit('closeModal', false)
-    }
   },
-  mounted () {},
+  mounted() {},
   components: {
     draggable
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -647,10 +638,11 @@ export default {
 }
 
 .group1-list-inner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate3d(-50%, -50%, 0);
+  // position: absolute;
+  // top: 50%;
+  // left: 50%;
+  // transform: translate3d(-50%, -50%, 0);
+  margin-top: 0.15rem;
 }
 
 .add-btn {

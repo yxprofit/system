@@ -21,24 +21,24 @@
 
 <script>
 export default {
-  data () {
-    return {}
+  data() {
+    return {};
   },
   methods: {
-    taskClose () {
-      this.$emit('taskClose', false)
+    taskClose() {
+      this.$emit("taskClose", false);
     },
-    confirmDelete () {
-      this.$emit('confirmDel')
+    confirmDelete() {
+      this.$emit("confirmDel");
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
 .save-task {
   width: 8.8rem;
-  padding: 0.4rem 0.36rem 0.34rem 0.36rem;
+  padding: 0.3rem 0.36rem 0.34rem 0.36rem;
   margin: 0 auto;
   background: #fff;
   border-radius: 0.05rem;
@@ -101,16 +101,14 @@ export default {
   position: absolute;
   right: 0.15rem;
   top: 0.1rem;
-  width: 0.24rem;
-  height: 0.24rem;
+  font-size: 0.18rem;
+  width: 24px;
+  height: 24px;
   text-align: center;
-  line-height: 0.24rem;
+  line-height: 24px;
   color: #fff;
   background: #f79727;
   border-radius: 100px;
-
-  &:hover {
-    color: #333;
-  }
 }
 </style>
+
