@@ -177,6 +177,15 @@ let router = new Router({
         title: '添加任务'
       }
     },
+    {
+      path: '/questionnaire',
+      components: {
+        default: resolve => require(['@/page/questionnaire/index.vue'], resolve)
+      },
+      meta: {
+        title: '问卷任务'
+      }
+    },
     // 找不到路由的错误页面
     {
       path: '/*',
