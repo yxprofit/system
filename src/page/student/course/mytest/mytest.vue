@@ -429,7 +429,7 @@ export default {
   .pagination {
     width: 100%;
     text-align: center;
-    margin: 0.3rem 0;
+    margin: 0.5rem 0;
     span {
       display: inline-block;
       height: 0.3rem;

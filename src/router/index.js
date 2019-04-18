@@ -72,13 +72,18 @@ let router = new Router({
               default: resolve => require(['@/page/student/course/works/index.vue'], resolve)
             }
           },
-          {
-            path: 'task',
-            components: {
-              default: resolve => require(['@/page/student/task/task.vue'], resolve)
-            }
-          }
+          // {
+          //   path: 'task',
+          //   components: {
+          //     default: resolve => require(['@/page/student/task/task.vue'], resolve)
+          //   }
+          // }
         ]
+      },{
+        path: '/student/task',
+        components: {
+          default: resolve => require(['@/page/teachers/course/task/index.vue'], resolve)
+        }
       }],
       meta: {
         title: '优想教育|学生端'
@@ -124,7 +129,7 @@ let router = new Router({
           }
         ]
       }, {
-        path: '/task',
+        path: '/teacher/task',
         components: {
           default: resolve => require(['@/page/teachers/course/task/index.vue'], resolve)
         }
