@@ -1,30 +1,23 @@
 <template>
   <div class="g_main">
-    <section class="main">
+     <section class="main">
       <aside>
         <router-link :to="{path:'/student'}" class="logo">
           <img src="../../assets/images/logo.png" alt>
         </router-link>
-        <img src="../../assets/images/head.png" alt>
-        <div class="user">
-          余周周
-          <span>
-            <img src="../../assets/images/icon/icon_sex_nv.png" alt>
-          </span>
+        <img src="../../assets/images/head.png" alt="">
+        <div class="user">余周周
+          <span><img src="../../assets/images/icon/icon_sex_nv.png" alt=""></span>
         </div>
         <p>高中三年级</p>
-        <div class="nav active">
-          <span>
-            <img src="../../assets/images/icon/icon_course.png" alt>
-          </span>
+        <router-link to="/student/course/mycourse" tag="div" :class="[{'active':isActive===1},'nav']">
+          <span><img src="../../assets/images/icon/icon_course.png" alt=""></span>
           <span>课程中心</span>
-        </div>
-        <div class="nav">
-          <span>
-            <img src="../../assets/images/icon/icon_task.png" alt>
-          </span>
+        </router-link>
+        <router-link to="/student/task" tag="div" :class="[{'task':isActive===2},'nav']">
+          <span><img src="../../assets/images/icon/icon_task.png" alt=""></span>
           <span>任务中心</span>
-        </div>
+        </router-link>
       </aside>
       <section class="content">
         <BHeader></BHeader>
@@ -37,9 +30,30 @@
 <script>
 import BHeader from "@/components/common/header.vue";
 export default {
-  name: "Student",
+  name: "Teachers",
   components: {
     BHeader
+  },
+  data() {
+    return {
+      isActive: 1
+    };
+  },
+  watch: {
+    "$route.path"(newVal, oldVal) {
+      if (newVal === "/student/task") {
+        this.isActive = 2;
+      } else if (newVal === "/student/course/mycourse") this.isActive = 1;
+    }
+  },
+  created() {
+    if (this.$router.currentRoute.fullPath === "/student/course/mycourse") {
+      this.isActive = 1;
+    } else if (
+      this.$router.currentRoute.fullPath === "/student/task"
+    ) {
+      this.isActive = 2;
+    }
   }
 };
 </script>
@@ -104,6 +118,11 @@ export default {
         background: rgba(252, 244, 235, 1);
         font-size: 0.16rem;
         color: #f79727;
+      }
+      &.task {
+        border-left: 0.03rem solid #3bd7bd;
+        background: rgba(219, 253, 247, 1);
+        color: #2cc7ad;
       }
       & > span:nth-child(1) {
         display: inline-block;

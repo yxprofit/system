@@ -56,7 +56,7 @@
 
 /* mytest */
 .mytest .el-table .tableRow {
-  height: 0.7rem;
+  height: 0.78rem;
 }
 
 .mytest .el-table .tableRow:hover .look {
@@ -99,7 +99,7 @@
 
 
 .trends .el-table .tableRow {
-  height: 0.7rem;
+  height: 0.78rem;
 }
 
 .trends .el-table .tableRow:hover .look {

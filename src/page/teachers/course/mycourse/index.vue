@@ -279,7 +279,7 @@ export default {
   },
   methods: {
     goTrends(){
-      this.$router.push('/teachers/course/task')
+      this.$router.push('/teacher/task')
     },
     changeIsHidden() {
       this.isHidden = !this.isHidden

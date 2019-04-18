@@ -49,12 +49,10 @@
                 :value="item.value"
               ></el-option>
             </el-select>
-            <el-input
-              placeholder="发起人搜索"
-              class="search-box"
-              v-model="className"
-              suffix-icon="el-icon-search"
-            ></el-input>
+            <div class="search-box">
+              <input type="text" placeholder="发起人搜索" v-model="teacher">
+              <i class="el-icon-search"></i>
+            </div>
           </div>
           <el-scrollbar style="height:100%;" tag="div" class="table-wrap">
             <el-table
@@ -141,7 +139,6 @@
                 <template slot-scope="scope">
                   <img :src="scope.row.icon" alt class="icon">
                   <span style="margin-left: 0.1rem">{{ scope.row.type }}</span>
-                  <!-- <span style="margin-left: 0.1rem">{{ scope.row.type }}</span> -->
                   <p class="look">查看明细 ></p>
                 </template>
               </el-table-column>
@@ -178,6 +175,7 @@ export default {
   name: 'Trends',
   data () {
     return {
+      teacher: '',
       activeName: '1',
       type: '',
       status: '',
@@ -498,17 +496,31 @@ export default {
       margin-top: -0.03rem;
     }
   }
+  .search-box {
+    width: 2.42rem;
+    height: 0.32rem;
+    background: rgba(238, 242, 245, 1);
+    border-radius: .16rem;
+    margin: 0 0.46rem 0 0.2rem;
+    position: relative;
+    input{
+      height: 100%;
+      width: 100%;
+      background-color: rgba(238, 242, 245, 1);
+      border-radius: .16rem;
+      padding-left: .24rem;
+      padding-right: .4rem;
+      box-sizing: border-box;
+    }
+    i{
+      position: absolute;
+      right: .24rem;
+      top: .08rem;
+    }
+  }
 }
-
 </style>
 <style lang="scss" scoped>
-.trends .search-box {
-  width: 2.42rem;
-  height: 0.32rem;
-  background: rgba(238, 242, 245, 1) !important;
-  border-radius: 200%;
-  margin: 0 .46rem 0 .2rem;
-}
 .trends /deep/ .el-tabs--card > .el-tabs__header .el-tabs__item {
   height: 0.68rem;
   line-height: 0.68rem;
