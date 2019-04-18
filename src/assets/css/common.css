@@ -96,6 +96,59 @@
   top: 0.53rem !important;
 }
 
+
+.trends .el-table .tableRow {
+  height: 0.7rem;
+}
+
+.trends .el-table .tableRow:hover .look {
+  display: block;
+  color: #FE7B00;
+}
+
+.trends .el-table .tableRow:hover td:nth-of-type(3) {
+  color: #FE7B00;
+  font-weight:bold;
+}
+
+.trends .el-table .tableRow:hover td:nth-of-type(6) {
+  color: #FE7B00;
+  font-weight:bold;
+}
+.trends .el-table .tableRow td:nth-of-type(5) {
+ text-decoration: underline;
+}
+
+.trends .el-table .tableRow td:nth-of-type(6) {
+  text-decoration: underline;
+}
+
+.trends .el-table .tableRow:hover td {
+  background-color: initial !important;
+  background: none !important;
+  border: none !important;
+}
+
+.trends .el-table .tableRow {
+  position: relative;
+}
+
+.trends .el-table .tableRow:after {
+  position: absolute;
+  left: 0;
+  content: "";
+  height: 0.75rem;
+  width: 99.5%;
+  
+}
+.trends .el-table .tableRow:hover:after {
+  border: 1px solid #FE7B00;
+}
+
+.trends .el-select-dropdown {
+  top: 0.53rem !important;
+}
+ 
 .upload .el-upload {
   width: 100%
 }
