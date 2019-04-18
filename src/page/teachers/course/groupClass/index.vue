@@ -61,7 +61,12 @@
             class="content-1-wrap content-group2-list"
             :style="{ width: 3.1*Number(list3.length + 1) + 'rem' }"
           >
-            <div class="group-slide" v-for="(item, index) in  list3" :key="index" v-show="list2[index].length > 0">
+            <div
+              class="group-slide"
+              v-for="(item, index) in  list3"
+              :key="index"
+              v-show="list2[index].length > 0"
+            >
               <div class="group-slide-innder">
                 <div>
                   <div class="group-title">0{{index+1}}组</div>
@@ -80,9 +85,21 @@
                         <img class="avatar-img" :src="gItem.avatar" alt>
                         <div class="avatar-name">{{ gItem.name }}</div>
                         <div class="icon-list">
-                          <img class="icon-item icon-item-2" src="../../../../assets/images/teacher/g2.png" alt>
-                          <img class="icon-item icon-item-2" src="../../../../assets/images/teacher/g3.png" alt>
-                          <img class="icon-item icon-item-2" src="../../../../assets/images/teacher/g4.png" alt>
+                          <img
+                            class="icon-item icon-item-2"
+                            src="../../../../assets/images/teacher/g2.png"
+                            alt
+                          >
+                          <img
+                            class="icon-item icon-item-2"
+                            src="../../../../assets/images/teacher/g3.png"
+                            alt
+                          >
+                          <img
+                            class="icon-item icon-item-2"
+                            src="../../../../assets/images/teacher/g4.png"
+                            alt
+                          >
                         </div>
                       </div>
                     </draggable>
@@ -99,7 +116,10 @@
             </div>
           </div>
         </div>
-        <div class="group1-prev" @click="handlePrev('.content-group2-list', 'group2Index', -310, 'group2')">
+        <div
+          class="group1-prev"
+          @click="handlePrev('.content-group2-list', 'group2Index', -310, 'group2')"
+        >
           <i class="el-icon-arrow-left"></i>
         </div>
         <div
@@ -112,7 +132,7 @@
     </div>
     <div class="group-btn">
       <div class="submit base-btn">提交</div>
-      <div class="reset base-btn">重置</div>
+      <div class="reset base-btn" @click="resetGroup">重置</div>
     </div>
   </div>
 </template>
@@ -121,6 +141,89 @@
 /* 组件方式引用 */
 import draggable from 'vuedraggable'
 import avatar from '@/assets/images/teacher/g1.png'
+
+const groupList = [
+    {
+      avatar: avatar,
+      name: '欧阳娜娜'
+    },
+    {
+      avatar: avatar,
+      name: '欧阳娜娜'
+    },
+    {
+      avatar: avatar,
+      name: '欧阳娜娜'
+    },
+    {
+      avatar: avatar,
+      name: '欧阳娜娜'
+    },
+    {
+      avatar: avatar,
+      name: '欧阳娜娜'
+    },
+    {
+      avatar: avatar,
+      name: '欧阳娜娜'
+    },
+    {
+      avatar: avatar,
+      name: '欧阳娜娜'
+    },
+    {
+      avatar: avatar,
+      name: '欧阳娜娜'
+    },
+    {
+      avatar: avatar,
+      name: '欧阳娜娜'
+    },
+    {
+      avatar: avatar,
+      name: '欧阳娜娜'
+    },
+    {
+      avatar: avatar,
+      name: '欧阳娜娜'
+    },
+    {
+      avatar: avatar,
+      name: '欧阳娜娜'
+    },
+    {
+      avatar: avatar,
+      name: '欧阳娜娜'
+    },
+    {
+      avatar: avatar,
+      name: '欧阳娜娜'
+    },
+    {
+      avatar: avatar,
+      name: '欧阳娜娜'
+    },
+    {
+      avatar: avatar,
+      name: '欧阳娜娜'
+    },
+    {
+      avatar: avatar,
+      name: '欧阳娜娜'
+    },
+    {
+      avatar: avatar,
+      name: '欧阳娜娜'
+    },
+    {
+      avatar: avatar,
+      name: '欧阳娜娜'
+    },
+    {
+      avatar: avatar,
+      name: '欧阳娜娜'
+    }
+  ]
 export default {
   props: {
     showLesson: {
@@ -149,88 +252,7 @@ export default {
         title: '',
         content: ''
       },
-      list1: [
-        {
-          avatar: avatar,
-          name: '欧阳娜娜'
-        },
-        {
-          avatar: avatar,
-          name: '欧阳娜娜'
-        },
-        {
-          avatar: avatar,
-          name: '欧阳娜娜'
-        },
-        {
-          avatar: avatar,
-          name: '欧阳娜娜'
-        },
-        {
-          avatar: avatar,
-          name: '欧阳娜娜'
-        },
-        {
-          avatar: avatar,
-          name: '欧阳娜娜'
-        },
-        {
-          avatar: avatar,
-          name: '欧阳娜娜'
-        },
-        {
-          avatar: avatar,
-          name: '欧阳娜娜'
-        },
-        {
-          avatar: avatar,
-          name: '欧阳娜娜'
-        },
-        {
-          avatar: avatar,
-          name: '欧阳娜娜'
-        },
-        {
-          avatar: avatar,
-          name: '欧阳娜娜'
-        },
-        {
-          avatar: avatar,
-          name: '欧阳娜娜'
-        },
-        {
-          avatar: avatar,
-          name: '欧阳娜娜'
-        },
-        {
-          avatar: avatar,
-          name: '欧阳娜娜'
-        },
-        {
-          avatar: avatar,
-          name: '欧阳娜娜'
-        },
-        {
-          avatar: avatar,
-          name: '欧阳娜娜'
-        },
-        {
-          avatar: avatar,
-          name: '欧阳娜娜'
-        },
-        {
-          avatar: avatar,
-          name: '欧阳娜娜'
-        },
-        {
-          avatar: avatar,
-          name: '欧阳娜娜'
-        },
-        {
-          avatar: avatar,
-          name: '欧阳娜娜'
-        }
-      ],
+      list1: JSON.parse(JSON.stringify(groupList)),
       list2: [],
       list3: [],
       list4: [],
@@ -252,8 +274,16 @@ export default {
       console.log(newVal, 'list2')
     }
   },
-  created () {},
+  created () {
+
+  },
   methods: {
+    // 重置分组
+    resetGroup () {
+      this.list1 = JSON.parse(JSON.stringify(groupList))
+      this.list2 = []
+      this.list3 = []
+    },
     pullFunction () {
       console.log(this.controlOnStart, 'pullFunction')
       return this.controlOnStart ? 'clone' : true
@@ -335,15 +365,15 @@ export default {
       this.list.push({ name: 'Juan' })
     },
     replace: function () {
-      console.log('replace')
-      this.list = [{ name: 'Edgard' }]
+      // console.log('replace')
+      // this.list = [{ name: 'Edgard' }]
     },
     clone: function (el) {
       console.log(el, 'clone')
-      return {
-        name: el.name,
-        avatar: el.avatar
-      }
+      // return {
+      //   name: el.name,
+      //   avatar: el.avatar
+      // }
     },
     log: function (evt) {
       try {
@@ -608,8 +638,8 @@ export default {
 }
 
 .list-group-item:hover {
-   background: #fff3e5;
-   border-color: #ffa711;
+  background: #fff3e5;
+  border-color: #ffa711;
 }
 
 .icon-list {
@@ -705,9 +735,9 @@ export default {
 }
 
 .avatar-list:hover {
-    background: #fff3e5;
-    border: 0.01rem solid #ffa711;
-  }
+  background: #fff3e5;
+  border: 0.01rem solid #ffa711;
+}
 
 .avatar-img {
   width: 0.5rem;
@@ -776,8 +806,7 @@ export default {
 }
 
 .icon-item-2 {
-  width: 0.20rem;
+  width: 0.2rem;
   margin: 0 auto;
 }
-
 </style>
