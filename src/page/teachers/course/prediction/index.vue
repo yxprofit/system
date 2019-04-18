@@ -12,24 +12,24 @@
         <div class="test-wrap">
           <h3 class="test-title">1. 以上描述选择：</h3>
           <ul class="test-list">
-            <li class="test-item" v-for="(test, index) in testArr" :key="index">
-              <div class="question" :class="{ 'is-select': testIndex === index && quesIndex === qIndex }" v-for="(ques, qIndex) in testArr[index]" :key="qIndex" @click="handleSelectQues(index, qIndex)">
-                <img :src=" testIndex === index && quesIndex === qIndex ? checkImg2 : checkImg1" alt class="test-icon">
-                <span class="ques-text">{{ ques }}</span>
+            <li class="test-item" v-for="(test, index) in testArr[currentPage]" :key="index">
+              <div class="question" :class="{ 'is-select': testIndex === index }" @click="handleSelectQues(index)">
+                <img :src=" testIndex === index ? checkImg2 : checkImg1" alt class="test-icon">
+                <span class="ques-text">{{ test }}</span>
               </div>
             </li>
           </ul>
 
           <div class="page">
-            <span class="page-left">1</span>
+            <span class="page-left">{{ currentPage + 1 }}</span>
             <span class="page-mid">/</span>
-            <span class="page-right">2</span>
+            <span class="page-right">{{ testArr.length }}</span>
           </div>
         </div>
 
         <div class="btn-wrap">
-          <div class="prev test-btn">上一题</div>
-          <div class="submit test-btn">下一题</div>
+          <div class="prev test-btn" @click="prevTest">上一题</div>
+          <div class="submit test-btn" @click="nextTest">下一题</div>
         </div>
       </div>
     </el-dialog>
@@ -53,24 +53,48 @@ export default {
       checkImg2: check2,
       testArr: [
         [
-          'A. 对陌生人紧张，表达的不清楚或者没有逻辑性',
-          'B. 不知道如何凸显自己的特点，让别人记住自己',
-          'C. 滔滔不绝，却有些乏味',
-          'D. 光顾着介绍自己，太自夸，没有注意倾听别人'
+          'A. 对陌生人紧张，表达的不清楚或者没有逻辑性1',
+          'B. 不知道如何凸显自己的特点，让别人记住自己1',
+          'C. 滔滔不绝，却有些乏味1',
+          'D. 光顾着介绍自己，太自夸，没有注意倾听别人1'
+        ],
+        [
+          'A. 对陌生人紧张，表达的不清楚或者没有逻辑性2',
+          'B. 不知道如何凸显自己的特点，让别人记住自己2',
+          'C. 滔滔不绝，却有些乏味2',
+          'D. 光顾着介绍自己，太自夸，没有注意倾听别人2'
+        ],
+        [
+          'A. 对陌生人紧张，表达的不清楚或者没有逻辑性3',
+          'B. 不知道如何凸显自己的特点，让别人记住自己3',
+          'C. 滔滔不绝，却有些乏味3',
+          'D. 光顾着介绍自己，太自夸，没有注意倾听别人3'
         ]
       ],
       testIndex: -1,
-      quesIndex: -1
+      quesIndex: -1,
+      currentPage: 0
     }
   },
   methods: {
     handleClose () {
       console.log(1111111111111)
+      this.state = false
+      this.$emit('update:state', false)
       this.$emit('close')
     },
-    handleSelectQues (index, qIndex) {
+    prevTest () {
+      if (this.currentPage >= 1) {
+        this.currentPage--
+      }
+    },
+    nextTest () {
+      if (this.currentPage < this.testArr.length - 1) {
+        this.currentPage++
+      }
+    },
+    handleSelectQues (index) {
       this.testIndex = index
-      this.quesIndex = qIndex
     }
   }
 }

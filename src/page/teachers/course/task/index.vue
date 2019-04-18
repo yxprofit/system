@@ -154,7 +154,7 @@
     </section>
 
     <!-- 任务弹窗区域 -->
-    <prediction-task :state="isShowTask"></prediction-task>
+    <prediction-task :state.sync="isShowTask"></prediction-task>
   </div>
 </template>
 
@@ -466,7 +466,7 @@ export default {
     },
     handleConditionChange () {},
     cellEnter (row) {
-      this.isShowTask = !this.isShowTask
+      this.isShowTask = true
       console.log(1)
     }
   },
