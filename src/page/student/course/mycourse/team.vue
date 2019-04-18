@@ -1,13 +1,13 @@
 <template>
   <div class="team" v-loading="loading">
-    <el-dialog :visible.sync="state" width="70%" :before-close="handleClose">
+    <el-dialog :visible.sync="state" width="54%" :before-close="handleClose">
       <span slot="title" class="teamTitle">
         <h3>我的小组</h3>
       </span>
       <div class="group">
         <ul class="list-group">
           <li v-for="(item, index) in data" :key="index">
-            <h4>09级2班 03组</h4>
+            <h4>09级2班 0{{index}}组</h4>
             <el-scrollbar tag="div" class="teamMain" wrap-class="wrap">
               <div class="teamBlock" v-for="(item,index) in data" :key="index">
                 <div class="teamAvatar">
@@ -24,10 +24,10 @@
         </ul>
       </div>
 
-      <div class="group1-prev" @click="handlePrev('.list-group', 'group1Index', -350)">
+      <div class="group1-prev" @click="handlePrev('.list-group', 'group1Index', -1050)">
         <i class="el-icon-arrow-left"></i>
       </div>
-      <div class="group1-next" @click="handleNext('.list-group', 'group1Index', -350, 'data', 3)">
+      <div class="group1-next" @click="handleNext('.list-group', 'group1Index', -1050, 'data', 5)">
         <i class="el-icon-arrow-right"></i>
       </div>
     </el-dialog>

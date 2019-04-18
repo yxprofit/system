@@ -31,10 +31,10 @@
                 <el-input v-model="form.url" placeholder="输入URL链接"></el-input>
             </el-form-item>
             <el-form-item label="查看权限：">
-              <el-radio-group v-model="form.authority">
-                <el-radio :label="1">仅自己</el-radio>
-                <el-radio :label="2">教师</el-radio>
-              </el-radio-group>
+              <el-checkbox-group v-model="form.authority">
+                <el-checkbox label="1">仅自己</el-checkbox>
+                <el-checkbox label="2">教师</el-checkbox>
+              </el-checkbox-group>
             </el-form-item>
             <el-form-item label="文件上传：">
                 <div class="uploadFile">
@@ -90,7 +90,7 @@ export default {
                 cat1: "1",
                 cat2: "1",
                 url: '',
-                authority: 1,
+                authority: [],
                 // fileList: [{url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'}, {url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'}]
             }
 		};
