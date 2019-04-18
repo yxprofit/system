@@ -441,7 +441,8 @@ export default {
   hgroup {
     width: 2.1rem;
     height: 100%;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
     padding-bottom: 0.5rem;
     float: right;
     border-left: 0.01rem solid rgba(228, 232, 237, 1);

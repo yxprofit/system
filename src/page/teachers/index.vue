@@ -63,6 +63,7 @@ export default {
   width: 13.66rem;
   height: 100%;
   margin: 0 auto;
+  overflow: hidden;
 }
 .main {
   display: flex;

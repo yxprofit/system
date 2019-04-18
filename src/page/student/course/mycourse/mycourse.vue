@@ -321,6 +321,7 @@ export default {
   width: 100%;
   height: 100%;
   // overflow: auto;
+  overflow: hidden;
   & > section {
     width: calc(100% - 2.22rem);
     height: 100%;
@@ -457,7 +458,7 @@ export default {
   hgroup {
     width: 2.1rem;
     height: 100%;
-    overflow: scroll;
+    overflow-y: scroll;
     padding-bottom: 0.5rem;
     float: right;
     border-left: 0.01rem solid rgba(228, 232, 237, 1);

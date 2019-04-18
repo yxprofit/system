@@ -396,7 +396,8 @@ export default {
   .view {
     margin-top: 0.15rem;
 		height: calc(100% - 0.29rem);
-		overflow: auto;
+		overflow-y: auto;
+		overflow-x: hidden;
     .des,
     .li {
       margin: 0;
