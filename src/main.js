@@ -47,11 +47,13 @@ import {
   RadioGroup,
   CheckboxGroup,
   Scrollbar,
-  Checkbox
+  Checkbox,
+  Message
 } from 'element-ui'
 
 import waterfall from 'vue-waterfall2'
 Vue.use(waterfall)
+Vue.prototype.$message = Message
 
 Vue.config.productionTip = false
 Vue.prototype.$ELEMENT = { size: 'small', zIndex: 3000 }
@@ -84,7 +86,7 @@ Vue.use(Button)
   .use(Checkbox)
   .use(RadioGroup)
   .use(CheckboxGroup)
-  .use(Input);
+  .use(Input)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

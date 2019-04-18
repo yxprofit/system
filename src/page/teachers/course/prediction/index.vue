@@ -1,6 +1,6 @@
 <template>
-  <div class="prediction" v-show="state">
-    <el-dialog :visible.sync="state" width="5.5rem" :before-close="handleClose">
+  <div class="prediction" v-show="visible">
+    <el-dialog :visible.sync="visible" width="5.5rem" :before-close="handleClose">
       <div class="prediction-wrap">
         <div class="img-wrap">
           <img src="../../../../assets/images/decoration.png" alt class="pred-decotation">
@@ -9,11 +9,15 @@
           该测试为单选或多选题，请根据题目描述，选择答案。 非常同意为4分，完全不同意为0分。 对于开放提问，你可以分享不超过140字的反馈。
           隐私声明： 个人答案不会以任何形式分享给学校和老师，只会以数据集成的方式汇总成报告给学校
         </p>
-        <div class="test-wrap">
+        <div class="test-wrap" v-if="!isShowTextArea">
           <h3 class="test-title">1. 以上描述选择：</h3>
           <ul class="test-list">
             <li class="test-item" v-for="(test, index) in testArr[currentPage]" :key="index">
-              <div class="question" :class="{ 'is-select': testIndex === index }" @click="handleSelectQues(index)">
+              <div
+                class="question"
+                :class="{ 'is-select': testIndex === index }"
+                @click="handleSelectQues(index)"
+              >
                 <img :src=" testIndex === index ? checkImg2 : checkImg1" alt class="test-icon">
                 <span class="ques-text">{{ test }}</span>
               </div>
@@ -26,10 +30,27 @@
             <span class="page-right">{{ testArr.length }}</span>
           </div>
         </div>
-
+        <div class="test-wrap" v-else>
+          <div class="placehold" v-show="isShowPlace">
+            <img class="placehold-icon" src="../../../../assets/images/student/work3.png" alt>
+            <span class="placehold-text">请输入</span>
+          </div>
+          <textarea
+            @focus="handleFoucs"
+            @blur="handleBlur"
+            v-model="content"
+            maxlength="140"
+            class="user-textarea"
+          ></textarea>
+          <div class="page text-page">
+            <span class="page-left">{{ this.content.length }}</span>
+            <span class="page-mid">/</span>
+            <span class="page-right">140</span>
+          </div>
+        </div>
         <div class="btn-wrap">
           <div class="prev test-btn" @click="prevTest">上一题</div>
-          <div class="submit test-btn" @click="nextTest">下一题</div>
+          <div class="submit test-btn" @click="nextTest">{{ isShowTextArea ? '确认提交' : '下一题' }}</div>
         </div>
       </div>
     </el-dialog>
@@ -48,7 +69,7 @@ export default {
   },
   data () {
     return {
-      visible: false,
+      visible: this.state,
       checkImg1: check1,
       checkImg2: check2,
       testArr: [
@@ -72,14 +93,22 @@ export default {
         ]
       ],
       testIndex: -1,
-      quesIndex: -1,
-      currentPage: 0
+      currentPage: 0,
+      isShowTextArea: false,
+      currentChatLen: 0,
+      content: '',
+      isShowPlace: true
+    }
+  },
+  watch: {
+    state (newVal) {
+      this.visible = newVal
+      this.$emit('update:state', newVal)
     }
   },
   methods: {
     handleClose () {
-      console.log(1111111111111)
-      this.state = false
+      this.visible = false
       this.$emit('update:state', false)
       this.$emit('close')
     },
@@ -87,16 +116,41 @@ export default {
       if (this.currentPage >= 1) {
         this.currentPage--
       }
+
+      if (this.isShowTextArea) {
+        this.isShowTextArea = false
+        this.currentPage = this.testArr.length - 1
+      }
     },
     nextTest () {
       if (this.currentPage < this.testArr.length - 1) {
         this.currentPage++
+      } else {
+        this.isShowTextArea = true
+      }
+
+      if (this.isShowTextArea && this.content) {
+        this.visible = false
+        this.$emit('update:state', false)
+        this.$message({
+          message: '恭喜你，建议提交成功',
+          type: 'success'
+        })
+      }
+    },
+    handleFoucs () {
+      this.isShowPlace = false
+    },
+    handleBlur () {
+      if (!this.content) {
+        this.isShowPlace = true
       }
     },
     handleSelectQues (index) {
       this.testIndex = index
     }
-  }
+  },
+  mounted () {}
 }
 </script>
 
@@ -137,6 +191,7 @@ export default {
   border-radius: 4px;
   padding: 0.15rem;
   box-sizing: border-box;
+  position: relative;
 }
 
 .test-item {
@@ -211,6 +266,26 @@ export default {
   border: 0.01rem solid rgba(228, 232, 237, 1);
 }
 
+.user-textarea {
+  height: 2.8rem;
+  width: 100%;
+  resize: none;
+}
+
+.placehold {
+  position: absolute;
+  top: 0.15rem;
+  left: 0.15rem;
+
+  .placehold-icon {
+    width: 0.14rem;
+  }
+}
+
+.text-page {
+  text-align: right;
+}
+
 .prediction /deep/ .el-dialog__header {
   padding: 0;
 }
@@ -218,4 +293,5 @@ export default {
 .prediction /deep/ .el-dialog__body {
   padding: 0;
 }
+
 </style>
