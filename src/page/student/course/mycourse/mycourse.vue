@@ -353,6 +353,7 @@ export default {
             top: 0.25rem;
             left: 0.08rem;
             background-image: url("../../../../assets/images/icon/icon_mycourse.png");
+            background-size: 100% 100%;
           }
         }
         span {

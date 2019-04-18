@@ -45,7 +45,9 @@ import {
   Badge,
   Radio,
   RadioGroup,
-  Scrollbar
+  CheckboxGroup,
+  Scrollbar,
+  Checkbox
 } from 'element-ui'
 
 import waterfall from 'vue-waterfall2'
@@ -79,7 +81,9 @@ Vue.use(Button)
   .use(Upload)
   .use(Badge)
   .use(Radio)
+  .use(Checkbox)
   .use(RadioGroup)
+  .use(CheckboxGroup)
   .use(Input);
 /* eslint-disable no-new */
 new Vue({

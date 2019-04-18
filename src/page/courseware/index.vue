@@ -426,7 +426,7 @@ hgroup.has-btn {
 }
 hgroup {
   flex: 1;
-  width: 2.75rem;
+  width: 100%;
   max-width: 2.75rem;
   height: 100%;
   padding-bottom: 0.2rem;
@@ -452,7 +452,9 @@ hgroup {
   }
   & > .task{
     overflow: hidden;
-    height: 100%;
+    height: 30%;
+    box-sizing: border-box;
+    width:100%;
   }
   & > .task > .task-item {
     padding: 0.2rem 0.1rem 0 0.2rem;
