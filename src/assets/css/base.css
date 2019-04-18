@@ -232,3 +232,13 @@ input {
 .ql-toolbar.ql-snow {
   background-color: #f8f8f8;
 }
+
+::-ms-clear {
+  display: none;
+}
+::-ms-reveal {
+  display: none;
+}
+::-o-clear {
+  display: none;
+}
