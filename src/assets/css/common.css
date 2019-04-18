@@ -35,6 +35,8 @@
 /* team */
 .team .el-dialog__body {
   padding: 0.2rem 0.01rem;
+  /* max-width: 10.5rem; */
+  width: 100%;
 }
 
 .el-dialog__headerbtn {
@@ -75,6 +77,8 @@
   background-color: initial !important;
   background: none !important;
   border: none !important;
+  position: relative;
+  z-index: 10;
 }
 
 .mytest .el-table .tableRow {
@@ -87,7 +91,7 @@
   content: "";
   height: 0.75rem;
   width: 99.5%;
-  
+  z-index: 9;
 }
 .mytest .el-table .tableRow:hover:after {
   border: 1px solid #FE7B00;
@@ -128,6 +132,8 @@
   background-color: initial !important;
   background: none !important;
   border: none !important;
+  position: relative;
+  z-index: 10;
 }
 
 .trends .el-table .tableRow {
@@ -140,6 +146,7 @@
   content: "";
   height: 0.75rem;
   width: 99.5%;
+  z-index: 9;
   
 }
 .trends .el-table .tableRow:hover:after {

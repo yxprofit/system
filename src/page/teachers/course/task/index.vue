@@ -54,11 +54,12 @@
               <i class="el-icon-search"></i>
             </div>
           </div>
-          <el-scrollbar style="height:100%;" tag="div" class="table-wrap">
+          <!-- <el-scrollbar style="height:100%;" tag="div" class="table-wrap"> -->
+            <div class="table-wrap">
+
             <el-table
               :data="tableData1"
               style="width: 100%"
-              @row-click="cellEnter"
               row-class-name="tableRow"
             >
               <el-table-column label="任务类型" sortable align="center" width="180">
@@ -72,9 +73,14 @@
               <el-table-column prop="date" label="任务周期" sortable align="center"></el-table-column>
               <el-table-column prop="todoStatus" label="完成状态" sortable align="center"></el-table-column>
               <el-table-column prop="taskStatus" label="发起人" align="center"></el-table-column>
-              <el-table-column prop="pancel" label="操作" align="center"></el-table-column>
+              <el-table-column prop="pancel" label="操作" align="center">
+                <template slot-scope="scope">
+                  <p @click="todo(scope)">{{ scope.row.pancel }}</p>
+                </template>
+              </el-table-column>
             </el-table>
-          </el-scrollbar>
+            </div>
+          <!-- </el-scrollbar> -->
         </el-tab-pane>
 
         <el-tab-pane label="我发起的任务" name="2">
@@ -128,11 +134,11 @@
               <i>+</i>&nbsp;添加任务
             </button>
           </div>
-          <el-scrollbar style="height:100%;" tag="div" class="table-wrap">
+          <!-- <el-scrollbar style="height:100%;" tag="div" class="table-wrap"> -->
+            <div class="table-wrap">
             <el-table
               :data="tableData2"
               style="width: 100%"
-              @row-click="cellEnter"
               row-class-name="tableRow"
             >
               <el-table-column label="任务类型" sortable align="center" width="180">
@@ -148,7 +154,9 @@
               <el-table-column prop="taskStatus" label="任务状态" align="center"></el-table-column>
               <el-table-column prop="pancel" label="操作" align="center"></el-table-column>
             </el-table>
-          </el-scrollbar>
+
+            </div>
+          <!-- </el-scrollbar> -->
         </el-tab-pane>
       </el-tabs>
     </section>
@@ -175,11 +183,11 @@ export default {
   name: 'Trends',
   data () {
     return {
-      teacher: '',
-      activeName: '1',
-      type: '',
-      status: '',
-      timer: '',
+      teacher: "",
+      activeName: "1",
+      type: "",
+      status: "",
+      timer: "",
       t1,
       t2,
       t3,
@@ -464,10 +472,11 @@ export default {
     handleClick (tab, event) {
       console.log(tab, event)
     },
-    handleConditionChange () {},
-    cellEnter (row) {
-      this.isShowTask = true
-      console.log(1)
+    handleConditionChange() {},
+    todo() {
+      this.$router.push({
+        path: "/questionnaire"
+      });
     }
   },
   components: {
@@ -500,22 +509,25 @@ export default {
     width: 2.42rem;
     height: 0.32rem;
     background: rgba(238, 242, 245, 1);
-    border-radius: .16rem;
+    border-radius: 0.16rem;
     margin: 0 0.46rem 0 0.2rem;
     position: relative;
-    input{
+    input {
       height: 100%;
       width: 100%;
       background-color: rgba(238, 242, 245, 1);
-      border-radius: .16rem;
-      padding-left: .24rem;
-      padding-right: .4rem;
+      border-radius: 0.16rem;
+      padding-left: 0.24rem;
+      padding-right: 0.4rem;
       box-sizing: border-box;
+      &::-webkit-input-placeholder {
+        color: rgba(170, 170, 170, 1);
+      }
     }
-    i{
+    i {
       position: absolute;
-      right: .24rem;
-      top: .08rem;
+      right: 0.24rem;
+      top: 0.08rem;
     }
   }
 }
