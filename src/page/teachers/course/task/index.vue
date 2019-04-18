@@ -160,24 +160,28 @@
         </el-tab-pane>
       </el-tabs>
     </section>
+
+    <!-- 任务弹窗区域 -->
+    <prediction-task :state.sync="isShowTask"></prediction-task>
   </div>
 </template>
 
 <script>
-import t1 from "@/assets/images/icon/t1.png";
-import t2 from "@/assets/images/icon/t2.png";
-import t3 from "@/assets/images/icon/t3.png";
-import t4 from "@/assets/images/icon/t4.png";
-import t5 from "@/assets/images/icon/t5.png";
-import t6 from "@/assets/images/icon/t6.png";
-import t7 from "@/assets/images/icon/t7.png";
-import t8 from "@/assets/images/icon/t8.png";
-import t9 from "@/assets/images/icon/t9.png";
-import t10 from "@/assets/images/icon/t10.png";
-import t11 from "@/assets/images/icon/t11.png";
+import t1 from '@/assets/images/icon/t1.png'
+import t2 from '@/assets/images/icon/t2.png'
+import t3 from '@/assets/images/icon/t3.png'
+import t4 from '@/assets/images/icon/t4.png'
+import t5 from '@/assets/images/icon/t5.png'
+import t6 from '@/assets/images/icon/t6.png'
+import t7 from '@/assets/images/icon/t7.png'
+import t8 from '@/assets/images/icon/t8.png'
+import t9 from '@/assets/images/icon/t9.png'
+import t10 from '@/assets/images/icon/t10.png'
+import t11 from '@/assets/images/icon/t11.png'
+import PredictionTask from '../prediction'
 export default {
-  name: "Trends",
-  data() {
+  name: 'Trends',
+  data () {
     return {
       teacher: "",
       activeName: "1",
@@ -197,275 +201,276 @@ export default {
       t11,
       typeOptions: [
         {
-          value: "1",
-          label: "问卷"
+          value: '1',
+          label: '问卷'
         },
         {
-          value: "2",
-          label: "测试"
+          value: '2',
+          label: '测试'
         },
         {
-          value: "3",
-          label: "优势打卡"
+          value: '3',
+          label: '优势打卡'
         },
         {
-          value: "4",
-          label: "上传作品"
+          value: '4',
+          label: '上传作品'
         }
       ],
       statusOptions: [
         {
-          value: "1",
-          label: "未完成"
+          value: '1',
+          label: '未完成'
         },
         {
-          value: "2",
-          label: "已完成"
+          value: '2',
+          label: '已完成'
         }
       ],
       timerOptions: [
         {
-          value: "1",
-          label: "3-7天"
+          value: '1',
+          label: '3-7天'
         },
         {
-          value: "2",
-          label: "7-30天"
+          value: '2',
+          label: '7-30天'
         },
         {
-          value: "3",
-          label: "1月-3月"
+          value: '3',
+          label: '1月-3月'
         },
         {
-          value: "4",
-          label: "1月-3月"
+          value: '4',
+          label: '1月-3月'
         }
       ],
       tableData1: [
         {
-          date: "2019/03/05-2019/05/08",
-          name: "成长档案",
-          type: "问卷",
-          todoStatus: "已完成",
-          taskStatus: "余老师",
-          pancel: "去完成 >",
+          date: '2019/03/05-2019/05/08',
+          name: '成长档案',
+          type: '问卷',
+          todoStatus: '已完成',
+          taskStatus: '余老师',
+          pancel: '去完成 >',
           icon: t4
         },
         {
-          date: "2019/03/13-2019/06/28",
-          name: "随堂测试",
-          type: "测试",
-          todoStatus: "已完成",
-          taskStatus: "余老师",
-          pancel: "去完成 >",
+          date: '2019/03/13-2019/06/28',
+          name: '随堂测试',
+          type: '测试',
+          todoStatus: '已完成',
+          taskStatus: '余老师',
+          pancel: '去完成 >',
           icon: t1
         },
         {
-          date: "2019/03/05-2019/07/30",
-          name: "阶段考试",
-          type: "优势打卡",
-          todoStatus: "未完成",
-          taskStatus: "开放",
-          pancel: "去完成 >",
+          date: '2019/03/05-2019/07/30',
+          name: '阶段考试',
+          type: '优势打卡',
+          todoStatus: '未完成',
+          taskStatus: '开放',
+          pancel: '去完成 >',
           icon: t5
         },
         {
-          date: "2019/03/05-2019/05/08",
-          name: "优势打卡",
-          type: "上传作品",
-          todoStatus: "已完成",
-          taskStatus: "余老师",
-          pancel: "去完成 >",
+          date: '2019/03/05-2019/05/08',
+          name: '优势打卡',
+          type: '上传作品',
+          todoStatus: '已完成',
+          taskStatus: '余老师',
+          pancel: '去完成 >',
           icon: t2
         },
         {
-          date: "2019/03/05-2019/05/08",
-          name: "优势打卡",
-          type: "上传作品",
-          todoStatus: "已完成",
-          taskStatus: "余老师",
-          pancel: "去完成 >",
+          date: '2019/03/05-2019/05/08',
+          name: '优势打卡',
+          type: '上传作品',
+          todoStatus: '已完成',
+          taskStatus: '余老师',
+          pancel: '去完成 >',
           icon: t2
         },
         {
-          date: "2019/03/13-2019/06/28",
-          name: "优势打卡",
-          type: "图文",
-          todoStatus: "未完成",
-          taskStatus: "开放",
-          pancel: "去完成 >",
+          date: '2019/03/13-2019/06/28',
+          name: '优势打卡',
+          type: '图文',
+          todoStatus: '未完成',
+          taskStatus: '开放',
+          pancel: '去完成 >',
           icon: t3
         },
         {
-          date: "2019/03/13-2019/06/28",
-          name: "随堂测试",
-          type: "测试",
-          todoStatus: "已完成",
-          taskStatus: "余老师",
-          pancel: "去完成 >",
+          date: '2019/03/13-2019/06/28',
+          name: '随堂测试',
+          type: '测试',
+          todoStatus: '已完成',
+          taskStatus: '余老师',
+          pancel: '去完成 >',
           icon: t1
         },
         {
-          date: "2019/03/05-2019/07/30",
-          name: "阶段考试",
-          type: "优势打卡",
-          todoStatus: "未完成",
-          taskStatus: "开放",
-          pancel: "去完成 >",
+          date: '2019/03/05-2019/07/30',
+          name: '阶段考试',
+          type: '优势打卡',
+          todoStatus: '未完成',
+          taskStatus: '开放',
+          pancel: '去完成 >',
           icon: t5
         },
         {
-          date: "2019/03/05-2019/05/08",
-          name: "优势打卡",
-          type: "上传作品",
-          todoStatus: "已完成",
-          taskStatus: "余老师",
-          pancel: "去完成 >",
+          date: '2019/03/05-2019/05/08',
+          name: '优势打卡',
+          type: '上传作品',
+          todoStatus: '已完成',
+          taskStatus: '余老师',
+          pancel: '去完成 >',
           icon: t2
         },
         {
-          date: "2019/03/13-2019/06/28",
-          name: "随堂测试",
-          type: "测试",
-          todoStatus: "已完成",
-          taskStatus: "余老师",
-          pancel: "去完成 >",
+          date: '2019/03/13-2019/06/28',
+          name: '随堂测试',
+          type: '测试',
+          todoStatus: '已完成',
+          taskStatus: '余老师',
+          pancel: '去完成 >',
           icon: t1
         },
         {
-          date: "2019/03/05-2019/07/30",
-          name: "阶段考试",
-          type: "优势打卡",
-          todoStatus: "未完成",
-          taskStatus: "余老师",
-          pancel: "去完成 >",
+          date: '2019/03/05-2019/07/30',
+          name: '阶段考试',
+          type: '优势打卡',
+          todoStatus: '未完成',
+          taskStatus: '余老师',
+          pancel: '去完成 >',
           icon: t5
         },
         {
-          date: "2019/03/05-2019/05/08",
-          name: "优势打卡",
-          type: "上传作品",
-          todoStatus: "已完成",
-          taskStatus: "余老师",
-          pancel: "去完成 >",
+          date: '2019/03/05-2019/05/08',
+          name: '优势打卡',
+          type: '上传作品',
+          todoStatus: '已完成',
+          taskStatus: '余老师',
+          pancel: '去完成 >',
           icon: t2
         }
       ],
       tableData2: [
         {
-          date: "2019/03/05-2019/05/08",
-          name: "成长档案",
-          type: "问卷",
-          todoStatus: "已完成",
-          taskStatus: "已关闭",
-          pancel: "删除",
+          date: '2019/03/05-2019/05/08',
+          name: '成长档案',
+          type: '问卷',
+          todoStatus: '已完成',
+          taskStatus: '已关闭',
+          pancel: '删除',
           icon: t4
         },
         {
-          date: "2019/03/13-2019/06/28",
-          name: "随堂测试",
-          type: "测试",
-          todoStatus: "已完成",
-          taskStatus: "已关闭",
-          pancel: "删除",
+          date: '2019/03/13-2019/06/28',
+          name: '随堂测试',
+          type: '测试',
+          todoStatus: '已完成',
+          taskStatus: '已关闭',
+          pancel: '删除',
           icon: t1
         },
         {
-          date: "2019/03/05-2019/07/30",
-          name: "阶段考试",
-          type: "优势打卡",
-          todoStatus: "未完成",
-          taskStatus: "开放",
-          pancel: "删除",
+          date: '2019/03/05-2019/07/30',
+          name: '阶段考试',
+          type: '优势打卡',
+          todoStatus: '未完成',
+          taskStatus: '开放',
+          pancel: '删除',
           icon: t5
         },
         {
-          date: "2019/03/05-2019/05/08",
-          name: "优势打卡",
-          type: "上传作品",
-          todoStatus: "已完成",
-          taskStatus: "已关闭",
-          pancel: "删除",
+          date: '2019/03/05-2019/05/08',
+          name: '优势打卡',
+          type: '上传作品',
+          todoStatus: '已完成',
+          taskStatus: '已关闭',
+          pancel: '删除',
           icon: t2
         },
         {
-          date: "2019/03/05-2019/05/08",
-          name: "优势打卡",
-          type: "上传作品",
-          todoStatus: "已完成",
-          taskStatus: "已关闭",
-          pancel: "删除",
+          date: '2019/03/05-2019/05/08',
+          name: '优势打卡',
+          type: '上传作品',
+          todoStatus: '已完成',
+          taskStatus: '已关闭',
+          pancel: '删除',
           icon: t2
         },
         {
-          date: "2019/03/13-2019/06/28",
-          name: "优势打卡",
-          type: "图文",
-          todoStatus: "未完成",
-          taskStatus: "开放",
-          pancel: "删除",
+          date: '2019/03/13-2019/06/28',
+          name: '优势打卡',
+          type: '图文',
+          todoStatus: '未完成',
+          taskStatus: '开放',
+          pancel: '删除',
           icon: t3
         },
         {
-          date: "2019/03/13-2019/06/28",
-          name: "随堂测试",
-          type: "测试",
-          todoStatus: "已完成",
-          taskStatus: "已关闭",
-          pancel: "删除",
+          date: '2019/03/13-2019/06/28',
+          name: '随堂测试',
+          type: '测试',
+          todoStatus: '已完成',
+          taskStatus: '已关闭',
+          pancel: '删除',
           icon: t1
         },
         {
-          date: "2019/03/05-2019/07/30",
-          name: "阶段考试",
-          type: "优势打卡",
-          todoStatus: "未完成",
-          taskStatus: "开放",
-          pancel: "删除",
+          date: '2019/03/05-2019/07/30',
+          name: '阶段考试',
+          type: '优势打卡',
+          todoStatus: '未完成',
+          taskStatus: '开放',
+          pancel: '删除',
           icon: t5
         },
         {
-          date: "2019/03/05-2019/05/08",
-          name: "优势打卡",
-          type: "上传作品",
-          todoStatus: "已完成",
-          taskStatus: "已关闭",
-          pancel: "删除",
+          date: '2019/03/05-2019/05/08',
+          name: '优势打卡',
+          type: '上传作品',
+          todoStatus: '已完成',
+          taskStatus: '已关闭',
+          pancel: '删除',
           icon: t2
         },
         {
-          date: "2019/03/13-2019/06/28",
-          name: "随堂测试",
-          type: "测试",
-          todoStatus: "已完成",
-          taskStatus: "已关闭",
-          pancel: "删除",
+          date: '2019/03/13-2019/06/28',
+          name: '随堂测试',
+          type: '测试',
+          todoStatus: '已完成',
+          taskStatus: '已关闭',
+          pancel: '删除',
           icon: t1
         },
         {
-          date: "2019/03/05-2019/07/30",
-          name: "阶段考试",
-          type: "优势打卡",
-          todoStatus: "未完成",
-          taskStatus: "开放",
-          pancel: "删除",
+          date: '2019/03/05-2019/07/30',
+          name: '阶段考试',
+          type: '优势打卡',
+          todoStatus: '未完成',
+          taskStatus: '开放',
+          pancel: '删除',
           icon: t5
         },
         {
-          date: "2019/03/05-2019/05/08",
-          name: "优势打卡",
-          type: "上传作品",
-          todoStatus: "已完成",
-          taskStatus: "已关闭",
-          pancel: "删除",
+          date: '2019/03/05-2019/05/08',
+          name: '优势打卡',
+          type: '上传作品',
+          todoStatus: '已完成',
+          taskStatus: '已关闭',
+          pancel: '删除',
           icon: t2
         }
-      ]
-    };
+      ],
+      isShowTask: false
+    }
   },
   methods: {
-    handleClick(tab, event) {
-      console.log(tab, event);
+    handleClick (tab, event) {
+      console.log(tab, event)
     },
     handleConditionChange() {},
     todo() {
@@ -473,8 +478,11 @@ export default {
         path: "/questionnaire"
       });
     }
+  },
+  components: {
+    PredictionTask
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -612,5 +620,3 @@ button {
   box-sizing: border-box;
 }
 </style>
-
-
