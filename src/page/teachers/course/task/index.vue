@@ -75,7 +75,7 @@
               <el-table-column prop="taskStatus" label="发起人" align="center"></el-table-column>
               <el-table-column prop="pancel" label="操作" align="center">
                 <template slot-scope="scope">
-                  <p @click="todo(scope)">{{ scope.row.pancel }}</p>
+                  <p @click="todo(scope.row.id)">{{ scope.row.pancel }}</p>
                 </template>
               </el-table-column>
             </el-table>
@@ -245,6 +245,7 @@ export default {
           label: '1月-3月'
         }
       ],
+      //id=> 1 :问卷 2：测试 3：优势打卡 4：上传作品 5图文
       tableData1: [
         {
           date: '2019/03/05-2019/05/08',
@@ -253,7 +254,8 @@ export default {
           todoStatus: '已完成',
           taskStatus: '余老师',
           pancel: '去完成 >',
-          icon: t4
+          icon: t4,
+          id:1
         },
         {
           date: '2019/03/13-2019/06/28',
@@ -262,7 +264,8 @@ export default {
           todoStatus: '已完成',
           taskStatus: '余老师',
           pancel: '去完成 >',
-          icon: t1
+          icon: t1,
+          id:2
         },
         {
           date: '2019/03/05-2019/07/30',
@@ -271,7 +274,8 @@ export default {
           todoStatus: '未完成',
           taskStatus: '开放',
           pancel: '去完成 >',
-          icon: t5
+          icon: t5,
+          id:3
         },
         {
           date: '2019/03/05-2019/05/08',
@@ -280,7 +284,8 @@ export default {
           todoStatus: '已完成',
           taskStatus: '余老师',
           pancel: '去完成 >',
-          icon: t2
+          icon: t2,
+          id:4
         },
         {
           date: '2019/03/05-2019/05/08',
@@ -289,7 +294,8 @@ export default {
           todoStatus: '已完成',
           taskStatus: '余老师',
           pancel: '去完成 >',
-          icon: t2
+          icon: t2,
+          id:4
         },
         {
           date: '2019/03/13-2019/06/28',
@@ -298,7 +304,8 @@ export default {
           todoStatus: '未完成',
           taskStatus: '开放',
           pancel: '去完成 >',
-          icon: t3
+          icon: t3,
+          id:5
         },
         {
           date: '2019/03/13-2019/06/28',
@@ -307,7 +314,8 @@ export default {
           todoStatus: '已完成',
           taskStatus: '余老师',
           pancel: '去完成 >',
-          icon: t1
+          icon: t1,
+          id:2
         },
         {
           date: '2019/03/05-2019/07/30',
@@ -316,7 +324,8 @@ export default {
           todoStatus: '未完成',
           taskStatus: '开放',
           pancel: '去完成 >',
-          icon: t5
+          icon: t5,
+          id:3
         },
         {
           date: '2019/03/05-2019/05/08',
@@ -325,7 +334,8 @@ export default {
           todoStatus: '已完成',
           taskStatus: '余老师',
           pancel: '去完成 >',
-          icon: t2
+          icon: t2,
+          id:4
         },
         {
           date: '2019/03/13-2019/06/28',
@@ -334,7 +344,8 @@ export default {
           todoStatus: '已完成',
           taskStatus: '余老师',
           pancel: '去完成 >',
-          icon: t1
+          icon: t1,
+          id:2
         },
         {
           date: '2019/03/05-2019/07/30',
@@ -343,7 +354,8 @@ export default {
           todoStatus: '未完成',
           taskStatus: '余老师',
           pancel: '去完成 >',
-          icon: t5
+          icon: t5,
+          id:3
         },
         {
           date: '2019/03/05-2019/05/08',
@@ -352,7 +364,8 @@ export default {
           todoStatus: '已完成',
           taskStatus: '余老师',
           pancel: '去完成 >',
-          icon: t2
+          icon: t2,
+          id:4
         }
       ],
       tableData2: [
@@ -473,10 +486,14 @@ export default {
       console.log(tab, event)
     },
     handleConditionChange() {},
-    todo() {
-      this.$router.push({
-        path: "/questionnaire"
-      });
+    todo(id) {
+      if(id===1){
+        this.$router.push({
+          path: "/questionnaire"
+        });
+      }else if(id===2){
+        this.isShowTask = true
+      }
     }
   },
   components: {
