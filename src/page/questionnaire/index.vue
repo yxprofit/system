@@ -38,19 +38,19 @@
               <ul>
                 <li class="sub-options" v-for="(item,index) in satisfaction.options" :key="index">
                   <span @click="handleSatisClick(item.id,0)" class="width-70">
-                    <img class="smileface" :src="item.checked === 0 ? smile : unsmile" alt>
+                    <img class="smileface" :src="item.checked >= 0 ? smile : unsmile" alt>
                   </span>
                   <span @click="handleSatisClick(item.id,1)" class="width-42 margin-20">
-                    <img class="smileface" :src="item.checked === 1 ? smile : unsmile" alt>
+                    <img class="smileface" :src="item.checked >= 1 ? smile : unsmile" alt>
                   </span>
                   <span @click="handleSatisClick(item.id,2)" class="width-28 margin-39">
-                    <img class="smileface" :src="item.checked === 2 ? smile : unsmile" alt>
+                    <img class="smileface" :src="item.checked >= 2  ? smile : unsmile" alt>
                   </span>
                   <span @click="handleSatisClick(item.id,3)" class="width-28 margin-45">
-                    <img class="smileface" :src="item.checked === 3 ? smile : unsmile" alt>
+                    <img class="smileface" :src="item.checked >= 3 ? smile : unsmile" alt>
                   </span>
                   <span @click="handleSatisClick(item.id,4)" class="width-56 margin-33">
-                    <img class="smileface" :src="item.checked === 4 ? smile : unsmile" alt>
+                    <img class="smileface" :src="item.checked >= 4  ? smile : unsmile" alt>
                   </span>
                 </li>
               </ul>
@@ -90,9 +90,9 @@
           <div class="question-list-item__options">
             <el-row>
               <el-col
-                :span="12"
+                :span="24"
                 class="sub-options"
-                :class="{'is-active': selection2.value.indexOf(item.value) > -1}"
+                :class="{'is-active': selection2.value === item.value}"
                 v-for="item in selection2.options"
                 :key="item.value"
                 @click.native="handleSelectione2Change(item.value)"
@@ -141,19 +141,19 @@ export default {
           {
             label: "我在课程中精神容易集中，在练习时我总愿意尝试付出努力",
             value: 1,
-            checked: 3,
+            checked: 2,
             id: generateId()
           },
           {
             label: "我在课程中精神容易集中，在练习时我总愿意尝试付出努力",
             value: 2,
-            checked: 3,
+            checked: 1,
             id: generateId()
           },
           {
             label: "我在课程中精神容易集中，在练习时我总愿意尝试付出努力",
             value: 3,
-            checked: 4,
+            checked: 1,
             id: generateId()
           }
         ]
@@ -181,7 +181,7 @@ export default {
         ]
       },
       selection2: {
-        value: [],
+        value: '',
         title: "5. 请选择以下城市：",
         options: [
           {
@@ -205,6 +205,9 @@ export default {
     };
   },
   methods: {
+    showDecimalIcon() {
+
+    },
     handleChange(obj) {
       let prop = obj.prop;
       let val = obj.val;
@@ -220,12 +223,13 @@ export default {
       this.selection1.value = val;
     },
     handleSelectione2Change(val) {
-      let index = this.selection2.value.indexOf(val);
-      if (index < 0) {
-        this.selection2.value.push(val);
-      } else {
-        this.selection2.value.splice(index, 1);
-      }
+      // let index = this.selection2.value.indexOf(val);
+      // if (index < 0) {
+      //   this.selection2.value.push(val);
+      // } else {
+      //   this.selection2.value.splice(index, 1);
+      // }
+      this.selection2.value = val;
     }
   }
 };

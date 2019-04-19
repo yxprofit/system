@@ -38,27 +38,19 @@
             </el-form-item>
             <el-form-item label="文件上传：">
                 <div class="uploadFile">
-                    <span class="but"><img :src="icon_course_name"/><span class="text">点击上传</span></span>
-                    <div class="picList">
-                        <div class="upok">已上传文件</div>
-                        <ul>
-                            <li v-for="(item, index) in 5">
-                                <img src="https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100" />
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="changeUpdate">点击上传</div>
-                    <div class="text">支持PDF,word，图片格式，PPT，视频上传（500M以内）</div>
-                    <!-- <el-upload
+                    <el-upload
+                        class="picList"
                         action="https://jsonplaceholder.typicode.com/posts/"
                         :on-preview="handlePreview"
                         :on-remove="handleRemove"
-                        :file-list="form.fileList"
+                        :auto-upload="false"
+                        :limit="5"
                         list-type="picture">
-                        <span class="but"><img :src="icon_course_name" /><span class="text">点击上传</span></span>
+                        <span class="but"><img :src="icon_course_name" /><span class="text">选择文件</span></span>
                         <div slot="tip" class="upok">已上传文件</div>
                     </el-upload>
-                    <div class="text">支持PDF,word，图片格式，PPT，视频上传（500M以内）</div> -->
+                    <div class="changeUpdate">点击上传</div>
+                    <div class="text">支持PDF,word，图片格式，PPT，视频上传（500M以内）</div>
                 </div>
             </el-form-item>
 
@@ -164,34 +156,22 @@ export default {
     }
 
     .picList {
-      padding: 0.15rem 0.05rem;
-      font-size: 0;
-      background:rgba(245,246,248,1);
-      border: 0.01rem dashed rgba(228,228,228,1);
-      margin-top: 0.1rem;
       .upok {
         font-size: 0.12rem;
         line-height: 0.12rem;
-        margin-bottom: 0.1rem;
+        padding-top: 0.15rem;
+        padding-bottom: 0.1rem;
         color: #333;
         box-sizing: border-box;
         text-align: center;
-      }
-      ul {
-        display: flex;
-        justify-content: space-between;
-      }
-      li {
-        width: 0.56rem;
-        height: 0.56rem;
-        border: #F79727 0.01rem solid;
-        display: inline-block;
-        img {
-            width: 0.56rem;
-            height: 0.56rem;
-        }
+        border: 0.01rem dashed #e4e4e4;
+        border-bottom: none;
+        background-color: #f5f6f8;
+        margin-top: 0.06rem;
+        border-radius: 0.03rem;
       }
     }
+
     .picdes {
         li {
             width: 50%;
@@ -210,10 +190,6 @@ export default {
         background:rgba(247,151,39,.1);
         border-radius: 0.03rem;
         text-align: center;
-    }
-
-    .upok {
-      text-align: center;
     }
 
     .text {
@@ -263,6 +239,41 @@ export default {
       }
       .el-form-item:last-child {
         margin-bottom: 0;
+      }
+    }
+  }
+  .picList {
+    .el-upload-list {
+      padding: 0 0.05rem 0.16rem;
+      font-size: 0;
+      background:rgba(245,246,248,1);
+      border: 0.01rem dashed rgba(228,228,228,1);
+      height: 0.58rem;
+      border-top: none;
+      border-radius: 0.03rem;
+
+      li {
+        width: 0.56rem;
+        height: 0.56rem;
+        margin: 0;
+        padding: 0;
+        border: #F79727 0.01rem solid;
+        display: inline-block;
+        border-radius: 0;
+        img {
+            width: 0.56rem;
+            height: 0.56rem;
+        }
+      }
+      li + li {
+        margin-left: 0.04rem;
+      }
+
+      .el-upload-list__item-thumbnail {
+        margin-left: 0;
+      }
+      .el-upload-list__item-name {
+        display: none;
       }
     }
   }

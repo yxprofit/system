@@ -4,11 +4,17 @@
       v-model="inputVal"
       :type="type"
       :class="type === 'textarea' ?  'limit-textarea' : ''"
+      :maxlength="type === 'textarea' ?  140: 100000"
       @focus="foucsing=true"
       @blur="foucsing=false"
       @change="handlechange">
     </el-input>
     <span v-show="showPlaceholder" class="place-holder"><img :src="inputImg"><span class="text">请输入</span></span>
+    <div v-if="type === 'textarea'" class="page text-page">
+      <span class="page-left">{{ inputVal ? inputVal.length : 0 }}</span>
+      <span class="page-mid">/</span>
+      <span class="page-right">140</span>
+    </div>
   </div>
 </template>
 <script>
@@ -24,6 +30,7 @@ export default {
       inputVal: '',
       foucsing: '',
       inputImg,
+      currentLenght: 0
     }
   },
   computed: {
@@ -37,6 +44,7 @@ export default {
         prop: this.prop,
         val: val
       })
+      this.currentLenght = val ? val.length : 0
     }
   }
 }
@@ -71,6 +79,22 @@ export default {
       height: 0.12rem;
       line-height: 0.12rem;
       vertical-align: middle;
+    }
+  }
+  .text-page {
+    position: absolute;
+    bottom: 0.12rem;
+    right: 0.2rem;
+    text-align: right;
+    .page-left,
+    .page-mid,
+    .page-right {
+      font-size: 12px;
+      color: #ccc;
+    }
+
+    .page-left {
+      color: #f79727;
     }
   }
 } 
