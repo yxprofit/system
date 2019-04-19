@@ -1,6 +1,6 @@
 <template>
   <div class="team" v-loading="loading">
-    <el-dialog :visible.sync="state" width="77%" :before-close="handleClose">
+    <el-dialog :visible.sync="state" :before-close="handleClose">
       <span slot="title" class="teamTitle">
         <h3>我的小组</h3>
       </span>
@@ -213,6 +213,7 @@ export default {
 .team /deep/ .el-dialog {
   margin-top: 0.45rem !important;
   height: 6.45rem;
+  width: 10.5rem;
 }
 .team /deep/ .el-dialog__body {
   overflow: hidden !important;
