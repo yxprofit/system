@@ -628,7 +628,7 @@ button {
 .table-wrap /deep/ .el-table__body-wrapper {
   overflow-y: scroll;
   overflow-x: hidden;
-  max-height: 6.8rem;
+  max-height: 6.6rem;
 }
 .table-wrap /deep/ .el-table td.is-center:nth-of-type(1),
 .el-table th.is-center:nth-of-type(1) {
