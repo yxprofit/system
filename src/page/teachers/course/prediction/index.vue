@@ -15,10 +15,10 @@
             <li class="test-item" v-for="(test, index) in testArr[currentPage]" :key="index">
               <div
                 class="question"
-                :class="{ 'is-select': testIndex === index }"
+                :class="{ 'is-select': testIndex[currentPage] === index }"
                 @click="handleSelectQues(index)"
               >
-                <img :src=" testIndex === index ? checkImg2 : checkImg1" alt class="test-icon">
+                <img :src=" testIndex[currentPage] === index ? checkImg2 : checkImg1" alt class="test-icon">
                 <span class="ques-text">{{ test }}</span>
               </div>
             </li>
@@ -92,7 +92,7 @@ export default {
           'D. 光顾着介绍自己，太自夸，没有注意倾听别人3'
         ]
       ],
-      testIndex: -1,
+      testIndex: [],
       currentPage: 0,
       isShowTextArea: false,
       currentChatLen: 0,
@@ -147,7 +147,7 @@ export default {
       }
     },
     handleSelectQues (index) {
-      this.testIndex = index
+      this.testIndex.splice(this.currentPage, 1, index)
     }
   },
   mounted () {}
