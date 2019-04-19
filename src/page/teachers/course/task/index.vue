@@ -253,7 +253,7 @@ export default {
           type: '问卷',
           todoStatus: '已完成',
           taskStatus: '余老师',
-          pancel: '去完成 >',
+          pancel: '去查看 >',
           icon: t4,
           id:1
         },
@@ -273,7 +273,7 @@ export default {
           type: '优势打卡',
           todoStatus: '未完成',
           taskStatus: '开放',
-          pancel: '去完成 >',
+          pancel: '去查看 >',
           icon: t5,
           id:3
         },
@@ -283,7 +283,7 @@ export default {
           type: '上传作品',
           todoStatus: '已完成',
           taskStatus: '余老师',
-          pancel: '去完成 >',
+          pancel: '去查看 >',
           icon: t2,
           id:4
         },
@@ -293,7 +293,7 @@ export default {
           type: '上传作品',
           todoStatus: '已完成',
           taskStatus: '余老师',
-          pancel: '去完成 >',
+          pancel: '去查看 >',
           icon: t2,
           id:4
         },
@@ -303,7 +303,7 @@ export default {
           type: '图文',
           todoStatus: '未完成',
           taskStatus: '开放',
-          pancel: '去完成 >',
+          pancel: '去查看 >',
           icon: t3,
           id:5
         },
