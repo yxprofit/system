@@ -30,14 +30,6 @@
                 class="lesson-title"
                 :class="{ 'is-select': item.isHover == true }"
               >{{ item.lesson_title }}</div>
-              <!-- <div class="lesson-data">
-                <img class="lesson-icon" src="../../../../assets/images/icon/43.png" alt>
-                <span class="lesson-text">{{ item.lesson_date }}</span>
-              </div>
-              <div class="lesson-teacher">
-                <img class="lesson-icon" src="../../../../assets/images/icon/44.png" alt>
-                <span class="lesson-text">{{ item.lesson_teacher }}</span>
-              </div>-->
             </div>
           </li>
         </ul>
@@ -66,33 +58,33 @@ export default {
       default: () => {}
     }
   },
-  data() {
+  data () {
     return {
-      labelPosition: "left",
+      labelPosition: 'left',
       visible: false,
       lessonList: []
-    };
+    }
   },
-  created() {},
+  created () {},
   methods: {
-    handleOver(index) {
-      this.lessonList[index].isHover = true;
+    handleOver (index) {
+      this.lessonList[index].isHover = true
     },
-    handleLeave(index) {
-      this.lessonList[index].isHover = false;
-    },
+    handleLeave (index) {
+      this.lessonList[index].isHover = false
+    }
   },
-  mounted() {
+  mounted () {
     for (let i = 0; i < 20; i++) {
       this.lessonList.push({
-        lesson_title: "课程名称课程名称",
-        lesson_date: "2019.01.01",
-        lesson_teacher: "刘青云老师",
+        lesson_title: '课程名称课程名称',
+        lesson_date: '2019.01.01',
+        lesson_teacher: '刘青云老师',
         isHover: false
-      });
+      })
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -170,7 +162,7 @@ export default {
   // max-height: 5rem;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: flex-start;
   max-height: 4.2rem;
   padding: 0.2rem;
 }
@@ -183,6 +175,7 @@ export default {
   border: 0.01rem solid #e4e8ed;
   border-radius: 0.04rem;
   cursor: pointer;
+  margin-right: 0.2rem;
 
   &:nth-child(5n) {
     margin-right: 0;
