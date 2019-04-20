@@ -6,9 +6,7 @@
           <div class="img-title">中小学项目学期前测</div>
           <img src="../../../../assets/images/decoration.png" alt class="pred-decotation">
         </div>
-        <p class="pred-desc">
-          该测试为单选或多选题，请根据题目描述，选择答案。 非常同意为4分，完全不同意为0分。 对于开放提问，你可以分享不超过140字的反馈。
-        </p>
+        <p class="pred-desc">该测试为单选或多选题，请根据题目描述，选择答案。 非常同意为4分，完全不同意为0分。 对于开放提问，你可以分享不超过140字的反馈。</p>
         <div class="test-wrap" v-if="!isShowTextArea">
           <h3 class="test-title">{{ currentPage + 1 }}. 以上描述选择：</h3>
           <ul class="test-list">
@@ -18,7 +16,11 @@
                 :class="{ 'is-select': testIndex[currentPage] === index }"
                 @click="handleSelectQues(index)"
               >
-                <img :src=" testIndex[currentPage] === index ? checkImg2 : checkImg1" alt class="test-icon">
+                <img
+                  :src=" testIndex[currentPage] === index ? checkImg2 : checkImg1"
+                  alt
+                  class="test-icon"
+                >
                 <span class="ques-text">{{ test }}</span>
               </div>
             </li>
@@ -263,6 +265,7 @@ export default {
   background: #fff;
   padding: 0.24rem;
   box-sizing: border-box;
+  border-radius: 0.05rem;
 }
 
 .img-wrap {
@@ -271,12 +274,12 @@ export default {
 }
 
 .img-title {
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate3d(-50%, -50%, 0);
-    color: #fff;
-    font-size: 16px;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  color: #fff;
+  font-size: 16px;
 }
 
 .pred-decotation {
@@ -362,6 +365,8 @@ export default {
   display: inline-block;
   text-align: center;
   line-height: 0.5rem;
+  cursor: pointer;
+  user-select: none;
 }
 
 .submit {
@@ -383,7 +388,7 @@ export default {
   height: 2.8rem;
   width: 100%;
   resize: none;
-  border:1px solid rgba(238,238,238,1);
+  border: 1px solid rgba(238, 238, 238, 1);
   margin-top: 0.1rem;
   padding: 0.1rem;
   box-sizing: border-box;
@@ -413,5 +418,4 @@ export default {
 .prediction /deep/ .el-dialog__body {
   padding: 0;
 }
-
 </style>
