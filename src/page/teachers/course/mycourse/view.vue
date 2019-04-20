@@ -15,7 +15,7 @@
 							<el-col :span="18">
 								<div class="workdes">
 									<h3>外教1对11英语课程 口语轻松说</h3>
-									<router-link tag="span" to="/teachers/course/task" class="previewstudents">预览学生效果</router-link>
+									<router-link tag="span" to="/teacher/task" class="previewstudents">预览学生效果</router-link>
 									<p>
 										{{fitlerdes()}}
 										<var v-if="!desState" @click="()=>{this.desState = true}">查看详情</var>

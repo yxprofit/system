@@ -463,6 +463,7 @@ export default {
       height: 3.6rem;
       .li {
         padding:0.15rem;
+				min-height: 2.14rem;
       }
       .liLeft{
         padding: 0.19rem 0.15rem 0.2rem;
