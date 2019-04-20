@@ -11,7 +11,7 @@
           <h4 :class="item.classname">{{item.title}}</h4>
           <div>
             <p class="task-time">截止时间：{{item.time}}</p>
-            <p lass="task-man">发起人：{{item.teacher}}</p>
+            <p class="task-man">发起人：{{item.teacher}}</p>
           </div>
         </li>
         <!-- <li>
