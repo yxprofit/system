@@ -505,8 +505,8 @@ export default {
         p {
           display: block;
           font-size: 0.12rem;
-          line-height: 0.12rem;
-          text-indent: 0.16rem;
+          // line-height: 0.12rem;
+          text-indent: 0.14rem;
           position: relative;
           color: #888;
           margin-bottom: 0.11rem;
