@@ -357,6 +357,7 @@ export default {
     margin: 0 auto;
     text-align: center;
     margin-top: 0.19rem;
+    width: 100%;
     button {
       margin: 0 0.2rem;
       cursor: pointer;
@@ -389,7 +390,7 @@ export default {
       position: absolute;
       color: #666;
       font-size: 0;
-      right: -2.46rem;
+      right: 0;
       top: 50%;
       transform: translateY(-50%);
       z-index: 10;
@@ -620,7 +621,9 @@ hgroup {
     }
   }
   .operation {
-    margin-top: 1.3rem;
+    position: absolute;
+    bottom: 0.92rem;
+    left: 0.52rem;
     text-align: center;
     span {
       font-size: 0.16rem;

@@ -10,8 +10,8 @@
         <li v-for="(item,index) in tasklist" :key="index">
           <h4 :class="item.classname">{{item.title}}</h4>
           <div>
-            <p>截止时间：{{item.time}}</p>
-            <p>发起人：{{item.teacher}}</p>
+            <p class="task-time">截止时间：{{item.time}}</p>
+            <p lass="task-man">发起人：{{item.teacher}}</p>
           </div>
         </li>
         <!-- <li>
@@ -527,6 +527,9 @@ export default {
           position: relative;
           color: #888;
           margin-bottom: 0.11rem;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
           &:after {
             content: "";
             display: block;

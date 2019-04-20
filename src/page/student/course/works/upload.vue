@@ -44,7 +44,7 @@
                         :on-preview="handlePreview"
                         :on-remove="handleRemove"
                         :auto-upload="false"
-                        :limit="5"
+                        multiple
                         list-type="picture">
                         <span class="but"><img :src="icon_course_name" /><span class="text">选择文件</span></span>
                         <div slot="tip" class="upok">已上传文件</div>
@@ -244,13 +244,15 @@ export default {
   }
   .picList {
     .el-upload-list {
-      padding: 0 0.05rem 0.16rem;
+      padding: 0 0 0.05rem;
       font-size: 0;
       background:rgba(245,246,248,1);
       border: 0.01rem dashed rgba(228,228,228,1);
-      height: 0.58rem;
+      // min-height: 0.58rem;
       border-top: none;
       border-radius: 0.03rem;
+      font-size: 0;
+      line-height: 0;
 
       li {
         width: 0.56rem;
@@ -260,13 +262,14 @@ export default {
         border: #F79727 0.01rem solid;
         display: inline-block;
         border-radius: 0;
+        margin-bottom: 0.1rem;
         img {
             width: 0.56rem;
             height: 0.56rem;
         }
       }
-      li + li {
-        margin-left: 0.04rem;
+      li{
+        margin-left: 0.05rem;
       }
 
       .el-upload-list__item-thumbnail {
