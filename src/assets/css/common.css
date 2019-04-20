@@ -196,3 +196,7 @@
 .el-message .el-icon-success {
   font-size: 24px;
 }
+
+.unpload-message.el-message .el-message__icon{
+  font-size: 16px;
+}

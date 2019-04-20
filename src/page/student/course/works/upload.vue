@@ -38,19 +38,22 @@
             </el-form-item>
             <el-form-item label="文件上传：">
                 <div class="uploadFile">
-                    <el-upload
-                        class="picList"
-                        action="https://jsonplaceholder.typicode.com/posts/"
-                        :on-preview="handlePreview"
-                        :on-remove="handleRemove"
-                        :auto-upload="false"
-                        multiple
-                        list-type="picture">
-                        <span class="but"><img :src="icon_course_name" /><span class="text">选择文件</span></span>
-                        <div slot="tip" class="upok">已上传文件</div>
-                    </el-upload>
-                    <div class="changeUpdate">点击上传</div>
-                    <div class="text">支持PDF,word，图片格式，PPT，视频上传（500M以内）</div>
+                  <el-upload
+                      class="picList"
+                      ref="upload"
+                      action="https://jsonplaceholder.typicode.com/posts/"
+                      :on-preview="handlePreview"
+                      :on-remove="handleRemove"
+                      :on-success="handleSuccess"
+                      :on-error="handleError"
+                      :auto-upload="false"
+                      multiple
+                      list-type="picture">
+                      <span class="but"><img :src="icon_course_name" /><span class="text">选择文件</span></span>
+                      <div slot="tip" class="upok">已上传文件</div>
+                  </el-upload>
+                  <div class="changeUpdate" @click="handleSubmit">点击上传</div>
+                  <div class="text">支持PDF,word，图片格式，PPT，视频上传（500M以内）</div>
                 </div>
             </el-form-item>
 
@@ -94,16 +97,33 @@ export default {
 		}, 1000);
 	},
 	methods: {
-        handleClose() {
-            this.$emit('close');
-        },
-        handleRemove(file, fileList) {
-            console.log(file, fileList);
-        },
-        handlePreview(file) {
-            console.log(file);
-        }
+    handleSuccess() {
+      this.$message({
+        type: 'success',
+        message: '上传成功',
+        customClass: 'unpload-message'
+      });
+    },
+    handleError() {
+      this.$message({
+        message: '上传失败',
+        type: 'error',
+        customClass: 'unpload-message'
+      })
+    },
+    handleSubmit() {
+      this.$refs.upload.submit();
+    },
+    handleClose() {
+        this.$emit('close');
+    },
+    handleRemove(file, fileList) {
+        console.log(file, fileList);
+    },
+    handlePreview(file) {
+        console.log(file);
     }
+  }
 };
 </script>
 
@@ -190,6 +210,7 @@ export default {
         background:rgba(247,151,39,.1);
         border-radius: 0.03rem;
         text-align: center;
+        cursor: pointer;
     }
 
     .text {
