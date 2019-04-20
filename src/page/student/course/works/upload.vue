@@ -107,7 +107,7 @@ export default {
     handleError() {
       this.$message({
         message: '上传失败',
-        type: 'error'
+        type: 'error',
         customClass: 'unpload-message'
       })
     },
