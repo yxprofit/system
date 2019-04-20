@@ -275,12 +275,12 @@ export default {
   }
   & > div {
     margin-top: 0.2rem;
-    margin-bottom: 0.2rem;
+    // margin-bottom: 0.2rem;
     overflow: hidden;
     aside {
       float: right;
       width: 1.89rem;
-      border-left: 0.01rem solid #e4e8ed;
+      // border-left: 0.01rem solid #e4e8ed;
       text-align: center;
       h3 {
         margin: 0.14rem 0 0.25rem;
@@ -305,10 +305,14 @@ export default {
       }
     }
     & > section {
-      width: calc(100% - 2.1rem);
+      // width: calc(100% - 2.1rem);
+      width: calc(100% - 1.89rem);
+      border-right: 0.01rem solid #e4e8ed;
       float: left;
       padding: 0 0.1rem;
       margin-bottom: 0.1rem;
+      padding-right: 0.31rem;
+      box-sizing: border-box;
       .look {
         color: #f80;
         // visibility:hidden;
@@ -452,9 +456,8 @@ export default {
     .table-border {
       width: 100%;
       height: 0.7rem;
-      border: 1px solid #F28C18;
+      border: 1px solid #f28c18;
     }
   }
 }
-
 </style>
