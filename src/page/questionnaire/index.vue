@@ -398,6 +398,7 @@ export default {
     button {
       width: 1.8rem;
       height: 0.5rem;
+      cursor: pointer;
       background: linear-gradient(
         -90deg,
         rgba(255, 183, 38, 1),
