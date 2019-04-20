@@ -101,15 +101,13 @@ export default {
       this.$message({
         type: 'success',
         message: '上传成功',
-        customClass: 'unpload-message',
-        duration: 0
+        customClass: 'unpload-message'
       });
     },
     handleError() {
       this.$message({
         message: '上传失败',
-        type: 'error',
-         duration: 0,
+        type: 'error'
         customClass: 'unpload-message'
       })
     },
