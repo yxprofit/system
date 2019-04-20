@@ -5,11 +5,12 @@
       :type="type"
       :class="type === 'textarea' ?  'limit-textarea' : ''"
       :maxlength="type === 'textarea' ?  140: 100000"
+      ref="input"
       @focus="foucsing=true"
       @blur="foucsing=false"
       @change="handlechange">
     </el-input>
-    <span v-show="showPlaceholder" class="place-holder"><img :src="inputImg"><span class="text">请输入</span></span>
+    <span @click="handleFocus" v-show="showPlaceholder" class="place-holder"><img :src="inputImg"><span class="text">请输入</span></span>
     <div v-if="type === 'textarea'" class="page text-page">
       <span class="page-left">{{ inputVal ? inputVal.length : 0 }}</span>
       <span class="page-mid">/</span>
@@ -39,6 +40,9 @@ export default {
     }
   },
   methods:{
+    handleFocus() {
+      this.$refs.input.focus()
+    },
     handlechange(val) {
       this.$emit('change', {
         prop: this.prop,
