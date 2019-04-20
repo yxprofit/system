@@ -56,6 +56,10 @@
   color: #fff;
 }
 
+.el-dialog {
+  border-radius: 0.05rem;
+}
+
 /* mytest */
 .mytest .el-table .tableRow {
   height: 0.77rem;
