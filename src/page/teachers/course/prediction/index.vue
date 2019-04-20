@@ -3,6 +3,7 @@
     <el-dialog :visible.sync="visible" width="5.5rem" :before-close="handleClose">
       <div class="prediction-wrap">
         <div class="img-wrap">
+          <div class="img-title">中小学项目学期前测</div>
           <img src="../../../../assets/images/decoration.png" alt class="pred-decotation">
         </div>
         <p class="pred-desc">
@@ -192,7 +193,7 @@ export default {
           'B. 不知道如何凸显自己的特点，让别人记住自己20',
           'C. 滔滔不绝，却有些乏味20',
           'D. 光顾着介绍自己，太自夸，没有注意倾听别人20'
-        ],
+        ]
       ],
       testIndex: [],
       currentPage: 0,
@@ -266,6 +267,16 @@ export default {
 
 .img-wrap {
   text-align: center;
+  position: relative;
+}
+
+.img-title {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    color: #fff;
+    font-size: 16px;
 }
 
 .pred-decotation {
