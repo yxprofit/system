@@ -119,7 +119,7 @@
 					</el-col>					
         </el-row>-->
         <el-row :gutter="10" v-for="(item, index) in computedData" :key="item.id">
-          <el-col :span="12">
+          <el-col :span="12" class="workList-item">
             <div class="li">
               <h4>
                 第{{index + 1}}课时：课时名称课时名称课时名称课时名称
@@ -141,7 +141,7 @@
               </div>
             </div>
           </el-col>
-          <el-col :span="12">
+          <el-col :span="12" class="workList-item">
             <div class="li">
               <h4>相关任务</h4>
               <div class="tasks">
@@ -613,6 +613,12 @@ export default {
 
     .workList {
       height: 3.6rem;
+      .workList-item {
+        min-height: 2.14rem;
+        &>.li {
+          min-height: 2.14rem;
+        }
+      }
       .li {
         padding: 0.15rem;
       }
