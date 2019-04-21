@@ -166,13 +166,13 @@
     </section>
 
     <!-- 任务弹窗区域 -->
-    <prediction-task :state.sync="isShowTask"></prediction-task>
+    <!-- <prediction-task :state.sync="isShowTask"></prediction-task> -->
     <!-- 测试弹窗组件区域 -->
-    <!-- <my-advantage :state.sync="isShowAdvantage"></my-advantage> -->
-    <courseware-upload :state.sync="isShowAdvantage"></courseware-upload>
+    <my-advantage :state="isShowAdvantage"></my-advantage>
+    <!-- <courseware-upload :state.sync="isShowAdvantage"></courseware-upload> -->
     <!-- <no-select :state.sync="isShowAdvantage"></no-select> -->
     <!-- <invitation-success :state.sync="isShowAdvantage"></invitation-success> -->
-    <invitation-comments :state.sync="isShowAdvantage"></invitation-comments>
+    <!-- <invitation-comments :state.sync="isShowAdvantage"></invitation-comments> -->
     <punch-card :state='isShowPanchCard' :status='punchStatus' @close='parentClose' @showActivity='handleActivityShow'></punch-card>
     <activity-name :state='isShowActivity' @close='parentClose'></activity-name>
     <!-- <invitation-comments :state.sync="isShowAdvantage"></invitation-comments> -->
@@ -204,10 +204,10 @@ export default {
   name: 'Trends',
   data () {
     return {
-      isShowActivity:false,
-      isShowPanchCard:false,
+      isShowActivity: false,
+      isShowPanchCard: false,
       isShowAdvantage: false,
-      punchStatus:'1',
+      punchStatus: '1',
       teacher: '',
       activeName: '1',
       type: '',
@@ -301,7 +301,7 @@ export default {
           pancel: '去查看 >',
           icon: t5,
           id: 3,
-          status:'1'
+          status: '1'
         },
         {
           date: '2019/03/05-2019/07/30',
@@ -312,7 +312,7 @@ export default {
           pancel: '去查看 >',
           icon: t5,
           id: 3,
-          status:'3'
+          status: '3'
         },
         {
           date: '2019/03/05-2019/05/08',
@@ -363,7 +363,7 @@ export default {
           pancel: '去完成 >',
           icon: t5,
           id: 3,
-          status:'1'
+          status: '1'
         },
         {
           date: '2019/03/05-2019/05/08',
@@ -394,7 +394,7 @@ export default {
           pancel: '去完成 >',
           icon: t5,
           id: 3,
-          status:'1'
+          status: '1'
         },
         {
           date: '2019/03/05-2019/05/08',
@@ -437,7 +437,7 @@ export default {
           pancel: '删除',
           icon: t5,
           id: 3,
-          status:'1'
+          status: '1'
         },
         {
           date: '2019/03/05-2019/07/30',
@@ -448,7 +448,7 @@ export default {
           pancel: '删除',
           icon: t5,
           id: 3,
-          status:'3'
+          status: '3'
         },
         {
           date: '2019/03/05-2019/05/08',
@@ -499,7 +499,7 @@ export default {
           pancel: '删除',
           icon: t5,
           id: 3,
-          status:'3'
+          status: '3'
         },
         {
           date: '2019/03/05-2019/05/08',
@@ -530,7 +530,7 @@ export default {
           pancel: '删除',
           icon: t5,
           id: 3,
-          status:'1'
+          status: '1'
         },
         {
           date: '2019/03/05-2019/05/08',
@@ -551,11 +551,11 @@ export default {
       console.log(tab, event)
     },
     handleConditionChange () {},
-    parentClose(){
+    parentClose () {
       this.isShowPanchCard = false
       this.isShowActivity = false
     },
-    handleActivityShow(){
+    handleActivityShow () {
       this.isShowActivity = true
     },
     todo (row) {
@@ -566,7 +566,8 @@ export default {
       } else if (row.id === 2) {
         // this.isShowTask = true;
         this.isShowAdvantage = true
-      }else if(row.id === 3){
+        console.log(this.isShowAdvantage, 'advantage')
+      } else if (row.id === 3) {
         console.log(row.status)
         this.isShowPanchCard = true
         this.punchStatus = row.status

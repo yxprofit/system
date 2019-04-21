@@ -1,5 +1,5 @@
 <template>
-  <div class="my-advantage">
+  <div class="my-advantage" v-show="visible">
     <el-dialog :visible.sync="visible" width="8.4rem" :before-close="handleClose">
       <div class="adt-title-wrap">
         <div class="adt-line"></div>
@@ -22,7 +22,7 @@
           <div class="warn-message" v-show="isWarn">你的标签选择超过了三个，请选择此次活动中你最突出的三个能力标签</div>
           <ul class="ability-list">
             <li class="ability-item" v-for="(tag, index) in tagList" :key="index" @click="handleSelectTag(tag, index)">
-              <el-tooltip placement="Right Center" effect="light" >
+              <el-tooltip placement="right" effect="light" >
                 <div slot="content" class="tip-content">
                   {{ tag.tipTitle }}
                   <br>{{ tag.tipDesc }}
@@ -146,11 +146,13 @@ export default {
 息，经过辨证思考后采取行
 动的技能`
         }
-      ]
+      ],
+      isOK: false
     }
   },
   watch: {
-    state (newVal) {
+    state (newVal, oldVal) {
+      console.log(newVal, 'newVal')
       this.visible = newVal
       this.$emit('update:state', newVal)
     }
@@ -181,15 +183,32 @@ export default {
       this.$emit('close')
     },
     handleSelectTag (tag, index) {
-      this.selectTagNumber = this.tagList.filter(tag => tag.showLight).length + 1
-      if (this.selectTagNumber > 3) {
+      let originTag = JSON.parse(JSON.stringify(tag))
+       if (tag.showLight) {
+         this.isWarn = false
+        this.selectTagNumber--
+      }
+      if (this.selectTagNumber < 3) {
+        this.isWarn = false
+        this.isOK = false
+        if (!tag.showLight) {
+          this.selectTagNumber++
+        }
+        this.tagList[index].showLight = !this.tagList[index].showLight
+      } else {
+        this.tagList[index].showLight = false
+      }
+
+      if (this.selectTagNumber === 3 && !originTag.showLight && this.isOK) {
         this.isWarn = true
-        return false
+        this.isOK = false
       } else {
         this.isWarn = false
       }
-      console.log(this.selectTagNumber)
-      this.tagList[index].showLight = !this.tagList[index].showLight
+
+      if (!originTag.showLight && this.selectTagNumber === 3) {
+        this.isOK = true
+      }
     }
   }
 }
@@ -199,6 +218,10 @@ export default {
 .my-advantage /deep/ .el-dialog__header,
 .my-advantage /deep/ .el-dialog__body {
   padding: 0
+}
+
+.my-advantage /deep/ .el-tooltip__popper {
+ border: none;
 }
 </style>
 
@@ -345,19 +368,19 @@ export default {
 
 .tip-content {
   color: #666;
-  width:185px;
+  // width:185px;
+  // height:110px;
+  // background:rgba(255,255,255,1);
+  // box-shadow:0px 4px 10px 0px rgba(188,188,188,0.4);
+  // border-radius:4px;
+}
+
+.el-popup-parent--hidden /deep/ .el-tooltip__popper.is-light {
+   width:185px;
   height:110px;
+  border: none !important;
   background:rgba(255,255,255,1);
   box-shadow:0px 4px 10px 0px rgba(188,188,188,0.4);
   border-radius:4px;
 }
-
-// .my-advantage /deep/ .el-tooltip__popper {
-//    width:185px;
-//   height:110px;
-//   border: none;
-//   background:rgba(255,255,255,1);
-//   box-shadow:0px 4px 10px 0px rgba(188,188,188,0.4);
-//   border-radius:4px;
-// }
 </style>
