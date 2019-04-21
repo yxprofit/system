@@ -68,6 +68,7 @@ export default {
   font-size: 0;
   position: relative;
   text-align: left;
+  font-weight: bold;
 
  .adt-title {
     display: inline-block;

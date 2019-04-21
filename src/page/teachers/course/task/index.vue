@@ -171,7 +171,8 @@
     <!-- <my-advantage :state.sync="isShowAdvantage"></my-advantage> -->
     <!-- <courseware-upload :state.sync="isShowAdvantage"></courseware-upload> -->
     <!-- <no-select :state.sync="isShowAdvantage"></no-select> -->
-    <invitation-success :state.sync="isShowAdvantage"></invitation-success>
+    <!-- <invitation-success :state.sync="isShowAdvantage"></invitation-success> -->
+    <invitation-comments :state.sync="isShowAdvantage"></invitation-comments>
 
   </div>
 </template>
@@ -193,6 +194,7 @@ import MyAdvantage from '@/components/myAdvantageModal'
 import CoursewareUpload from '@/components/coursewareUpload'
 import NoSelect from '@/components/notSelectTag'
 import InvitationSuccess from '@/components/invitationSuccess'
+import InvitationComments from '@/components/invitationComments'
 export default {
   name: 'Trends',
   data () {
@@ -529,7 +531,8 @@ export default {
     MyAdvantage,
     CoursewareUpload,
     NoSelect,
-    InvitationSuccess
+    InvitationSuccess,
+    InvitationComments
   }
 }
 </script>

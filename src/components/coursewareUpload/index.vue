@@ -100,6 +100,7 @@ export default {
   border-radius: 0.06rem 0.06rem 0 0;
   font-size: 0;
   position: relative;
+  font-weight: bold;
   .adt-line {
     width: 0.04rem;
     height: 0.16rem;
@@ -121,6 +122,7 @@ export default {
     font-size: 12px;
     margin-left: 0.14rem;
     color: #F79727;
+    font-weight: 400;
   }
 }
 
