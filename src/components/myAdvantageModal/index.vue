@@ -214,6 +214,7 @@ export default {
   border-bottom: 0.01rem solid #E4E8ED;
   border-radius: 0.06rem 0.06rem 0 0;
   font-size: 0;
+  font-weight: bold;
   .adt-line {
     width: 0.04rem;
     height: 0.16rem;
