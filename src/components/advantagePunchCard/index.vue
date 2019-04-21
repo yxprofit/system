@@ -75,12 +75,77 @@
               <p>本次花费时间：<i>2天</i></p>
             </div>
             <div class="comment">
-              <p class="title">活动评价</p>
+              <div class="comment_title">
+                <p class="title">活动评价</p>
+                <div class="pagination" v-show="status==='3'">
+                  <i class="el-icon-arrow-left"></i>
+                  <span><b>1</b>/3</span>
+                  <i class="el-icon-arrow-right"></i>
+                </div>
+              </div>
+              <div class="punch_person" v-show="status==='1'">
+                <img src="../../assets/images/icon/ad_1.png" alt="">
+                <p class="assess">你邀请的对象尚未完成评价</p>
+                <p class="look">稍后查看</p>
+              </div>
+              <div class="punch_person" v-show="status==='2'">
+                <img src="../../assets/images/icon/ad_2.png" alt="">
+                <p class="assess">暂无活动评价</p>
+                <p class="look">去邀请评价，赢得行动力积分</p>
+              </div>
+              <div class="person_comment" v-show="status==='3'">
+                <div class="page">
+                  <div class="comment_content">余周周真的很棒，在活动中积极参与，完成度高，余周周真的很棒，在活动中积极参与，完成度高，余周周真的很棒，在活动中积极参与。</div>
+                  <div class="comment_user">
+                    <img src="../../assets/images/icon/ad_3.png" alt="">
+                    <div>
+                      <p class="user_name">用户名</p>
+                      <p class="comment_time">2019.3.20  16:02</p>
+                    </div>
+                    <img src="../../assets/images/icon/icon_praise_selected.png" alt="">
+                    <p class="wow">Wow</p>
+                  </div>
+                  <p class="ad_tag">优势标签</p>
+                  <ul>
+                    <li>
+                      <img src="../../assets/images/icon/ad1.png" alt="">
+                      <span>灵性</span>
+                    </li>
+                    <li>
+                      <img src="../../assets/images/icon/ad2.png" alt="">
+                      <span>公平</span>
+                    </li>
+                    <li>
+                      <img src="../../assets/images/icon/ad3.png" alt="">
+                      <span>勇敢</span>
+                    </li>
+                  </ul>
+                  <p class="ad_tag">技能标签</p>
+                  <ul>
+                    <li>
+                      <img src="../../assets/images/icon/ad4.png" alt="">
+                      <span>批判思维</span>
+                    </li>
+                    <li>
+                      <img src="../../assets/images/icon/ad5.png" alt="">
+                      <span>自我管理</span>
+                    </li>
+                    <li>
+                      <img src="../../assets/images/icon/ad6.png" alt="">
+                      <span>关系建立</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
             
         </div>
-        
+        <footer>
+          <button class="button1" v-show="status==='1'||status==='2'">完成并关闭</button>
+          <button class="button2" v-show="status==='1'||status==='2'">继续打卡</button>
+          <button class="button2" v-show="status==='3'">完成并关闭</button>
+        </footer>
 			</div>
     </el-dialog>
 	</div>
@@ -103,7 +168,8 @@ export default {
   data() {
     return {
       state: true,
-      loading: true
+      loading: true,
+      status: "2"
     };
   },
   created() {
@@ -164,7 +230,6 @@ export default {
     margin: 0.14rem 0.2rem 0.33rem 0.31rem;
     display: flex;
     justify-content: space-between;
-    overflow: hidden;
     .left {
       width: 6.39rem;
       height: 100%;
@@ -302,6 +367,8 @@ export default {
           box-sizing: border-box;
           &:nth-of-type(1) {
             height: 0.6rem;
+            max-height: 1.06rem;
+            overflow: auto;
           }
           &:nth-of-type(2) {
             max-height: 1.06rem;
@@ -309,6 +376,8 @@ export default {
           }
           &:nth-of-type(3) {
             height: 0.6rem;
+            min-height: 0.6rem;
+            overflow: auto;
           }
         }
       }
@@ -321,6 +390,43 @@ export default {
     .right {
       width: 2.69rem;
       height: 100%;
+      .comment_title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .pagination {
+          i,
+          span {
+            display: inline-block;
+            vertical-align: middle;
+          }
+          i {
+            width: 0.2rem;
+            height: 0.2rem;
+            background: #fff;
+            text-align: center;
+            line-height: 0.2rem;
+            cursor: pointer;
+            color: rgba(188, 197, 204, 1);
+            border: 1px solid rgba(188, 197, 204, 1);
+            &:hover {
+              background: #fff;
+              color: rgba(247, 151, 39, 1);
+              border: 1px solid rgba(247, 151, 39, 1);
+            }
+          }
+          span {
+            margin: 0 0.15rem;
+            font-size: 0.14rem;
+            b {
+              font-family: MicrosoftYaHei-Bold;
+              font-weight: bold;
+              color: #f79727;
+              font-size: 0.16rem;
+            }
+          }
+        }
+      }
       .punch_detail {
         width: 100%;
         height: 2rem;
@@ -333,6 +439,7 @@ export default {
           margin: 0.17rem 0;
           text-indent: 0.4rem;
           position: relative;
+          color: #888;
           &::after {
             position: absolute;
             content: ".";
@@ -343,18 +450,21 @@ export default {
             transform: translateY(-50%);
             left: 0.27rem;
           }
+          i{
+            color: #333;
+          }
         }
       }
       .comment {
-        height: .47rem;
-        line-height: .47rem;
+        height: 0.47rem;
+        line-height: 0.47rem;
         .title {
           font-size: 0.16rem;
           color: #333;
           font-family: MicrosoftYaHei-Bold;
           font-weight: bold;
           position: relative;
-          margin-left: .1rem;
+          margin-left: 0.1rem;
           &:after {
             content: "";
             position: absolute;
@@ -363,10 +473,158 @@ export default {
             background: rgba(247, 151, 39, 1);
             border-radius: 2px;
             top: 50%;
-            left: -.1rem;
+            left: -0.1rem;
             transform: translateY(-50%);
           }
         }
+      }
+      .punch_person {
+        img {
+          display: block;
+          margin: 0.21rem auto 0.21rem;
+          width: 1.5rem;
+        }
+        p {
+          text-align: center;
+          line-height: 0.26rem;
+          &.assess {
+            font-size: 0.16rem;
+            color: #333;
+            margin-bottom: 0.18rem;
+          }
+          &.look {
+            font-size: 0.15rem;
+            color: #999;
+          }
+        }
+      }
+      .person_comment {
+        .page {
+          .comment_content {
+            height: 1.2rem;
+            width: 100%;
+            background-color: #f2f5f7;
+            font-size: 0.13rem;
+            color: #666;
+            line-height: 0.22rem;
+            box-sizing: border-box;
+            padding: 0.18rem 0.15rem 0.24rem 0.17rem;
+            text-indent: 2em;
+          }
+          .comment_user {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin: 0.1rem 0;
+            img {
+              &:nth-of-type(1) {
+                width: 0.4rem;
+                height: 0.4rem;
+                margin-right: 0.11rem;
+              }
+              &:nth-of-type(2) {
+                width: 0.24rem;
+                height: 0.25rem;
+                margin-left: 0.34rem;
+                margin-right: 0.1rem;
+              }
+            }
+            .user_name {
+              font-size: 0.14rem;
+              color: #333;
+              line-height: 0.22rem;
+              font-family: MicrosoftYaHei;
+            }
+            .comment_time {
+              font-size: 0.12rem;
+              color: #999;
+              line-height: 0.22rem;
+            }
+            .wow {
+              font-size: 0.18rem;
+              color: #333;
+              font-family: Arial-BoldMT;
+              font-weight: bold;
+            }
+          }
+          .ad_tag {
+            font-size: 0.15rem;
+            color: #333;
+            font-family: MicrosoftYaHei-Bold;
+            font-weight: bold;
+            line-height: 1;
+          }
+          > ul {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            height: 0.43rem;
+            &:nth-of-type(1) {
+              li {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                img {
+                  display: block;
+                  width: 0.19rem;
+                  height: auto;
+                }
+                span {
+                  font-size: 0.14rem;
+                  display: block;
+                  margin-left: 0.1rem;
+                }
+                &:nth-of-type(2) {
+                  margin: 0 0.4rem;
+                }
+              }
+            }
+            &:nth-of-type(2) {
+              li {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                img {
+                  width: 0.26rem;
+                  height: auto;
+                  display: block;
+                  margin-left: -0.02rem;
+                }
+                span {
+                  font-size: 0.12rem;
+                  display: block;
+                  margin: 0 0.05rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    button {
+      width: 1.2rem;
+      height: 0.36rem;
+      border: 1px solid rgba(221, 221, 221, 1);
+      border-radius: 0.04rem;
+      margin-right: 0.2rem;
+      font-size: 0.14rem;
+      background-color: #fff;
+      &.button1 {
+        color: #999;
+      }
+      &.button2 {
+        color: #fff;
+        background: linear-gradient(
+          -90deg,
+          rgba(255, 183, 38, 1),
+          rgba(255, 129, 38, 1)
+        );
+        border: 1px solid #fff;
       }
     }
   }
