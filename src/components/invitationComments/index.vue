@@ -396,26 +396,17 @@ export default {
   width: 1.5rem;
 }
 
-.invaitation-comments {
-  /deep/ .trends {
-    /deep/ .el-table {
-      /deep/ .tableRow {
-        height: 0.5rem !important;
-        color: #999 !important;
-      }
-    }
+.content-wrap {
+  /deep/ .el-table__header .has-gutter tr th {
+    height: 0.5rem !important;
   }
 }
 
-.invaitation-comments {
-  /deep/ .el-table {
-    /deep/ th {
-      height: 0.5rem;
-    }
+.content /deep/ .trends .el-table .tableRow {
+  height: 0.5rem !important;
+}
 
-    /deep/ tr {
-      height: 0.5rem;
-    }
-  }
+.content /deep/ .trends .el-table .tableRow:after {
+  height: 0.5rem !important;
 }
 </style>
