@@ -169,12 +169,13 @@
     <prediction-task :state.sync="isShowTask"></prediction-task>
     <!-- 测试弹窗组件区域 -->
     <!-- <my-advantage :state.sync="isShowAdvantage"></my-advantage> -->
-    <!-- <courseware-upload :state.sync="isShowAdvantage"></courseware-upload> -->
+    <courseware-upload :state.sync="isShowAdvantage"></courseware-upload>
     <!-- <no-select :state.sync="isShowAdvantage"></no-select> -->
     <!-- <invitation-success :state.sync="isShowAdvantage"></invitation-success> -->
     <invitation-comments :state.sync="isShowAdvantage"></invitation-comments>
     <punch-card :state='isShowPanchCard' :status='punchStatus' @close='parentClose' @showActivity='handleActivityShow'></punch-card>
     <activity-name :state='isShowActivity' @close='parentClose'></activity-name>
+    <!-- <invitation-comments :state.sync="isShowAdvantage"></invitation-comments> -->
 
   </div>
 </template>

@@ -74,7 +74,7 @@ export default {
       this.$emit('close')
     },
     handleChange (file, fileList) {
-      this.fileList = fileList.slice(-3)
+      console.log(file, fileList, 'filelist')
     }
   }
 }
