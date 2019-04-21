@@ -181,17 +181,18 @@ export default {
       this.$emit('close')
     },
     handleSelectTag (tag, index) {
-      if (this.selectTagNumber < 3) {
-        console.log('少数')
-        this.isWarn = false
-        this.tagList[index].showLight = !this.tagList[index].showLight
-      } else {
-        console.log('多数')
-        this.isWarn = true
-        this.tagList[index].showLight = false
+      this.selectTagNumber = this.tagList.filter(tag => tag.showLight).length + 1
+      if (this.selectTagNumber === 3) {
+        this.selectTagNumber -= 1
       }
-      this.selectTagNumber = this.tagList.filter(tag => tag.showLight).length
-      console.log(this.selectTagNumber, '11111')
+      if (this.selectTagNumber > 3) {
+        this.isWarn = true
+        return false
+      } else {
+        this.isWarn = false
+      }
+      console.log(this.selectTagNumber)
+      this.tagList[index].showLight = !this.tagList[index].showLight
     }
   }
 }
