@@ -70,6 +70,11 @@
                       :list="list2[index]"
                       group="people"
                       @change="log"
+                      @start="start"
+                      @end="handleEnd"
+                      dragable="true"
+                      :move="getdata"
+                      :clone="clone"
                     >
                       <div
                         class="avatar-list"
@@ -133,91 +138,91 @@
 
 <script>
 /* 组件方式引用 */
-import draggable from "vuedraggable";
-import avatar from "@/assets/images/teacher/g1.png";
+import draggable from 'vuedraggable'
+import avatar from '@/assets/images/teacher/g1.png'
 
 const groupList = [
   {
     avatar: avatar,
-    name: "欧阳娜娜"
+    name: '欧阳娜娜'
   },
   {
     avatar: avatar,
-    name: "欧阳娜娜"
+    name: '欧阳娜娜'
   },
   {
     avatar: avatar,
-    name: "欧阳娜娜"
+    name: '欧阳娜娜'
   },
   {
     avatar: avatar,
-    name: "欧阳娜娜"
+    name: '欧阳娜娜'
   },
   {
     avatar: avatar,
-    name: "欧阳娜娜"
+    name: '欧阳娜娜'
   },
   {
     avatar: avatar,
-    name: "欧阳娜娜"
+    name: '欧阳娜娜'
   },
   {
     avatar: avatar,
-    name: "欧阳娜娜"
+    name: '欧阳娜娜'
   },
   {
     avatar: avatar,
-    name: "欧阳娜娜"
+    name: '欧阳娜娜'
   },
   {
     avatar: avatar,
-    name: "欧阳娜娜"
+    name: '欧阳娜娜'
   },
   {
     avatar: avatar,
-    name: "欧阳娜娜"
+    name: '欧阳娜娜'
   },
   {
     avatar: avatar,
-    name: "欧阳娜娜"
+    name: '欧阳娜娜'
   },
   {
     avatar: avatar,
-    name: "欧阳娜娜"
+    name: '欧阳娜娜'
   },
   {
     avatar: avatar,
-    name: "欧阳娜娜"
+    name: '欧阳娜娜'
   },
   {
     avatar: avatar,
-    name: "欧阳娜娜"
+    name: '欧阳娜娜'
   },
   {
     avatar: avatar,
-    name: "欧阳娜娜"
+    name: '欧阳娜娜'
   },
   {
     avatar: avatar,
-    name: "欧阳娜娜"
+    name: '欧阳娜娜'
   },
   {
     avatar: avatar,
-    name: "欧阳娜娜"
+    name: '欧阳娜娜'
   },
   {
     avatar: avatar,
-    name: "欧阳娜娜"
+    name: '欧阳娜娜'
   },
   {
     avatar: avatar,
-    name: "欧阳娜娜"
+    name: '欧阳娜娜'
   },
   {
     avatar: avatar,
-    name: "欧阳娜娜"
+    name: '欧阳娜娜'
   }
-];
+]
 export default {
   props: {
     showLesson: {
@@ -237,14 +242,14 @@ export default {
       default: () => {}
     }
   },
-  data() {
+  data () {
     return {
-      labelPosition: "left",
+      labelPosition: 'left',
       visible: false,
       feedback: {
-        type: "SG",
-        title: "",
-        content: ""
+        type: 'SG',
+        title: '',
+        content: ''
       },
       list1: JSON.parse(JSON.stringify(groupList)),
       list2: [],
@@ -254,144 +259,147 @@ export default {
       group1Index: 0,
       group2Index: 0,
       timer: null,
-      className: "",
+      className: '',
       currentEle: {},
       currentLen: 0
-    };
-  },
-  watch: {
-    showLesson(newVal, oldVal) {
-      this.visible = newVal;
-      this.$emit("update:showLesson", newVal);
-    },
-    list2(newVal) {
-      console.log(newVal, "list2");
     }
   },
-  created() {},
+  watch: {
+    showLesson (newVal, oldVal) {
+      this.visible = newVal
+      this.$emit('update:showLesson', newVal)
+    },
+    list2 (newVal) {
+      console.log(newVal, 'list2')
+    }
+  },
+  created () {},
   methods: {
     // 重置分组
-    resetGroup() {
-      this.list1 = JSON.parse(JSON.stringify(groupList));
-      this.list2 = [];
-      this.list3 = [];
+    resetGroup () {
+      this.list1 = JSON.parse(JSON.stringify(groupList))
+      this.list2 = []
+      this.list3 = []
     },
-    pullFunction() {
-      console.log(this.controlOnStart, "pullFunction");
-      return this.controlOnStart ? "clone" : true;
+    pullFunction () {
+      console.log(this.controlOnStart, 'pullFunction')
+      return this.controlOnStart ? 'clone' : true
     },
-    start({ originalEvent }) {
-      console.log(originalEvent, "start-originalEvent");
-      this.controlOnStart = originalEvent.ctrlKey;
+    start ({ originalEvent }) {
+      console.log(originalEvent, 'start-originalEvent')
+      this.controlOnStart = originalEvent.ctrlKey
     },
-    getdata(evt) {
-      let className = evt.to.className;
-      if (className && className === "addGroupDistrict") {
-        this.$refs.addSlide.style.borderColor = "red";
+    getdata (evt) {
+      console.log(evt, 'evt')
+      let className = evt.to.className
+      if (className && className === 'addGroupDistrict') {
+        this.$refs.addSlide.style.borderColor = 'red'
       }
     },
-    handleEnd(e) {
-      let className = e.to.className;
-      this.className = className;
-      this.$refs.addSlide.style.borderColor = "#fafbfd";
-      if (this.className === "addGroupDistrict") {
-        this.className = "";
-        this.list3.push({});
-        this.list2[this.list3.length - 1] = [this.currentEle];
-        clearTimeout(this.timer);
+    handleEnd (e) {
+      console.log(e, 'handleEnd')
+      let className = e.to.className
+      this.className = className
+      this.$refs.addSlide.style.borderColor = '#fafbfd'
+      if (this.className === 'addGroupDistrict') {
+        this.className = ''
+        this.list3.push({})
+        this.list2[this.list3.length - 1] = [this.currentEle]
+        clearTimeout(this.timer)
         this.timer = setTimeout(() => {
           this.handleNext(
-            ".content-group2-list",
-            "group2Index",
+            '.content-group2-list',
+            'group2Index',
             -330,
-            "list3",
+            'list3',
             2,
-            "group2"
-          );
-        }, 100);
+            'group2'
+          )
+        }, 100)
       }
     },
-    handlePrev(el, listIndex, distance, type) {
+    handlePrev (el, listIndex, distance, type) {
       if (this[listIndex] <= 0) {
       } else {
-        let ele = document.querySelector(el);
-        if (type == "group2") {
-          this[listIndex]--;
+        let ele = document.querySelector(el)
+        if (type === 'group2') {
+          this[listIndex]--
         } else {
           if (this[listIndex] <= 5) {
-            this[listIndex] = 0;
+            this[listIndex] = 0
           } else {
-            this[listIndex] -= 5;
+            this[listIndex] -= 5
           }
         }
-        console.log(listIndex, this.list2);
+        console.log(listIndex, this.list2)
         ele.style.transform = `translateX( ${distance *
           0.01 *
-          this[listIndex]}rem)`;
-        ele.style.transition = "all 0.5s ease";
+          this[listIndex]}rem)`
+        ele.style.transition = 'all 0.5s ease'
       }
     },
-    handleNext(el, listIndex, distance, list, baseIndex, type) {
-      let ele = document.querySelector(el);
+    handleNext (el, listIndex, distance, list, baseIndex, type) {
+      let ele = document.querySelector(el)
       if (this[listIndex] < this[list].length - baseIndex) {
-        if (type == "group2") {
-          this[listIndex]++;
+        if (type == 'group2') {
+          this[listIndex]++
         } else {
           if (this[list].length - this[listIndex] - baseIndex <= 5) {
-            this[listIndex] += this[list].length - this[listIndex] - baseIndex;
+            this[listIndex] += this[list].length - this[listIndex] - baseIndex
           } else {
-            this[listIndex] += 5;
+            this[listIndex] += 5
           }
         }
-        console.log(this[listIndex], list);
+        console.log(this[listIndex], list)
         ele.style.transform = `translateX( ${distance *
           0.01 *
-          this[listIndex]}rem)`;
-        ele.style.transition = "all 0.5s ease";
+          this[listIndex]}rem)`
+        ele.style.transition = 'all 0.5s ease'
       }
     },
-    add: function() {
-      console.log("add");
-      if (this.className !== "addGroupDistrict") {
-        this.list.push({ name: "Juan" });
+    add: function () {
+      console.log('add')
+      if (this.className !== 'addGroupDistrict') {
+        this.list.push({ name: 'Juan' })
       }
     },
-    replace: function() {
-      console.log("replace");
-      this.list = [{ name: "Edgard" }];
+    replace: function () {
+      console.log('replace')
+      this.list = [{ name: 'Edgard' }]
     },
-    clone: function(el) {
-      console.log(el, "clone");
-      if (this.className !== "addGroupDistrict") {
+    clone: function (el) {
+      console.log(el, 'clone')
+      if (this.className !== 'addGroupDistrict') {
         return {
           name: el.name,
           avatar: el.avatar
-        };
+        }
       }
     },
-    log: function(evt) {
+    log: function (evt) {
+      console.log(evt, 'log')
       try {
-        this.currentEle = Object.assign({}, evt.removed.element);
+        this.currentEle = Object.assign({}, evt.removed.element)
         this.list3 = JSON.parse(
           JSON.stringify(this.list2.filter(item => item.length))
-        );
-        clearTimeout(this.timer);
+        )
+        clearTimeout(this.timer)
         this.timer = setTimeout(() => {
           this.handlePrev(
-            ".content-group2-list",
-            "group2Index",
+            '.content-group2-list',
+            'group2Index',
             -330,
-            "group2"
-          );
-        }, 100);
+            'group2'
+          )
+        }, 100)
       } catch (err) {}
-    },
+    }
   },
-  mounted() {},
+  mounted () {},
   components: {
     draggable
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
