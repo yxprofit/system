@@ -20,7 +20,7 @@
           <div class="tag-name">已邀请人：</div>
           <ul class="tag-list">
             <li class="tag-item" v-for="(item, index) in invatitationArr" :key="index">
-              <div class="invat-name">{{ item }}</div>
+              <div class="invat-name">{{ item.row.name }}</div>
               <i class="el-icon-close close" @click="cancelInvatitaion(index)"></i>
             </li>
           </ul>
@@ -140,25 +140,25 @@ export default {
         {
           name: '王展鹏',
           account: '教师',
-          operate: true
+          operate: false
         },
         {
-          name: '王展鹏',
+          name: '余周周',
           account: '学生',
           operate: false
         },
         {
-          name: '王展鹏',
+          name: '余淮',
           account: '主任',
           operate: false
         },
         {
-          name: '王展鹏',
+          name: '耿耿',
           account: '教师',
           operate: false
         }
       ],
-      invatitationArr: ['林洋', '余周周', '王展鹏']
+      invatitationArr: []
     }
   },
   watch: {
@@ -175,10 +175,21 @@ export default {
     },
     handleConditionChange () {},
     selectInvitation (scope) {
-      this.tableData2[scope.$index].operate = true
+      this.tableData2[scope.$index].operate = !this.tableData2[scope.$index]
+        .operate
+      if (this.tableData2[scope.$index].operate) {
+        this.invatitationArr.push(scope)
+      } else {
+        this.invatitationArr.forEach((item, index) => {
+          if (scope.$index === item.$index) {
+            this.invatitationArr.splice(index, 1)
+          }
+        })
+      }
       console.log(scope, 'scope')
     },
     cancelInvatitaion (index) {
+      this.tableData2.splice(this.invatitationArr[index].$index, 1)
       this.invatitationArr.splice(index, 1)
     }
   }
@@ -383,5 +394,28 @@ export default {
 
 .invaitation-comments /deep/ .el-select {
   width: 1.5rem;
+}
+
+.invaitation-comments {
+  /deep/ .trends {
+    /deep/ .el-table {
+      /deep/ .tableRow {
+        height: 0.5rem !important;
+        color: #999 !important;
+      }
+    }
+  }
+}
+
+.invaitation-comments {
+  /deep/ .el-table {
+    /deep/ th {
+      height: 0.5rem;
+    }
+
+    /deep/ tr {
+      height: 0.5rem;
+    }
+  }
 }
 </style>
