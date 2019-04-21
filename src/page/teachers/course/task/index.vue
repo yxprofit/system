@@ -168,24 +168,31 @@
     <!-- 任务弹窗区域 -->
     <prediction-task :state.sync="isShowTask"></prediction-task>
     <!-- 测试弹窗组件区域 -->
-    <my-advantage :state.sync="isShowAdvantage"></my-advantage>
+    <!-- <my-advantage :state.sync="isShowAdvantage"></my-advantage> -->
+    <!-- <courseware-upload :state.sync="isShowAdvantage"></courseware-upload> -->
+    <!-- <no-select :state.sync="isShowAdvantage"></no-select> -->
+    <invitation-success :state.sync="isShowAdvantage"></invitation-success>
+
   </div>
 </template>
 
 <script>
-import t1 from '@/assets/images/icon/t1.png';
-import t2 from '@/assets/images/icon/t2.png';
-import t3 from '@/assets/images/icon/t3.png';
-import t4 from '@/assets/images/icon/t4.png';
-import t5 from '@/assets/images/icon/t5.png';
-import t6 from '@/assets/images/icon/t6.png';
-import t7 from '@/assets/images/icon/t7.png';
-import t8 from '@/assets/images/icon/t8.png';
-import t9 from '@/assets/images/icon/t9.png';
-import t10 from '@/assets/images/icon/t10.png';
-import t11 from '@/assets/images/icon/t11.png';
-import PredictionTask from '../prediction';
+import t1 from '@/assets/images/icon/t1.png'
+import t2 from '@/assets/images/icon/t2.png'
+import t3 from '@/assets/images/icon/t3.png'
+import t4 from '@/assets/images/icon/t4.png'
+import t5 from '@/assets/images/icon/t5.png'
+import t6 from '@/assets/images/icon/t6.png'
+import t7 from '@/assets/images/icon/t7.png'
+import t8 from '@/assets/images/icon/t8.png'
+import t9 from '@/assets/images/icon/t9.png'
+import t10 from '@/assets/images/icon/t10.png'
+import t11 from '@/assets/images/icon/t11.png'
+import PredictionTask from '../prediction'
 import MyAdvantage from '@/components/myAdvantageModal'
+import CoursewareUpload from '@/components/coursewareUpload'
+import NoSelect from '@/components/notSelectTag'
+import InvitationSuccess from '@/components/invitationSuccess'
 export default {
   name: 'Trends',
   data () {
@@ -519,7 +526,10 @@ export default {
   },
   components: {
     PredictionTask,
-    MyAdvantage
+    MyAdvantage,
+    CoursewareUpload,
+    NoSelect,
+    InvitationSuccess
   }
 }
 </script>

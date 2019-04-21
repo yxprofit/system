@@ -182,9 +182,6 @@ export default {
     },
     handleSelectTag (tag, index) {
       this.selectTagNumber = this.tagList.filter(tag => tag.showLight).length + 1
-      if (this.selectTagNumber === 3) {
-        this.selectTagNumber -= 1
-      }
       if (this.selectTagNumber > 3) {
         this.isWarn = true
         return false
@@ -214,7 +211,7 @@ export default {
   line-height: 0.6rem;
   padding-left: 0.3rem;
   box-sizing: border-box;
-  border: 0.01rem solid #E4E8ED;
+  border-bottom: 0.01rem solid #E4E8ED;
   border-radius: 0.06rem 0.06rem 0 0;
   font-size: 0;
   .adt-line {
