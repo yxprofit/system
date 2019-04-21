@@ -152,24 +152,22 @@
 </template>
 
 <script>
+// 组建需三个props state控制dialog显示与隐藏，status根据不同打卡状态展示不同页面，close触发父组件方法
+// status：1 表示对方尚未评价，2 表示没有邀请，3 表示完整打卡
 export default {
   props: {
-    // state: {
-    //   type: Boolean,
-    //   default: false
-    // },
-    info: {
-      type: Object,
-      default: () => {
-        return {};
-      }
+    state: {
+      type: Boolean,
+      default: false
+    },
+    status: {
+      type: String,
+      default: '2'
     }
   },
   data() {
     return {
-      state: true,
       loading: true,
-      status: "3",
       currentPage:1,
       data:[
         {
