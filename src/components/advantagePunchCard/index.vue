@@ -42,7 +42,7 @@
 
             </div>
             <!-- 查看作品 -->
-            <div class="works">
+            <div class="works" @click="jumpTo18">
               <div>
                 <img src="../../assets/images/icon/ad_works.png" alt="">
                 <p>活动名称民乐社团（样本范例）</p>
@@ -51,8 +51,6 @@
                 <p>查看作品</p>
                 <img src="../../assets/images/icon/ad_next.png" alt="">
               </div>
-
-
             </div>
             <!-- 问答 -->
             <section class="qa">
@@ -197,6 +195,9 @@ export default {
   methods: {
     handleClose() {
       this.$emit("close");
+    },
+    jumpTo18(){
+      this.$emit('showActivity')
     },
     prev(){
       if(this.currentPage <= 1){

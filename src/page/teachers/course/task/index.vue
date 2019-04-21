@@ -64,7 +64,7 @@
             >
               <el-table-column label="任务类型" sortable align="center" width="180">
                 <template slot-scope="scope">
-                  <div @click="todo(scope.row.id)">
+                  <div @click="todo(scope.row)">
                     <img :src="scope.row.icon" alt class="icon">
                     <span style="margin-left: 0.1rem">{{ scope.row.type }}</span>
                     <p class="look">查看明细 ></p>
@@ -77,7 +77,7 @@
               <el-table-column prop="taskStatus" label="发起人" align="center"></el-table-column>
               <el-table-column prop="pancel" label="操作" align="center">
                 <template slot-scope="scope">
-                  <p @click="todo(scope.row.id)">{{ scope.row.pancel }}</p>
+                  <p @click="todo(scope.row)">{{ scope.row.pancel }}</p>
                 </template>
               </el-table-column>
             </el-table>
@@ -145,7 +145,7 @@
             >
               <el-table-column label="任务类型" sortable align="center" width="180">
                 <template slot-scope="scope">
-                  <div @click="todo(scope.row.id)">
+                  <div @click="todo(scope.row)">
                     <img :src="scope.row.icon" alt class="icon">
                     <span style="margin-left: 0.1rem">{{ scope.row.type }}</span>
                     <p class="look">查看明细 ></p>
@@ -173,6 +173,8 @@
     <!-- <no-select :state.sync="isShowAdvantage"></no-select> -->
     <!-- <invitation-success :state.sync="isShowAdvantage"></invitation-success> -->
     <invitation-comments :state.sync="isShowAdvantage"></invitation-comments>
+    <punch-card :state='isShowPanchCard' :status='punchStatus' @close='parentClose' @showActivity='handleActivityShow'></punch-card>
+    <activity-name :state='isShowActivity' @close='parentClose'></activity-name>
 
   </div>
 </template>
@@ -195,11 +197,16 @@ import CoursewareUpload from '@/components/coursewareUpload'
 import NoSelect from '@/components/notSelectTag'
 import InvitationSuccess from '@/components/invitationSuccess'
 import InvitationComments from '@/components/invitationComments'
+import PunchCard from '@/components/advantagePunchCard'
+import ActivityName from '@/components/activityName'
 export default {
   name: 'Trends',
   data () {
     return {
+      isShowActivity:false,
+      isShowPanchCard:false,
       isShowAdvantage: false,
+      punchStatus:'1',
       teacher: '',
       activeName: '1',
       type: '',
@@ -292,7 +299,19 @@ export default {
           taskStatus: '开放',
           pancel: '去查看 >',
           icon: t5,
-          id: 3
+          id: 3,
+          status:'1'
+        },
+        {
+          date: '2019/03/05-2019/07/30',
+          name: '阶段考试',
+          type: '优势打卡',
+          todoStatus: '已完成',
+          taskStatus: '开放',
+          pancel: '去查看 >',
+          icon: t5,
+          id: 3,
+          status:'3'
         },
         {
           date: '2019/03/05-2019/05/08',
@@ -342,7 +361,8 @@ export default {
           taskStatus: '开放',
           pancel: '去完成 >',
           icon: t5,
-          id: 3
+          id: 3,
+          status:'1'
         },
         {
           date: '2019/03/05-2019/05/08',
@@ -372,7 +392,8 @@ export default {
           taskStatus: '余老师',
           pancel: '去完成 >',
           icon: t5,
-          id: 3
+          id: 3,
+          status:'1'
         },
         {
           date: '2019/03/05-2019/05/08',
@@ -414,7 +435,19 @@ export default {
           taskStatus: '开放',
           pancel: '删除',
           icon: t5,
-          id: 3
+          id: 3,
+          status:'1'
+        },
+        {
+          date: '2019/03/05-2019/07/30',
+          name: '阶段考试',
+          type: '优势打卡',
+          todoStatus: '未完成',
+          taskStatus: '开放',
+          pancel: '删除',
+          icon: t5,
+          id: 3,
+          status:'3'
         },
         {
           date: '2019/03/05-2019/05/08',
@@ -460,11 +493,12 @@ export default {
           date: '2019/03/05-2019/07/30',
           name: '阶段考试',
           type: '优势打卡',
-          todoStatus: '未完成',
+          todoStatus: '已完成',
           taskStatus: '开放',
           pancel: '删除',
           icon: t5,
-          id: 3
+          id: 3,
+          status:'3'
         },
         {
           date: '2019/03/05-2019/05/08',
@@ -494,7 +528,8 @@ export default {
           taskStatus: '开放',
           pancel: '删除',
           icon: t5,
-          id: 3
+          id: 3,
+          status:'1'
         },
         {
           date: '2019/03/05-2019/05/08',
@@ -515,14 +550,25 @@ export default {
       console.log(tab, event)
     },
     handleConditionChange () {},
-    todo (id) {
-      if (id === 1) {
+    parentClose(){
+      this.isShowPanchCard = false
+      this.isShowActivity = false
+    },
+    handleActivityShow(){
+      this.isShowActivity = true
+    },
+    todo (row) {
+      if (row.id === 1) {
         this.$router.push({
           path: '/questionnaire'
         })
-      } else if (id === 2) {
+      } else if (row.id === 2) {
         // this.isShowTask = true;
         this.isShowAdvantage = true
+      }else if(row.id === 3){
+        console.log(row.status)
+        this.isShowPanchCard = true
+        this.punchStatus = row.status
       }
     }
   },
@@ -532,7 +578,9 @@ export default {
     CoursewareUpload,
     NoSelect,
     InvitationSuccess,
-    InvitationComments
+    InvitationComments,
+    PunchCard,
+    ActivityName
   }
 }
 </script>
