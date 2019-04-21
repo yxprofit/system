@@ -24,8 +24,8 @@
             <li class="ability-item" v-for="(tag, index) in tagList" :key="index" @click="handleSelectTag(tag, index)">
               <el-tooltip placement="right" effect="light" >
                 <div slot="content" class="tip-content">
-                  {{ tag.tipTitle }}
-                  <br>{{ tag.tipDesc }}
+                  <div class="tip-title">{{ tag.tipTitle }}   </div>
+                  <div class="tip-desc">{{ tag.tipDesc }}</div>
                 </div>
                 <img class="tag-icon" :src="tag.showLight ? tag.light : tag.gery" alt>
               </el-tooltip>
@@ -368,19 +368,37 @@ export default {
 
 .tip-content {
   color: #666;
-  // width:185px;
-  // height:110px;
-  // background:rgba(255,255,255,1);
-  // box-shadow:0px 4px 10px 0px rgba(188,188,188,0.4);
-  // border-radius:4px;
+  font-size: 12px;
+
+  .tip-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.12rem;
+  }
 }
 
-.el-popup-parent--hidden /deep/ .el-tooltip__popper.is-light {
+body /deep/ .el-tooltip__popper {
    width:185px;
   height:110px;
   border: none !important;
   background:rgba(255,255,255,1);
   box-shadow:0px 4px 10px 0px rgba(188,188,188,0.4);
   border-radius:4px;
+}
+</style>
+
+<style>
+.el-tooltip__popper {
+   width: 1.85rem;
+  border: none !important;
+  background:rgba(255,255,255,1);
+  box-shadow: 0px 4px 10px 0px rgba(188,188,188,0.4);
+  border-radius: 0.04rem;
+  padding: 0.15rem 0.18rem 0.17rem 0.22rem;
+}
+
+.el-tooltip__popper[x-placement^=right] .popper__arrow {
+  border: none;
 }
 </style>
