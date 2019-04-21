@@ -192,11 +192,19 @@
   color: #f79727;
 }
 
+.el-input .el-input__inner:focus {
+  border-color: #f79727;
+}
+
 /* message提示框 */
 .el-message .el-icon-success {
   font-size: 24px;
 }
 
 .unpload-message.el-message .el-message__icon{
+  font-size: 16px;
+}
+
+.limit-message.el-message .el-message__icon{
   font-size: 16px;
 }
