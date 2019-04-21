@@ -187,13 +187,25 @@ let router = new Router({
       }
     },
     {
-      path: '/activity',
+      path: '/superiority-clockin',
+      redirect: '/superiority-clockin/empty',
       components: {
-        default: resolve => require(['@/components/activityName/index.vue'], resolve)
+        default: resolve => require(['@/page/superiority-clockin/index.vue'], resolve)
       },
       meta: {
         title: '优势打卡'
-      }
+      },
+      children: [{
+        path: 'empty',
+        components: {
+          default: resolve => require(['@/page/superiority-clockin/src/empty.vue'], resolve)
+        }
+      }, {
+        path: 'question',
+        components: {
+          default: resolve => require(['@/page/superiority-clockin/src/question.vue'], resolve)
+        }
+      }]
     },
     // 找不到路由的错误页面
     {
