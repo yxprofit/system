@@ -1,6 +1,6 @@
 <template>
   <div class="teacher_editor" v-loading="loading" v-show="state">
-    <el-dialog :visible.sync="state" width="82%" :before-close="handleClose">
+    <el-dialog :visible.sync="state" :before-close="handleClose">
       <span slot="title" class="teacher_editor_title">
         <h3>
           <i></i>课件编辑
@@ -148,6 +148,7 @@ export default {
 // dialog样式修改
 .teacher_editor /deep/ .el-dialog{
   margin-top: 0 !important;
+  width: 11rem;
 }
 .teacher_editor /deep/ .el-dialog__wrapper{
   padding-top: 0.25rem;

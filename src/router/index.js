@@ -186,6 +186,15 @@ let router = new Router({
         title: '问卷任务'
       }
     },
+    {
+      path: '/punch',
+      components: {
+        default: resolve => require(['@/components/advantagePunchCard/index.vue'], resolve)
+      },
+      meta: {
+        title: '优势打卡'
+      }
+    },
     // 找不到路由的错误页面
     {
       path: '/*',
