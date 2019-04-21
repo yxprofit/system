@@ -32,7 +32,7 @@
       </el-row>
     </div>
     <div class="questions-details">
-      <el-form>
+      <el-form v-model="form">
         <el-form-item>
           <el-select v-model="form.role" placeholder="担任的角色">
             <el-option
@@ -54,7 +54,7 @@
           </el-select>
         </el-form-item>
         <el-form-item>
-          <el-select v-model="form.payTiem" placeholder="本次花费时间">
+          <el-select v-model="form.payTime" placeholder="本次花费时间">
             <el-option
               v-for="item in payTimeOps"
               :value="item.value"
@@ -71,7 +71,7 @@
             <div class="label">{{item.label}}</div>
           </div>
           <div class="content">
-            <item-input :placeholder="item.placeholder" :itemValue="item.value"></item-input>
+            <item-input @change="handleChange" :prop="item.prop" :placeholder="item.placeholder" :itemValue="item.value"></item-input>
           </div>
         </li>
       </ul>
@@ -101,6 +101,11 @@ export default {
         role: '',
         payTime: '',
         joinTime: ''
+      },
+      questions: {
+        situation: '',
+        action: '',
+        result: ''
       },
       roleOps: [
         {
@@ -137,22 +142,25 @@ export default {
           id: 111,
           tag: 'Situation：',
           label: '当时的情况/挑战是什么？',
-          placeholder: '例如：我最喜欢的数学课学到很难得概念，我学不懂，测验失利（不超过140字',
-          value: ''
+          placeholder: '例如：我最喜欢的数学课学到很难得概念，我学不懂，测验失利（不超过140字）',
+          value: '',
+          prop: 'situation'
         },
         {
           id: 222,
           tag: 'Action：',
           label: '你的主要行动是什么? （结合你的优势，你具体的行动是什么）',
           placeholder: '我主动找老师课后问问题<br/>我和最好的朋友约着一起对卷子<br/>我安慰自己，很快恢复了情绪',
-          value: ''
+          value: '',
+          prop: 'action'
         },
         {
           id: 222,
           tag: 'Results：',
           label: '结果如何?',
           placeholder: '周末作业我都完成了，也都会了',
-          value: ''
+          value: '',
+          prop: 'result'
         }
       ]
     }
@@ -174,6 +182,11 @@ export default {
     },
     handleSuperiChange(list) {
       this.superiorites = list;
+    },
+    handleChange(obj) {
+      this.questions[obj.prop] = obj.val
+
+      console.log(this.questions)
     }
   }
 }

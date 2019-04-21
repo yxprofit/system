@@ -43,13 +43,13 @@
         </el-radio-group>
       </el-form-item>
       <el-form-item label="活动方式：">
-        <el-radio-group v-model="form.format">
+        <el-radio-group v-model="form.mode">
           <el-radio border label="个人"></el-radio>
           <el-radio border label="团队"></el-radio>
         </el-radio-group>
       </el-form-item>
       <el-form-item label="活动成果：">
-        <el-radio-group v-model="form.format">
+        <el-radio-group v-model="form.result">
           <el-radio border label="作品"></el-radio>
           <el-radio border label="证书"></el-radio>
           <el-radio border label="奖状"></el-radio>
@@ -57,14 +57,14 @@
         </el-radio-group>
       </el-form-item>
       <el-form-item label="活动周期：" class="muilty-form-item">
-        <el-radio-group v-model="form.format">
+        <el-radio-group v-model="form.cycle">
           <el-radio border label="仅这次"></el-radio>
           <el-radio border label="我会持续参与"></el-radio>
         </el-radio-group>
         <div class="date-range">
           <el-date-picker type="date" placeholder="选择日期" v-model="form.date1"></el-date-picker>
           <span class="line">-</span>
-          <el-date-picker type="date" placeholder="选择日期" v-model="form.date1"></el-date-picker>
+          <el-date-picker type="date" placeholder="选择日期" v-model="form.date2"></el-date-picker>
         </div>
       </el-form-item>
       <el-form-item label="所需时间：">
@@ -115,9 +115,14 @@ export default {
         city: '',
         type: '',
         major: '',
+        cycle: '',
         format: '',
+        mode: '',
+        result: '',
         desc: '',
         needTime: '',
+        date1: '',
+        date2: ''
       },
       needTimeOptions:[{
         label: '10小时/周',
