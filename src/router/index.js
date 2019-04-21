@@ -187,9 +187,9 @@ let router = new Router({
       }
     },
     {
-      path: '/punch',
+      path: '/activity',
       components: {
-        default: resolve => require(['@/components/advantagePunchCard/index.vue'], resolve)
+        default: resolve => require(['@/components/activityName/index.vue'], resolve)
       },
       meta: {
         title: '优势打卡'
