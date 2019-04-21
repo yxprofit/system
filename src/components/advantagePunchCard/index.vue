@@ -78,9 +78,9 @@
               <div class="comment_title">
                 <p class="title">活动评价</p>
                 <div class="pagination" v-show="status==='3'">
-                  <i class="el-icon-arrow-left"></i>
-                  <span><b>1</b>/3</span>
-                  <i class="el-icon-arrow-right"></i>
+                  <button class="el-icon-arrow-left" @click.stop="prev"></button>
+                  <span><b>{{currentPage}}</b>/{{data.length}}</span>
+                  <button class="el-icon-arrow-right" @click.stop="next"></button>
                 </div>
               </div>
               <div class="punch_person" v-show="status==='1'">
@@ -94,13 +94,13 @@
                 <p class="look">去邀请评价，赢得行动力积分</p>
               </div>
               <div class="person_comment" v-show="status==='3'">
-                <div class="page">
-                  <div class="comment_content">余周周真的很棒，在活动中积极参与，完成度高，余周周真的很棒，在活动中积极参与，完成度高，余周周真的很棒，在活动中积极参与。</div>
+                <div class="page" v-show="currentPage===index+1" v-for="(item,index) in data" :key='index'>
+                  <div class="comment_content">{{item.content}}</div>
                   <div class="comment_user">
                     <img src="../../assets/images/icon/ad_3.png" alt="">
                     <div>
-                      <p class="user_name">用户名</p>
-                      <p class="comment_time">2019.3.20  16:02</p>
+                      <p class="user_name">{{item.username}}</p>
+                      <p class="comment_time">{{item.time}}</p>
                     </div>
                     <img src="../../assets/images/icon/icon_praise_selected.png" alt="">
                     <p class="wow">Wow</p>
@@ -169,7 +169,25 @@ export default {
     return {
       state: true,
       loading: true,
-      status: "2"
+      status: "3",
+      currentPage:1,
+      data:[
+        {
+          content:'余周周真的很棒，在活动中积极参与，完成度高，余周周真的很棒，在活动中积极参与，完成度高，余周周真的很棒，在活动中积极参与。',
+          username:'用户名',
+          time:'2019.3.20 16:02'
+        },
+        {
+          content:'余周周真的很棒，在活动中积极参与，完成度高，余周周真的很棒。',
+          username:'小黑黑',
+          time:'2019.2.08 13:15'
+        },
+        {
+          content:'余周周真的很棒，在活动中积极参与，完成度高，余周周真的很棒，在活动中积极参与，在活动中积极参与。',
+          username:'小明明',
+          time:'2019.1.12 09:10'
+        }
+      ]
     };
   },
   created() {
@@ -181,6 +199,18 @@ export default {
   methods: {
     handleClose() {
       this.$emit("close");
+    },
+    prev(){
+      if(this.currentPage <= 1){
+        return
+      }
+      this.currentPage--
+    },
+    next(){
+      if(this.currentPage >= this.data.length){
+        return
+      }
+      this.currentPage++
     }
   }
 };
@@ -395,12 +425,12 @@ export default {
         justify-content: space-between;
         align-items: center;
         .pagination {
-          i,
+          button,
           span {
             display: inline-block;
             vertical-align: middle;
           }
-          i {
+          button {
             width: 0.2rem;
             height: 0.2rem;
             background: #fff;
@@ -409,6 +439,11 @@ export default {
             cursor: pointer;
             color: rgba(188, 197, 204, 1);
             border: 1px solid rgba(188, 197, 204, 1);
+            margin-right: 0.12rem;
+            &:nth-of-type(2){
+              margin-left: .12rem;
+              margin-right: 0;
+            }
             &:hover {
               background: #fff;
               color: rgba(247, 151, 39, 1);
@@ -416,7 +451,6 @@ export default {
             }
           }
           span {
-            margin: 0 0.15rem;
             font-size: 0.14rem;
             b {
               font-family: MicrosoftYaHei-Bold;
