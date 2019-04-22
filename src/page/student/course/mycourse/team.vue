@@ -6,29 +6,26 @@
       </span>
       <div class="group">
         <ul class="list-group">
-          <li v-for="(item, index) in data" :key="index">
-            <h4>09级2班 0{{index}}组</h4>
-            <el-scrollbar tag="div" class="teamMain" wrap-class="wrap">
-              <div class="teamBlock" v-for="(item,index) in data" :key="index">
-                <div class="teamAvatar">
-                  <img :src="head">
-                  <span>欧阳娜娜</span>
-                </div>
-                <div class="teamText">
-                  欣赏美与卓越 | 欣赏美与卓越 | 欣赏
-                  美与卓越
-                </div>
-              </div>
-            </el-scrollbar>
-          </li>
+          <el-carousel :interval="0" arrow="always" :loop='false'>
+            <el-carousel-item v-for="(items, index) in data.length" :key="index">
+              <li class="li-group" v-for="(item, index) in data[index]" :key="index">
+                <h4>09级2班 0{{index}}组</h4>
+                <el-scrollbar tag="div" class="teamMain" wrap-class="wrap">
+                  <div class="teamBlock" v-for="(item,index) in item" :key="index">
+                    <div class="teamAvatar">
+                      <img :src="head">
+                      <span>欧阳娜娜</span>
+                    </div>
+                    <div class="teamText">
+                      欣赏美与卓越 | 欣赏美与卓越 | 欣赏
+                      美与卓越
+                    </div>
+                  </div>
+                </el-scrollbar>
+              </li>
+            </el-carousel-item>
+          </el-carousel>
         </ul>
-      </div>
-
-      <div class="group1-prev" @click="handlePrev('.list-group', 'group1Index', -1050)">
-        <i class="el-icon-arrow-left"></i>
-      </div>
-      <div class="group1-next" @click="handleNext('.list-group', 'group1Index', -1050, 'data', 5)">
-        <i class="el-icon-arrow-right"></i>
       </div>
     </el-dialog>
   </div>
@@ -44,7 +41,7 @@ export default {
     return {
       loading: true,
       head,
-      data: [1, 2, 3, 4, 5, 6, 7],
+      data: [[1,2,3],[4,5,6],[7,8,9]],
       group1Index: 0
     };
   },
@@ -57,23 +54,6 @@ export default {
   methods: {
     handleClose() {
       this.$emit("close");
-    },
-    handlePrev(el, listIndex, distance) {
-      if (this[listIndex] <= 0) {
-      } else {
-        this[listIndex]--;
-        let ele = document.querySelector(el);
-        ele.style.transform = `translateX( ${distance * this[listIndex]}px)`;
-        ele.style.transition = "all 0.3s ease";
-      }
-    },
-    handleNext(el, listIndex, distance, list, baseIndex) {
-      if (this[listIndex] < this[list].length - baseIndex) {
-        this[listIndex]++;
-        let ele = document.querySelector(el);
-        ele.style.transform = `translateX( ${distance * this[listIndex]}px)`;
-        ele.style.transition = "all 0.3s ease";
-      }
     }
   }
 };
@@ -82,7 +62,7 @@ export default {
 <style lang="scss" scoped>
 .el-scrollbar {
   height: 100%;
-  width: 3.4rem;
+  width: 3.33rem;
   overflow-y: auto;
   max-height: 5.45rem;
 }
@@ -119,17 +99,26 @@ export default {
     }
   }
   .group {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0 .2rem;
+    width: 11.4rem;
     ul {
       display: flex;
       justify-content: flex-start;
       flex-wrap: nowrap;
-      height: 6.45rem;
-      width: 11rem;
+      height: 5.77rem;
+      width: 100%;
+      overflow: hidden;
     }
     li {
       border: 0.01rem solid #e4e8ed;
       display: inline-block;
-      margin-right: 0.07rem;
+      margin-right: 0.1rem;
+      width: 3.33rem;
+      height: 5.77rem;
       &:last-child {
         margin-right: 0;
       }
@@ -194,26 +183,22 @@ export default {
   line-height: 34px;
   font-size: 18px;
   color: #fff;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 9999;
-
+  margin: 0 0.2rem;
   &:hover {
     background: rgba(247, 151, 39, 1);
     color: #fff;
   }
 }
-.group1-prev {
-  left: -60px;
-}
-.group1-next {
-  right: -60px;
-}
+// .group1-prev {
+//   left: -60px;
+// }
+// .group1-next {
+//   right: -60px;
+// }
 .team /deep/ .el-dialog {
   margin-top: 0.45rem !important;
-  height: 6.45rem;
-  width: 10.5rem;
+  height: 6.79rem;
+  width: 11.8rem;
 }
 .team /deep/ .el-dialog__body {
   overflow: hidden !important;
@@ -221,5 +206,27 @@ export default {
 }
 .team /deep/ .el-dialog__wrapper {
   overflow: hidden !important;
+}
+.team /deep/ .el-carousel {
+  height: 5.77rem;
+  width: 100%;
+  .el-carousel__container {
+    height: 5.77rem !important;
+    width: 10.3rem;
+    margin: 0 auto;
+  }
+  .el-carousel__arrow--right{
+    right: -.55rem;
+  }
+  .el-carousel__arrow--left{
+    left: -.55rem;
+  }
+  .el-carousel__arrow{
+    display: block !important;
+  }
+  .el-carousel__arrow:hover{
+    background-color: #F79727;
+    color: #fff;
+  }
 }
 </style>
