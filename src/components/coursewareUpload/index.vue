@@ -39,8 +39,8 @@
         </div>
       </div>
       <div class="submit-wrap">
-        <div class="over-btn">跳过</div>
-        <div class="submit">下一步</div>
+        <div class="over-btn" @click="submit">跳过</div>
+        <div class="submit" @click="submit">下一步</div>
       </div>
 
     </el-dialog>
@@ -75,6 +75,11 @@ export default {
     },
     handleChange (file, fileList) {
       console.log(file, fileList, 'filelist')
+    },
+    submit () {
+      this.visible = false
+      this.$emit('update:state', false)
+      this.$emit('invitative')
     }
   }
 }

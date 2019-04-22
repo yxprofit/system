@@ -72,7 +72,7 @@ import SaveTask from '@/page/teachers/course/saveTask'
 import DeleteWork from '@/page/teachers/course/deleteWork/deleteWork'
 import AddWorks from '@/page/teachers/course/addworks/addWorkTypes'
 import TeacherEditor from '@/page/ueditor/ueditor'
-/*组件方式引用 */
+/* 组件方式引用 */
 import draggable from 'vuedraggable'
 
 export default {

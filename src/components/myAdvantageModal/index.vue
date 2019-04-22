@@ -34,7 +34,7 @@
         </div>
       </div>
       <div class="submit-wrap">
-        <div class="submit" @click="handleClose">确定</div>
+        <div class="submit" @click="handleSubmit">确定</div>
       </div>
 
     </el-dialog>
@@ -58,7 +58,8 @@ export default {
       tagList: [
         {
           light: '',
-          gery: '',
+          grey: '',
+          icon: '',
           showLight: false,
           tipTitle: '判断性思维：',
           tipDesc: `遇到问题时主动分析搜集信
@@ -67,7 +68,8 @@ export default {
         },
         {
           light: '',
-          gery: '',
+          grey: '',
+          icon: '',
           showLight: false,
           tipTitle: '沟通技能：',
           tipDesc: `遇到问题时主动分析搜集信
@@ -76,7 +78,8 @@ export default {
         },
         {
           light: '',
-          gery: '',
+          grey: '',
+          icon: '',
           showLight: false,
           tipTitle: '团队协作：',
           tipDesc: `遇到问题时主动分析搜集信
@@ -86,6 +89,7 @@ export default {
         {
           light: '',
           gery: '',
+          icon: '',
           showLight: false,
           tipTitle: '创造力：',
           tipDesc: `遇到问题时主动分析搜集信
@@ -95,6 +99,7 @@ export default {
         {
           light: '',
           gery: '',
+          icon: '',
           showLight: false,
           tipTitle: '世界公民：',
           tipDesc: `遇到问题时主动分析搜集信
@@ -104,6 +109,7 @@ export default {
         {
           light: '',
           gery: '',
+          icon: '',
           showLight: false,
           tipTitle: '自我认知：',
           tipDesc: `遇到问题时主动分析搜集信
@@ -113,6 +119,7 @@ export default {
         {
           light: '',
           gery: '',
+          icon: '',
           showLight: false,
           tipTitle: '自我管理：',
           tipDesc: `遇到问题时主动分析搜集信
@@ -122,6 +129,7 @@ export default {
         {
           light: '',
           gery: '',
+          icon: '',
           showLight: false,
           tipTitle: '社会意识：',
           tipDesc: `遇到问题时主动分析搜集信
@@ -131,6 +139,7 @@ export default {
         {
           light: '',
           gery: '',
+          icon: '',
           showLight: false,
           tipTitle: '关系建立：',
           tipDesc: `遇到问题时主动分析搜集信
@@ -140,6 +149,7 @@ export default {
         {
           light: '',
           gery: '',
+          icon: '',
           showLight: false,
           tipTitle: '决策能力：',
           tipDesc: `遇到问题时主动分析搜集信
@@ -176,12 +186,22 @@ export default {
             this.tagList[index].gery = res
           }
         )
+
+        import(`../../assets/images/advantage/icon${index + 1}_1.png`).then(res => {
+          this.tagList[index].icon = res
+        })
       })
     },
     handleClose () {
       this.visible = false
       this.$emit('update:state', false)
       this.$emit('close')
+    },
+    handleSubmit () {
+      this.visible = false
+      this.$emit('update:state', false)
+      var list = this.tagList.filter(item => item.showLight)
+      this.$emit('ability', list)
     },
     handleSelectTag (tag, index) {
       let originTag = JSON.parse(JSON.stringify(tag))
