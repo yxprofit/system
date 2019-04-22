@@ -2,7 +2,7 @@
   <div class="questionnaire">
     <div class="questionnaire-header">
       <div class="questionnaire-header__title">
-        <img src="../../assets/images/decoration.png" alt>
+        中小学项目学期前测
       </div>
     </div>
     <div class="questionnaire-tip">
@@ -254,6 +254,7 @@ export default {
       width: 3.63rem;
       margin: 0 auto;
       text-align: center;
+      background: url('../../assets/images/decoration.png') no-repeat;
     }
   }
 
