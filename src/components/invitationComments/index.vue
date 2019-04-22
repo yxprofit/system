@@ -82,8 +82,8 @@
       </div>
 
       <div class="submit-wrap">
-        <div class="over-btn">跳过</div>
-        <div class="submit">确认邀请</div>
+        <div class="over-btn" @click="handleClose">跳过</div>
+        <div class="submit" @click="submit">确认邀请</div>
       </div>
     </el-dialog>
   </div>
@@ -172,6 +172,11 @@ export default {
       this.visible = false
       this.$emit('update:state', false)
       this.$emit('close')
+    },
+    submit () {
+      this.visible = false
+      this.$emit('update:state', false)
+      this.$emit('success')
     },
     handleConditionChange () {},
     selectInvitation (scope) {

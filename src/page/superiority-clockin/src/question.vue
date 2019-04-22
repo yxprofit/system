@@ -23,9 +23,9 @@
         <el-col class="acrion-btn" :span="12">
           <button v-if="showAddAbilitBtn" @click="addOperate">添加能力应用标签</button>
           <ul v-else class="shown-list ability">
-            <li v-for="(item,index) in superiorites" :key="index">
-              <img :src="item.imgsrc" alt="">
-              <p>{{item.title}}</p>
+            <li v-for="(item,index) in abilities" :key="index">
+              <img :src="item.icon" alt="">
+              <p>{{item.tipTitle}}</p>
             </li>
           </ul>
         </el-col>
@@ -80,9 +80,11 @@
       <button @click="handleNext">下一步</button>
     </div>
     <add-superiority-dialog @change="handleSuperiChange" ref="addSuperiorityDialog"></add-superiority-dialog>
-    <my-advantage :state.sync="isShowAdvantage"></my-advantage>
-    <!-- <courseware-upload :state.sync="isShowAdvantage"></courseware-upload> -->
-    <!-- <no-select :state.sync="isShowAdvantage"></no-select> -->
+    <my-advantage :state.sync="isShowAdvantage" @ability="handleAbility"></my-advantage>
+    <no-select :state.sync="isShowNoSelect"></no-select>
+    <courseware-upload :state.sync="isShowUpload" @invitative="handleInvitative"></courseware-upload>
+    <invitation-comments :state.sync="isShowComments" @success="handleSuccess"></invitation-comments>
+    <invitation-success :state.sync="isShowSuccess"></invitation-success>
   </div>
 </template>
 <script>
@@ -92,17 +94,25 @@ import AddSuperiorityDialog from './add-superiority-dialog.vue'
 import MyAdvantage from '@/components/myAdvantageModal'
 import CoursewareUpload from '@/components/coursewareUpload'
 import NoSelect from '@/components/notSelectTag'
+import InvitationSuccess from '@/components/invitationSuccess'
+import InvitationComments from '@/components/invitationComments'
 export default {
   components: {
     ItemInput,
     AddSuperiorityDialog,
     MyAdvantage,
     CoursewareUpload,
-    NoSelect
+    NoSelect,
+    InvitationSuccess,
+    InvitationComments
   },
   data () {
     return {
       isShowAdvantage: false,
+      isShowNoSelect: false,
+      isShowUpload: false,
+      isShowComments: false,
+      isShowSuccess: false,
       activity1,
       superiorites: [],
       abilities: [],
@@ -183,8 +193,23 @@ export default {
     }
   },
   methods: {
+    handleAbility (list) {
+      console.log(list, 'list')
+      this.abilities = list
+    },
+    handleInvitative () {
+      this.isShowComments = true
+    },
+    handleSuccess () {
+      this.isShowSuccess = true
+    },
     handleNext () {
-
+      console.log(this.superiorites.length, this.abilities.length, this.abilities.length <= 0 || this.superiorites.length <= 0, 'text')
+      if (this.abilities.length > 0 || this.superiorites.length > 0) {
+        this.isShowUpload = true
+      } else {
+        this.isShowNoSelect = true
+      }
     },
     addSuperiority () {
       this.$refs.addSuperiorityDialog.show()

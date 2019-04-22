@@ -17,8 +17,8 @@
       </div>
 
       <div class="btn-wrap">
-        <div class="btn-left">知道了</div>
-        <div class="btn-right">查看打卡记录</div>
+        <div class="btn-left" @click="handleClose">知道了</div>
+        <div class="btn-right" @click="handleLook">查看打卡记录</div>
       </div>
     </el-dialog>Z
   </div>
@@ -48,6 +48,11 @@ export default {
       this.visible = false
       this.$emit('update:state', false)
       this.$emit('close')
+    },
+    handleLook () {
+      this.visible = false
+      this.$emit('update:state', false)
+      this.$emit('record')
     }
   }
 }
