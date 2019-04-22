@@ -80,20 +80,23 @@
       <button>下一步</button>
     </div>
     <add-superiority-dialog @change="handleSuperiChange" ref="addSuperiorityDialog"></add-superiority-dialog>
+     <my-advantage :state.sync="isShowAdvantage"></my-advantage>
   </div>
 </template>
 <script>
-import activity1 from 'assets/images/superiority/activity-01.jpg';
-import ItemInput from './item-input';
+import activity1 from 'assets/images/superiority/activity-01.jpg'
+import ItemInput from './item-input'
 import AddSuperiorityDialog from './add-superiority-dialog.vue'
-
+ import MyAdvantage from '@/components/myAdvantageModal'
 export default {
   components: {
     ItemInput,
     AddSuperiorityDialog,
+    MyAdvantage
   },
-  data() {
+  data () {
     return {
+      isShowAdvantage: false,
       activity1,
       superiorites: [],
       abilities: [],
@@ -117,7 +120,7 @@ export default {
           label: '担任的角色2'
         }
       ],
-      timeOps:[
+      timeOps: [
         {
           value: '1',
           label: '2019-04-20'
@@ -166,24 +169,24 @@ export default {
     }
   },
   computed: {
-    showAddSupBtn() {
-      return this.superiorites.length <= 0;
+    showAddSupBtn () {
+      return this.superiorites.length <= 0
     },
-    showAddAbilitBtn() {
-      return this.abilities.length <= 0;
+    showAddAbilitBtn () {
+      return this.abilities.length <= 0
     }
   },
-  methods:{
-    addSuperiority() {
-      this.$refs.addSuperiorityDialog.show();
+  methods: {
+    addSuperiority () {
+      this.$refs.addSuperiorityDialog.show()
     },
-    addOperate() {
-
+    addOperate () {
+      this.isShowAdvantage = true
     },
-    handleSuperiChange(list) {
-      this.superiorites = list;
+    handleSuperiChange (list) {
+      this.superiorites = list
     },
-    handleChange(obj) {
+    handleChange (obj) {
       this.questions[obj.prop] = obj.val
 
       console.log(this.questions)
@@ -389,5 +392,3 @@ export default {
   }
 }
 </style>
-
-
