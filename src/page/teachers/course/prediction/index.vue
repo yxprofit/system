@@ -297,6 +297,9 @@ export default {
   color: #f79727;
   padding: 0.2rem 0.15rem;
   box-sizing: border-box;
+  font-size: 12px;
+  line-height: 1.5em;
+  letter-spacing: 1px;
 }
 
 .test-wrap {
