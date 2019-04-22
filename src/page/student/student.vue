@@ -113,6 +113,7 @@ export default {
       text-align: left;
       font-size: 0.15rem;
       color: #666;
+      cursor: pointer;
       &.active {
         border-left: 0.03rem solid #f79727;
         background: rgba(252, 244, 235, 1);

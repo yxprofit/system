@@ -65,7 +65,7 @@
         </el-form-item>
       </el-form>
       <ul class="question-list">
-        <li class="question-list-item" v-for="(item,index) in questionList">
+        <li class="question-list-item" v-for="(item,index) in questionList" :key="index">
           <span  :content="index+1" class="index"><img :src="indexPic" alt=""></span>
           <div class="title">
             <div class="tag">{{item.tag}}</div>
@@ -83,6 +83,9 @@
       <img class="right-img" :src="quesRight" alt="">
     </div>
     <add-superiority-dialog @change="handleSuperiChange" ref="addSuperiorityDialog"></add-superiority-dialog>
+    <my-advantage :state.sync="isShowAdvantage"></my-advantage>
+    <!-- <courseware-upload :state.sync="isShowAdvantage"></courseware-upload> -->
+    <!-- <no-select :state.sync="isShowAdvantage"></no-select> -->
   </div>
 </template>
 <script>
@@ -99,6 +102,9 @@ import brave from 'assets/images/superiority/brave.png'
 import teamSpirit from 'assets/images/superiority/teamSpirit.png'
 import ItemInput from './item-input';
 import AddSuperiorityDialog from './add-superiority-dialog.vue'
+import MyAdvantage from '@/components/myAdvantageModal'
+import CoursewareUpload from '@/components/coursewareUpload'
+import NoSelect from '@/components/notSelectTag'
 let mockData= [{
     imgSrc: activity2,
     id: 111,
@@ -164,14 +170,19 @@ let mockData= [{
     result: '',
     superiorites:[]
   }]
+
 export default {
   components: {
     ItemInput,
     AddSuperiorityDialog,
+    MyAdvantage,
+    CoursewareUpload,
+    NoSelect
   },
-  data() {
+  data () {
     return {
       indexPic,
+      isShowAdvantage: false,
       activity1,
       superiorites: [],
       abilities: [],
@@ -196,7 +207,7 @@ export default {
           label: '担任的角色2'
         }
       ],
-      timeOps:[
+      timeOps: [
         {
           value: '1',
           label: '2019-04-20'
@@ -242,11 +253,11 @@ export default {
     }
   },
   computed: {
-    showAddSupBtn() {
-      return this.superiorites.length <= 0;
+    showAddSupBtn () {
+      return this.superiorites.length <= 0
     },
-    showAddAbilitBtn() {
-      return this.abilities.length <= 0;
+    showAddAbilitBtn () {
+      return this.abilities.length <= 0
     }
   },
   created() {
@@ -258,11 +269,14 @@ export default {
     addSuperiority() {
       this.$refs.addSuperiorityDialog.show();
     },
-    addOperate() {
+    handleNext () {
 
     },
-    handleSuperiChange(list) {
-      this.superiorites = list;
+    addSuperiority () {
+      this.$refs.addSuperiorityDialog.show()
+    },
+    addOperate () {
+      this.isShowAdvantage = true
     },
     handleChange(obj) {
       this.form[obj.prop] = obj.val
@@ -273,6 +287,9 @@ export default {
         this.form[key] =data[key]
       }
       this.superiorites = data.superiorites
+    },
+    handleSuperiChange (list) {
+      this.superiorites = list
     }
   },
   watch:{
@@ -505,5 +522,3 @@ export default {
   }
 }
 </style>
-
-

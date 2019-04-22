@@ -160,6 +160,7 @@ export default {
 </script>
 <style lang="scss">
 .custom-activity{
+  height: 8rem;
   .el-dialog__header {
     height: 0.6rem;
     line-height: 0.6rem;

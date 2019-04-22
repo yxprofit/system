@@ -110,7 +110,6 @@
         <button class="load-btn" @click="loadmore">查看更多</button>
       </div>
     </div>
-    
 
     <!--  -->
     <work-details :info="itemInfo" :state="detailsShow" v-on:close="changedetails" />
@@ -134,7 +133,6 @@ import icon_40 from 'assets/images/icon/icon_40.png'
 import icon_42 from 'assets/images/icon/icon_42.png'
 import icon_task_close from 'assets/images/icon/icon_task_close.png'
 import zan from 'assets/images/student/zan.png'
-
 
 export default{
 	components: {
@@ -180,8 +178,8 @@ export default{
     }
   },
   methods: {
-    handleLike(listItem) {
-      console.log(listItem);
+    handleLike (listItem) {
+      console.log(listItem)
       let index = this.data.findIndex(item => listItem.id === item.id)
       if (listItem.isLike) {
         this.data[index]['liked'] -= 1
@@ -190,7 +188,7 @@ export default{
       }
       this.data[index]['isLike'] = !this.data[index]['isLike']
     },
-    handleConditionChange() {
+    handleConditionChange () {
       let data = {
         classHoure: this.classHoure,
         course: this.course,
@@ -198,11 +196,10 @@ export default{
         classes: this.classes
       }
       // 发送请求筛选Lists
-
     },
-    getSearchOptions() {
+    getSearchOptions () {
       // 发送请求获取搜索框选项
-      setTimeout(()=>{
+      setTimeout(() => {
         this.classHoureOptions = [{
           value: '1',
           label: '课时1'
@@ -224,7 +221,7 @@ export default{
           value: '2',
           label: '作品2'
         }]
-        this.classesOptions=[{
+        this.classesOptions = [{
           value: '1',
           label: '班级1'
         }, {
@@ -240,9 +237,9 @@ export default{
       this.col = col
     },
     loadmore (index) {
-      const generateId = function() {
-        return Math.floor(Math.random() * 10000);
-      };
+      const generateId = function () {
+        return Math.floor(Math.random() * 10000)
+      }
       let arr = [
         {
           img: pic1,
@@ -316,14 +313,14 @@ export default{
       ]
       this.data = this.data.concat(arr)
     },
-    changedetails(data){
-      this.itemInfo = data;
-      this.detailsShow = !this.detailsShow;
+    changedetails (data) {
+      this.itemInfo = data
+      this.detailsShow = !this.detailsShow
     },
-    changeUpload(){
-      this.uploadShow = !this.uploadShow;
+    changeUpload () {
+      this.uploadShow = !this.uploadShow
     }
-  },
+  }
 }
 </script>
 
@@ -362,11 +359,11 @@ export default{
       &:after{
         content: '';
         position: absolute;
-        width: 0.18rem;
-        height: 0.2rem;
+        width: 0.16rem;
+        height: 0.14rem;
         top: 0.11rem;
         left: 0.1rem;
-        background-image: url('../../../../assets/images/icon/icon_mycourse.png');
+        background-image: url('../../../../assets/images/icon/icon_course_pic.png');
       }
     }
     .teandsearch {

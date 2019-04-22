@@ -260,11 +260,11 @@ export default {
       &:after {
         content: "";
         position: absolute;
-        width: 0.18rem;
-        height: 0.2rem;
+        width: 0.16rem;
+        height: 0.16rem;
         top: 0.25rem;
         left: 0.08rem;
-        background-image: url("../../../../assets/images/icon/icon_mycourse.png");
+        background-image: url("../../../../assets/images/icon/s2.png");
       }
     }
     .search {

@@ -47,7 +47,7 @@
         <div class="right">
           <h4>您选中的优势</h4>
           <ul class="selected-list">
-            <li class="selected-list-item" v-for="item in seletedList">
+            <li class="selected-list-item" v-for="(item,index) in seletedList" :key="index">
               <img :src="item.imgsrc"  alt="">
               <p :class="item.type">{{item.title}}</p>
               <i class="remove-icon" @click="handleRemove(item.prop)"></i>
