@@ -1,7 +1,7 @@
 <template>
-	<div class="details" v-loading="loading">
+  <div class="details" v-loading="loading">
     <el-dialog class="details-dialog" :visible.sync="state" :before-close="handleClose">
-			<div slot="title" class="punch">
+      <div slot="title" class="punch">
         <div class="name">
           <p>完整优势打卡的展示</p>
           <div class="button">置顶到成长档案</div>
@@ -12,124 +12,155 @@
             <div class="advantage">
               <div class="ad_left">
                 <div>
-                  <img src="../../assets/images/icon/ad1.png" alt="" class="ad_left_img">
+                  <img src="../../assets/images/icon/ad1.png" alt class="ad_left_img">
                   <p>灵性</p>
                 </div>
                 <div>
-                  <img src="../../assets/images/icon/ad2.png" alt="" class="ad_left_img">
+                  <img src="../../assets/images/icon/ad2.png" alt class="ad_left_img">
                   <p>公平</p>
                 </div>
                 <div>
-                  <img src="../../assets/images/icon/ad3.png" alt="" class="ad_left_img">
+                  <img src="../../assets/images/icon/ad3.png" alt class="ad_left_img">
                   <p>勇敢</p>
                 </div>
               </div>
               <div class="line"></div>
               <div class="ad_right">
                 <div>
-                  <img src="../../assets/images/icon/ad4.png" alt="" class="ad_right_img">
+                  <img src="../../assets/images/icon/ad4.png" alt class="ad_right_img">
                   <p>批判思维</p>
                 </div>
-                 <div>
-                  <img src="../../assets/images/icon/ad5.png" alt="" class="ad_right_img">
+                <div>
+                  <img src="../../assets/images/icon/ad5.png" alt class="ad_right_img">
                   <p>自我管理</p>
                 </div>
-                 <div>
-                  <img src="../../assets/images/icon/ad6.png" alt="" class="ad_right_img">
+                <div>
+                  <img src="../../assets/images/icon/ad6.png" alt class="ad_right_img">
                   <p>关系建立</p>
                 </div>
               </div>
-
             </div>
             <!-- 查看作品 -->
             <div class="works" @click="jumpTo18">
               <div>
-                <img src="../../assets/images/icon/ad_works.png" alt="">
+                <img src="../../assets/images/icon/ad_works.png" alt>
                 <p>活动名称民乐社团（样本范例）</p>
               </div>
               <div>
                 <p>查看作品</p>
-                <img src="../../assets/images/icon/ad_next.png" alt="">
+                <img src="../../assets/images/icon/ad_next.png" alt>
               </div>
             </div>
             <!-- 问答 -->
             <section class="qa">
-              <p><i>Situation：</i>当时的情况/挑战是什么？</p>
-              <div>我最喜欢的数学课学到很难得概念，我学不懂，测验失利</div>
-              <p><i>Action：</i>你的主要行动是什么? </p>
-              <div>我主动找老师课后问问题，我和最好的朋友约着一起对卷子，我安慰自己，很快恢复了情绪，我主动找老师课后问问题，我和最好的朋友约着一起对卷子，我安慰自己，很快恢复了情绪，我主动找老师课后问问题，我和最好的朋友约着一起对卷子，我安慰自己，很快恢复了情绪。我主动找老师课后问问题，我和最好的朋十九</div>
-              <p><i>Results：</i>结果如何?</p>
-              <div>周末作业我都完成了，也都会了</div>
+              <p>
+                <i>Situation：</i>当时的情况/挑战是什么？
+              </p>
+              <textarea id="textArea">我最喜欢的数学课学到很难得概念，我学不懂，测验失利</textarea>
+              <p>
+                <i>Action：</i>你的主要行动是什么?
+              </p>
+              <textarea id="textArea">我主动找老师课后问问题，我和最好的朋友约着一起对卷子，我安慰自己，很快恢复了情绪，我主动找老师课后问问题，我和最好的朋友约着一起对卷子，我安慰自己，很快恢复了情绪，我主动找老师课后问问题，我和最好的朋友约着一起对卷子，我安慰自己，很快恢复了情绪。我主动找老师课后问问题，我和最好的朋十九</textarea>
+              <p>
+                <i>Results：</i>结果如何?
+              </p>
+              <textarea id="textArea">周末作业我都完成了，也都会了</textarea>
             </section>
           </div>
           <div class="middle_line"></div>
           <div class="right">
             <div class="punch_detail">
-              <p>打卡时间：<i>2019.3.19</i></p>
-              <p>活动类型：<i>学科活动</i></p>
-              <p>科目方向：<i>stem</i></p>
-              <p>担任角色：<i>队长</i></p>
-              <p>参与时间：<i>7天</i></p>
-              <p>本次花费时间：<i>2天</i></p>
+              <p>
+                打卡时间：
+                <i>2019.3.19</i>
+              </p>
+              <p>
+                活动类型：
+                <i>学科活动</i>
+              </p>
+              <p>
+                科目方向：
+                <i>stem</i>
+              </p>
+              <p>
+                担任角色：
+                <i>队长</i>
+              </p>
+              <p>
+                参与时间：
+                <i>7天</i>
+              </p>
+              <p>
+                本次花费时间：
+                <i>2天</i>
+              </p>
             </div>
             <div class="comment">
               <div class="comment_title">
                 <p class="title">活动评价</p>
                 <div class="pagination" v-show="status==='3'">
                   <button class="el-icon-arrow-left" @click.stop="prev"></button>
-                  <span><b>{{currentPage}}</b>/{{data.length}}</span>
+                  <span>
+                    <b>{{currentPage}}</b>
+                    /{{data.length}}
+                  </span>
                   <button class="el-icon-arrow-right" @click.stop="next"></button>
                 </div>
               </div>
               <div class="punch_person" v-show="status==='1'">
-                <img src="../../assets/images/icon/ad_1.png" alt="">
+                <img src="../../assets/images/icon/ad_1.png" alt>
                 <p class="assess">你邀请的对象尚未完成评价</p>
                 <p class="look">稍后查看</p>
               </div>
               <div class="punch_person" v-show="status==='2'">
-                <img src="../../assets/images/icon/ad_2.png" alt="">
+                <img src="../../assets/images/icon/ad_2.png" alt>
                 <p class="assess">暂无活动评价</p>
                 <p class="look">去邀请评价，赢得行动力积分</p>
               </div>
               <div class="person_comment" v-show="status==='3'">
-                <div class="page" v-show="currentPage===index+1" v-for="(item,index) in data" :key='index'>
+                <div
+                  class="page"
+                  v-show="currentPage===index+1"
+                  v-for="(item,index) in data"
+                  :key="index"
+                >
                   <div class="comment_content">{{item.content}}</div>
                   <div class="comment_user">
-                    <img src="../../assets/images/icon/ad_3.png" alt="">
+                    <img src="../../assets/images/icon/ad_3.png" alt>
                     <div>
                       <p class="user_name">{{item.username}}</p>
                       <p class="comment_time">{{item.time}}</p>
                     </div>
-                    <img src="../../assets/images/icon/icon_praise_selected.png" alt="">
+                    <img src="../../assets/images/icon/icon_praise_selected.png" alt>
                     <p class="wow">Wow</p>
                   </div>
                   <p class="ad_tag">优势标签</p>
                   <ul>
                     <li>
-                      <img src="../../assets/images/icon/ad1.png" alt="">
+                      <img src="../../assets/images/icon/ad1.png" alt>
                       <span>灵性</span>
                     </li>
                     <li>
-                      <img src="../../assets/images/icon/ad2.png" alt="">
+                      <img src="../../assets/images/icon/ad2.png" alt>
                       <span>公平</span>
                     </li>
                     <li>
-                      <img src="../../assets/images/icon/ad3.png" alt="">
+                      <img src="../../assets/images/icon/ad3.png" alt>
                       <span>勇敢</span>
                     </li>
                   </ul>
                   <p class="ad_tag">技能标签</p>
                   <ul>
                     <li>
-                      <img src="../../assets/images/icon/ad4.png" alt="">
+                      <img src="../../assets/images/icon/ad4.png" alt>
                       <span>批判思维</span>
                     </li>
                     <li>
-                      <img src="../../assets/images/icon/ad5.png" alt="">
+                      <img src="../../assets/images/icon/ad5.png" alt>
                       <span>自我管理</span>
                     </li>
                     <li>
-                      <img src="../../assets/images/icon/ad6.png" alt="">
+                      <img src="../../assets/images/icon/ad6.png" alt>
                       <span>关系建立</span>
                     </li>
                   </ul>
@@ -137,16 +168,15 @@
               </div>
             </div>
           </div>
-            
         </div>
         <footer>
           <button class="button1" v-show="status==='1'||status==='2'">完成并关闭</button>
           <button class="button2" v-show="status==='1'||status==='2'">继续打卡</button>
           <button class="button2" v-show="status==='3'">完成并关闭</button>
         </footer>
-			</div>
+      </div>
     </el-dialog>
-	</div>
+  </div>
 </template>
 
 <script>
@@ -160,28 +190,31 @@ export default {
     },
     status: {
       type: String,
-      default: '2'
+      default: "2"
     }
   },
   data() {
     return {
       loading: true,
-      currentPage:1,
-      data:[
+      currentPage: 1,
+      data: [
         {
-          content:'余周周真的很棒，在活动中积极参与，完成度高，余周周真的很棒，在活动中积极参与，完成度高，余周周真的很棒，在活动中积极参与。',
-          username:'用户名',
-          time:'2019.3.20 16:02'
+          content:
+            "余周周真的很棒，在活动中积极参与，完成度高，余周周真的很棒，在活动中积极参与，完成度高，余周周真的很棒，在活动中积极参与。",
+          username: "用户名",
+          time: "2019.3.20 16:02"
         },
         {
-          content:'余周周真的很棒，在活动中积极参与，完成度高，余周周真的很棒。',
-          username:'小黑黑',
-          time:'2019.2.08 13:15'
+          content:
+            "余周周真的很棒，在活动中积极参与，完成度高，余周周真的很棒。",
+          username: "小黑黑",
+          time: "2019.2.08 13:15"
         },
         {
-          content:'余周周真的很棒，在活动中积极参与，完成度高，余周周真的很棒，在活动中积极参与，在活动中积极参与。',
-          username:'小明明',
-          time:'2019.1.12 09:10'
+          content:
+            "余周周真的很棒，在活动中积极参与，完成度高，余周周真的很棒，在活动中积极参与，在活动中积极参与。",
+          username: "小明明",
+          time: "2019.1.12 09:10"
         }
       ]
     };
@@ -196,20 +229,20 @@ export default {
     handleClose() {
       this.$emit("close");
     },
-    jumpTo18(){
-      this.$emit('showActivity')
+    jumpTo18() {
+      this.$emit("showActivity");
     },
-    prev(){
-      if(this.currentPage <= 1){
-        return
+    prev() {
+      if (this.currentPage <= 1) {
+        return;
       }
-      this.currentPage--
+      this.currentPage--;
     },
-    next(){
-      if(this.currentPage >= this.data.length){
-        return
+    next() {
+      if (this.currentPage >= this.data.length) {
+        return;
       }
-      this.currentPage++
+      this.currentPage++;
     }
   }
 };
@@ -252,6 +285,7 @@ export default {
       text-align: center;
       line-height: 0.4rem;
       border-radius: 0.06rem;
+      cursor: pointer;
     }
   }
   .content {
@@ -344,6 +378,7 @@ export default {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        cursor: pointer;
         > div {
           &:nth-of-type(1) {
             display: flex;
@@ -384,7 +419,7 @@ export default {
             font-weight: bold;
           }
         }
-        > div {
+        > textarea {
           background: rgba(255, 248, 240, 1);
           border-radius: 0.06rem;
           font-size: 0.14rem;
@@ -394,19 +429,13 @@ export default {
           padding: 0.18rem 0.31rem 0 0.2rem;
           line-height: 0.26rem;
           box-sizing: border-box;
-          &:nth-of-type(1) {
-            height: 0.6rem;
-            max-height: 1.06rem;
-            overflow: auto;
-          }
-          &:nth-of-type(2) {
-            max-height: 1.06rem;
-            overflow: auto;
-          }
-          &:nth-of-type(3) {
-            height: 0.6rem;
-            min-height: 0.6rem;
-            overflow: auto;
+          width: 100%;
+          resize: none;
+          min-height: 0.6rem;
+          max-height: 1.04rem;
+          overflow: auto;
+          &:nth-of-type(2){
+            height: 1.04rem;
           }
         }
       }
@@ -439,8 +468,8 @@ export default {
             color: rgba(188, 197, 204, 1);
             border: 1px solid rgba(188, 197, 204, 1);
             margin-right: 0.12rem;
-            &:nth-of-type(2){
-              margin-left: .12rem;
+            &:nth-of-type(2) {
+              margin-left: 0.12rem;
               margin-right: 0;
             }
             &:hover {
@@ -483,7 +512,7 @@ export default {
             transform: translateY(-50%);
             left: 0.27rem;
           }
-          i{
+          i {
             color: #333;
           }
         }
