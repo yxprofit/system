@@ -28,11 +28,11 @@
             <!-- 问答 -->
             <section class="qa">
               <p><i>Situation：</i>当时的情况/挑战是什么？</p>
-              <div>我最喜欢的数学课学到很难得概念，我学不懂，测验失利（不超过140字）</div>
+              <textarea maxlength="140">我最喜欢的数学课学到很难得概念，我学不懂，测验失利（不超过140字）</textarea>
               <p><i>Action：</i>你的主要行动是什么? （结合你的优势，你具体的行动是什么）</p>
-              <div>我主动找老师课后问问题，我和最好的朋友约着一起对卷子，我安慰自己，很快恢复了情绪，我主动找老师课后问问题，我和最好的朋友约着一起对卷子，我安慰自己，很快恢复了情绪，我主动找老师课后问问题，我和最好的朋友约着一起对卷子，我安慰自己，很快恢复了情绪。我主动找老师课后问问题，我和最好的朋十九</div>
+              <textarea>我主动找老师课后问问题，我和最好的朋友约着一起对卷子，我安慰自己，很快恢复了情绪，我主动找老师课后问问题，我和最好的朋友约着一起对卷子，我安慰自己，很快恢复了情绪，我主动找老师课后问问题，我和最好的朋友约着一起对卷子，我安慰自己，很快恢复了情绪。我主动找老师课后问问题，我和最好的朋十九</textarea>
               <p><i>Results：</i>结果如何?</p>
-              <div>周末作业我都完成了，也都会了</div>
+              <textarea>周末作业我都完成了，也都会了</textarea>
             </section>
           </div>
           <div class="right">
@@ -178,7 +178,7 @@ export default {
             font-weight: bold;
           }
         }
-        > div {
+        > textarea {
           background: #fff;
           border-radius: 0.06rem;
           font-size: 0.14rem;
@@ -191,6 +191,8 @@ export default {
           height: 1rem;
           max-height: 1rem;
           overflow: auto;
+          width: 100%;
+          resize: none;
         }
       }
     }
@@ -232,6 +234,7 @@ export default {
         padding: .18rem;
         box-sizing: border-box;
         margin: .16rem 0 .2rem;
+        resize: none;
       }
       .add_ad_button{
         display: flex;
