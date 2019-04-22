@@ -262,7 +262,7 @@ export default {
 <style lang="scss" scoped>
 .prediction-wrap {
   width: 5.5rem;
-  height: 6.3rem;
+  height: 6.54rem;
   background: #fff;
   padding: 0.24rem;
   box-sizing: border-box;

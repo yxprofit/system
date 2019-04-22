@@ -34,7 +34,7 @@
         </div>
       </div>
       <div class="submit-wrap">
-        <div class="submit">确定</div>
+        <div class="submit" @click="handleClose">确定</div>
       </div>
 
     </el-dialog>
@@ -147,7 +147,8 @@ export default {
 动的技能`
         }
       ],
-      isOK: false
+      isOK: false,
+      timer: null
     }
   },
   watch: {
@@ -184,31 +185,54 @@ export default {
     },
     handleSelectTag (tag, index) {
       let originTag = JSON.parse(JSON.stringify(tag))
+
        if (tag.showLight) {
          this.isWarn = false
         this.selectTagNumber--
       }
       if (this.selectTagNumber < 3) {
         this.isWarn = false
-        this.isOK = false
         if (!tag.showLight) {
           this.selectTagNumber++
         }
         this.tagList[index].showLight = !this.tagList[index].showLight
       } else {
+        this.isWarn = true
+        this.timer = setTimeout(() => {
+          clearTimeout(this.timer)
+          this.isWarn = false
+        }, 3000)
         this.tagList[index].showLight = false
       }
 
-      if (this.selectTagNumber === 3 && !originTag.showLight && this.isOK) {
-        this.isWarn = true
-        this.isOK = false
-      } else {
-        this.isWarn = false
-      }
+      console.log(this.selectTagNumber, 'select')
 
-      if (!originTag.showLight && this.selectTagNumber === 3) {
-        this.isOK = true
-      }
+      // 这个逻辑太复杂， 这种交互BUG较多
+      //  if (tag.showLight) {
+      //    this.isWarn = false
+      //   this.selectTagNumber--
+      // }
+      // if (this.selectTagNumber < 3) {
+      //   this.isWarn = false
+      //   this.isOK = false
+      //   if (!tag.showLight) {
+      //     this.selectTagNumber++
+      //   }
+      //   this.tagList[index].showLight = !this.tagList[index].showLight
+      // } else {
+      //   this.tagList[index].showLight = false
+      // }
+
+      // if (this.selectTagNumber === 3 && !originTag.showLight && this.isOK) {
+      //   this.isWarn = true
+      //   this.isOK = false
+      // } else {
+      //   this.isWarn = false
+      // }
+
+      // if (!originTag.showLight && this.selectTagNumber === 3) {
+      //   this.isOK = true
+      // }
     }
   }
 }
