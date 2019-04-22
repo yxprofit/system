@@ -262,6 +262,7 @@ export default {
 <style lang="scss" scoped>
 .prediction-wrap {
   width: 5.5rem;
+  height: 6.3rem;
   background: #fff;
   padding: 0.24rem;
   box-sizing: border-box;
@@ -388,7 +389,7 @@ export default {
 }
 
 .user-textarea {
-  height: 2.8rem;
+  height: 2.4rem;
   width: 100%;
   resize: none;
   border: 1px solid rgba(238, 238, 238, 1);
