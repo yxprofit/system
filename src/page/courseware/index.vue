@@ -6,6 +6,7 @@
           <div class="step">
             <div ref="stepImg" class="stepimg" >
               <img class="step-content" :style="imgClacStyle" :src="page === 1 ? material : details1">
+              <img class="step-content" :style="imgClacStyle" :src="page === 1 ? material : details1">
             </div>
           </div>
           <div class="stepbut">
@@ -61,22 +62,22 @@
 </template>
 
 <script>
-import screenfull from "screenfull";
-import material from "assets/images/student/material.png";
-import details1 from "assets/images/details1.png";
-import allPrint from "assets/images/48.png";
-import closePrint from "assets/images/49.png";
-import PopupModal from '@/components/popup';
-import SaveTask from "@/page/teachers/course/saveTask";
-import DeleteWork from "@/page/teachers/course/deleteWork/deleteWork";
-import AddWorks from "@/page/teachers/course/addworks/addWorkTypes";
-import TeacherEditor from "@/page/ueditor/ueditor";
-/*组件方式引用*/
-import draggable from "vuedraggable";
+import screenfull from 'screenfull'
+import material from 'assets/images/student/material.png'
+import details1 from 'assets/images/details1.png'
+import allPrint from 'assets/images/48.png'
+import closePrint from 'assets/images/49.png'
+import PopupModal from '@/components/popup'
+import SaveTask from '@/page/teachers/course/saveTask'
+import DeleteWork from '@/page/teachers/course/deleteWork/deleteWork'
+import AddWorks from '@/page/teachers/course/addworks/addWorkTypes'
+import TeacherEditor from '@/page/ueditor/ueditor'
+/*组件方式引用 */
+import draggable from 'vuedraggable'
 
 export default {
-  name: "tasks",
-  data() {
+  name: 'tasks',
+  data () {
     return {
       editor: false,
       addwork: false,
@@ -94,153 +95,153 @@ export default {
       teacherTask: [
         {
           id: 1,
-          name: "课件任务名称课件任务名称",
-          btn: "查看结果",
-          type: "course"
+          name: '课件任务名称课件任务名称',
+          btn: '查看结果',
+          type: 'course'
         },
         {
           id: 2,
-          name: "测试任务名称测试任务名称",
-          btn: "",
-          type: "test"
+          name: '测试任务名称测试任务名称',
+          btn: '',
+          type: 'test'
         },
         {
           id: 3,
-          name: "问卷任务名称问卷任务名称",
-          btn: "删除",
-          type: "questionnaire"
+          name: '问卷任务名称问卷任务名称',
+          btn: '删除',
+          type: 'questionnaire'
         },
         {
           id: 4,
-          name: "作品上传",
-          btn: "删除",
-          type: "works"
+          name: '作品上传',
+          btn: '删除',
+          type: 'works'
         },
         {
           id: 5,
-          name: "优势打卡",
-          btn: "删除",
-          type: "clock"
+          name: '优势打卡',
+          btn: '删除',
+          type: 'clock'
         }
       ],
       studentTask: [
         {
           id: 1,
-          name: "课件任务名称课件任务名称",
-          btn: "去完成",
-          type: "course"
+          name: '课件任务名称课件任务名称',
+          btn: '去完成',
+          type: 'course'
         },
         {
           id: 2,
-          name: "测试任务名称",
-          btn: "去完成",
-          type: "test"
+          name: '测试任务名称',
+          btn: '去完成',
+          type: 'test'
         },
         {
           id: 3,
-          name: "问卷任务名称问卷任务名称",
-          btn: "已完成",
-          type: "questionnaire"
+          name: '问卷任务名称问卷任务名称',
+          btn: '已完成',
+          type: 'questionnaire'
         },
         {
           id: 4,
-          name: "作品上传",
-          btn: "已完成",
-          type: "works"
+          name: '作品上传',
+          btn: '已完成',
+          type: 'works'
         },
         {
           id: 5,
-          name: "优势打卡任务名称",
-          btn: "已完成",
-          type: "clock"
+          name: '优势打卡任务名称',
+          btn: '已完成',
+          type: 'clock'
         }
       ],
       classTask: [
         {
           id: 1,
-          name: "课件任务名称",
-          btn: "查看结果",
-          type: "course"
+          name: '课件任务名称',
+          btn: '查看结果',
+          type: 'course'
         },
         {
           id: 2,
-          name: "测试任务名称",
-          btn: "",
-          type: "test"
+          name: '测试任务名称',
+          btn: '',
+          type: 'test'
         },
         {
           id: 3,
-          name: "问卷任务名称",
-          btn: "查看结果",
-          type: "questionnaire"
+          name: '问卷任务名称',
+          btn: '查看结果',
+          type: 'questionnaire'
         },
         {
           id: 4,
-          name: "作品上传",
-          btn: "查看结果",
-          type: "works"
+          name: '作品上传',
+          btn: '查看结果',
+          type: 'works'
         },
         {
           id: 5,
-          name: "优势打卡",
-          btn: "查看结果",
-          type: "clock"
+          name: '优势打卡',
+          btn: '查看结果',
+          type: 'clock'
         }
       ]
-    };
+    }
   },
   computed: {
-    showCloseIcon() {
-      let queryType = this.$route.query.type;
+    showCloseIcon () {
+      let queryType = this.$route.query.type
       if (queryType === 'teacherTask') {
-        return false;
+        return false
       } else {
-        return true;
+        return true
       }
     },
     computedTask: {
-      get() {
-        let queryType = this.$route.query.type;
+      get () {
+        let queryType = this.$route.query.type
         return queryType === 'teacherTask' ? this.teacherTask : (this.$route.query.type === 'classTask' ? this.classTask : this.studentTask)
       },
-      set(newValue) {
-        //这个newValue能监听到methods里面从新赋值了，这个就是新值.
+      set (newValue) {
+        // 这个newValue能监听到methods里面从新赋值了，这个就是新值.
         return newValue
       }
     }
   },
-  created() {
-    let _this = this;
+  created () {
+    let _this = this
     setTimeout(() => {
-      _this.loading = false;
-    }, 1000);
+      _this.loading = false
+    }, 1000)
   },
-  updated() {
+  updated () {
     this.setImgStyle()
   },
   methods: {
-    setImgStyle() {
+    setImgStyle () {
       if (!this.$refs.stepImg) {
-        return;
+        return
       }
-      let img = this.$refs.stepImg.querySelector('img');
+      let img = this.$refs.stepImg.querySelector('img')
       if (!img) {
-        return;
+        return
       }
-      let parentWidth = this.$refs.stepImg.offsetWidth;
-      let parentHeight = this.$refs.stepImg.offsetHeight;
-      let orgPercent = parentWidth/parentHeight;
-      let that = this;
-      var imgtemp = new Image();
-      imgtemp.src = img.src;
-      imgtemp.onload = function() { //图片加载完成后执行
-        let realWidth = this.width;
-        let realHeight = this.height;
-        let upPercent = realWidth / realHeight;
+      let parentWidth = this.$refs.stepImg.offsetWidth
+      let parentHeight = this.$refs.stepImg.offsetHeight
+      let orgPercent = parentWidth / parentHeight
+      let that = this
+      var imgtemp = new Image()
+      imgtemp.src = img.src
+      imgtemp.onload = function () { // 图片加载完成后执行
+        let realWidth = this.width
+        let realHeight = this.height
+        let upPercent = realWidth / realHeight
         if (upPercent < orgPercent) {
-          that.imgClacStyle = {width: "auto", height: parentHeight + "px"}
+          that.imgClacStyle = {width: 'auto', height: parentHeight + 'px'}
         } else {
-          that.imgClacStyle = {height: "auto", width: parentWidth + "px"}
+          that.imgClacStyle = {height: 'auto', width: parentWidth + 'px'}
         }
       }
     },
@@ -251,44 +252,44 @@ export default {
       list.splice(el.newIndex, 0, el.element)
       this.computedTask = list
     },
-    handleTaskClose(bool) {
-      this.isShowSaveTask = bool;
+    handleTaskClose (bool) {
+      this.isShowSaveTask = bool
     },
-    handleTaskList(type) {
-      let queryType = this.$route.query.type;
+    handleTaskList (type) {
+      let queryType = this.$route.query.type
       if (queryType === 'teacherTask') {
         if (type === 'works') {
-          this.isShowSaveTask = !this.isShowSaveTask;
+          this.isShowSaveTask = !this.isShowSaveTask
         }
       }
     },
-    goback() {
-      screenfull.exit();
-      this.$router.go(-1);
+    goback () {
+      screenfull.exit()
+      this.$router.go(-1)
     },
-    screenF() {
-      this.fullShow = !this.fullShow;
-      screenfull.toggle();
+    screenF () {
+      this.fullShow = !this.fullShow
+      screenfull.toggle()
     },
-    changeIsHidden() {
-      this.isHidden = !this.isHidden;
+    changeIsHidden () {
+      this.isHidden = !this.isHidden
     },
-    handleClose() {
+    handleClose () {
       this.isdelete = false
     },
-    confirmDel() {
+    confirmDel () {
       this.isdelete = true
     },
-    addworkClose() {
+    addworkClose () {
       this.addwork = false
     },
-    addworks() {
+    addworks () {
       this.addwork = true
     },
-    editorClose() {
+    editorClose () {
       this.editor = false
     },
-    jump() {
+    jump () {
       this.editor = true
       this.addwork = false
     }
@@ -301,7 +302,7 @@ export default {
     TeacherEditor,
     draggable
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

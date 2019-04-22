@@ -60,7 +60,7 @@
                 <!-- <img src="../../../../assets/images/student/workimg.png" alt> -->
                 <img src="../../../../assets/images/pic7.png" alt>
               </div>
-              <h4>课程名称课程名称</h4>
+              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -69,7 +69,7 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>课程名称课程名称</h4>
+              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -78,7 +78,7 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>课程名称课程名称</h4>
+              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -87,7 +87,7 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>课程名称课程名称</h4>
+              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -96,7 +96,7 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>课程名称课程名称</h4>
+              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -105,7 +105,7 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>课程名称课程名称</h4>
+              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -114,7 +114,7 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>课程名称课程名称</h4>
+              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -123,7 +123,7 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>课程名称课程名称</h4>
+              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -132,7 +132,7 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>课程名称课程名称</h4>
+              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -141,7 +141,7 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>课程名称课程名称</h4>
+              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -150,7 +150,7 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>课程名称课程名称</h4>
+              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -159,7 +159,7 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>课程名称课程名称</h4>
+              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -168,7 +168,7 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>课程名称课程名称</h4>
+              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -177,12 +177,12 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>课程名称课程名称</h4>
+              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
             </router-link>
-            
+
             <li class="bai"></li>
             <li class="bai"></li>
             <li class="bai"></li>
@@ -193,7 +193,7 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>课程名称课程名称</h4>
+              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -202,7 +202,7 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>课程名称课程名称</h4>
+              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -211,7 +211,7 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>课程名称课程名称</h4>
+              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -220,7 +220,7 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>课程名称课程名称</h4>
+              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -229,7 +229,7 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>课程名称课程名称</h4>
+              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -238,7 +238,7 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>课程名称课程名称</h4>
+              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -257,67 +257,67 @@
 <script>
 export default {
   name: 'Mycourse',
-  data() {
+  data () {
     return {
       loading: true,
       isHidden: false,
       isTab: 0,
-      tasklist:[
+      tasklist: [
         {
-          title:'课件任务名称',
-          time:'2019.03.11',
-          teacher:'张丹丹老师',
-          classname:'icon-course'
+          title: '课件任务名称',
+          time: '2019.03.11',
+          teacher: '张丹丹老师',
+          classname: 'icon-course'
         },
         {
-          title:'测试任务名称',
-          time:'2019.03.11',
-          teacher:'张丹丹老师',
-          classname:'icon-test'
+          title: '测试任务名称',
+          time: '2019.03.11',
+          teacher: '张丹丹老师',
+          classname: 'icon-test'
         },
         {
-          title:'问卷任务名称',
-          time:'2019.03.11',
-          teacher:'张丹丹老师',
-          classname:'icon-questionnaire'
+          title: '问卷任务名称',
+          time: '2019.03.11',
+          teacher: '张丹丹老师',
+          classname: 'icon-questionnaire'
         },
         {
-          title:'作品上传',
-          time:'2019.03.11',
-          teacher:'张丹丹老师',
-          classname:'icon-works'
+          title: '作品上传',
+          time: '2019.03.11',
+          teacher: '张丹丹老师',
+          classname: 'icon-works'
         },
         {
-          title:'优势打卡任务名称',
-          time:'2019.03.11',
-          teacher:'张丹丹老师',
-          classname:'icon-clock'
+          title: '优势打卡任务名称',
+          time: '2019.03.11',
+          teacher: '张丹丹老师',
+          classname: 'icon-clock'
         }
       ]
     }
   },
-  created() {
+  created () {
     let _this = this
     setTimeout(() => {
       _this.loading = false
     }, 1000)
   },
   methods: {
-    goTrends(){
+    goTrends () {
       this.$router.push('/student/task')
     },
-    changeIsHidden() {
+    changeIsHidden () {
       this.isHidden = !this.isHidden
     },
-    changeTab(num) {
+    changeTab (num) {
       this.isTab = num
     },
-    loadMore(){
-      this.tasklist.push( {
-          title:`课件任务名称${parseInt(Math.random()*10)}`,
-          time:'2019.03.11',
-          teacher:'张丹丹老师',
-          classname:'icon-course'
+    loadMore () {
+      this.tasklist.push({
+          title: `课件任务名称${parseInt(Math.random() * 10)}`,
+          time: '2019.03.11',
+          teacher: '张丹丹老师',
+          classname: 'icon-course'
         })
     }
   }
@@ -333,7 +333,7 @@ export default {
   & > section {
     width: calc(100% - 2.22rem);
     height: 100%;
-    border: 0.01rem solid rgba(228, 232, 237, 1);
+    // border: 0.01rem solid rgba(228, 232, 237, 1);
     transition: width 0.3s;
     // padding-right: 2.22rem;
     & > div {

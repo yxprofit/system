@@ -3,6 +3,7 @@
 import 'babel-polyfill'
 import Vue from 'vue'
 import App from './App'
+import Filter from './filter'
 // mock接口数据模拟
 // import './mock.js'
 // 基础css
@@ -53,6 +54,7 @@ import {
 
 import waterfall from 'vue-waterfall2'
 Vue.use(waterfall)
+Vue.use(Filter)
 Vue.prototype.$message = Message
 
 Vue.config.productionTip = false

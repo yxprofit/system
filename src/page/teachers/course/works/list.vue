@@ -137,22 +137,22 @@
 <script>
 import WorkDetails from '@/page/student/course/works/details'
 
-import pic1 from "assets/images/pic1.png";
-import pic2 from "assets/images/pic2.png";
-import pic3 from "assets/images/pic3.png";
-import pic4 from "assets/images/pic4.png";
-import pic5 from "assets/images/pic5.png";
-import pic6 from "assets/images/pic6.png";
-import pic8 from "assets/images/pic8.png";
-import icon_39 from "assets/images/icon/icon_39.png";
-import icon_40 from "assets/images/icon/icon_40.png";
-import icon_42 from "assets/images/icon/icon_42.png";
-import icon_task_close from "assets/images/icon/icon_task_close.png";
-import zan from "assets/images/student/zan.png";
+import pic1 from 'assets/images/pic1.png'
+import pic2 from 'assets/images/pic2.png'
+import pic3 from 'assets/images/pic3.png'
+import pic4 from 'assets/images/pic4.png'
+import pic5 from 'assets/images/pic5.png'
+import pic6 from 'assets/images/pic6.png'
+import pic8 from 'assets/images/pic8.png'
+import icon_39 from 'assets/images/icon/icon_39.png'
+import icon_40 from 'assets/images/icon/icon_40.png'
+import icon_42 from 'assets/images/icon/icon_42.png'
+import icon_task_close from 'assets/images/icon/icon_task_close.png'
+import zan from 'assets/images/student/zan.png'
 
 export default {
   components: {WorkDetails},
-  data() {
+  data () {
     return {
       itemInfo: {},
       detailsShow: false,
@@ -164,200 +164,200 @@ export default {
       data: [],
       loading: true,
       col: 3,
-      nameKey: "",
-      classHoure: "",
-      course: "",
-      works: "",
-      classes: "1",
+      nameKey: '',
+      classHoure: '',
+      course: '',
+      works: '',
+      classes: '1',
       worksCount: 978,
       classHoureOptions: [],
       courseOptions: [],
       worksOptions: [],
       classesOptions: []
-    };
+    }
   },
-  created() {
+  created () {
     setTimeout(() => {
-      this.loading = false;
-      this.loadmore();
-      this.loadmore();
-    }, 1000);
-    this.getSearchOptions();
+      this.loading = false
+      this.loadmore()
+      this.loadmore()
+    }, 1000)
+    this.getSearchOptions()
   },
   computed: {
-    itemWidth() {
-      return 138 * 0.5 * (document.documentElement.clientWidth / 375);
+    itemWidth () {
+      return 138 * 0.5 * (document.documentElement.clientWidth / 375)
     },
-    gutterWidth() {
-      return 9 * 0.5 * (document.documentElement.clientWidth / 375);
+    gutterWidth () {
+      return 9 * 0.5 * (document.documentElement.clientWidth / 375)
     },
-    showResult() {
+    showResult () {
       return (
         this.classHoure ||
         this.course ||
         this.works ||
         this.classes ||
         this.nameKey
-      );
+      )
     }
   },
   methods: {
-    handleLike(listItem) {
-      console.log(listItem);
-      let index = this.data.findIndex(item => listItem.id === item.id);
+    handleLike (listItem) {
+      console.log(listItem)
+      let index = this.data.findIndex(item => listItem.id === item.id)
       if (listItem.isLike) {
-        this.data[index]["liked"] -= 1;
+        this.data[index]['liked'] -= 1
       } else {
-        this.data[index]["liked"] += 1;
+        this.data[index]['liked'] += 1
       }
-      this.data[index]["isLike"] = !this.data[index]["isLike"];
+      this.data[index]['isLike'] = !this.data[index]['isLike']
     },
-    handleConditionChange() {
+    handleConditionChange () {
       let data = {
         classHoure: this.classHoure,
         course: this.course,
         works: this.works,
         classes: this.classes
-      };
+      }
       // 发送请求筛选Lists
-      this.worksCount = 529;
+      this.worksCount = 529
     },
-    searchByName() {
-      this.worksCount = 120;
+    searchByName () {
+      this.worksCount = 120
     },
-    getSearchOptions() {
+    getSearchOptions () {
       // 发送请求获取搜索框选项
       setTimeout(() => {
         this.classHoureOptions = [
           {
-            value: "1",
-            label: "课时1"
+            value: '1',
+            label: '课时1'
           },
           {
-            value: "2",
-            label: "课时2"
+            value: '2',
+            label: '课时2'
           }
-        ];
+        ]
         this.courseOptions = [
           {
-            value: "1",
-            label: "课程1"
+            value: '1',
+            label: '课程1'
           },
           {
-            value: "2",
-            label: "课程2"
+            value: '2',
+            label: '课程2'
           }
-        ];
+        ]
         this.worksOptions = [
           {
-            value: "1",
-            label: "作品1"
+            value: '1',
+            label: '作品1'
           },
           {
-            value: "2",
-            label: "作品2"
+            value: '2',
+            label: '作品2'
           }
-        ];
+        ]
         this.classesOptions = [
           {
-            value: "1",
-            label: "班级1"
+            value: '1',
+            label: '班级1'
           },
           {
-            value: "2",
-            label: "班级1"
+            value: '2',
+            label: '班级1'
           }
-        ];
-      }, 100);
+        ]
+      }, 100)
     },
-    mix() {
-      this.$waterfall.mix();
+    mix () {
+      this.$waterfall.mix()
     },
-    switchCol(col) {
-      this.col = col;
+    switchCol (col) {
+      this.col = col
     },
-    loadmore(index) {
-      const generateId = function() {
-        return Math.floor(Math.random() * 10000);
-      };
+    loadmore (index) {
+      const generateId = function () {
+        return Math.floor(Math.random() * 10000)
+      }
       let arr = [
         {
           img: pic1,
-          worksTitle: "作品名称作品名称.jpg",
-          avatar: "33",
-          jobTitle: "完成课时测试",
+          worksTitle: '作品名称作品名称.jpg',
+          avatar: '33',
+          jobTitle: '完成课时测试',
           liked: 52,
           isLike: true,
-          tname: "余周周",
+          tname: '余周周',
           id: generateId()
         },
         {
           img: pic2,
-          worksTitle: "作品名称作品名称.jpg",
-          avatar: "33",
-          jobTitle: "完成课时测试,复习先下功课完成测试",
+          worksTitle: '作品名称作品名称.jpg',
+          avatar: '33',
+          jobTitle: '完成课时测试,复习先下功课完成测试',
           liked: 12,
           isLike: false,
-          tname: "白月初",
+          tname: '白月初',
           id: generateId()
         },
         {
-          worksTitle: "作品名称作品名称.jpg",
-          avatar: "33",
-          jobTitle: "完成课时测试,复习先下功课完成测试",
+          worksTitle: '作品名称作品名称.jpg',
+          avatar: '33',
+          jobTitle: '完成课时测试,复习先下功课完成测试',
           liked: 12,
-          tname: "涂涂",
+          tname: '涂涂',
           isLike: false,
           id: generateId()
         },
         {
           img: pic4,
-          worksTitle: "作品名称作品名称.jpg",
-          avatar: "33",
-          jobTitle: "33",
+          worksTitle: '作品名称作品名称.jpg',
+          avatar: '33',
+          jobTitle: '33',
           liked: 15,
           isLike: false,
-          tname: "张三",
+          tname: '张三',
           id: generateId()
         },
         {
           img: pic5,
-          worksTitle: "作品名称作品名称.jpg",
-          avatar: "33",
-          jobTitle: "完成课时测试,复习先下功课完成测试",
+          worksTitle: '作品名称作品名称.jpg',
+          avatar: '33',
+          jobTitle: '完成课时测试,复习先下功课完成测试',
           liked: 12,
           isLike: false,
-          tname: "张依依",
+          tname: '张依依',
           id: generateId()
         },
         {
           img: pic6,
-          worksTitle: "作品名称作品名称.jpg",
-          avatar: "33",
-          jobTitle: "完成课时测试,复习先下功课完成测试",
+          worksTitle: '作品名称作品名称.jpg',
+          avatar: '33',
+          jobTitle: '完成课时测试,复习先下功课完成测试',
           liked: 12,
           isLike: false,
-          tname: "王小二",
+          tname: '王小二',
           id: generateId()
         },
         {
           img: pic8,
-          worksitle: "作品名称作品名称.jpg",
-          avatar: "33",
-          jobTitle: "完成课时测试,复习先下功课完成测试",
+          worksitle: '作品名称作品名称.jpg',
+          avatar: '33',
+          jobTitle: '完成课时测试,复习先下功课完成测试',
           liked: 12,
           isLike: false,
           id: generateId()
         }
-      ];
-      this.data = this.data.concat(arr);
+      ]
+      this.data = this.data.concat(arr)
     },
-    changedetails(data){
-      this.itemInfo = data;
-      this.detailsShow = !this.detailsShow;
-    },
+    changedetails (data) {
+      this.itemInfo = data
+      this.detailsShow = !this.detailsShow
+    }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

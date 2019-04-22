@@ -25,36 +25,32 @@
             </div>
           </div>
           <div class="question-list-item__options">
-            <div class="left">
-              <ul>
-                <li
-                  class="sub-options"
-                  v-for="(item,index) in satisfaction.options"
-                  :key="item.value"
-                >{{index+1+'.'+ item.label}}</li>
-              </ul>
-            </div>
-            <div class="right">
-              <ul>
-                <li class="sub-options" v-for="(item,index) in satisfaction.options" :key="index">
-                  <span @click="handleSatisClick(item.id,0)" class="width-70">
-                    <img class="smileface" :src="item.checked >= 0 ? smile : unsmile" alt>
-                  </span>
-                  <span @click="handleSatisClick(item.id,1)" class="width-42 margin-20">
-                    <img class="smileface" :src="item.checked >= 1 ? smile : unsmile" alt>
-                  </span>
-                  <span @click="handleSatisClick(item.id,2)" class="width-28 margin-39">
-                    <img class="smileface" :src="item.checked >= 2  ? smile : unsmile" alt>
-                  </span>
-                  <span @click="handleSatisClick(item.id,3)" class="width-28 margin-45">
-                    <img class="smileface" :src="item.checked >= 3 ? smile : unsmile" alt>
-                  </span>
-                  <span @click="handleSatisClick(item.id,4)" class="width-56 margin-33">
-                    <img class="smileface" :src="item.checked >= 4  ? smile : unsmile" alt>
-                  </span>
-                </li>
-              </ul>
-            </div>
+            <ul>
+              <li
+                class="sub-options"
+                v-for="(item,index) in satisfaction.options"
+                :key="item.value"
+              >
+              <div class="left">{{index+1+'.'+ item.label}}</div>
+              <div class="right">
+                <span @click="handleSatisClick(item.id,0)" class="width-70">
+                  <img class="smileface" :src="item.checked >= 0 ? smile : unsmile" alt>
+                </span>
+                <span @click="handleSatisClick(item.id,1)" class="width-42 margin-20">
+                  <img class="smileface" :src="item.checked >= 1 ? smile : unsmile" alt>
+                </span>
+                <span @click="handleSatisClick(item.id,2)" class="width-28 margin-39">
+                  <img class="smileface" :src="item.checked >= 2  ? smile : unsmile" alt>
+                </span>
+                <span @click="handleSatisClick(item.id,3)" class="width-28 margin-45">
+                  <img class="smileface" :src="item.checked >= 3 ? smile : unsmile" alt>
+                </span>
+                <span @click="handleSatisClick(item.id,4)" class="width-56 margin-33">
+                  <img class="smileface" :src="item.checked >= 4  ? smile : unsmile" alt>
+                </span>
+              </div>
+              </li>
+            </ul>
           </div>
         </li>
         <li class="question-list-item">
@@ -371,6 +367,15 @@ export default {
           .width-70 {
             width: 0.7rem;
           }
+        }
+        ul {
+          width: 100%;
+        }
+        .left {
+          float: left;
+        }
+        .right {
+          float: right;
         }
       }
 

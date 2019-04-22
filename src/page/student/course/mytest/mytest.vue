@@ -260,8 +260,8 @@ export default {
       &:after {
         content: "";
         position: absolute;
-        width: 0.18rem;
-        height: 0.2rem;
+        width: 0.16rem;
+        height: 0.16rem;
         top: 0.25rem;
         left: 0.08rem;
         background: url("../../../../assets/images/icon/s5.png") no-repeat;
