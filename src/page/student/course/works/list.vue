@@ -359,11 +359,12 @@ export default{
       &:after{
         content: '';
         position: absolute;
-        width: 0.16rem;
-        height: 0.14rem;
+        width: 0.2rem;
+        height: 0.18rem;
         top: 0.11rem;
         left: 0.1rem;
-        background-image: url('../../../../assets/images/icon/icon_course_pic.png');
+        background: url('../../../../assets/images/student/work6.png') no-repeat;
+        background-size: 100% 100%;
       }
     }
     .teandsearch {

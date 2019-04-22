@@ -264,7 +264,8 @@ export default {
         height: 0.16rem;
         top: 0.25rem;
         left: 0.08rem;
-        background-image: url("../../../../assets/images/icon/s2.png");
+        background: url("../../../../assets/images/icon/s5.png") no-repeat;
+        background-size: 100% 100%;
       }
     }
     .search {

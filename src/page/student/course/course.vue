@@ -14,7 +14,7 @@
         >
           <span>
             <img src="../../../assets/images/icon/s1.png" v-if="current==1">
-            <img src="../../../assets/images/icon/icon_course_name.png" v-else>
+            <img src="../../../assets/images/icon/icon_course_noselect.png" v-else>
           </span>
           <span>我的课程</span>
         </a>
