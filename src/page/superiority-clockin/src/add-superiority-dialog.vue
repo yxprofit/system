@@ -47,7 +47,7 @@
         <div class="right">
           <h4>您选中的优势</h4>
           <ul class="selected-list">
-            <li class="selected-list-item" v-for="item in seletedList">
+            <li class="selected-list-item" v-for="(item,index) in seletedList" :key="index">
               <img :src="item.imgsrc"  alt="">
               <p :class="item.type">{{item.title}}</p>
               <i class="remove-icon" @click="handleRemove(item.prop)"></i>
@@ -175,7 +175,7 @@ export default {
       }
       let index = this.reseletedList.findIndex(item => item.prop === detailProp);
       if (index < 0) {
-        if (this.reseletedList.length >= 3) {
+        if (this.mergeArray(this.reseletedList, this.seletedList).length >= 3) {
           this.$message({
             message: '你的选择超过了三个，请选择此次活动中你最突出的三个优势应用标签!',
             type: 'warning',

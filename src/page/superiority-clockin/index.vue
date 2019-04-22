@@ -13,12 +13,12 @@
       <div class="superiority-clockin__asider">
         <div class="asider-header">
           <div class="header-title">
-            <span>我的活动计划</span>
+            <img class="plain" :src="myPlain" alt="">
           </div>
         </div>
         <div class="asider-main">
           <ul class="activity-list">
-            <li @click="handleClick" class="activity-list-item" v-for="(item,index) in activityList">
+            <li :class="{'is-active': active === index}" @click="handleClick(item,index)" class="activity-list-item" v-for="(item,index) in activityList">
               <div class="left"><img :src="item.imgSrc" alt=""></div>
               <div class="right">
                 <p class="title">{{item.title}}</p>
@@ -38,9 +38,11 @@
 </template>
 <script>
 import clockInIcon from 'assets/images/icon/s9.png';
-import activity1 from 'assets/images/superiority/activity-01.jpg';
-import activity2 from 'assets/images/superiority/activity-02.jpg';
-import activity3 from 'assets/images/superiority/activity-03.jpg';
+import activity3 from 'assets/images/superiority/activity-03.png';
+import activity2 from 'assets/images/superiority/activity-02.png';
+import activity1 from 'assets/images/superiority/activity-01.png';
+import activity4 from 'assets/images/superiority/activity-04.png';
+import myPlain from 'assets/images/superiority/my-plain.png'
 import CustomActivityDialog from './src/custom-activity-dialog.vue'
 export default {
   components: {
@@ -49,8 +51,10 @@ export default {
   data () {
     return {
       clockInIcon,
+      myPlain,
+      active: '',
       activityList: [{
-        imgSrc: activity3,
+        imgSrc: activity2,
         id: 111,
         title: '活动名称民乐社团（样本范例',
         tip: '选中打卡'
@@ -60,37 +64,36 @@ export default {
         title: '英语社区民乐社团打卡任务',
         tip: '选中打卡'
       },{
-        imgSrc: activity2,
+        imgSrc: activity3,
         id: 333,
         title: '45天的持续打卡任务',
         tip: '选中打卡'
       },{
-        imgSrc: activity3,
+        imgSrc: activity4,
         id: 444,
         title: '英民国民乐社团小提琴打卡',
         tip: '选中打卡'
       }, {
-        imgSrc: activity1,
-        id: 5555,
+        imgSrc: activity2,
+        id: 111,
         title: '活动名称民乐社团（样本范例）',
         tip: '选中打卡'
       },{
-        imgSrc: activity2,
-        id: 666,
-        title: '英语社区民乐社团打卡任务',
-        tip: '选中打卡'
-      },{
-        imgSrc: activity2,
-        id: 7777,
+        imgSrc: activity1,
+        id: 222,
         title: '英语社区民乐社团打卡任务',
         tip: '选中打卡'
       }]
     }  
   },
   methods:{
-    handleClick() {
+    handleClick(item, index) {
+      this.active = index
       this.$router.push({
-        path: '/superiority-clockin/question'
+        path: '/superiority-clockin/question',
+        query:{
+          id: item.id
+        }
       })
     },
     customActivity() {
@@ -168,20 +171,27 @@ export default {
   display: flex;
   flex-direction: column;
   .asider-header {
-    height: 0.7rem;
-    line-height: 0.7rem;
+    height: 0.71rem;
+    line-height: 0.71rem;
     border-bottom: 1px solid rgba(228,232,237,1);
     color:rgba(51,51,51,1);
     font-size: 0.18rem;
     font-weight:bold;
     color:rgba(51,51,51,1);
     text-align: center;
+    .header-title {
+      border-bottom: 1px solid rgba(228,232,237,1);
+    }
+    .plain {
+      width: 2.31rem;
+      height: 0.7rem;
+    }
   }
   .asider-main {
     height: 100%;
     display: flex;
     flex-direction: column;
-    padding: 0.16rem 0.1rem 0 0.12rem;
+    padding-top: 0.16rem;
     flex: 1;
     .activity-list {
       flex: 1;
@@ -196,8 +206,7 @@ export default {
       
       .activity-list-item {
         display: flex;
-        margin-bottom: 0.32rem;
-        padding-right: 0.16rem;
+        padding: 0.15rem 0.5rem 0.15rem 0.11rem;
         cursor: pointer;
         .left {
           width: 0.79rem;
@@ -220,6 +229,9 @@ export default {
           }
         }
       }
+      .activity-list-item.is-active {
+        background:rgba(247,151,39,0.1);
+      }
     }
     .asider-action {
       height: 1.3rem;
@@ -241,6 +253,7 @@ export default {
       }
       button:last-child {
         color: #999;
+        border-color: #bbb;
       }
     }
   }
