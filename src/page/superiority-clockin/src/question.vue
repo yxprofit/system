@@ -2,11 +2,11 @@
   <div class="questions">
     <div class="questions-header">
       <div class="left">
-        <img :src="activity1" alt="">
+        <img :src="activeData.imgSrc" alt="">
       </div>
       <div class="right">
-        <h2 class="title">民国民乐社团小提琴打卡</h2>
-        <p class="desc">外教英语培训班 , 外教英语培训班 , 每天45分钟 , 随时纠正 , 学英语上TutorABC , 随时随地对话全球外教 , 生活 , 职场 , 外教英语培训班 , 外教英语培训班 , 每天45分钟 , 随时纠正 , 学英语上TutorABC，外教英语,时纠正 , 学英语上TutorABC，外教英语教英语培训班 , 外教英语培训班 , 每天45分钟 , 随时纠正 , 学英语上TutorABC，外教英语,时纠正 , 学英语上TutorABC，外教英语</p>
+        <h2 class="title">{{activeData.title}}</h2>
+        <p class="desc">{{activeData.desc}}</p>
       </div>
     </div>
     <div class="questions-actions">
@@ -66,27 +66,104 @@
       </el-form>
       <ul class="question-list">
         <li class="question-list-item" v-for="(item,index) in questionList">
+          <span  :content="index+1" class="index"><img :src="indexPic" alt=""></span>
           <div class="title">
-            <div class="tag" :content="index+1">{{item.tag}}</div>
+            <div class="tag">{{item.tag}}</div>
             <div class="label">{{item.label}}</div>
           </div>
           <div class="content">
-            <item-input @change="handleChange" :prop="item.prop" :placeholder="item.placeholder" :itemValue="item.value"></item-input>
+            <item-input @change="handleChange" :prop="item.prop" :placeholder="item.placeholder" :itemValue="form[item.prop]"></item-input>
           </div>
         </li>
       </ul>
     </div>
     <div class="questions-btn">
+      <img class="left-img" :src="quesLeft" alt="">
       <button>下一步</button>
+      <img class="right-img" :src="quesRight" alt="">
     </div>
     <add-superiority-dialog @change="handleSuperiChange" ref="addSuperiorityDialog"></add-superiority-dialog>
   </div>
 </template>
 <script>
-import activity1 from 'assets/images/superiority/activity-01.jpg';
+import activity3 from 'assets/images/superiority/activity-03.png';
+import activity2 from 'assets/images/superiority/activity-02.png';
+import activity1 from 'assets/images/superiority/activity-01.png';
+import activity4 from 'assets/images/superiority/activity-04.png';
+import quesLeft from 'assets/images/superiority/ques-left.png';
+import quesRight from 'assets/images/superiority/ques-right.png';
+import indexPic from 'assets/images/superiority/index.png'
+
+import balanced from 'assets/images/superiority/balanced.png'
+import brave from 'assets/images/superiority/brave.png'
+import teamSpirit from 'assets/images/superiority/teamSpirit.png'
 import ItemInput from './item-input';
 import AddSuperiorityDialog from './add-superiority-dialog.vue'
-
+let mockData= [{
+    imgSrc: activity2,
+    id: 111,
+    title: '民国民乐社团小提琴打卡',
+    tip: '选中打卡',
+    desc: '外教英语培训班 , 外教英语培训班 , 每天45分钟 , 随时纠正 , 学英语上TutorABC , 随时随地对话全球外教 , 生活 , 职场 , 外教英语培训班 , 外教英语培训班 , 每天45分钟 , 随时纠正 , 学英语上TutorABC，外教英语,时纠正 , 学英语上TutorABC，外教英语教英语培训班 , 外教英语培训班 , 每天45分钟 , 随时纠正 , 学英语上TutorABC，外教英语,时纠正 , 学英语上TutorABC，外教英语',
+    role: '',
+    payTime: '',
+    joinTime: '',
+    situation: '',
+    action: '',
+    result: '',
+    superiorites:[]
+  },{
+    imgSrc: activity1,
+    id: 222,
+    title: '英语社区民乐社团打卡任务',
+    tip: '选中打卡',
+    desc: '英语社区民乐社团打卡任务英语社区民乐社团打卡任务英语社区民乐社团打卡任务英语社区民乐社团打卡任务英语社区民乐社团打卡任务英语社区民乐社团打卡任务英语社区民乐社团打卡任务英语社区民乐社团打卡任务英语社区民乐社团打卡任务英语社区民乐社团打卡任务英语社区民乐社团打卡任务英语社区民乐社团打卡任务英语社区民乐社团打卡任务',
+    role: '1',
+    payTime: '1',
+    joinTime: '1',
+    situation: '最喜欢的数学课学到很难得概念，我学不懂',
+    action: '我主动找老师课后问问题',
+    result: '周末作业我都完成了，也都会了',
+    superiorites:[{
+      label: '欣赏美和卓越',
+      prop: 'balanced',
+      imgsrc: balanced
+    },{
+      label: '勇敢',
+      prop: 'brave',
+      imgsrc: brave
+    },{
+      label: '团队精神',
+      prop: 'teamSpirit',
+      imgsrc: teamSpirit
+    }]
+  },{
+    imgSrc: activity3,
+    id: 333,
+    title: '45天的持续打卡任务',
+    tip: '选中打卡',
+    desc: '45天的持续打卡任务45天的持续打卡任务45天的持续打卡任务45天的持续打卡任务45天的持续打卡任务45天的持续打卡任务45天的持续打卡任务45天的持续打卡任务',
+    role: '',
+    payTime: '',
+    joinTime: '',
+    situation: '',
+    action: '',
+    result: '',
+    superiorites:[]
+  },{
+    imgSrc: activity4,
+    id: 444,
+    title: '45天的持续打卡任务',
+    tip: '选中打卡',
+    desc: '45天的持续打卡任务45天的持续打卡任务45天的持续打卡任务45天的持续打卡任务45天的持续打卡任务45天的持续打卡任务45天的持续打卡任务45天的持续打卡任务',
+    role: '',
+    payTime: '',
+    joinTime: '',
+    situation: '',
+    action: '',
+    result: '',
+    superiorites:[]
+  }]
 export default {
   components: {
     ItemInput,
@@ -94,15 +171,17 @@ export default {
   },
   data() {
     return {
+      indexPic,
       activity1,
       superiorites: [],
       abilities: [],
+      quesRight,
+      quesLeft,
+      activeData: {},
       form: {
         role: '',
         payTime: '',
-        joinTime: ''
-      },
-      questions: {
+        joinTime: '',
         situation: '',
         action: '',
         result: ''
@@ -143,7 +222,6 @@ export default {
           tag: 'Situation：',
           label: '当时的情况/挑战是什么？',
           placeholder: '例如：我最喜欢的数学课学到很难得概念，我学不懂，测验失利（不超过140字）',
-          value: '',
           prop: 'situation'
         },
         {
@@ -151,7 +229,6 @@ export default {
           tag: 'Action：',
           label: '你的主要行动是什么? （结合你的优势，你具体的行动是什么）',
           placeholder: '我主动找老师课后问问题<br/>我和最好的朋友约着一起对卷子<br/>我安慰自己，很快恢复了情绪',
-          value: '',
           prop: 'action'
         },
         {
@@ -159,7 +236,6 @@ export default {
           tag: 'Results：',
           label: '结果如何?',
           placeholder: '周末作业我都完成了，也都会了',
-          value: '',
           prop: 'result'
         }
       ]
@@ -173,6 +249,11 @@ export default {
       return this.abilities.length <= 0;
     }
   },
+  created() {
+    let id = this.$route.query.id + ''
+    let index = mockData.findIndex(item => item.id + '' === id)
+    this.setData(mockData[index])
+  },
   methods:{
     addSuperiority() {
       this.$refs.addSuperiorityDialog.show();
@@ -184,9 +265,21 @@ export default {
       this.superiorites = list;
     },
     handleChange(obj) {
-      this.questions[obj.prop] = obj.val
-
-      console.log(this.questions)
+      this.form[obj.prop] = obj.val
+    },
+    setData(data) {
+      this.activeData = data
+      for(let key in this.form) {
+        this.form[key] =data[key]
+      }
+      this.superiorites = data.superiorites
+    }
+  },
+  watch:{
+    $route() {
+      let id = this.$route.query.id + ''
+      let index = mockData.findIndex(item => item.id + '' === id)
+      this.setData(mockData[index])
     }
   }
 }
@@ -323,6 +416,7 @@ export default {
     position: relative;
     .el-form {
       position: absolute;
+      z-index: 5;
       right: 0.32rem;
       font-size: 0;
       top: -0.13rem;
@@ -338,6 +432,7 @@ export default {
       .question-list-item {
         padding: 0 0.32rem 0 0.54rem;
         margin-bottom: 0.33rem;
+        position: relative;
         &:last-child {
           margin-bottom: 0;
         }
@@ -350,18 +445,25 @@ export default {
         }
         .tag {
           font-weight: bold;
-          position: relative;
+         
+        }
+        .index {
+          position: absolute;
+          left: 0.17rem;
+          top: -0.05rem;
+          img {
+            height: 0.26rem;
+            width: 0.26rem;
+          }
           &:after {
             content: attr(content);
             position: absolute;
-            left: -0.37rem;
-            top: -0.07rem;
-            color: red;
             width: 0.26rem;
             height: 0.26rem;
+            left: 0;
+            top: 0;
             text-align: center;
             line-height: 0.26rem;
-            background: #F79727;
             color: #fff;
             font-weight: bold;
           }
@@ -385,6 +487,20 @@ export default {
       font-weight: bold;
       font-size: 0.18rem;
       cursor: pointer;
+    }
+    .left-img {
+      position: absolute;
+      left: 0;
+      bottom: -0.33rem;
+      height: 1.34rem;
+      width: 2.88rem;
+    }
+    .right-img {
+      position: absolute;
+      right: 0;
+      bottom: -0.33rem;
+      height: 1.07rem;
+      width: 2.38rem;
     }
   }
 }

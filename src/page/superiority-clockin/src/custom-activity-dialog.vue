@@ -1,6 +1,7 @@
 <template>
   <el-dialog
    width="700px"
+   :lock-scroll="true"
     custom-class="custom-activity"
     :visible.sync="dialogVisible">
     <div class="title" slot="title">

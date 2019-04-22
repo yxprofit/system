@@ -32,6 +32,10 @@ export default {
       return !this.inputVal && !this.foucsing;
     }
   },
+  mounted() {
+    console.log(this.itemValue)
+    this.inputVal = this.itemValue;
+  },
   methods:{
     handleFocus() {
       this.$refs.input.focus()
@@ -42,6 +46,12 @@ export default {
         val: val
       })
       this.currentLenght = val ? val.length : 0
+    }
+  },
+  watch: {
+    itemValue(val) {
+      console.log(111)
+      this.inputVal = val;
     }
   }
 }
@@ -74,6 +84,7 @@ export default {
     border-radius: 0.06rem;
     line-height: 0.22rem;
     resize:none;
+    padding: 0.16rem 0.2rem;
   }
   .el-textarea__inner:hover {
     border-color: #C0C4CC;
