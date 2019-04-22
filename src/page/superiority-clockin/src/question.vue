@@ -270,18 +270,6 @@ export default {
       return this.abilities.length <= 0
     }
   },
-<<<<<<< HEAD
-  methods: {
-    handleAbility (list) {
-      console.log(list, 'list')
-      this.abilities = list
-    },
-    handleInvitative () {
-      this.isShowComments = true
-    },
-    handleSuccess () {
-      this.isShowSuccess = true
-=======
   created() {
     let id = this.$route.query.id + ''
     let index = mockData.findIndex(item => item.id + '' === id)
@@ -290,7 +278,6 @@ export default {
   methods:{
     addSuperiority() {
       this.$refs.addSuperiorityDialog.show();
->>>>>>> 48b996b50af01a751cfa32b825bd3252d52ef14c
     },
     handleNext () {
       console.log(this.superiorites.length, this.abilities.length, this.abilities.length <= 0 || this.superiorites.length <= 0, 'text')
