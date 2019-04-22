@@ -12,37 +12,43 @@
       <div class="upload-desc">这个活动中你有完成作品吗？上传留下记录，赢得积分</div>
       <div class="content-wrap">
         <div class="courseware-content">
-          <div class="course-title-wrap">
-            <img src="../../assets/images/icon/icon_course_name.png" alt="" class="course-file-icon">
-            <span class="course-title">从你的课堂作品中选择</span>
-          </div>
-          <ul class="course-list">
-            <li class="course-item">余周周的课件作品.PDF</li>
-            <li class="course-item">余周周的课件作品.PDF</li>
-            <li class="course-item">余周周的课件作品.PDF</li>
-            <li class="course-item">余周周的课件作品.PDF</li>
-            <li class="course-item">余周周的课件作品.PDF</li>
-            <li class="course-item">余周周的课件作品.PDF</li>
-            <li class="course-item">余周周的课件作品.PDF</li>
-            <li class="course-item">余周周的课件作品.PDF</li>
-          </ul>
-        </div>
-        <div class="upload-content">
           <el-upload
             class="upload-demo"
+            ref="upload"
             action="https://jsonplaceholder.typicode.com/posts/"
-            :on-change="handleChange"
-            :file-list="fileList">
-            <div class="upload-btn">点击上传</div>
-            <div class="upload-warn">选择文件( 不超过 100 M),,支持 PDF,PPT,MP4,JPG,DOCX </div>
+            :on-preview="handlePreview"
+            :on-remove="handleRemove"
+            :on-success="handleSuccess"
+            :on-error="handleError"
+            :auto-upload="false"
+            multiple
+          >
+            <div class="course-title-wrap">
+              <img src="../../assets/images/icon/icon_course_name.png" alt class="course-file-icon">
+              <span class="course-title">从你的课堂作品中选择</span>
+            </div>
           </el-upload>
+
+          <!-- <ul class="course-list">
+            <li class="course-item">余周周的课件作品.PDF</li>
+            <li class="course-item">余周周的课件作品.PDF</li>
+            <li class="course-item">余周周的课件作品.PDF</li>
+            <li class="course-item">余周周的课件作品.PDF</li>
+            <li class="course-item">余周周的课件作品.PDF</li>
+            <li class="course-item">余周周的课件作品.PDF</li>
+            <li class="course-item">余周周的课件作品.PDF</li>
+            <li class="course-item">余周周的课件作品.PDF</li>
+          </ul>-->
+        </div>
+        <div class="upload-content">
+          <div class="upload-btn">上传本地文件</div>
+          <div class="upload-warn">选择文件( 不超过 100 M),,支持 PDF,PPT,MP4,JPG,DOCX</div>
         </div>
       </div>
       <div class="submit-wrap">
         <div class="over-btn" @click="submit">跳过</div>
         <div class="submit" @click="submit">下一步</div>
       </div>
-
     </el-dialog>
   </div>
 </template>
@@ -80,6 +86,29 @@ export default {
       this.visible = false
       this.$emit('update:state', false)
       this.$emit('invitative')
+    },
+    handleSuccess () {
+      this.$message({
+        type: 'success',
+        message: '上传成功',
+        customClass: 'unpload-message'
+      })
+    },
+    handleError () {
+      this.$message({
+        message: '上传失败',
+        type: 'error',
+        customClass: 'unpload-message'
+      })
+    },
+    handleSubmit () {
+      this.$refs.upload.submit()
+    },
+    handleRemove (file, fileList) {
+      console.log(file, fileList)
+    },
+    handlePreview (file) {
+      console.log(file)
     }
   }
 }
@@ -88,7 +117,25 @@ export default {
 <style lang="scss" scoped>
 .my-advantage /deep/ .el-dialog__header,
 .my-advantage /deep/ .el-dialog__body {
-  padding: 0
+  padding: 0;
+}
+
+.content-wrap /deep/ .el-upload-list {
+  display: flex;
+  padding: 0 70px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.content-wrap /deep/ .el-upload-list__item {
+  flex: 1;
+  width: 50%;
+  margin-right: 0.3rem;
+  margin-bottom: 0.2rem;
+
+  &:nth-child(2n) {
+    margin-right: 0;
+  }
 }
 </style>
 
@@ -101,7 +148,7 @@ export default {
   line-height: 0.6rem;
   padding-left: 0.3rem;
   box-sizing: border-box;
-  border-bottom: 0.01rem solid #E4E8ED;
+  border-bottom: 0.01rem solid #e4e8ed;
   border-radius: 0.06rem 0.06rem 0 0;
   font-size: 0;
   position: relative;
@@ -109,7 +156,7 @@ export default {
   .adt-line {
     width: 0.04rem;
     height: 0.16rem;
-    background:rgba(247,151,39,1);
+    background: rgba(247, 151, 39, 1);
     border-radius: 0.02rem;
     margin-right: 0.1rem;
   }
@@ -126,7 +173,7 @@ export default {
     vertical-align: middle;
     font-size: 12px;
     margin-left: 0.14rem;
-    color: #F79727;
+    color: #f79727;
     font-weight: 400;
   }
 }
@@ -138,7 +185,7 @@ export default {
 }
 
 .content-wrap {
-  padding: 0 .08rem;
+  padding: 0 0.08rem;
 
   .course-file-icon,
   .course-title {
@@ -158,8 +205,8 @@ export default {
   .courseware-content,
   .upload-content {
     height: 1.24rem;
-    background:rgba(255,255,255,1);
-    border: 0.01rem solid rgba(228,232,237,1);
+    background: rgba(255, 255, 255, 1);
+    border: 0.01rem solid rgba(228, 232, 237, 1);
     border-radius: 0.06rem;
     margin-bottom: 0.16rem;
     text-align: center;
@@ -191,9 +238,9 @@ export default {
     width: 1.1rem;
     height: 0.38rem;
     line-height: 0.38rem;
-    background:rgba(247,151,39, 0.1);
+    background: rgba(247, 151, 39, 0.1);
     border-radius: 0.03rem;
-    color: #F79727;
+    color: #f79727;
     text-align: center;
   }
 
@@ -225,13 +272,16 @@ export default {
 }
 
 .submit {
-  background:linear-gradient(-90deg,rgba(255,183,38,1),rgba(255,129,38,1));
+  background: linear-gradient(
+    -90deg,
+    rgba(255, 183, 38, 1),
+    rgba(255, 129, 38, 1)
+  );
 }
 
 .over-btn {
-  border: 0.01rem solid rgba(221,221,221,1);
+  border: 0.01rem solid rgba(221, 221, 221, 1);
   color: #999;
   margin-right: 0.2rem;
 }
-
 </style>

@@ -79,7 +79,7 @@
     </div>
     <div class="questions-btn">
       <img class="left-img" :src="quesLeft" alt="">
-      <button>下一步</button>
+      <button @click="handleNext">下一步</button>
       <img class="right-img" :src="quesRight" alt="">
     </div>
     <add-superiority-dialog @change="handleSuperiChange" ref="addSuperiorityDialog"></add-superiority-dialog>
