@@ -77,22 +77,28 @@
       </ul>
     </div>
     <div class="questions-btn">
-      <button>下一步</button>
+      <button @click="handleNext">下一步</button>
     </div>
     <add-superiority-dialog @change="handleSuperiChange" ref="addSuperiorityDialog"></add-superiority-dialog>
-     <my-advantage :state.sync="isShowAdvantage"></my-advantage>
+    <my-advantage :state.sync="isShowAdvantage"></my-advantage>
+    <!-- <courseware-upload :state.sync="isShowAdvantage"></courseware-upload> -->
+    <!-- <no-select :state.sync="isShowAdvantage"></no-select> -->
   </div>
 </template>
 <script>
 import activity1 from 'assets/images/superiority/activity-01.jpg'
 import ItemInput from './item-input'
 import AddSuperiorityDialog from './add-superiority-dialog.vue'
- import MyAdvantage from '@/components/myAdvantageModal'
+import MyAdvantage from '@/components/myAdvantageModal'
+import CoursewareUpload from '@/components/coursewareUpload'
+import NoSelect from '@/components/notSelectTag'
 export default {
   components: {
     ItemInput,
     AddSuperiorityDialog,
-    MyAdvantage
+    MyAdvantage,
+    CoursewareUpload,
+    NoSelect
   },
   data () {
     return {
@@ -177,6 +183,9 @@ export default {
     }
   },
   methods: {
+    handleNext () {
+
+    },
     addSuperiority () {
       this.$refs.addSuperiorityDialog.show()
     },
