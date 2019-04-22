@@ -91,25 +91,25 @@
   </div>
 </template>
 <script>
-import activity3 from 'assets/images/superiority/activity-03.png';
-import activity2 from 'assets/images/superiority/activity-02.png';
-import activity1 from 'assets/images/superiority/activity-01.png';
-import activity4 from 'assets/images/superiority/activity-04.png';
-import quesLeft from 'assets/images/superiority/ques-left.png';
-import quesRight from 'assets/images/superiority/ques-right.png';
+import activity3 from 'assets/images/superiority/activity-03.png'
+import activity2 from 'assets/images/superiority/activity-02.png'
+import activity1 from 'assets/images/superiority/activity-01.png'
+import activity4 from 'assets/images/superiority/activity-04.png'
+import quesLeft from 'assets/images/superiority/ques-left.png'
+import quesRight from 'assets/images/superiority/ques-right.png'
 import indexPic from 'assets/images/superiority/index.png'
 
 import balanced from 'assets/images/superiority/balanced.png'
 import brave from 'assets/images/superiority/brave.png'
 import teamSpirit from 'assets/images/superiority/teamSpirit.png'
-import ItemInput from './item-input';
+import ItemInput from './item-input'
 import AddSuperiorityDialog from './add-superiority-dialog.vue'
 import MyAdvantage from '@/components/myAdvantageModal'
 import CoursewareUpload from '@/components/coursewareUpload'
 import NoSelect from '@/components/notSelectTag'
 import InvitationSuccess from '@/components/invitationSuccess'
 import InvitationComments from '@/components/invitationComments'
-let mockData= [{
+let mockData = [{
     imgSrc: activity2,
     id: 111,
     title: '民国民乐社团小提琴打卡',
@@ -121,8 +121,8 @@ let mockData= [{
     situation: '',
     action: '',
     result: '',
-    superiorites:[]
-  },{
+    superiorites: []
+  }, {
     imgSrc: activity1,
     id: 222,
     title: '英语社区民乐社团打卡任务',
@@ -134,20 +134,20 @@ let mockData= [{
     situation: '最喜欢的数学课学到很难得概念，我学不懂',
     action: '我主动找老师课后问问题',
     result: '周末作业我都完成了，也都会了',
-    superiorites:[{
+    superiorites: [{
       label: '欣赏美和卓越',
       prop: 'balanced',
       imgsrc: balanced
-    },{
+    }, {
       label: '勇敢',
       prop: 'brave',
       imgsrc: brave
-    },{
+    }, {
       label: '团队精神',
       prop: 'teamSpirit',
       imgsrc: teamSpirit
     }]
-  },{
+  }, {
     imgSrc: activity3,
     id: 333,
     title: '45天的持续打卡任务',
@@ -159,8 +159,8 @@ let mockData= [{
     situation: '',
     action: '',
     result: '',
-    superiorites:[]
-  },{
+    superiorites: []
+  }, {
     imgSrc: activity4,
     id: 444,
     title: '45天的持续打卡任务',
@@ -172,7 +172,7 @@ let mockData= [{
     situation: '',
     action: '',
     result: '',
-    superiorites:[]
+    superiorites: []
   }]
 
 export default {
@@ -270,14 +270,21 @@ export default {
       return this.abilities.length <= 0
     }
   },
-  created() {
+  created () {
     let id = this.$route.query.id + ''
     let index = mockData.findIndex(item => item.id + '' === id)
     this.setData(mockData[index])
   },
-  methods:{
-    addSuperiority() {
-      this.$refs.addSuperiorityDialog.show();
+  methods: {
+    handleAbility (list) {
+      console.log(list, 'list')
+      this.abilities = list
+    },
+    handleInvitative () {
+      this.isShowComments = true
+    },
+    handleSuccess () {
+      this.isShowSuccess = true
     },
     handleNext () {
       console.log(this.superiorites.length, this.abilities.length, this.abilities.length <= 0 || this.superiorites.length <= 0, 'text')
@@ -293,13 +300,13 @@ export default {
     addOperate () {
       this.isShowAdvantage = true
     },
-    handleChange(obj) {
+    handleChange (obj) {
       this.form[obj.prop] = obj.val
     },
-    setData(data) {
+    setData (data) {
       this.activeData = data
-      for(let key in this.form) {
-        this.form[key] =data[key]
+      for (let key in this.form) {
+        this.form[key] = data[key]
       }
       this.superiorites = data.superiorites
     },
@@ -307,8 +314,8 @@ export default {
       this.superiorites = list
     }
   },
-  watch:{
-    $route() {
+  watch: {
+    $route () {
       let id = this.$route.query.id + ''
       let index = mockData.findIndex(item => item.id + '' === id)
       this.setData(mockData[index])
@@ -477,7 +484,7 @@ export default {
         }
         .tag {
           font-weight: bold;
-         
+
         }
         .index {
           position: absolute;
