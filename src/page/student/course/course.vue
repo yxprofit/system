@@ -151,7 +151,7 @@ export default {
   & > section {
     flex: 1;
     margin-top: 0.14rem;
-    background: #fff;
+    // background: #fff;
     border-radius: 0.06rem 0.06rem 0 0;
     overflow: auto;
   }

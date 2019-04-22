@@ -337,16 +337,27 @@ export default {
     // width: 10.18rem;
     // min-width: 10.18rem;
     .stepimg {
-      max-height: 100%;
-      width: auto;
-      max-width: 100%;
+      // max-height: 100%;
+      // width: auto;
+      // max-width: 100%;
       margin: 0 auto;
-      // width: 9.92rem;
-      // height: 100%;
+      width: 9.92rem;
+      height: 100%;
       text-align: center;
       display:flex;
       align-items:center;
       justify-content:center;
+      position: relative;
+      img{
+      max-height: 100%;
+      width: auto;
+      max-width: 100%;
+      margin: 0 auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      }
       .step-content {
         max-width: 100%;
       }
@@ -453,7 +464,7 @@ hgroup {
   }
   & > .task{
     overflow: hidden;
-    height: 30%;
+    height: 70%;
     box-sizing: border-box;
     width:100%;
   }
@@ -653,9 +664,13 @@ hgroup {
     }
   }
   .bottom {
-    margin: 0.56rem 0 0 0.21rem;
     width: 0.22rem;
     height: 0.14rem;
+    position: absolute;
+    top: 4rem;
+    left: .2rem;
+    z-index: 10;
+    background-color: #fff;
     &.hidden {
       transform: rotate(180deg);
     }
