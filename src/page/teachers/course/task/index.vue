@@ -64,7 +64,7 @@
             >
               <el-table-column label="任务类型" sortable align="center" width="180">
                 <template slot-scope="scope">
-                  <div @click="todo(scope.row)">
+                  <div @click="todoType(scope.row)">
                     <img :src="scope.row.icon" alt class="icon">
                     <span style="margin-left: 0.1rem">{{ scope.row.type }}</span>
                     <p class="look">查看明细 ></p>
@@ -132,7 +132,7 @@
                 :value="item.value"
               ></el-option>
             </el-select>
-            <button>
+            <button @click="addWorks">
               <i>+</i>&nbsp;添加任务
             </button>
           </div>
@@ -145,7 +145,7 @@
             >
               <el-table-column label="任务类型" sortable align="center" width="180">
                 <template slot-scope="scope">
-                  <div @click="todo(scope.row)">
+                  <div @click="todoType(scope.row)">
                     <img :src="scope.row.icon" alt class="icon">
                     <span style="margin-left: 0.1rem">{{ scope.row.type }}</span>
                     <p class="look">查看明细 ></p>
@@ -166,16 +166,27 @@
     </section>
 
     <!-- 任务弹窗区域 -->
-    <!-- <prediction-task :state.sync="isShowTask"></prediction-task> -->
+
+    <!-- 我的优势打卡 -->
+    <prediction-task :state.sync="isShowTask"></prediction-task>
+
+    <!-- 优势打卡状态 -->
+    <punch-card :state='isShowPanchCard' :status='punchStatus' @close='parentClose' @showActivity='handleActivityShow'></punch-card>
+
+    <!-- 我的活动 -->
+    <activity-name :state='isShowActivity' @close='parentClose'></activity-name>
+
+    <!-- 添加任务弹框 -->
+    <add-works :state='isShowAddWork' @close='parentClose' @handleJump='handleJump'></add-works>
+    <Ueditor :state='isShowEditor' @close='parentClose'></Ueditor>
+
     <!-- 测试弹窗组件区域 -->
     <!-- <my-advantage :state="isShowAdvantage"></my-advantage> -->
     <!-- <courseware-upload :state.sync="isShowAdvantage"></courseware-upload> -->
     <!-- <no-select :state.sync="isShowAdvantage"></no-select> -->
     <!-- <invitation-success :state.sync="isShowAdvantage"></invitation-success> -->
     <!-- <invitation-comments :state.sync="isShowAdvantage"></invitation-comments> -->
-    <punch-card :state='isShowPanchCard' :status='punchStatus' @close='parentClose' @showActivity='handleActivityShow'></punch-card>
-    <activity-name :state='isShowActivity' @close='parentClose'></activity-name>
-    <invitation-comments :state.sync="isShowAdvantage"></invitation-comments>
+    <!-- <invitation-comments :state.sync="isShowAdvantage"></invitation-comments> -->
 
   </div>
 </template>
@@ -193,17 +204,21 @@ import t9 from '@/assets/images/icon/t9.png'
 import t10 from '@/assets/images/icon/t10.png'
 import t11 from '@/assets/images/icon/t11.png'
 import PredictionTask from '../prediction'
-import MyAdvantage from '@/components/myAdvantageModal'
-import CoursewareUpload from '@/components/coursewareUpload'
-import NoSelect from '@/components/notSelectTag'
-import InvitationSuccess from '@/components/invitationSuccess'
-import InvitationComments from '@/components/invitationComments'
 import PunchCard from '@/components/advantagePunchCard'
 import ActivityName from '@/components/activityName'
+import AddWorks from '../addworks/addWorkTypes'
+import Ueditor from '@/page/ueditor/ueditor'
+// import MyAdvantage from '@/components/myAdvantageModal'
+// import CoursewareUpload from '@/components/coursewareUpload'
+// import NoSelect from '@/components/notSelectTag'
+// import InvitationSuccess from '@/components/invitationSuccess'
+// import InvitationComments from '@/components/invitationComments'
 export default {
   name: 'Trends',
   data () {
     return {
+      isShowAddWork:false,
+      isShowEditor:false,
       isShowActivity: false,
       isShowPanchCard: false,
       isShowAdvantage: false,
@@ -325,16 +340,6 @@ export default {
           id: 4
         },
         {
-          date: '2019/03/05-2019/05/08',
-          name: '优势打卡',
-          type: '上传作品',
-          todoStatus: '已完成',
-          taskStatus: '余老师',
-          pancel: '去查看 >',
-          icon: t2,
-          id: 4
-        },
-        {
           date: '2019/03/13-2019/06/28',
           name: '优势打卡',
           type: '图文',
@@ -344,68 +349,6 @@ export default {
           icon: t3,
           id: 5
         },
-        {
-          date: '2019/03/13-2019/06/28',
-          name: '随堂测试',
-          type: '测试',
-          todoStatus: '已完成',
-          taskStatus: '余老师',
-          pancel: '去完成 >',
-          icon: t1,
-          id: 2
-        },
-        {
-          date: '2019/03/05-2019/07/30',
-          name: '阶段考试',
-          type: '优势打卡',
-          todoStatus: '未完成',
-          taskStatus: '开放',
-          pancel: '去完成 >',
-          icon: t5,
-          id: 3,
-          status: '1'
-        },
-        {
-          date: '2019/03/05-2019/05/08',
-          name: '优势打卡',
-          type: '上传作品',
-          todoStatus: '已完成',
-          taskStatus: '余老师',
-          pancel: '去完成 >',
-          icon: t2,
-          id: 4
-        },
-        {
-          date: '2019/03/13-2019/06/28',
-          name: '随堂测试',
-          type: '测试',
-          todoStatus: '已完成',
-          taskStatus: '余老师',
-          pancel: '去完成 >',
-          icon: t1,
-          id: 2
-        },
-        {
-          date: '2019/03/05-2019/07/30',
-          name: '阶段考试',
-          type: '优势打卡',
-          todoStatus: '未完成',
-          taskStatus: '余老师',
-          pancel: '去完成 >',
-          icon: t5,
-          id: 3,
-          status: '1'
-        },
-        {
-          date: '2019/03/05-2019/05/08',
-          name: '优势打卡',
-          type: '上传作品',
-          todoStatus: '已完成',
-          taskStatus: '余老师',
-          pancel: '去完成 >',
-          icon: t2,
-          id: 4
-        }
       ],
       tableData2: [
         {
@@ -443,22 +386,12 @@ export default {
           date: '2019/03/05-2019/07/30',
           name: '阶段考试',
           type: '优势打卡',
-          todoStatus: '未完成',
+          todoStatus: '已完成',
           taskStatus: '开放',
           pancel: '删除',
           icon: t5,
           id: 3,
           status: '3'
-        },
-        {
-          date: '2019/03/05-2019/05/08',
-          name: '优势打卡',
-          type: '上传作品',
-          todoStatus: '已完成',
-          taskStatus: '已关闭',
-          pancel: '删除',
-          icon: t2,
-          id: 4
         },
         {
           date: '2019/03/05-2019/05/08',
@@ -481,16 +414,6 @@ export default {
           id: 5
         },
         {
-          date: '2019/03/13-2019/06/28',
-          name: '随堂测试',
-          type: '测试',
-          todoStatus: '已完成',
-          taskStatus: '已关闭',
-          pancel: '删除',
-          icon: t1,
-          id: 2
-        },
-        {
           date: '2019/03/05-2019/07/30',
           name: '阶段考试',
           type: '优势打卡',
@@ -500,60 +423,27 @@ export default {
           icon: t5,
           id: 3,
           status: '3'
-        },
-        {
-          date: '2019/03/05-2019/05/08',
-          name: '优势打卡',
-          type: '上传作品',
-          todoStatus: '已完成',
-          taskStatus: '已关闭',
-          pancel: '删除',
-          icon: t2,
-          id: 4
-        },
-        {
-          date: '2019/03/13-2019/06/28',
-          name: '随堂测试',
-          type: '测试',
-          todoStatus: '已完成',
-          taskStatus: '已关闭',
-          pancel: '删除',
-          icon: t1,
-          id: 2
-        },
-        {
-          date: '2019/03/05-2019/07/30',
-          name: '阶段考试',
-          type: '优势打卡',
-          todoStatus: '未完成',
-          taskStatus: '开放',
-          pancel: '删除',
-          icon: t5,
-          id: 3,
-          status: '1'
-        },
-        {
-          date: '2019/03/05-2019/05/08',
-          name: '优势打卡',
-          type: '上传作品',
-          todoStatus: '已完成',
-          taskStatus: '已关闭',
-          pancel: '删除',
-          icon: t2,
-          id: 4
         }
       ],
       isShowTask: false
     }
   },
   methods: {
+    addWorks(){
+      this.isShowAddWork = true
+    },
+    handleJump(){
+      this.isShowEditor = true
+    },
     handleClick (tab, event) {
-      console.log(tab, event)
+      // console.log(tab, event)
     },
     handleConditionChange () {},
     parentClose () {
       this.isShowPanchCard = false
       this.isShowActivity = false
+      this.isShowAddWork = false
+      this.isShowEditor = false
     },
     handleActivityShow () {
       this.isShowActivity = true
@@ -564,25 +454,37 @@ export default {
           path: '/questionnaire'
         })
       } else if (row.id === 2) {
-        // this.isShowTask = true;
-        this.isShowAdvantage = true
-        console.log(this.isShowAdvantage, 'advantage')
+        this.isShowTask = true;
+        // this.isShowAdvantage = true
       } else if (row.id === 3) {
-        console.log(row.status)
-        this.isShowPanchCard = true
         this.punchStatus = row.status
+        this.isShowPanchCard = true
+      }
+    },
+    todoType (row) {
+      if (row.id === 1) {
+        this.$router.push({
+          path: '/questionnaire'
+        })
+      } else if (row.id === 2) {
+        this.isShowTask = true;
+        // this.isShowAdvantage = true
+      } else if (row.id === 3) {
+        this.$router.push('/superiority-clockin/empty')
       }
     }
   },
   components: {
     PredictionTask,
-    MyAdvantage,
-    CoursewareUpload,
-    NoSelect,
-    InvitationSuccess,
-    InvitationComments,
     PunchCard,
-    ActivityName
+    ActivityName,
+    AddWorks,
+    Ueditor,
+    // MyAdvantage,
+    // CoursewareUpload,
+    // NoSelect,
+    // InvitationSuccess,
+    // InvitationComments
   }
 }
 </script>

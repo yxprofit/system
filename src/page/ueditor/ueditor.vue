@@ -132,7 +132,9 @@ export default {
   components: {
     quillEditor
   },
-  destroyed() {}
+  destroyed() {
+    this.editor = null
+  }
 };
 </script>
 <style lang="scss" scoped>
