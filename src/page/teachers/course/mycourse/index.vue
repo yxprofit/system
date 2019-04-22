@@ -50,6 +50,7 @@
     <section :class="{'active':isHidden}">
       <div>
         <div>
+          <img src="../../../../assets/images/icon/icon_mycourse.png" alt="">
           <h2>我的课程</h2>
           <span :class="{active:isTab===0}" @click="changeTab(0)">当前课程</span>
           <span :class="{active:isTab===1}" @click="changeTab(1)">历史课程</span>
@@ -344,6 +345,15 @@ export default {
         height: 0.7rem;
         line-height: 0.7rem;
         display: flex;
+        position: relative;
+        img{
+          position: absolute;
+            width: 0.18rem;
+            height: 0.2rem;
+            top:50%;
+            left: .05rem;
+            transform: translateY(-50%);
+        }
         h2 {
           flex: 1;
           display: block;
@@ -352,15 +362,15 @@ export default {
           position: relative;
           font-size: 0.18rem;
           font-weight: 600;
-          &:after {
-            content: "";
-            position: absolute;
-            width: 0.18rem;
-            height: 0.2rem;
-            top: 0.25rem;
-            left: 0.08rem;
-            background-image: url("../../../../assets/images/icon/icon_mycourse.png");
-          }
+          // &:after {
+          //   content: "";
+          //   position: absolute;
+          //   width: 0.18rem;
+          //   height: 0.2rem;
+          //   top: 0.25rem;
+          //   left: 0.08rem;
+          //   background-image: url("../../../../assets/images/icon/icon_mycourse.png");
+          // }
         }
         span {
           display: block;

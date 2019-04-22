@@ -4,7 +4,7 @@
       <span @click="changeIsNavShow"><img src="../../../assets/images/icon/icon_open_n.png" v-if="!isNavShow" alt=""><img src="../../../assets/images/icon/icon_open.png" v-else alt=""></span>
       <div>
         <a :class="{'active':current==1,'over': over==1}" @click="toCurrent(1, '/teachers/course/mycourse')" @mouseenter="addover(1)" @mouseleave="addover(0)">
-          <span><img src="../../../assets/images/icon/s1.png" v-if="current==1"><img src="../../../assets/images/icon/icon_course_name.png" v-else></span><span>我的课程</span>
+          <span><img src="../../../assets/images/icon/s1.png" v-if="current==1"><img src="../../../assets/images/icon/icon_course_noselect.png" v-else></span><span>我的课程</span>
         </a>
         <!-- <a :class="{'active':current==2,'over': over==2}" @click="toCurrent(2, 'trends')" @mouseenter="addover(2)" @mouseleave="addover(0)">
           <span><img src="../../../assets/images/icon/icon_course_test_selected.png" v-if="current==2"><img src="../../../assets/images/icon/s2.png" v-else></span><span>班级动态</span>

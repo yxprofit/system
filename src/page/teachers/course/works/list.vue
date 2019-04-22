@@ -388,13 +388,15 @@ export default {
       font-weight: bold;
       padding-left: 0.4rem;
       &:after {
-        content: "";
+       content: '';
         position: absolute;
-        width: 0.18rem;
-        height: 0.2rem;
-        top: 0.25rem;
+        width: 0.2rem;
+        height: 0.18rem;
+        top: 50%;
         left: 0.1rem;
-        background-image: url("../../../../assets/images/icon/icon_mycourse.png");
+        transform: translateY(-50%);
+        background: url('../../../../assets/images/student/work6.png') no-repeat;
+        background-size: 100% 100%;
       }
     }
   }
