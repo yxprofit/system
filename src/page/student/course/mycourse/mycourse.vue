@@ -74,7 +74,7 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
+              <h4>{{ '课程名称课程名称' | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -83,7 +83,7 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
+              <h4>{{ '课程名称课程名称' | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -92,7 +92,7 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
+              <h4>{{ '课程名称课程名称' | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -101,7 +101,7 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
+              <h4>{{ '课程名称课程名称' | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -110,7 +110,7 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
+              <h4>{{ '课程名称课程名称' | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -119,7 +119,7 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
+              <h4>{{ '课程名称课程名称' | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -128,7 +128,7 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
+              <h4>{{ '课程名称课程名称' | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -137,7 +137,7 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
+              <h4>{{ '课程名称课程名称' | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -146,7 +146,7 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
+              <h4>{{ '课程名称课程名称' | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -155,7 +155,7 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
+              <h4>{{ '课程名称课程名称' | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -164,7 +164,7 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
+              <h4>{{ '课程名称课程名称' | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -173,7 +173,7 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
+              <h4>{{ '课程名称课程名称' | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -182,7 +182,7 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
+              <h4>{{ '课程名称课程名称' | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -559,6 +559,9 @@ export default {
         margin-bottom: 0.15rem;
         background-position: 0 0;
         background-repeat: no-repeat;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
         &.icon-course {
           background-image: url("../../../../assets/images/icon/s8.png");
         }

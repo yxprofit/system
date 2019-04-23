@@ -2,6 +2,7 @@
   <div class="teacher-works container-tends">
     <div class="tendsHead">
       <section>
+        <img src="../../../../assets/images/student/work6.png" alt="">
         <h2 class="title">课堂作品</h2>
         <div class="search-by-name">
           <el-input
@@ -379,6 +380,15 @@ export default {
     height: 0.65rem;
     line-height: 0.65rem;
     border-bottom: 0.01rem solid #e4e8ed;
+    position: relative;
+    > img{
+      position: absolute;
+        width: 0.2rem;
+        height: 0.18rem;
+        top: 50%;
+        left: 0.1rem;
+        transform: translateY(-50%);
+    }
     .title {
       flex: 1;
       height: 0.64rem;
@@ -387,17 +397,17 @@ export default {
       font-size: 0.18rem;
       font-weight: bold;
       padding-left: 0.4rem;
-      &:after {
-       content: '';
-        position: absolute;
-        width: 0.2rem;
-        height: 0.18rem;
-        top: 50%;
-        left: 0.1rem;
-        transform: translateY(-50%);
-        background: url('../../../../assets/images/student/work6.png') no-repeat;
-        background-size: 100% 100%;
-      }
+      // &:after {
+      //  content: '';
+      //   position: absolute;
+      //   width: 0.2rem;
+      //   height: 0.2rem;
+      //   top: 50%;
+      //   left: 0.1rem;
+      //   transform: translateY(-50%);
+      //   background: url('../../../../assets/images/student/work6.png') no-repeat;
+      //   background-size: contain;
+      // }
     }
   }
   .head {
