@@ -6,7 +6,7 @@
           <div class="step">
             <div ref="stepImg" class="stepimg" >
               <img class="step-content" :style="imgClacStyle" :src="page === 1 ? material : details1">
-              <img class="step-content" :style="imgClacStyle" :src="page === 1 ? material : details1">
+              <!-- <img class="step-content" :style="imgClacStyle" :src="page === 1 ? material : details1"> -->
             </div>
           </div>
           <div class="stepbut">
@@ -312,7 +312,7 @@ export default {
   border-radius: 0.06rem;
   padding: 0.2rem 0 0.2rem 0.2rem;
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
   position: relative;
   width: 13.66rem;
   max-width: 13.66rem;
@@ -354,10 +354,10 @@ export default {
       width: auto;
       max-width: 100%;
       margin: 0 auto;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%,-50%);
+      // position: absolute;
+      // top: 50%;
+      // left: 50%;
+      // transform: translate(-50%,-50%);
       }
       .step-content {
         max-width: 100%;
@@ -441,7 +441,7 @@ hgroup {
   flex: 1;
   width: 100%;
   max-width: 2.75rem;
-  height: 100%;
+  min-height: 100%;
   padding-bottom: 0.2rem;
   float: right;
   border-left: 0.01rem solid rgba(228, 232, 237, 1);

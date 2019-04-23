@@ -122,9 +122,9 @@ export default {
 
 .content-wrap /deep/ .el-upload-list {
   display: flex;
-  padding: 0 20px;
+  padding: 0 0.7rem;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   padding-bottom: 0.2rem;
 }
 
@@ -143,6 +143,11 @@ export default {
 
   &:nth-child(2n) {
     margin-right: 0;
+    float: right;
+  }
+
+  &:nth-child(2n+1) {
+    float: left;
   }
 }
 
