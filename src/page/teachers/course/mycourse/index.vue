@@ -334,7 +334,7 @@ export default {
     padding-top: 0.1rem;
     width: calc(100% - 2.22rem);
     height: 100%;
-    border: 0.01rem solid rgba(228, 232, 237, 1);
+    // border: 0.01rem solid rgba(228, 232, 237, 1);
     transition: width 0.3s;
     & > div {
       height: 100%;
