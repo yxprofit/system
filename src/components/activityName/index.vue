@@ -52,8 +52,8 @@
             
         </div>
         <footer>
-          <button class="button1">拒绝邀请</button>
-          <button class="button2">提交</button>
+          <button class="button1" @click="handleInvitation">拒绝邀请</button>
+          <button class="button2" @click="handleClose">提交</button>
         </footer>
 			</div>
     </el-dialog>
@@ -83,6 +83,9 @@ export default {
   methods: {
     handleClose() {
       this.$emit("close");
+    },
+    handleInvitation(){
+      this.$emit('invitation')
     }
   }
 };
