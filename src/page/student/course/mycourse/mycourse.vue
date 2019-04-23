@@ -261,6 +261,7 @@ export default {
   name: "Mycourse",
   data() {
     return {
+      content: "课程名称课程名称",
       loading: true,
       isHidden: false,
       isTab: 0,
@@ -450,6 +451,9 @@ export default {
               margin: 0.16rem 0.13rem 0.15rem;
               font-size: 0.15rem;
               font-weight: 600;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              overflow: hidden;
             }
             p {
               display: block;
