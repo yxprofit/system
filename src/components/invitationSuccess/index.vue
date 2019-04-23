@@ -18,9 +18,9 @@
 
       <div class="btn-wrap">
         <div class="btn-left" @click="handleClose">知道了</div>
-        <div class="btn-right" @click="handleLook">查看打卡记录</div>
+        <div class="btn-right" @click="handleJump">查看打卡记录</div>
       </div>
-    </el-dialog>Z
+    </el-dialog>
   </div>
 </template>
 
@@ -49,11 +49,16 @@ export default {
       this.$emit('update:state', false)
       this.$emit('close')
     },
-    handleLook () {
+    handleJump () {
       this.visible = false
       this.$emit('update:state', false)
-      this.$emit('record')
-    }
+      this.$router.push({
+        path: '/student/task',
+        query: {
+          type: 'showPunchCard'
+        }
+      })
+    },
   }
 }
 </script>

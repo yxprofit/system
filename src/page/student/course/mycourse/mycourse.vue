@@ -4,7 +4,9 @@
       <div>
         <span>我的任务</span>
         <!-- <span @click="changeIsHidden"><img src="../../../../assets/images/icon/icon_task_close.png" alt=""></span> -->
-        <span @click="goTrends"><img src="../../../../assets/images/icon/icon_task_close.png" alt=""></span>
+        <span @click="goTrends">
+          <img src="../../../../assets/images/icon/icon_task_close.png" alt>
+        </span>
       </div>
       <ul>
         <li v-for="(item,index) in tasklist" :key="index">
@@ -41,40 +43,34 @@
             <p>截止时间：2019.03.11</p>
             <p>发起人：张丹丹老师</p>
           </div>
-        </li> -->
+        </li>-->
       </ul>
-      <var class="taskmore" v-show='!isHidden' @click="loadMore">查看更多</var>
+      <var class="taskmore" v-show="!isHidden" @click="loadMore">查看更多</var>
     </hgroup>
     <section :class="{'center':1,'active':isHidden}">
       <div>
         <div>
-          <img src="../../../../assets/images/icon/icon_mycourse.png" alt="">
+          <img src="../../../../assets/images/icon/icon_mycourse.png" alt>
           <h2>我的课程</h2>
           <span :class="{active:isTab===0}" @click="changeTab(0)">当前课程</span>
           <span :class="{active:isTab===1}" @click="changeTab(1)">历史课程</span>
         </div>
-        <section class='list'>
+        <section class="list">
           <ul v-show="isTab===0">
-            <router-link to="mycourse/view" tag="li">
-              <div>
-                <!-- <img src="../../../../assets/images/student/workimg.png" alt> -->
-                <img src="../../../../assets/images/pic7.png" alt>
-              </div>
-              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
-              <p>开始时间：2019.01.01</p>
-              <p>结束时间：2019.01.01</p>
-              <p>所属班级：104班</p>
-            </router-link>
-            <router-link to="mycourse/view" tag="li">
-              <div>
-                <img src="../../../../assets/images/student/workimg.png" alt>
-              </div>
-              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
-              <p>开始时间：2019.01.01</p>
-              <p>结束时间：2019.01.01</p>
-              <p>所属班级：104班</p>
-            </router-link>
-            <router-link to="mycourse/view" tag="li">
+            <li v-for="(item, index) in courseList" :key="index">
+              <router-link to="mycourse/view" tag="li">
+                <div>
+                  <!-- <img src="../../../../assets/images/student/workimg.png" alt> -->
+                  <img :src="item.classImg" alt>
+                </div>
+                <h4>{{ item.title | filterLen}}</h4>
+                <p>{{ item.startTime }}</p>
+                <p>{{ item.endTime }}</p>
+                <p>所属班级：{{ item.className }}</p>
+              </router-link>
+            </li>
+
+            <!-- <router-link to="mycourse/view" tag="li">
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
@@ -182,6 +178,15 @@
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
             </router-link>
+            <router-link to="mycourse/view" tag="li">
+              <div>
+                <img src="../../../../assets/images/student/workimg.png" alt>
+              </div>
+              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
+              <p>开始时间：2019.01.01</p>
+              <p>结束时间：2019.01.01</p>
+              <p>所属班级：104班</p>
+            </router-link>-->
 
             <li class="bai"></li>
             <li class="bai"></li>
@@ -189,11 +194,23 @@
             <li class="bai"></li>
           </ul>
           <ul v-show="isTab===1">
-            <router-link to="mycourse/view" tag="li">
+            <li v-for="(item, index) in courseList" :key="index">
+              <router-link to="mycourse/view" tag="li">
+                <div>
+                  <!-- <img src="../../../../assets/images/student/workimg.png" alt> -->
+                  <img :src="item.classImg" alt>
+                </div>
+                <h4>{{ item.title | filterLen}}</h4>
+                <p>{{ item.startTime }}</p>
+                <p>{{ item.endTime }}</p>
+                <p>所属班级：{{ item.className }}</p>
+              </router-link>
+            </li>
+            <!-- <router-link to="mycourse/view" tag="li">
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
+              <h4>{{ '课程名称课程名称' | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -202,7 +219,7 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
+              <h4>{{ '课程名称课程名称' | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -211,7 +228,7 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
+              <h4>{{ '课程名称课程名称' | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -220,7 +237,7 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
+              <h4>{{ '课程名称课程名称' | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -229,7 +246,7 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
+              <h4>{{ '课程名称课程名称' | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
@@ -238,11 +255,11 @@
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
-              <h4>{{ '课程名称课程名称'  | filterLen}}</h4>
+              <h4>{{ '课程名称课程名称' | filterLen}}</h4>
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
-            </router-link>
+            </router-link>-->
             <li class="bai"></li>
             <li class="bai"></li>
             <li class="bai"></li>
@@ -256,72 +273,88 @@
 
 <script>
 export default {
-  name: 'Mycourse',
-  data () {
+  name: "Mycourse",
+  data() {
     return {
       loading: true,
       isHidden: false,
       isTab: 0,
       tasklist: [
         {
-          title: '课件任务名称',
-          time: '2019.03.11',
-          teacher: '张丹丹老师',
-          classname: 'icon-course'
+          title: "课件任务名称",
+          time: "2019.03.11",
+          teacher: "张丹丹老师",
+          classname: "icon-course"
         },
         {
-          title: '测试任务名称',
-          time: '2019.03.11',
-          teacher: '张丹丹老师',
-          classname: 'icon-test'
+          title: "测试任务名称",
+          time: "2019.03.11",
+          teacher: "张丹丹老师",
+          classname: "icon-test"
         },
         {
-          title: '问卷任务名称',
-          time: '2019.03.11',
-          teacher: '张丹丹老师',
-          classname: 'icon-questionnaire'
+          title: "问卷任务名称",
+          time: "2019.03.11",
+          teacher: "张丹丹老师",
+          classname: "icon-questionnaire"
         },
         {
-          title: '作品上传',
-          time: '2019.03.11',
-          teacher: '张丹丹老师',
-          classname: 'icon-works'
+          title: "作品上传",
+          time: "2019.03.11",
+          teacher: "张丹丹老师",
+          classname: "icon-works"
         },
         {
-          title: '优势打卡任务名称',
-          time: '2019.03.11',
-          teacher: '张丹丹老师',
-          classname: 'icon-clock'
+          title: "优势打卡任务名称",
+          time: "2019.03.11",
+          teacher: "张丹丹老师",
+          classname: "icon-clock"
         }
       ]
-    }
+    };
   },
-  created () {
-    let _this = this
+  created() {
+    let _this = this;
     setTimeout(() => {
-      _this.loading = false
-    }, 1000)
+      _this.loading = false;
+    }, 1000);
+  },
+  computed: {
+    courseList() {
+      var list = [];
+      for (var i = 0; i < 20; i++) {
+        list.push({
+          title: "课程名称课程名称",
+          classImg: require("../../../../assets/images/student/workimg.png"),
+          startTime: "开始时间：2019.01.01",
+          endTime: "结束时间：2019.01.01",
+          className: "104班"
+        });
+      }
+
+      return list;
+    }
   },
   methods: {
-    goTrends () {
-      this.$router.push('/student/task')
+    goTrends() {
+      this.$router.push("/student/task");
     },
-    changeIsHidden () {
-      this.isHidden = !this.isHidden
+    changeIsHidden() {
+      this.isHidden = !this.isHidden;
     },
-    changeTab (num) {
-      this.isTab = num
+    changeTab(num) {
+      this.isTab = num;
     },
-    loadMore () {
+    loadMore() {
       this.tasklist.push({
-          title: `课件任务名称${parseInt(Math.random() * 10)}`,
-          time: '2019.03.11',
-          teacher: '张丹丹老师',
-          classname: 'icon-course'
-        })
+        title: `课件任务名称${parseInt(Math.random() * 10)}`,
+        time: "2019.03.11",
+        teacher: "张丹丹老师",
+        classname: "icon-course"
+      });
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -346,15 +379,15 @@ export default {
         line-height: 0.7rem;
         display: flex;
         position: relative;
-        img{
+        img {
           position: absolute;
-            width: 0.18rem;
-            height: 0.2rem;
-            top:50%;
-            left: .05rem;
-            transform: translateY(-50%);
+          width: 0.18rem;
+          height: 0.2rem;
+          top: 50%;
+          left: 0.05rem;
+          transform: translateY(-50%);
         }
-         span {
+        span {
           display: block;
           width: 1rem;
           height: 0.32rem;
@@ -426,7 +459,7 @@ export default {
             margin-bottom: 0.15rem;
             padding-bottom: 0.03rem;
             cursor: pointer;
-             > div {
+            > div {
               height: 2rem;
               width: 1.9rem;
               margin: 0 auto;
@@ -442,7 +475,7 @@ export default {
               position: absolute;
               top: 50%;
               left: 50%;
-              transform: translate(-50%,-50%);
+              transform: translate(-50%, -50%);
             }
             h4 {
               margin: 0.16rem 0.13rem 0.15rem;

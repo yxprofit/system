@@ -122,20 +122,39 @@ export default {
 
 .content-wrap /deep/ .el-upload-list {
   display: flex;
-  padding: 0 70px;
+  padding: 0 20px;
   flex-wrap: wrap;
   justify-content: center;
+  padding-bottom: 0.2rem;
 }
 
 .content-wrap /deep/ .el-upload-list__item {
   flex: 1;
   width: 50%;
-  margin-right: 0.3rem;
-  margin-bottom: 0.2rem;
+  flex: 0 0 50%;
+  text-align: left;
+  height: 0.3rem;
+  line-height: 0.3rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  // margin-right: 0.3rem;
+  // margin-bottom: 0.2rem;
 
   &:nth-child(2n) {
     margin-right: 0;
   }
+}
+
+.content-wrap /deep/ .el-icon-document {
+  display: none;
+}
+
+.content-wrap /deep/ .el-upload-list__item-name {
+  margin-right: 0;
+  height: 0.3rem;
+  line-height: 0.3rem;
+  flex: 1;
 }
 </style>
 
@@ -191,6 +210,7 @@ export default {
   .course-title {
     display: inline-block;
     vertical-align: middle;
+    color: #333;
   }
 
   .course-file-icon {

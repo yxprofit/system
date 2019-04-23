@@ -63,7 +63,7 @@
 
         <el-scrollbar style="height:100%;" tag="div" class="table-wrap">
           <div class="table-wrap">
-            <el-table :data="tableData2" style="width: 100%" row-class-name="tableRow">
+            <el-table :data="tableData2" style="width: 100%" row-class-name="invitRow">
               <el-table-column prop="name" label="姓名" align="center" width="180"></el-table-column>
               <el-table-column prop="account" label="账户类型" align="center"></el-table-column>
               <el-table-column label="操作" align="center">
@@ -82,7 +82,7 @@
       </div>
 
       <div class="submit-wrap">
-        <div class="over-btn" @click="handleClose">跳过</div>
+        <div class="over-btn" @click="handleJump">跳过</div>
         <div class="submit" @click="submit">确认邀请</div>
       </div>
     </el-dialog>
@@ -173,6 +173,16 @@ export default {
       this.$emit('update:state', false)
       this.$emit('close')
     },
+    handleJump () {
+      this.visible = false
+      this.$emit('update:state', false)
+      this.$router.push({
+        path: '/student/task',
+        query: {
+          type: 'showPunchCard'
+        }
+      })
+    },
     submit () {
       this.visible = false
       this.$emit('update:state', false)
@@ -225,6 +235,7 @@ export default {
   .tag-item {
     position: relative;
     margin-right: 0.2rem;
+    cursor: pointer;
     .close {
       position: absolute;
       top: 10px;
@@ -275,6 +286,7 @@ export default {
     vertical-align: middle;
     font-size: 16px;
     color: #f79727;
+    cursor: pointer;
 
     .preview-icon,
     .preview-text {
@@ -404,14 +416,35 @@ export default {
 .content-wrap {
   /deep/ .el-table__header .has-gutter tr th {
     height: 0.5rem !important;
+    padding: 0 !important;
   }
 }
 
-.content /deep/ .trends .el-table .tableRow {
-  height: 0.5rem !important;
+.table-wrap /deep/ .trends .el-table .invitRow {
+  height: 0.5rem;
 }
 
-.content /deep/ .trends .el-table .tableRow:after {
-  height: 0.5rem !important;
+.table-wrap /deep/ .el-table {
+  /deep/ tr {
+    height: 0.52rem;
+    line-height: 0.52rem;
+  }
+}
+
+.table-wrap /deep/ .trends .el-table .invitRow:after {
+  height: 0.52rem;
+  line-height: 0.52rem;
+}
+
+.table-wrap /deep/ .el-table .invitRow:hover {
+  height: 0.52rem;
+  line-height: 0.52rem;
+  background: #fff !important;
+  border: 0.01rem solid red;
+
+}
+
+.table-wrap /deep/ .el-table--small td {
+  padding: 0;
 }
 </style>
