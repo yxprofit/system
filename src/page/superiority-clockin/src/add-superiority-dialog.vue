@@ -227,6 +227,7 @@ export default {
 </script>
 <style lang="scss">
   .add-superiority {
+    height: 7.16rem;
     .el-dialog__header {
       height: 0.6rem;
       line-height: 0.6rem;

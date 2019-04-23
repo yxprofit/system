@@ -190,12 +190,20 @@ export default {
     .el-form {
       .el-input--small .el-input__inner  {
         border-radius: 0.03rem;
+        height: 0.32rem;
+        line-height: 0.32rem
       }
       .el-select {
         width: 100%;
       }
       .el-form-item {
         margin-bottom: 0.12rem;
+        .el-form-item__label {
+          line-height: 0.32rem;
+        }
+        .el-form-item__content {
+          line-height: 0.32rem;
+        }
       }
       .item-major {
         position: relative;
@@ -225,6 +233,8 @@ export default {
           padding-right: 0;
           text-align: center;
           width: 0.55rem;
+          padding: 0.08rem 0.15rem 0 0.1rem;
+          height: 0.32rem;
           .el-radio__label {
             padding: 0;
           }
