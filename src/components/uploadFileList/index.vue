@@ -1,89 +1,30 @@
 <template>
   <div class="invitation-comments">
-    <el-dialog
-      :visible.sync="visible"
-      width="5.9rem"
-      :before-close="handleClose"
-      :show-close="isshowclose"
-    >
+    <el-dialog :visible.sync="visible" width="5.9rem" :before-close="handleClose">
       <div class="adt-title-wrap">
         <div class="adt-line"></div>
-        <div class="adt-title">邀请他人评价</div>
-        <div class="preview" @click="handlePreview">
-          <img src="../../assets/images/advantage/play.png" alt class="preview-icon">
-          <span class="preview-text">预览邀请模板</span>
-        </div>
+        <div class="adt-title">课堂作品</div>
       </div>
-
-      <div class="content-wrap">
-        <div class="tag-content">
-          <div class="tag-name">已邀请人：</div>
-          <ul class="tag-list">
-            <li class="tag-item" v-for="(item, index) in invatitationArr" :key="index">
-              <div class="invat-name">{{ item.row.name }}</div>
-              <i class="el-icon-close close" @click="cancelInvatitaion(index)"></i>
-            </li>
-          </ul>
-        </div>
-
-        <div class="search-panel">
-          <el-select
-            class="search class-select"
-            v-model="className"
-            clearable
-            placeholder="班级筛选"
-            @change="handleConditionChange"
-          >
-            <el-option
-              v-for="item in classOptions"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-            ></el-option>
-          </el-select>
-          <el-select
-            class="search account-select"
-            v-model="account"
-            clearable
-            placeholder="账号类型筛选"
-            @change="handleConditionChange"
-          >
-            <el-option
-              v-for="item in accountOptions"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-            ></el-option>
-          </el-select>
-          <div class="search-box">
-            <input type="text" placeholder="发起人搜索" v-model="username">
-            <i class="el-icon-search"></i>
-          </div>
-        </div>
-
-        <el-scrollbar style="height:100%;" tag="div" class="table-wrap">
-          <div class="table-wrap">
-            <el-table :data="tableData2" style="width: 100%" row-class-name="invitRow">
-              <el-table-column prop="name" label="姓名" align="center" width="180"></el-table-column>
-              <el-table-column prop="account" label="账户类型" align="center"></el-table-column>
-              <el-table-column label="操作" align="center">
-                <template slot-scope="scope">
-                  <div @click="selectInvitation(scope)">
-                    <p
-                      class="invitation-btn"
-                      :class="[ scope.row.operate ? 'is-select' : 'no-select' ]"
-                    >选中邀请</p>
-                  </div>
-                </template>
-              </el-table-column>
-            </el-table>
-          </div>
-        </el-scrollbar>
+      <div class="table-wrap">
+        <el-table :data="tableData2" style="width: 100%" row-class-name="invitRow">
+          <el-table-column prop="fileName" label="文件名" align="center" width="180"></el-table-column>
+          <el-table-column prop="courseName" label="课程名" align="center"></el-table-column>
+          <el-table-column prop="lessonName" label="课时名" align="center"></el-table-column>
+          <el-table-column label="操作" align="center">
+            <template slot-scope="scope">
+              <div @click="selectInvitation(scope)">
+                <p
+                  class="invitation-btn"
+                  :class="[ scope.row.operate ? 'is-select' : 'no-select' ]"
+                >选中上传</p>
+              </div>
+            </template>
+          </el-table-column>
+        </el-table>
       </div>
-
       <div class="submit-wrap">
-        <div class="over-btn" @click="handleJump">跳过</div>
-        <div class="submit" @click="submit">确认邀请</div>
+        <div class="over-btn" @click="handleReset">重置</div>
+        <div class="submit" @click="submit">确认添加</div>
       </div>
     </el-dialog>
   </div>
@@ -100,61 +41,29 @@ export default {
   data () {
     return {
       visible: false,
-      isshowclose: false,
-      username: '',
-      className: '',
-      account: '',
-      classOptions: [
-        {
-          value: '1',
-          label: '班级01'
-        },
-        {
-          value: '2',
-          label: '班级02'
-        },
-        {
-          value: '3',
-          label: '班级03'
-        },
-        {
-          value: '4',
-          label: '班级04'
-        }
-      ],
-      accountOptions: [
-        {
-          value: '1',
-          label: '学生'
-        },
-        {
-          value: '2',
-          label: '教师'
-        },
-        {
-          value: '3',
-          label: '主任'
-        }
-      ],
       tableData2: [
         {
-          name: '王展鹏',
-          account: '教师',
+          fileName: '余周周的课件作品.PDF',
+          courseName: 'K5上期优势情商',
+          lessonName: '102倾听他人',
           operate: false
         },
         {
-          name: '余周周',
-          account: '学生',
+          fileName: '余周周的课件作品.PDF',
+          courseName: 'K5上期优势情商',
+          lessonName: '102倾听他人',
           operate: false
         },
         {
-          name: '余淮',
-          account: '主任',
+          fileName: '余周周的课件作品.PDF',
+          courseName: 'K5上期优势情商',
+          lessonName: '102倾听他人',
           operate: false
         },
         {
-          name: '耿耿',
-          account: '教师',
+          fileName: '余周周的课件作品.PDF',
+          courseName: 'K5上期优势情商',
+          lessonName: '102倾听他人',
           operate: false
         }
       ],
@@ -168,30 +77,22 @@ export default {
     }
   },
   methods: {
-    handlePreview () {
-      this.$emit('showActivity')
-    },
     handleClose () {
       this.visible = false
       this.$emit('update:state', false)
       this.$emit('close')
     },
-    handleJump () {
-      this.visible = false
-      this.$emit('update:state', false)
-      this.$router.push({
-        path: '/student/task',
-        query: {
-          type: 'showPunchCard'
-        }
+    handleReset () {
+      this.tableData2.forEach((item, index) => {
+        this.tableData2[index].operate = false
       })
     },
     submit () {
       this.visible = false
       this.$emit('update:state', false)
-      this.$emit('success')
+      let selectList = this.tableData2.filter(item => item.operate)
+      this.$emit('uploadtList', selectList)
     },
-    handleConditionChange () {},
     selectInvitation (scope) {
       this.tableData2[scope.$index].operate = !this.tableData2[scope.$index]
         .operate
@@ -205,10 +106,6 @@ export default {
         })
       }
       console.log(scope, 'scope')
-    },
-    cancelInvatitaion (index) {
-      this.tableData2.splice(this.invatitationArr[index].$index, 1)
-      this.invatitationArr.splice(index, 1)
     }
   }
 }
@@ -216,6 +113,7 @@ export default {
 
 <style lang="scss" scoped>
 .invaitation-comments {
+  height: 3.88rem;
 }
 
 .tag-content {
@@ -303,8 +201,9 @@ export default {
   }
 }
 
-.content-wrap {
+.table-wrap {
   padding: 0 0.3rem;
+  padding-top: 0.22rem;
 
   .search-panel {
     padding: 0.16rem 0;
@@ -416,7 +315,7 @@ export default {
   width: 1.5rem;
 }
 
-.content-wrap {
+.table-wrap {
   /deep/ .el-table__header .has-gutter tr th {
     height: 0.5rem !important;
     padding: 0 !important;
@@ -444,7 +343,6 @@ export default {
   line-height: 0.52rem;
   background: #fff !important;
   border: 0.01rem solid red;
-
 }
 
 .table-wrap /deep/ .el-table--small td {

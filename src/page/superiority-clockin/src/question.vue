@@ -85,9 +85,12 @@
     <add-superiority-dialog @change="handleSuperiChange" ref="addSuperiorityDialog"></add-superiority-dialog>
     <my-advantage :state.sync="isShowAdvantage" @ability="handleAbility"></my-advantage>
     <no-select :state.sync="isShowNoSelect"></no-select>
-    <courseware-upload :state.sync="isShowUpload" @invitative="handleInvitative"></courseware-upload>
-    <invitation-comments :state.sync="isShowComments" @success="handleSuccess"></invitation-comments>
+    <courseware-upload :state.sync="isShowUpload" :uploadList="uploadList" @uploadSelect="handleUploadSelect" @invitative="handleInvitative"></courseware-upload>
+    <upload-list :state.sync="isShowUploadList" @uploadtList="handleUploadList"></upload-list>
+    <invitation-comments :state.sync="isShowComments" @success="handleSuccess" @showActivity="handleActivityShow"></invitation-comments>
     <invitation-success :state.sync="isShowSuccess"></invitation-success>
+     <!-- 我的活动 -->
+    <activity-name :state='isShowActivity' @close='parentClose'></activity-name>
   </div>
 </template>
 <script>
@@ -99,6 +102,7 @@ import quesLeft from 'assets/images/superiority/ques-left.png'
 import quesRight from 'assets/images/superiority/ques-right.png'
 import indexPic from 'assets/images/superiority/index.png'
 
+import ActivityName from '@/components/activityName'
 import balanced from 'assets/images/superiority/balanced.png'
 import brave from 'assets/images/superiority/brave.png'
 import teamSpirit from 'assets/images/superiority/teamSpirit.png'
@@ -109,6 +113,7 @@ import CoursewareUpload from '@/components/coursewareUpload'
 import NoSelect from '@/components/notSelectTag'
 import InvitationSuccess from '@/components/invitationSuccess'
 import InvitationComments from '@/components/invitationComments'
+import UploadList from '@/components/uploadFileList'
 let mockData = [{
     imgSrc: activity2,
     id: 111,
@@ -183,7 +188,9 @@ export default {
     CoursewareUpload,
     NoSelect,
     InvitationSuccess,
-    InvitationComments
+    InvitationComments,
+    UploadList,
+    ActivityName
   },
   data () {
     return {
@@ -193,9 +200,12 @@ export default {
       isShowUpload: false,
       isShowComments: false,
       isShowSuccess: false,
+      isShowUploadList: false,
+      isShowActivity: false,
       activity1,
       superiorites: [],
       abilities: [],
+      uploadList: [],
       quesRight,
       quesLeft,
       activeData: {},
@@ -276,6 +286,16 @@ export default {
     this.setData(mockData[index])
   },
   methods: {
+     handleActivityShow () {
+      this.isShowActivity = true
+    },
+    handleUploadSelect () {
+      this.isShowUploadList = true
+    },
+    handleUploadList (list) {
+      console.log(list, 'upload')
+      this.uploadList = list
+    },
     handleAbility (list) {
       console.log(list, 'list')
       this.abilities = list
@@ -312,6 +332,9 @@ export default {
     },
     handleSuperiChange (list) {
       this.superiorites = list
+    },
+    parentClose () {
+      this.isShowActivity = false
     }
   },
   watch: {

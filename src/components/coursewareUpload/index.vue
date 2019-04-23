@@ -12,7 +12,7 @@
       <div class="upload-desc">这个活动中你有完成作品吗？上传留下记录，赢得积分</div>
       <div class="content-wrap">
         <div class="courseware-content">
-          <el-upload
+          <!-- <el-upload
             class="upload-demo"
             ref="upload"
             action="https://jsonplaceholder.typicode.com/posts/"
@@ -27,18 +27,15 @@
               <img src="../../assets/images/icon/icon_course_name.png" alt class="course-file-icon">
               <span class="course-title">从你的课堂作品中选择</span>
             </div>
-          </el-upload>
+          </el-upload>-->
+          <div class="course-title-wrap" @click="handleUploadSelect">
+            <img src="../../assets/images/icon/icon_course_name.png" alt class="course-file-icon">
+            <span class="course-title">从你的课堂作品中选择</span>
+          </div>
 
-          <!-- <ul class="course-list">
-            <li class="course-item">余周周的课件作品.PDF</li>
-            <li class="course-item">余周周的课件作品.PDF</li>
-            <li class="course-item">余周周的课件作品.PDF</li>
-            <li class="course-item">余周周的课件作品.PDF</li>
-            <li class="course-item">余周周的课件作品.PDF</li>
-            <li class="course-item">余周周的课件作品.PDF</li>
-            <li class="course-item">余周周的课件作品.PDF</li>
-            <li class="course-item">余周周的课件作品.PDF</li>
-          </ul>-->
+          <ul class="course-list">
+            <li class="course-item" v-for="(list, index) in uploadList" :key="index">{{ list.fileName }}</li>
+          </ul>
         </div>
         <div class="upload-content">
           <div class="upload-btn">上传本地文件</div>
@@ -59,6 +56,12 @@ export default {
     state: {
       type: Boolean,
       default: false
+    },
+    uploadList: {
+      type: Array,
+      default: () => {
+        return []
+      }
     }
   },
   data () {
@@ -71,6 +74,9 @@ export default {
     state (newVal) {
       this.visible = newVal
       this.$emit('update:state', newVal)
+    },
+    uploadList (newVal, oldVal) {
+      console.log(newVal, 'newVal')
     }
   },
   methods: {
@@ -81,6 +87,9 @@ export default {
     },
     handleChange (file, fileList) {
       console.log(file, fileList, 'filelist')
+    },
+    handleUploadSelect () {
+      this.$emit('uploadSelect')
     },
     submit () {
       this.visible = false
@@ -146,7 +155,7 @@ export default {
     float: right;
   }
 
-  &:nth-child(2n+1) {
+  &:nth-child(2n + 1) {
     float: left;
   }
 }
@@ -164,6 +173,7 @@ export default {
 </style>
 
 <style lang="scss" scoped>
+@import '../../assets/css/mixins.scss';
 .my-advantage {
   border-radius: 0.06rem;
 }
@@ -245,7 +255,8 @@ export default {
     display: flex;
     padding: 0 70px;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
+    @include mix-text-overflow;
 
     .course-item {
       // flex: 1;
@@ -309,4 +320,5 @@ export default {
   color: #999;
   margin-right: 0.2rem;
 }
+
 </style>

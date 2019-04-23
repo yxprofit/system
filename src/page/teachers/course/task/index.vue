@@ -217,8 +217,8 @@ export default {
   name: 'Trends',
   data () {
     return {
-      isShowAddWork:false,
-      isShowEditor:false,
+      isShowAddWork: false,
+      isShowEditor: false,
       isShowActivity: false,
       isShowPanchCard: false,
       isShowAdvantage: false,
@@ -348,7 +348,7 @@ export default {
           pancel: '去查看 >',
           icon: t3,
           id: 5
-        },
+        }
       ],
       tableData2: [
         {
@@ -434,10 +434,10 @@ export default {
     }
   },
   methods: {
-    addWorks(){
+    addWorks () {
       this.isShowAddWork = true
     },
-    handleJump(){
+    handleJump () {
       this.isShowEditor = true
     },
     handleClick (tab, event) {
@@ -459,7 +459,7 @@ export default {
           path: '/questionnaire'
         })
       } else if (row.id === 2) {
-        this.isShowTask = true;
+        this.isShowTask = true
         // this.isShowAdvantage = true
       } else if (row.id === 3) {
         this.punchStatus = row.status
@@ -472,7 +472,7 @@ export default {
           path: '/questionnaire'
         })
       } else if (row.id === 2) {
-        this.isShowTask = true;
+        this.isShowTask = true
         // this.isShowAdvantage = true
       } else if (row.id === 3) {
         this.$router.push('/superiority-clockin/empty')
@@ -484,7 +484,7 @@ export default {
     PunchCard,
     ActivityName,
     AddWorks,
-    Ueditor,
+    Ueditor
     // MyAdvantage,
     // CoursewareUpload,
     // NoSelect,
