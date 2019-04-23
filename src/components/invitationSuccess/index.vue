@@ -20,7 +20,7 @@
         <div class="btn-left" @click="handleClose">知道了</div>
         <div class="btn-right" @click="handleLook">查看打卡记录</div>
       </div>
-    </el-dialog>Z
+    </el-dialog>
   </div>
 </template>
 
