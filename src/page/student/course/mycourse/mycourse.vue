@@ -57,26 +57,20 @@
         </div>
         <section class="list">
           <ul v-show="isTab===0">
-            <router-link to="mycourse/view" tag="li">
-              <div>
-                <!-- <img src="../../../../assets/images/student/workimg.png" alt> -->
-                <img src="../../../../assets/images/pic7.png" alt>
-              </div>
-              <h4>{{ '课程名称课程名称' | filterLen}}</h4>
-              <p>开始时间：2019.01.01</p>
-              <p>结束时间：2019.01.01</p>
-              <p>所属班级：104班</p>
-            </router-link>
-            <router-link to="mycourse/view" tag="li">
-              <div>
-                <img src="../../../../assets/images/student/workimg.png" alt>
-              </div>
-              <h4>{{ '课程名称课程名称' | filterLen}}</h4>
-              <p>开始时间：2019.01.01</p>
-              <p>结束时间：2019.01.01</p>
-              <p>所属班级：104班</p>
-            </router-link>
-            <router-link to="mycourse/view" tag="li">
+            <li v-for="(item, index) in courseList" :key="index">
+              <router-link to="mycourse/view" tag="li">
+                <div>
+                  <!-- <img src="../../../../assets/images/student/workimg.png" alt> -->
+                  <img :src="item.classImg" alt>
+                </div>
+                <h4>{{ item.title | filterLen}}</h4>
+                <p>{{ item.startTime }}</p>
+                <p>{{ item.endTime }}</p>
+                <p>所属班级：{{ item.className }}</p>
+              </router-link>
+            </li>
+
+            <!-- <router-link to="mycourse/view" tag="li">
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
@@ -184,6 +178,15 @@
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
             </router-link>
+            <router-link to="mycourse/view" tag="li">
+              <div>
+                <img src="../../../../assets/images/student/workimg.png" alt>
+              </div>
+              <h4>{{ '课程名称课程名称' | filterLen}}</h4>
+              <p>开始时间：2019.01.01</p>
+              <p>结束时间：2019.01.01</p>
+              <p>所属班级：104班</p>
+            </router-link>-->
 
             <li class="bai"></li>
             <li class="bai"></li>
@@ -191,7 +194,19 @@
             <li class="bai"></li>
           </ul>
           <ul v-show="isTab===1">
-            <router-link to="mycourse/view" tag="li">
+            <li v-for="(item, index) in courseList" :key="index">
+              <router-link to="mycourse/view" tag="li">
+                <div>
+                  <!-- <img src="../../../../assets/images/student/workimg.png" alt> -->
+                  <img :src="item.classImg" alt>
+                </div>
+                <h4>{{ item.title | filterLen}}</h4>
+                <p>{{ item.startTime }}</p>
+                <p>{{ item.endTime }}</p>
+                <p>所属班级：{{ item.className }}</p>
+              </router-link>
+            </li>
+            <!-- <router-link to="mycourse/view" tag="li">
               <div>
                 <img src="../../../../assets/images/student/workimg.png" alt>
               </div>
@@ -244,7 +259,7 @@
               <p>开始时间：2019.01.01</p>
               <p>结束时间：2019.01.01</p>
               <p>所属班级：104班</p>
-            </router-link>
+            </router-link>-->
             <li class="bai"></li>
             <li class="bai"></li>
             <li class="bai"></li>
@@ -304,6 +319,22 @@ export default {
     setTimeout(() => {
       _this.loading = false;
     }, 1000);
+  },
+  computed: {
+    courseList() {
+      var list = [];
+      for (var i = 0; i < 20; i++) {
+        list.push({
+          title: "课程名称课程名称",
+          classImg: require("../../../../assets/images/student/workimg.png"),
+          startTime: "开始时间：2019.01.01",
+          endTime: "结束时间：2019.01.01",
+          className: "104班"
+        });
+      }
+
+      return list;
+    }
   },
   methods: {
     goTrends() {

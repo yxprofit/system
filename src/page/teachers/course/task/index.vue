@@ -428,6 +428,11 @@ export default {
       isShowTask: false
     }
   },
+  created () {
+    if (this.$route.query.type === 'showPunchCard') {
+      this.isShowPanchCard = true
+    }
+  },
   methods: {
     addWorks(){
       this.isShowAddWork = true
