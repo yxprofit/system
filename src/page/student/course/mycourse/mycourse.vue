@@ -464,6 +464,9 @@ export default {
               line-height: 0.12rem;
               text-indent: 0.09rem;
               position: relative;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              overflow: hidden;
               &:after {
                 content: "";
                 display: block;
