@@ -180,6 +180,9 @@
     <add-works :state='isShowAddWork' @close='parentClose' @handleJump='handleJump'></add-works>
     <Ueditor :state='isShowEditor' @close='parentClose'></Ueditor>
 
+    <!-- 删除任务弹框 -->
+    <delete-works :state='isShowDeleteWorks' @close='parentClose' @handleInvitation='invitation'></delete-works>
+
     <!-- 测试弹窗组件区域 -->
     <!-- <my-advantage :state="isShowAdvantage"></my-advantage> -->
     <!-- <courseware-upload :state.sync="isShowAdvantage"></courseware-upload> -->
@@ -208,6 +211,7 @@ import PunchCard from '@/components/advantagePunchCard'
 import ActivityName from '@/components/activityName'
 import AddWorks from '../addworks/addWorkTypes'
 import Ueditor from '@/page/ueditor/ueditor'
+import DeleteWorks from '../deleteWork/deleteWork'
 // import MyAdvantage from '@/components/myAdvantageModal'
 // import CoursewareUpload from '@/components/coursewareUpload'
 // import NoSelect from '@/components/notSelectTag'
@@ -217,6 +221,7 @@ export default {
   name: 'Trends',
   data () {
     return {
+      isShowDeleteWorks:false,
       isShowAddWork:false,
       isShowEditor:false,
       isShowActivity: false,
@@ -453,6 +458,9 @@ export default {
     handleActivityShow () {
       this.isShowActivity = true
     },
+    invitation(){
+      this.isShowDeleteWorks = true
+    },
     todo (row) {
       if (row.id === 1) {
         this.$router.push({
@@ -485,6 +493,7 @@ export default {
     ActivityName,
     AddWorks,
     Ueditor,
+    DeleteWorks
     // MyAdvantage,
     // CoursewareUpload,
     // NoSelect,
