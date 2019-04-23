@@ -49,7 +49,7 @@
               <img src="../../assets/images/icon/zan.png" alt="">
             </div>
           </div>
-            
+
         </div>
         <footer>
           <button class="button1" @click="handleInvitation">拒绝邀请</button>
@@ -69,26 +69,28 @@ export default {
       default: false
     }
   },
-  data() {
+  data () {
     return {
       loading: true
-    };
+    }
   },
-  created() {
-    let _this = this;
+  created () {
+    let _this = this
     setTimeout(() => {
-      _this.loading = false;
-    }, 1000);
+      _this.loading = false
+    }, 1000)
   },
   methods: {
-    handleClose() {
-      this.$emit("close");
+    handleClose () {
+      this.$emit('close')
     },
-    handleInvitation(){
+    handleInvitation () {
+      this.$emit('close')
+      this.$message('您已拒绝邀请')
       this.$emit('invitation')
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

@@ -171,7 +171,7 @@
         </div>
         <footer>
           <button class="button1" v-show="status==='1'||status==='2'">完成并关闭</button>
-          <button class="button2" v-show="status==='1'||status==='2'">继续打卡</button>
+          <button class="button2" v-show="status==='1'||status==='2'" @click="handleContinuePunch">继续打卡</button>
           <button class="button2" v-show="status==='3'">完成并关闭</button>
         </footer>
       </div>
@@ -190,62 +190,65 @@ export default {
     },
     status: {
       type: String,
-      default: "2"
+      default: '2'
     }
   },
-  data() {
+  data () {
     return {
       loading: true,
       currentPage: 1,
       data: [
         {
           content:
-            "余周周真的很棒，在活动中积极参与，完成度高，余周周真的很棒，在活动中积极参与，完成度高，余周周真的很棒，在活动中积极参与。",
-          username: "用户名",
-          time: "2019.3.20 16:02"
+            '余周周真的很棒，在活动中积极参与，完成度高，余周周真的很棒，在活动中积极参与，完成度高，余周周真的很棒，在活动中积极参与。',
+          username: '用户名',
+          time: '2019.3.20 16:02'
         },
         {
           content:
-            "余周周真的很棒，在活动中积极参与，完成度高，余周周真的很棒。",
-          username: "小黑黑",
-          time: "2019.2.08 13:15"
+            '余周周真的很棒，在活动中积极参与，完成度高，余周周真的很棒。',
+          username: '小黑黑',
+          time: '2019.2.08 13:15'
         },
         {
           content:
-            "余周周真的很棒，在活动中积极参与，完成度高，余周周真的很棒，在活动中积极参与，在活动中积极参与。",
-          username: "小明明",
-          time: "2019.1.12 09:10"
+            '余周周真的很棒，在活动中积极参与，完成度高，余周周真的很棒，在活动中积极参与，在活动中积极参与。',
+          username: '小明明',
+          time: '2019.1.12 09:10'
         }
       ]
-    };
+    }
   },
-  created() {
-    let _this = this;
+  created () {
+    let _this = this
     setTimeout(() => {
-      _this.loading = false;
-    }, 1000);
+      _this.loading = false
+    }, 1000)
   },
   methods: {
-    handleClose() {
-      this.$emit("close");
+    handleContinuePunch () {
+      this.$router.push('/superiority-clockin/empty')
     },
-    jumpTo18() {
-      this.$emit("showActivity");
+    handleClose () {
+      this.$emit('close')
     },
-    prev() {
+    jumpTo18 () {
+      this.$emit('showActivity')
+    },
+    prev () {
       if (this.currentPage <= 1) {
-        return;
+        return
       }
-      this.currentPage--;
+      this.currentPage--
     },
-    next() {
+    next () {
       if (this.currentPage >= this.data.length) {
-        return;
+        return
       }
-      this.currentPage++;
+      this.currentPage++
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

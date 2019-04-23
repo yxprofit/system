@@ -221,14 +221,9 @@ export default {
   name: 'Trends',
   data () {
     return {
-<<<<<<< HEAD
+      isShowDeleteWorks: false,
       isShowAddWork: false,
       isShowEditor: false,
-=======
-      isShowDeleteWorks:false,
-      isShowAddWork:false,
-      isShowEditor:false,
->>>>>>> 5ec2e5764a05cb17a4dbe649a32f8ebe184a4d47
       isShowActivity: false,
       isShowPanchCard: false,
       isShowAdvantage: false,
@@ -463,7 +458,7 @@ export default {
     handleActivityShow () {
       this.isShowActivity = true
     },
-    invitation(){
+    invitation () {
       this.isShowDeleteWorks = true
     },
     todo (row) {
@@ -497,12 +492,8 @@ export default {
     PunchCard,
     ActivityName,
     AddWorks,
-<<<<<<< HEAD
-    Ueditor
-=======
     Ueditor,
     DeleteWorks
->>>>>>> 5ec2e5764a05cb17a4dbe649a32f8ebe184a4d47
     // MyAdvantage,
     // CoursewareUpload,
     // NoSelect,

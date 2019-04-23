@@ -197,14 +197,9 @@
 }
 
 /* message提示框 */
-.el-message .el-icon-success {
-  font-size: 24px;
-}
-
-.unpload-message.el-message .el-message__icon{
-  font-size: 16px;
-}
-
-.limit-message.el-message .el-message__icon{
-  font-size: 16px;
+.el-message .el-icon-success,
+.el-message .el-message__icon,
+.unpload-message.el-message .el-message__icon,
+.limit-message.el-message .el-message__icon  {
+  font-size: 0.16px;
 }
