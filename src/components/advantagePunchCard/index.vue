@@ -170,9 +170,9 @@
           </div>
         </div>
         <footer>
-          <button class="button1" v-show="status==='1'||status==='2'">完成并关闭</button>
+          <button class="button1" v-show="status==='1'||status==='2'" @click="handleClose">完成并关闭</button>
           <button class="button2" v-show="status==='1'||status==='2'" @click="handleContinuePunch">继续打卡</button>
-          <button class="button2" v-show="status==='3'">完成并关闭</button>
+          <button class="button2" v-show="status==='3'" @click="handleClose">完成并关闭</button>
         </footer>
       </div>
     </el-dialog>

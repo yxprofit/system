@@ -174,14 +174,14 @@
     <punch-card :state='isShowPanchCard' :status='punchStatus' @close='parentClose' @showActivity='handleActivityShow'></punch-card>
 
     <!-- 我的活动 -->
-    <activity-name :state='isShowActivity' @close='parentClose'></activity-name>
+    <activity-name :state='isShowActivity' @close='parentClose' @invitation='invitation'></activity-name>
 
     <!-- 添加任务弹框 -->
     <add-works :state='isShowAddWork' @close='parentClose' @handleJump='handleJump'></add-works>
     <Ueditor :state='isShowEditor' @close='parentClose'></Ueditor>
 
     <!-- 删除任务弹框 -->
-    <delete-works :state='isShowDeleteWorks' @close='parentClose' @handleInvitation='invitation'></delete-works>
+    <delete-works :state='isShowDeleteWorks' @close='parentClose'></delete-works>
 
     <!-- 测试弹窗组件区域 -->
     <!-- <my-advantage :state="isShowAdvantage"></my-advantage> -->
@@ -454,6 +454,7 @@ export default {
       this.isShowActivity = false
       this.isShowAddWork = false
       this.isShowEditor = false
+      this.isShowDeleteWorks = false
     },
     handleActivityShow () {
       this.isShowActivity = true

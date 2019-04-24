@@ -39,7 +39,9 @@ export default {
     check(id) {
       this.ischeck = id;
     },
-    confirm(){}
+    confirm(){
+      this.$emit("close");
+    }
   }
 };
 </script>
