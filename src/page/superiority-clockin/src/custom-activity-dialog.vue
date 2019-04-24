@@ -78,7 +78,7 @@
           </el-option>
         </el-select>
       </el-form-item>
-      <el-form-item label="所需时间：">
+      <el-form-item class="form-textarea" label="活动介绍：">
           <div>
             <el-input
               v-model="form.desc"
@@ -161,6 +161,7 @@ export default {
 <style lang="scss">
 .custom-activity{
   height: 8rem;
+  min-height: 750px;
   .el-dialog__header {
     height: 0.6rem;
     line-height: 0.6rem;
@@ -186,8 +187,11 @@ export default {
     }
   }
   .el-dialog__body {
-    padding: 0.2rem 1.57rem 0.17rem 0.72rem;
+    padding: 0.2rem 0 0.17rem 0;
+    box-sizing: border-box;
+    margin: 0 1.57rem 0 0.72rem;
     .el-form {
+      font-size: 0;
       .el-input--small .el-input__inner  {
         border-radius: 0.03rem;
         height: 0.32rem;
@@ -202,7 +206,12 @@ export default {
           line-height: 0.32rem;
         }
         .el-form-item__content {
-          line-height: 0.32rem;
+          height: 0.32rem;
+          line-height: 0.32rem!important;
+        }
+        .el-input.el-input--small {
+          line-height: 0.3rem;
+          height: 0.32rem;
         }
       }
       .item-major {
@@ -233,8 +242,9 @@ export default {
           padding-right: 0;
           text-align: center;
           width: 0.55rem;
-          padding: 0.08rem 0.15rem 0 0.1rem;
+          padding: 0 0.14rem;
           height: 0.32rem;
+          line-height: 0.3rem;
           .el-radio__label {
             padding: 0;
           }
@@ -250,6 +260,7 @@ export default {
         }
       }
       .muilty-form-item {
+        height: 0.72rem;
         .el-radio.is-bordered {
           width: 1.24rem;
           margin-bottom: 0.1rem;
@@ -263,6 +274,9 @@ export default {
           }
         }
         
+      }
+      .form-textarea {
+        height: 1rem;
       }
       .el-textarea {
         height: 1rem;
