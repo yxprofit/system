@@ -90,7 +90,10 @@
     <invitation-comments :state.sync="isShowComments" @success="handleSuccess" @showActivity="handleActivityShow"></invitation-comments>
     <invitation-success :state.sync="isShowSuccess"></invitation-success>
      <!-- 我的活动 -->
-    <activity-name :state='isShowActivity' @close='parentClose'></activity-name>
+    <activity-name :state='isShowActivity' @close='parentClose' @invitation='invitation'></activity-name>
+    <!-- 确认删除弹框 -->
+    <delete-works :state='isShowDeleteWorks' @close='parentClose'></delete-works>
+
   </div>
 </template>
 <script>
@@ -114,6 +117,8 @@ import NoSelect from '@/components/notSelectTag'
 import InvitationSuccess from '@/components/invitationSuccess'
 import InvitationComments from '@/components/invitationComments'
 import UploadList from '@/components/uploadFileList'
+import DeleteWorks from '@/page/teachers/course/deleteWork/deleteWork'
+
 let mockData = [{
     imgSrc: activity2,
     id: 111,
@@ -190,11 +195,13 @@ export default {
     InvitationSuccess,
     InvitationComments,
     UploadList,
-    ActivityName
+    ActivityName,
+    DeleteWorks
   },
   data () {
     return {
       indexPic,
+      isShowDeleteWorks:false,
       isShowAdvantage: false,
       isShowNoSelect: false,
       isShowUpload: false,
@@ -335,6 +342,10 @@ export default {
     },
     parentClose () {
       this.isShowActivity = false
+      this.isShowDeleteWorks = false
+    },
+    invitation () {
+      this.isShowDeleteWorks = true
     }
   },
   watch: {

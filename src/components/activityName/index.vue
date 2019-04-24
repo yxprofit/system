@@ -85,9 +85,9 @@ export default {
       this.$emit('close')
     },
     handleInvitation () {
-      this.$emit('close')
-      this.$message('您已拒绝邀请')
       this.$emit('invitation')
+      this.$message('您已拒绝邀请')
+      // this.$emit('invitation')
     }
   }
 }
