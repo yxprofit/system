@@ -163,7 +163,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  max-height: 4.2rem;
+  max-height: 4.3rem;
   padding: 0.2rem;
 }
 .lesson-item {

@@ -24,7 +24,7 @@
             <li class="ability-item" v-for="(tag, index) in tagList" :key="index" @click="handleSelectTag(tag, index)">
               <el-tooltip placement="right" effect="light" >
                 <div slot="content" class="tip-content">
-                  <div class="tip-title">{{ tag.tipTitle }}   </div>
+                  <div class="tip-title">{{ tag.tipTitle }}：</div>
                   <div class="tip-desc">{{ tag.tipDesc }}</div>
                 </div>
                 <img class="tag-icon" :src="tag.showLight ? tag.light : tag.gery" alt>
@@ -61,7 +61,7 @@ export default {
           grey: '',
           icon: '',
           showLight: false,
-          tipTitle: '判断性思维：',
+          tipTitle: '判断性思维',
           tipDesc: `遇到问题时主动分析搜集信
 息，经过辨证思考后采取行
 动的技能`
@@ -71,7 +71,7 @@ export default {
           grey: '',
           icon: '',
           showLight: false,
-          tipTitle: '沟通技能：',
+          tipTitle: '沟通技能',
           tipDesc: `遇到问题时主动分析搜集信
 息，经过辨证思考后采取行
 动的技能`
@@ -81,7 +81,7 @@ export default {
           grey: '',
           icon: '',
           showLight: false,
-          tipTitle: '团队协作：',
+          tipTitle: '团队协作',
           tipDesc: `遇到问题时主动分析搜集信
 息，经过辨证思考后采取行
 动的技能`
@@ -91,7 +91,7 @@ export default {
           gery: '',
           icon: '',
           showLight: false,
-          tipTitle: '创造力：',
+          tipTitle: '创造力',
           tipDesc: `遇到问题时主动分析搜集信
 息，经过辨证思考后采取行
 动的技能`
@@ -101,7 +101,7 @@ export default {
           gery: '',
           icon: '',
           showLight: false,
-          tipTitle: '世界公民：',
+          tipTitle: '世界公民',
           tipDesc: `遇到问题时主动分析搜集信
 息，经过辨证思考后采取行
 动的技能`
@@ -111,7 +111,7 @@ export default {
           gery: '',
           icon: '',
           showLight: false,
-          tipTitle: '自我认知：',
+          tipTitle: '自我认知',
           tipDesc: `遇到问题时主动分析搜集信
 息，经过辨证思考后采取行
 动的技能`
@@ -121,7 +121,7 @@ export default {
           gery: '',
           icon: '',
           showLight: false,
-          tipTitle: '自我管理：',
+          tipTitle: '自我管理',
           tipDesc: `遇到问题时主动分析搜集信
 息，经过辨证思考后采取行
 动的技能`
@@ -131,7 +131,7 @@ export default {
           gery: '',
           icon: '',
           showLight: false,
-          tipTitle: '社会意识：',
+          tipTitle: '社会意识',
           tipDesc: `遇到问题时主动分析搜集信
 息，经过辨证思考后采取行
 动的技能`
@@ -141,7 +141,7 @@ export default {
           gery: '',
           icon: '',
           showLight: false,
-          tipTitle: '关系建立：',
+          tipTitle: '关系建立',
           tipDesc: `遇到问题时主动分析搜集信
 息，经过辨证思考后采取行
 动的技能`
@@ -151,7 +151,7 @@ export default {
           gery: '',
           icon: '',
           showLight: false,
-          tipTitle: '决策能力：',
+          tipTitle: '决策能力',
           tipDesc: `遇到问题时主动分析搜集信
 息，经过辨证思考后采取行
 动的技能`

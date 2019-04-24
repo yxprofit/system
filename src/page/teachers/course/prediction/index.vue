@@ -80,7 +80,8 @@ export default {
           'A. 对陌生人紧张，表达的不清楚或者没有逻辑性1',
           'B. 不知道如何凸显自己的特点，让别人记住自己1',
           'C. 滔滔不绝，却有些乏味1',
-          'D. 光顾着介绍自己，太自夸，没有注意倾听别人1'
+          'D. 光顾着介绍自己，太自夸，没有注意倾听别人1',
+          'E. 光顾着介绍自己，太自夸，1'
         ],
         [
           'A. 对陌生人紧张，表达的不清楚或者没有逻辑性2',
@@ -312,6 +313,11 @@ export default {
   padding: 0.15rem;
   box-sizing: border-box;
   position: relative;
+}
+
+.test-list {
+  height: 2.4rem;
+  overflow: auto;
 }
 
 .test-item {

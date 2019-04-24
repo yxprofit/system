@@ -219,7 +219,7 @@ export default {
 }
 
 .content-wrap {
-  padding: 0 0.08rem;
+  padding: 0 0.4rem;
 
   .course-file-icon,
   .course-title {
@@ -234,6 +234,7 @@ export default {
   }
 
   .course-title-wrap {
+    cursor: pointer;
     padding: 0.2rem 0 0.17rem 0;
   }
 
@@ -245,6 +246,7 @@ export default {
     border-radius: 0.06rem;
     margin-bottom: 0.16rem;
     text-align: center;
+    background:rgba(245,246,248,0.88);
   }
 
   .courseware-content {
@@ -253,7 +255,7 @@ export default {
 
   .course-list {
     display: flex;
-    padding: 0 70px;
+    padding: 0 0.35rem;
     flex-wrap: wrap;
     justify-content: flex-start;
     @include mix-text-overflow;

@@ -207,7 +207,7 @@ export default {
       console.log(scope, 'scope')
     },
     cancelInvatitaion (index) {
-      this.tableData2.splice(this.invatitationArr[index].$index, 1)
+      this.tableData2[index].operate = false
       this.invatitationArr.splice(index, 1)
     }
   }

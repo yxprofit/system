@@ -464,7 +464,7 @@ export default {
 <style lang="scss" scoped>
 .group {
   width: 11rem;
-  height: 6.2rem;
+  height: 6.9rem;
   margin: 0 auto;
   background: #fff;
   border-radius: 0.05rem;
@@ -552,6 +552,10 @@ export default {
       color: #333;
     }
   }
+}
+
+.content-group2-list {
+  margin-bottom: 0.05rem;
 }
 
 .group-content {
@@ -733,7 +737,7 @@ export default {
 }
 
 .group2-wrap {
-  height: 2.65rem;
+  height: 3.45rem;
 }
 
 .group1-prev,
@@ -766,7 +770,7 @@ export default {
 
 .group-slide {
   width: 3.1rem;
-  height: 2.65rem;
+  height: 3.25rem;
   background: #fafbfd;
   margin-right: 0.12rem;
   margin-top: 0.2rem;
@@ -819,7 +823,7 @@ export default {
 
 .list-group2 {
   overflow-y: scroll;
-  height: 2.15rem;
+  height: 2.95rem;
   text-align: left;
   white-space: pre-wrap;
   padding-top: 0.2rem;

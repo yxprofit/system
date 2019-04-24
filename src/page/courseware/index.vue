@@ -2,7 +2,7 @@
   <div class="courseware" v-loading="loading">
     <div class="taskleft">
       <div class="backclass" v-if="$route.query.type !== 'teacherTask'" @click="goback">
-        < 返回课程</div>
+          <i class="el-icon-arrow-left"></i> 返回课程</div>
           <div class="step">
             <div ref="stepImg" class="stepimg" >
               <img class="step-content" :style="imgClacStyle" :src="page === 1 ? material : details1">
