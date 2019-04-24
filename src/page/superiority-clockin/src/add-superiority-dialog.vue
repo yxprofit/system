@@ -101,8 +101,16 @@ export default {
           prop: 'humorous',
           imgsrc: humorous
         },{
+          label: '幽默1',
+          prop: 'humorous1',
+          imgsrc: humorous
+        },{
           label: '灵性',
           prop: 'spiritrual',
+          imgsrc: spiritrual
+        },{
+          label: '灵性1',
+          prop: 'spiritrual1',
           imgsrc: spiritrual
         }]
       }, {
@@ -322,17 +330,18 @@ export default {
               }
             }
             .bottom {
+              margin-bottom: 0.14rem;
               .detail-list {
                 display: flex;
                 flex-wrap: wrap;
-                height: 1.1rem;
+                height: 1rem;
                 overflow: auto;
                 .detail-list-item {
                   width: 0.82rem;
                   height: 0.82rem;
                   text-align: center;
                   border-radius: 0.04rem;
-                  margin: 0.14rem 0.16rem 0.14rem;
+                  margin: 0.14rem 0.16rem 0;
                   position: relative;
                   box-sizing: border-box;
                   border: 1px dashed transparent;
