@@ -13,12 +13,30 @@
           </el-form-item>
           <el-form-item label="内容" prop="name" label-width="0.55rem">
             <div id="editor">
-              <quill-editor v-model="content" @change="onEditorChange($event)" style="height: 400px;" :options="opt"></quill-editor>
+              <quill-editor
+                v-model="content"
+                @change="onEditorChange($event)"
+                style="height: 400px;"
+                :options="opt"
+              ></quill-editor>
             </div>
           </el-form-item>
 
           <el-form-item label="相关文件" prop="name">
-            <div class="upload-item">余周周的课件作品.doc</div>
+            <el-upload
+              class="upload-demo"
+              ref="upload"
+              action="https://jsonplaceholder.typicode.com/posts/"
+              :show-file-list="false"
+              :on-preview="handlePreview"
+              :on-remove="handleRemove"
+              :on-success="handleSuccess"
+              :on-error="handleError"
+              :auto-upload="false"
+              :on-change="handleChange"
+            >
+              <div class="upload-item">{{ uploadName }}</div>
+            </el-upload>
           </el-form-item>
           <el-form-item>
             <el-button type="primary">确认添加</el-button>
@@ -30,17 +48,15 @@
 </template>
 
 <script>
-
-import {quillEditor, Quill} from 'vue-quill-editor'
-import {container, ImageExtend, QuillWatch} from 'quill-image-extend-module'
-
-Quill.register('modules/ImageExtend', ImageExtend)
+import { quillEditor, Quill } from "vue-quill-editor";
+import { container, ImageExtend, QuillWatch } from "quill-image-extend-module";
 
 // require styles
 import "quill/dist/quill.core.css";
 import "quill/dist/quill.snow.css";
 import "quill/dist/quill.bubble.css";
 
+Quill.register("modules/ImageExtend", ImageExtend);
 
 export default {
   data() {
@@ -48,35 +64,35 @@ export default {
       editor: null,
       loading: true,
       content: "",
+      uploadName: "上传附件",
       // state: true,
-      content: "",
       opt: {
         formula: true,
         syntax: true,
         modules: {
-           ImageExtend: {  
-             // 如果不作设置，即{}  则依然开启复制粘贴功能且以base64插入 
-              name: 'img',  // 图片参数名
-              size: 3,  // 可选参数 图片大小，单位为M，1M = 1024kb
-              action: '/a',  // 服务器地址, 如果action为空，则采用base64插入图片
-              // response 为一个函数用来获取服务器返回的具体图片地址
-              // 例如服务器返回{code: 200; data:{ url: 'baidu.com'}}
-              // 则 return res.data.url
-              response: (res) => {
-                  return res.info
-              },
-              headers: (xhr) => {
+          ImageExtend: {
+            // 如果不作设置，即{}  则依然开启复制粘贴功能且以base64插入
+            name: "img", // 图片参数名
+            size: 3, // 可选参数 图片大小，单位为M，1M = 1024kb
+            action: "/a", // 服务器地址, 如果action为空，则采用base64插入图片
+            // response 为一个函数用来获取服务器返回的具体图片地址
+            // 例如服务器返回{code: 200; data:{ url: 'baidu.com'}}
+            // 则 return res.data.url
+            response: res => {
+              return res.info;
+            },
+            headers: xhr => {
               // xhr.setRequestHeader('myHeader','myValue')
-              },  // 可选参数 设置请求头部
-              sizeError: () => {},  // 图片超过大小的回调
-              start: () => {},  // 可选参数 自定义开始上传触发事件
-              end: () => {},  // 可选参数 自定义上传结束触发的事件，无论成功或者失败
-              error: () => {},  // 可选参数 上传失败触发的事件
-              success: () => {},  // 可选参数  上传成功触发的事件
-              change: (xhr, formData) => {
+            }, // 可选参数 设置请求头部
+            sizeError: () => {}, // 图片超过大小的回调
+            start: () => {}, // 可选参数 自定义开始上传触发事件
+            end: () => {}, // 可选参数 自定义上传结束触发的事件，无论成功或者失败
+            error: () => {}, // 可选参数 上传失败触发的事件
+            success: () => {}, // 可选参数  上传成功触发的事件
+            change: (xhr, formData) => {
               // xhr.setRequestHeader('myHeader','myValue')
               // formData.append('token', 'myToken')
-              } // 可选参数 每次选择图片触发，也可用来设置头部，但比headers多了一个参数，可设置formData
+            } // 可选参数 每次选择图片触发，也可用来设置头部，但比headers多了一个参数，可设置formData
           },
           toolbar: {
             container: [
@@ -96,18 +112,16 @@ export default {
 
               ["code-block", "clean"]
             ],
-            // 劫持原有图片上传 
-             // 如果不上传图片到服务器，此处不必配置
+            // 劫持原有图片上传
+            // 如果不上传图片到服务器，此处不必配置
             handlers: {
-              'image': function () {
-                QuillWatch.emit(this.quill.id)
+              image: function() {
+                QuillWatch.emit(this.quill.id);
               }
             }
-          },
-         
+          }
         },
-        placeholder: "请在这里输入...",
-        
+        placeholder: "请在这里输入..."
       }
     };
   },
@@ -120,12 +134,39 @@ export default {
   },
   mounted() {},
   methods: {
+    handleChange(file, fileList) {
+      this.uploadName = file.name
+      console.log(file, 'change')
+    },
+    handleSuccess() {
+      this.$message({
+        type: "success",
+        message: "上传成功",
+        customClass: "unpload-message"
+      });
+    },
+    handleError() {
+      this.$message({
+        message: "上传失败",
+        type: "error",
+        customClass: "unpload-message"
+      });
+    },
+    handleSubmit() {
+      this.$refs.upload.submit();
+    },
+    handleRemove(file, fileList) {
+      console.log(file, fileList);
+    },
+    handlePreview(file) {
+      console.log(file, "file");
+    },
     gettext() {},
     handleClose() {
       this.$emit("close");
       console.log(this.content);
     },
-    onEditorChange () {
+    onEditorChange() {
       console.log(this.content);
     }
   },
@@ -133,7 +174,7 @@ export default {
     quillEditor
   },
   destroyed() {
-    this.editor = null
+    this.editor = null;
   }
 };
 </script>
@@ -148,15 +189,14 @@ export default {
   z-index: 9999;
 }
 // dialog样式修改
-.teacher_editor /deep/ .el-dialog{
+.teacher_editor /deep/ .el-dialog {
   margin-top: 0 !important;
   width: 11rem;
 }
-.teacher_editor /deep/ .el-dialog__wrapper{
+.teacher_editor /deep/ .el-dialog__wrapper {
   padding-top: 0.25rem;
   box-sizing: border-box;
   overflow: hidden;
-
 }
 .teacher_editor /deep/ .el-dialog__header {
   height: 0.6rem;
@@ -205,7 +245,7 @@ export default {
   position: relative;
   &:after {
     position: absolute;
-    content: ".";
+    content: "";
     width: 0.06rem;
     height: 0.06rem;
     background: rgba(242, 42, 24, 1);
@@ -242,4 +282,3 @@ export default {
   cursor: pointer;
 }
 </style>
-

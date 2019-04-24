@@ -52,7 +52,7 @@
           </div>
         </div>
         <div class="btn-wrap">
-          <div class="prev test-btn" @click="prevTest">上一题</div>
+          <div class="test-btn" :class="[ currentPage === 0 ? 'prev' : 'submit' ]" @click="prevTest">上一题</div>
           <div class="submit test-btn" @click="nextTest">{{ isShowTextArea ? '确认提交' : '下一题' }}</div>
         </div>
       </div>
