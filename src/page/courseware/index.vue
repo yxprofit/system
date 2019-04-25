@@ -2,82 +2,105 @@
   <div class="courseware" v-loading="loading">
     <div class="taskleft">
       <div class="backclass" v-if="$route.query.type !== 'teacherTask'" @click="goback">
-          <i class="el-icon-arrow-left"></i> 返回课程</div>
-          <div class="step">
-            <div ref="stepImg" class="stepimg" >
-              <img class="step-content" :style="imgClacStyle" :src="page === 1 ? material : details1">
-              <!-- <img class="step-content" :style="imgClacStyle" :src="page === 1 ? material : details1"> -->
-            </div>
-          </div>
-          <div class="stepbut">
-            <button class="pre" :class="{'active':page === 1}" @click="page = 1">上一页</button>
-            <span class="pages">
-              <var>{{page}}</var>/2
-            </span>
-            <button class="next" :class="{'active':page === 2}" @click="page = 2">下一页</button>
-            <div class="allPrint" @click="screenF">
-              <img :src="fullShow ?closePrint:allPrint">
-              <span>{{fullShow ? '退出全屏' : '全屏' }}</span>
-            </div>
-          </div>
+        <i class="el-icon-arrow-left"></i> 返回课程
       </div>
-      <hgroup :class="{'active':isHidden}">
-        <div>
-          <p>本课时任务</p>
+      <div class="step">
+        <div ref="stepImg" class="stepimg">
+          <img class="step-content" :style="imgClacStyle" :src="page === 1 ? material : details1">
+          <!-- <img class="step-content" :style="imgClacStyle" :src="page === 1 ? material : details1"> -->
         </div>
-        <draggable element="ul" class="task" @change="log" v-model="computedTask" draggable=".task-item">
-          <li class="task-item" v-for="(item, index) in computedTask" :key="index">
-            <h4 :class="'icon-' + item.type">
-              <!-- <span class="task-item__title" v-show='!isHidden'>{{ item.name }}</span> -->
-              <el-tooltip popper-class="hoverTip" class="item" effect="dark" :content="item.name" placement="top" :hide-after='1000'>
-                <el-button class="task-item__title">{{item.name}}</el-button>
-              </el-tooltip>
-              <span :class="[item.type, {'hidden':isHidden}]" class="task-item__btn" v-if="item.btn" @click="handleTaskList(item.type)">{{ item.btn }}</span>
-            </h4>
-          </li>
-        </draggable>
-        <img :class="['bottom',{'hidden':isHidden}]" @click="changeIsHidden" src="../../assets/images/icon/icon_open.png" alt>
-        <ul class="operation" v-if="$route.query.type === 'teacherTask'">
-          <li class="edit">
-            <span>
-              <i class="el-icon-check"></i>保存修改
-            </span>
-          </li>
-          <li class="add" @click="addworks">
-            <span>
-              <i class="el-icon-plus"></i>添加任务
-            </span>
-          </li>
-        </ul>
-
-      </hgroup>
-
-      <popup-modal v-model="isShowSaveTask" :contentStyle="{ width: '8.8rem' }">
-        <save-task @taskClose="handleTaskClose" @confirmDel='confirmDel'></save-task>
-      </popup-modal>
-      <delete-work :state='isdelete' @close='handleClose'></delete-work>
-      <add-works :state='addwork' @close='addworkClose' @handleJump='jump'></add-works>
-      <teacher-editor :state='editor' @close='editorClose'></teacher-editor>
+      </div>
+      <div class="stepbut">
+        <button class="pre" :class="{'active':page === 1}" @click="page = 1">上一页</button>
+        <span class="pages">
+          <var>{{page}}</var>/2
+        </span>
+        <button class="next" :class="{'active':page === 2}" @click="page = 2">下一页</button>
+        <div class="allPrint" @click="screenF">
+          <img :src="fullShow ?closePrint:allPrint">
+          <span>{{fullShow ? '退出全屏' : '全屏' }}</span>
+        </div>
+      </div>
     </div>
+    <hgroup :class="{'active':isHidden}">
+      <div>
+        <p>本课时任务</p>
+      </div>
+      <draggable
+        element="ul"
+        class="task"
+        @change="log"
+        v-model="computedTask"
+        draggable=".task-item"
+      >
+        <li class="task-item" v-for="(item, index) in computedTask" :key="index">
+          <h4 :class="'icon-' + item.type">
+            <!-- <span class="task-item__title" v-show='!isHidden'>{{ item.name }}</span> -->
+            <el-tooltip
+              popper-class="hoverTip"
+              class="item"
+              effect="dark"
+              :content="item.name"
+              placement="top"
+              :hide-after="1000"
+            >
+              <el-button class="task-item__title">{{item.name}}</el-button>
+            </el-tooltip>
+            <span
+              :class="[item.type, {'hidden':isHidden}]"
+              class="task-item__btn"
+              v-if="item.btn"
+              @click="handleTaskList(item.type)"
+            >{{ item.btn }}</span>
+          </h4>
+        </li>
+      </draggable>
+      <img
+        :class="['bottom',{'hidden':isHidden}]"
+        @click="changeIsHidden"
+        src="../../assets/images/icon/icon_open.png"
+        alt
+      >
+      <ul class="operation" v-if="$route.query.type === 'teacherTask'">
+        <li class="edit">
+          <span>
+            <i class="el-icon-check"></i>保存修改
+          </span>
+        </li>
+        <li class="add" @click="addworks">
+          <span>
+            <i class="el-icon-plus"></i>添加任务
+          </span>
+        </li>
+      </ul>
+    </hgroup>
+
+    <popup-modal v-model="isShowSaveTask" :contentStyle="{ width: '8.8rem' }">
+      <save-task @taskClose="handleTaskClose" @confirmDel="confirmDel"></save-task>
+    </popup-modal>
+    <delete-work :state="isdelete" @close="handleClose"></delete-work>
+    <add-works :state="addwork" @close="addworkClose" @handleJump="jump"></add-works>
+    <teacher-editor :state="editor" @close="editorClose"></teacher-editor>
+  </div>
 </template>
 
 <script>
-import screenfull from 'screenfull'
-import material from 'assets/images/student/material.png'
-import details1 from 'assets/images/details1.png'
-import allPrint from 'assets/images/48.png'
-import closePrint from 'assets/images/49.png'
-import PopupModal from '@/components/popup'
-import SaveTask from '@/page/teachers/course/saveTask'
-import DeleteWork from '@/page/teachers/course/deleteWork/deleteWork'
-import AddWorks from '@/page/teachers/course/addworks/addWorkTypes'
-import TeacherEditor from '@/page/ueditor/ueditor'
+import screenfull from "screenfull";
+import material from "assets/images/student/material.png";
+import details1 from "assets/images/details1.png";
+import allPrint from "assets/images/48.png";
+import closePrint from "assets/images/49.png";
+import PopupModal from "@/components/popup";
+import SaveTask from "@/page/teachers/course/saveTask";
+import DeleteWork from "@/page/teachers/course/deleteWork/deleteWork";
+import AddWorks from "@/page/teachers/course/addworks/addWorkTypes";
+import TeacherEditor from "@/page/ueditor/ueditor";
 /* 组件方式引用 */
-import draggable from 'vuedraggable'
+import draggable from "vuedraggable";
 
 export default {
-  name: 'tasks',
-  data () {
+  name: "tasks",
+  data() {
     return {
       editor: false,
       addwork: false,
@@ -95,203 +118,215 @@ export default {
       teacherTask: [
         {
           id: 1,
-          name: '课件任务名称课件任务名称',
-          btn: '查看结果',
-          type: 'course'
+          name: "课件任务名称课件任务名称",
+          btn: "查看结果",
+          type: "course"
         },
         {
           id: 2,
-          name: '测试任务名称测试任务名称',
-          btn: '',
-          type: 'test'
+          name: "测试任务名称测试任务名称",
+          btn: "",
+          type: "test"
         },
         {
           id: 3,
-          name: '问卷任务名称问卷任务名称',
-          btn: '删除',
-          type: 'questionnaire'
+          name: "问卷任务名称问卷任务名称",
+          btn: "删除",
+          type: "questionnaire"
         },
         {
           id: 4,
-          name: '作品上传',
-          btn: '删除',
-          type: 'works'
+          name: "作品上传",
+          btn: "删除",
+          type: "works"
         },
         {
           id: 5,
-          name: '优势打卡',
-          btn: '删除',
-          type: 'clock'
+          name: "优势打卡",
+          btn: "删除",
+          type: "clock"
         }
       ],
       studentTask: [
         {
           id: 1,
-          name: '课件任务名称课件任务名称',
-          btn: '去完成',
-          type: 'course'
+          name: "课件任务名称课件任务名称",
+          btn: "去完成",
+          type: "course"
         },
         {
           id: 2,
-          name: '测试任务名称',
-          btn: '去完成',
-          type: 'test'
+          name: "测试任务名称",
+          btn: "去完成",
+          type: "test"
         },
         {
           id: 3,
-          name: '问卷任务名称问卷任务名称',
-          btn: '已完成',
-          type: 'questionnaire'
+          name: "问卷任务名称问卷任务名称",
+          btn: "已完成",
+          type: "questionnaire"
         },
         {
           id: 4,
-          name: '作品上传',
-          btn: '已完成',
-          type: 'works'
+          name: "作品上传",
+          btn: "已完成",
+          type: "works"
         },
         {
           id: 5,
-          name: '优势打卡任务名称',
-          btn: '已完成',
-          type: 'clock'
+          name: "优势打卡任务名称",
+          btn: "已完成",
+          type: "clock"
         }
       ],
       classTask: [
         {
           id: 1,
-          name: '课件任务名称',
-          btn: '查看结果',
-          type: 'course'
+          name: "课件任务名称",
+          btn: "查看结果",
+          type: "course"
         },
         {
           id: 2,
-          name: '测试任务名称',
-          btn: '',
-          type: 'test'
+          name: "测试任务名称",
+          btn: "",
+          type: "test"
         },
         {
           id: 3,
-          name: '问卷任务名称',
-          btn: '查看结果',
-          type: 'questionnaire'
+          name: "问卷任务名称",
+          btn: "查看结果",
+          type: "questionnaire"
         },
         {
           id: 4,
-          name: '作品上传',
-          btn: '查看结果',
-          type: 'works'
+          name: "作品上传",
+          btn: "查看结果",
+          type: "works"
         },
         {
           id: 5,
-          name: '优势打卡',
-          btn: '查看结果',
-          type: 'clock'
+          name: "优势打卡",
+          btn: "查看结果",
+          type: "clock"
         }
       ]
-    }
+    };
   },
   computed: {
-    showCloseIcon () {
-      let queryType = this.$route.query.type
-      if (queryType === 'teacherTask') {
-        return false
+    showCloseIcon() {
+      let queryType = this.$route.query.type;
+      if (queryType === "teacherTask") {
+        return false;
       } else {
-        return true
+        return true;
       }
     },
     computedTask: {
-      get () {
-        let queryType = this.$route.query.type
-        return queryType === 'teacherTask' ? this.teacherTask : (this.$route.query.type === 'classTask' ? this.classTask : this.studentTask)
+      get() {
+        let queryType = this.$route.query.type;
+        return queryType === "teacherTask"
+          ? this.teacherTask
+          : this.$route.query.type === "classTask"
+          ? this.classTask
+          : this.studentTask;
       },
-      set (newValue) {
+      set(newValue) {
         // 这个newValue能监听到methods里面从新赋值了，这个就是新值.
-        return newValue
+        return newValue;
       }
     }
   },
-  created () {
-    let _this = this
+  created() {
+    let _this = this;
     setTimeout(() => {
-      _this.loading = false
-    }, 1000)
+      _this.loading = false;
+    }, 1000);
+
+    document.onkeyup = function(e) {
+      let key = window.event.keyCode;
+      if (key == 27) {
+        _this.fullShow = false
+      }
+    };
   },
-  updated () {
-    this.setImgStyle()
+  updated() {
+    this.setImgStyle();
   },
   methods: {
-    setImgStyle () {
+    setImgStyle() {
       if (!this.$refs.stepImg) {
-        return
+        return;
       }
-      let img = this.$refs.stepImg.querySelector('img')
+      let img = this.$refs.stepImg.querySelector("img");
       if (!img) {
-        return
+        return;
       }
-      let parentWidth = this.$refs.stepImg.offsetWidth
-      let parentHeight = this.$refs.stepImg.offsetHeight
-      let orgPercent = parentWidth / parentHeight
-      let that = this
-      var imgtemp = new Image()
-      imgtemp.src = img.src
-      imgtemp.onload = function () { // 图片加载完成后执行
-        let realWidth = this.width
-        let realHeight = this.height
-        let upPercent = realWidth / realHeight
+      let parentWidth = this.$refs.stepImg.offsetWidth;
+      let parentHeight = this.$refs.stepImg.offsetHeight;
+      let orgPercent = parentWidth / parentHeight;
+      let that = this;
+      var imgtemp = new Image();
+      imgtemp.src = img.src;
+      imgtemp.onload = function() {
+        // 图片加载完成后执行
+        let realWidth = this.width;
+        let realHeight = this.height;
+        let upPercent = realWidth / realHeight;
         if (upPercent < orgPercent) {
-          that.imgClacStyle = {width: 'auto', height: parentHeight + 'px'}
+          that.imgClacStyle = { width: "auto", height: parentHeight + "px" };
         } else {
-          that.imgClacStyle = {height: 'auto', width: parentWidth + 'px'}
+          that.imgClacStyle = { height: "auto", width: parentWidth + "px" };
+        }
+      };
+    },
+    log: function(evt) {
+      let el = evt.moved;
+      let list = this.computedTask;
+      list.splice(el.oldIndex, 1);
+      list.splice(el.newIndex, 0, el.element);
+      this.computedTask = list;
+    },
+    handleTaskClose(bool) {
+      this.isShowSaveTask = bool;
+    },
+    handleTaskList(type) {
+      let queryType = this.$route.query.type;
+      if (queryType === "teacherTask") {
+        if (type === "works") {
+          this.isShowSaveTask = !this.isShowSaveTask;
         }
       }
     },
-    log: function (evt) {
-      let el = evt.moved
-      let list = this.computedTask
-      list.splice(el.oldIndex, 1)
-      list.splice(el.newIndex, 0, el.element)
-      this.computedTask = list
+    goback() {
+      screenfull.exit();
+      this.$router.go(-1);
     },
-    handleTaskClose (bool) {
-      this.isShowSaveTask = bool
+    screenF() {
+      this.fullShow = !this.fullShow;
+      screenfull.toggle();
     },
-    handleTaskList (type) {
-      let queryType = this.$route.query.type
-      if (queryType === 'teacherTask') {
-        if (type === 'works') {
-          this.isShowSaveTask = !this.isShowSaveTask
-        }
-      }
+    changeIsHidden() {
+      this.isHidden = !this.isHidden;
     },
-    goback () {
-      screenfull.exit()
-      this.$router.go(-1)
+    handleClose() {
+      this.isdelete = false;
     },
-    screenF () {
-      this.fullShow = !this.fullShow
-      screenfull.toggle()
+    confirmDel() {
+      this.isdelete = true;
     },
-    changeIsHidden () {
-      this.isHidden = !this.isHidden
+    addworkClose() {
+      this.addwork = false;
     },
-    handleClose () {
-      this.isdelete = false
+    addworks() {
+      this.addwork = true;
     },
-    confirmDel () {
-      this.isdelete = true
+    editorClose() {
+      this.editor = false;
     },
-    addworkClose () {
-      this.addwork = false
-    },
-    addworks () {
-      this.addwork = true
-    },
-    editorClose () {
-      this.editor = false
-    },
-    jump () {
-      this.editor = true
-      this.addwork = false
+    jump() {
+      this.editor = true;
+      this.addwork = false;
     }
   },
   components: {
@@ -302,7 +337,7 @@ export default {
     TeacherEditor,
     draggable
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -345,19 +380,19 @@ export default {
       width: 9.92rem;
       height: 100%;
       text-align: center;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       position: relative;
-      img{
-      max-height: 100%;
-      width: auto;
-      max-width: 100%;
-      margin: 0 auto;
-      // position: absolute;
-      // top: 50%;
-      // left: 50%;
-      // transform: translate(-50%,-50%);
+      img {
+        max-height: 100%;
+        width: auto;
+        max-width: 100%;
+        margin: 0 auto;
+        // position: absolute;
+        // top: 50%;
+        // left: 50%;
+        // transform: translate(-50%,-50%);
       }
       .step-content {
         max-width: 100%;
@@ -463,11 +498,11 @@ hgroup {
       text-align: center;
     }
   }
-  & > .task{
+  & > .task {
     overflow: hidden;
     height: 70%;
     box-sizing: border-box;
-    width:100%;
+    width: 100%;
   }
   & > .task > .task-item {
     padding: 0.2rem 0.1rem 0 0.2rem;
@@ -597,7 +632,7 @@ hgroup {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      padding: 0 0 0 .24rem;
+      padding: 0 0 0 0.24rem;
       border: none;
       font-size: 12px;
       font-weight: 700;
@@ -669,7 +704,7 @@ hgroup {
     height: 0.14rem;
     position: absolute;
     top: 4rem;
-    left: .2rem;
+    left: 0.2rem;
     z-index: 10;
     background-color: #fff;
     &.hidden {
@@ -677,17 +712,16 @@ hgroup {
     }
   }
 }
-
 </style>
 <style lang="scss">
-  .el-tooltip__popper.is-dark.hoverTip {
-    background-color: #f5f6f7;
-    color: #666;
-    .popper__arrow {
-      border-bottom-color: #f5f6f7;
-      &:after {
-        border-bottom-color: #f5f6f7 !important;
-      }
+.el-tooltip__popper.is-dark.hoverTip {
+  background-color: #f5f6f7;
+  color: #666;
+  .popper__arrow {
+    border-bottom-color: #f5f6f7;
+    &:after {
+      border-bottom-color: #f5f6f7 !important;
     }
   }
+}
 </style>

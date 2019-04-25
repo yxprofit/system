@@ -7,11 +7,11 @@
         </h3>
       </span>
       <div class="form-wraper">
-        <el-form ref="ruleForm" label-width="0.8rem" class="demo-ruleForm">
+        <el-form ref="ruleForm" label-width="0.9rem" class="demo-ruleForm">
           <el-form-item label="活动名称" prop="name">
             <el-input></el-input>
           </el-form-item>
-          <el-form-item label="内容" prop="name" label-width="0.55rem">
+          <el-form-item label="内容" prop="name" label-width="0.65rem">
             <div id="editor">
               <quill-editor
                 v-model="content"
