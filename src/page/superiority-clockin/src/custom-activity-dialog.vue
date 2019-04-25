@@ -1,6 +1,5 @@
 <template>
   <el-dialog
-   width="700px"
    :lock-scroll="true"
     custom-class="custom-activity"
     :visible.sync="dialogVisible">
@@ -161,6 +160,7 @@ export default {
 <style lang="scss">
 .custom-activity{
   height: 8rem;
+  width: 7rem;
   min-height: 750px;
   .el-dialog__header {
     height: 0.6rem;

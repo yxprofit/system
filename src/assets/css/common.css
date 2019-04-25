@@ -51,6 +51,9 @@
   vertical-align: middle;
   z-index: 4444;
 }
+.el-dialog__headerbtn:hover .el-dialog__close{
+  color: #fff;
+}
 
 .el-dialog__headerbtn .el-dialog__close {
   color: #fff;

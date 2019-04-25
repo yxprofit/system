@@ -1,6 +1,5 @@
 <template>
   <el-dialog
-    width="940px"
     custom-class="add-superiority"
    :visible.sync="dialogVisible">
     <div class="title" slot="title">
@@ -16,32 +15,34 @@
     </div>
     <div class="content">
         <div class="left">
-          <ul class="main-list">
-            <li
-              v-for="(item,index) in datas"
-              :key="index"
-              :class="item.prop"
-              class="main-list-item">
-              <div class="top">
-                <span class="top-title">{{item.title}}</span>
-                <span class="top-descs">{{item.desc}}</span>
+          <div class="main-list-wraper">
+            <ul class="main-list">
+              <li
+                v-for="(item,index) in datas"
+                :key="index"
+                :class="item.prop"
+                class="main-list-item">
+                <div class="top">
+                  <span class="top-title">{{item.title}}</span>
+                  <span class="top-descs">{{item.desc}}</span>
+                </div>
+                <div class="bottom">
+                  <ul class="detail-list">
+                    <li
+                      class="detail-list-item"
+                      :class="{'selected':seletedList.findIndex(item=>item.prop===detailItem.prop)>-1 || reseletedList.findIndex(item=>item.prop===detailItem.prop)>-1}"
+                      v-for="detailItem in item.children"
+                      :key="detailItem.prop"
+                      @click="handleReselect(item.prop, detailItem.prop, detailItem.label, detailItem.imgsrc)"
+                      @dblclick="handleSelest(item.prop, detailItem.prop, detailItem.label, detailItem.imgsrc)">
+                      <img :src="detailItem.imgsrc" alt="">
+                      <p>{{detailItem.label}}</p>
+                    </li>
+                  </ul>
               </div>
-              <div class="bottom">
-                <ul class="detail-list">
-                  <li
-                    class="detail-list-item"
-                    :class="{'selected':seletedList.findIndex(item=>item.prop===detailItem.prop)>-1 || reseletedList.findIndex(item=>item.prop===detailItem.prop)>-1}"
-                    v-for="detailItem in item.children"
-                    :key="detailItem.prop"
-                    @click="handleReselect(item.prop, detailItem.prop, detailItem.label, detailItem.imgsrc)"
-                    @dblclick="handleSelest(item.prop, detailItem.prop, detailItem.label, detailItem.imgsrc)">
-                    <img :src="detailItem.imgsrc" alt="">
-                    <p>{{detailItem.label}}</p>
-                  </li>
-                </ul>
-              </div>
-            </li>
-          </ul>
+              </li>
+            </ul>
+          </div>
         </div>
         <div class="center"><i @click="addToLeft" class="el-icon-d-arrow-right"></i></div>
         <div class="right">
@@ -151,6 +152,23 @@ export default {
           prop: 'command',
           imgsrc: command
         }]
+      }, {
+        prop: 'emotion1',
+        title: '情感类优势1',
+        desc: '帮助我们用意志力完成目标，尤其在遭遇外在困难和内心挫败1',
+        children: [{
+          label: '团队精神1',
+          prop: 'teamSpirit1',
+          imgsrc: teamSpirit
+        },{
+          label: '公平1',
+          prop: 'fair1',
+          imgsrc: fair
+        },{
+          label: '统率1',
+          prop: 'command1',
+          imgsrc: command
+        }]
       }]
     }
   },
@@ -236,6 +254,7 @@ export default {
 <style lang="scss">
   .add-superiority {
     height: 7.16rem;
+    width: 9.4rem;
     .el-dialog__header {
       height: 0.6rem;
       line-height: 0.6rem;
@@ -304,7 +323,13 @@ export default {
           border-radius: 0.06rem;
           background:rgba(255,255,255,1);
           vertical-align: middle;
-          padding: 0.2rem 0.1rem 0.2rem 0.3rem;
+          padding: 0.2rem 0.1rem 0.2rem 0;
+          .main-list-wraper {
+            height: 100%;
+            width: 100%;
+            overflow: auto;
+            padding-left: 0.4rem;
+          }
           .main-list-item {
             position: relative;
             &:before {
@@ -334,14 +359,13 @@ export default {
               .detail-list {
                 display: flex;
                 flex-wrap: wrap;
-                height: 1rem;
                 overflow: auto;
                 .detail-list-item {
                   width: 0.82rem;
                   height: 0.82rem;
                   text-align: center;
                   border-radius: 0.04rem;
-                  margin: 0.14rem 0.16rem 0;
+                  margin: 0.14rem 0.14rem 0;
                   position: relative;
                   box-sizing: border-box;
                   border: 1px dashed transparent;
@@ -372,6 +396,9 @@ export default {
             background-color: #D957D9;
           }
           .main-list-item.emotion:before {
+            background-color: #24AEF2;
+          }
+          .main-list-item.emotion1:before {
             background-color: #24AEF2;
           }
           .main-list-item.relationship:before {
