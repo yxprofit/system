@@ -243,12 +243,13 @@ export default {
       _this.loading = false;
     }, 1000);
 
-    document.onkeyup = function(e) {
-      let key = window.event.keyCode;
-      if (key == 27) {
-        _this.fullShow = false
-      }
-    };
+    // document.onkeyup = function(e) {
+    //   let key = window.event.keyCode;
+    //   if (key == 27) {
+    //     _this.fullShow = false
+    //   }
+    // };
+    this.fullScreen();
   },
   updated() {
     this.setImgStyle();
@@ -327,6 +328,29 @@ export default {
     jump() {
       this.editor = true;
       this.addwork = false;
+    },
+    fullScreen() {
+      // this.text = "esc";
+      let that = this;
+      // if (document.webkitIsFullScreen) return document.webkitCancelFullScreen();
+      // var el = document.body;
+      // if (el.webkitRequestFullScreen) {
+      //   el.webkitRequestFullScreen();
+      //   // el.style.width = window.screen.width + "px";
+      //   // el.style.height = window.screen.height + "px";
+      // }
+      document.addEventListener(
+        "webkitfullscreenchange",
+        function(e) {
+          if (!document.webkitIsFullScreen) {
+            // el.style.width = "inherit";
+            // el.style.height = "inherit";
+            // that.text = "full";
+            that.fullShow = false;
+          }
+        },
+        false
+      );
     }
   },
   components: {
