@@ -423,8 +423,13 @@ export default {
   }
 }
 
-.table-wrap /deep/ .trends .el-table .invitRow {
-  height: 0.5rem;
+.table-wrap /deep/ .el-table .invitRow {
+  height: 0.52rem;
+  line-height: 0.52rem;
+}
+
+.table /deep/ .el-table th, .el-table tr {
+  height: 0.52rem;
 }
 
 .table-wrap /deep/ .el-table {
@@ -434,7 +439,7 @@ export default {
   }
 }
 
-.table-wrap /deep/ .trends .el-table .invitRow:after {
+.table-wrap /deep/ .el-table .invitRow:after {
   height: 0.52rem;
   line-height: 0.52rem;
 }
@@ -443,7 +448,6 @@ export default {
   height: 0.52rem;
   line-height: 0.52rem;
   background: #fff !important;
-  border: 0.01rem solid red;
 
 }
 
