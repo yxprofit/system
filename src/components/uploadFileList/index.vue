@@ -322,7 +322,7 @@ export default {
   }
 }
 
-.table-wrap /deep/ .trends .el-table .invitRow {
+.table-wrap /deep/  .el-table .invitRow {
   height: 0.5rem;
 }
 
@@ -333,7 +333,7 @@ export default {
   }
 }
 
-.table-wrap /deep/ .trends .el-table .invitRow:after {
+.table-wrap /deep/  .el-table .invitRow:after {
   height: 0.52rem;
   line-height: 0.52rem;
 }
