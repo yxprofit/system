@@ -638,7 +638,7 @@ button {
   margin: 0 0.36rem 0 0.4rem;
   height: 100%;
   overflow: auto;
-  // max-height: 5rem;
+  max-height: calc(100vh - 2.3rem);
   .icon {
     width: 0.16rem;
     height: 0.16rem;
@@ -648,10 +648,9 @@ button {
   }
 }
 .table-wrap /deep/ .el-table__body-wrapper {
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   height: 100%;
-  max-height: 6rem;
 }
 .table-wrap /deep/ .el-table td.is-center:nth-of-type(1),
 .el-table th.is-center:nth-of-type(1) {
