@@ -81,7 +81,7 @@
           <!-- </el-scrollbar> -->
         </el-tab-pane>
 
-        <el-tab-pane label="我发起的任务" name="2">
+        <!-- <el-tab-pane label="我发起的任务" name="2">
           <span slot="label" class="nav_img_2">
             <img :src="activeName==='2'?t7:t6" alt>我发起的任务
           </span>
@@ -132,7 +132,6 @@
               <i>+</i>&nbsp;添加任务
             </button>
           </div>
-          <!-- <el-scrollbar style="height:100%;" tag="div" class="table-wrap"> -->
           <div class="table-wrap">
             <el-table :data="tableData2" style="width: 100%" row-class-name="tableRow">
               <el-table-column label="任务类型" sortable align="center" width="180">
@@ -152,8 +151,7 @@
             </el-table>
             <button class="more" @click="loadMore(2)">查看更多</button>
           </div>
-          <!-- </el-scrollbar> -->
-        </el-tab-pane>
+        </el-tab-pane> -->
       </el-tabs>
     </section>
 
@@ -512,7 +510,6 @@ export default {
 .trends {
   flex: 1;
   height: 100%;
-  width: 11.85rem;
   margin: 0.4rem 0 0 0.2rem;
   background-color: #fff;
   border-radius: 6px;

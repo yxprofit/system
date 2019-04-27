@@ -71,7 +71,7 @@ let router = new Router({
             components: {
               default: resolve => require(['@/page/student/course/works/index.vue'], resolve)
             }
-          },
+          }
           // {
           //   path: 'task',
           //   components: {
@@ -79,11 +79,26 @@ let router = new Router({
           //   }
           // }
         ]
-      },{
+      }, {
         path: '/student/task',
+        redirect: '/student/task/received',
         components: {
-          default: resolve => require(['@/page/teachers/course/task/index.vue'], resolve)
-        }
+          default: resolve => require(['@/page/teachers/course/task/main.vue'], resolve)
+        },
+        children: [{
+            path: 'received',
+            components: {
+              default: resolve => require(['@/page/teachers/course/task/received.vue'], resolve)
+            }
+          },
+          {
+            path: 'sponsor',
+            components: {
+              default: resolve => require(['@/page/teachers/course/task/received.vue'], resolve)
+            }
+          }
+
+        ]
       }],
       meta: {
         title: '优想教育|学生端'
@@ -131,7 +146,7 @@ let router = new Router({
       }, {
         path: '/teacher/task',
         components: {
-          default: resolve => require(['@/page/teachers/course/task/index.vue'], resolve)
+          default: resolve => require(['@/page/teachers/course/task/main.vue'], resolve)
         }
       }],
       meta: {
