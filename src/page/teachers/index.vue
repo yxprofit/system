@@ -41,7 +41,7 @@ export default {
   },
   watch: {
     "$route.path"(newVal, oldVal) {
-      if (newVal === "/teacher/task") {
+      if (newVal.indexOf('/task')>0) {
         this.isActive = 2;
       } else if (newVal === "/teachers/course/mycourse") this.isActive = 1;
     }
@@ -50,7 +50,7 @@ export default {
     if (this.$router.currentRoute.fullPath === "/teachers/course/mycourse") {
       this.isActive = 1;
     } else if (
-      this.$router.currentRoute.fullPath === "/teacher/task"
+      this.$router.currentRoute.fullPath.indexOf('/task')>0
     ) {
       this.isActive = 2;
     }

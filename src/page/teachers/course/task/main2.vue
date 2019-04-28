@@ -1,44 +1,49 @@
 <template>
-  <div class="course">
-    <aside :class="{'active':isNavShow}">
-      <span @click="changeIsNavShow">
-        <img src="../../../../assets/images/icon/icon_open_n.png" v-if="!isNavShow" alt>
-        <img src="../../../../assets/images/icon/icon_open.png" v-else alt>
-      </span>
-      <div>
-        <a
-          :class="{'active':current==1,'over': over==1}"
-          @click="toCurrent(1, '/student/task/received')"
-          @mouseenter="addover(1)"
-          @mouseleave="addover(0)"
-        >
-          <span>
-            <img :src="t10" v-if="current==1">
-            <img :src="t9" v-else>
-          </span>
-          <span>收到的任务</span>
-        </a>
-        <!-- <a :class="{'active':current==2,'over': over==2}" @click="toCurrent(2, 'trends')" @mouseenter="addover(2)" @mouseleave="addover(0)">
+  <div>
+    <div class="current_address">
+      <breadcrumb :address="address"/>
+    </div>
+    <div class="course">
+      <aside :class="{'active':isNavShow}">
+        <span @click="changeIsNavShow">
+          <img src="../../../../assets/images/icon/icon_open_n.png" v-if="!isNavShow" alt>
+          <img src="../../../../assets/images/icon/icon_open.png" v-else alt>
+        </span>
+        <div>
+          <a
+            :class="{'active':current==1,'over': over==1}"
+            @click="toCurrent(1, toRouter1)"
+            @mouseenter="addover(1)"
+            @mouseleave="addover(0)"
+          >
+            <span>
+              <img :src="t10" v-if="current==1">
+              <img :src="t9" v-else>
+            </span>
+            <span>收到的任务</span>
+          </a>
+          <!-- <a :class="{'active':current==2,'over': over==2}" @click="toCurrent(2, 'trends')" @mouseenter="addover(2)" @mouseleave="addover(0)">
           <span><img src="../../../assets/images/icon/icon_course_test_selected.png" v-if="current==2"><img src="../../../assets/images/icon/s2.png" v-else></span><span>班级动态</span>
-        </a>-->
-        <a
-          :class="{'active':current==3,'over': over==3}"
-          @click="toCurrent(3, '/student/task/sponsor')"
-          @mouseenter="addover(3)"
-          @mouseleave="addover(0)"
-        >
-          <span>
-            <img :src="t7" v-if="current==3">
-            <img :src="t6" v-else>
-          </span>
-          <span></span>
-          <span>发起的任务</span>
-        </a>
-      </div>
-    </aside>
-    <section style="width: 1048px;">
-      <router-view></router-view>
-    </section>
+          </a>-->
+          <a
+            :class="{'active':current==3,'over': over==3}"
+            @click="toCurrent(3, toRouter2)"
+            @mouseenter="addover(3)"
+            @mouseleave="addover(0)"
+          >
+            <span>
+              <img :src="t7" v-if="current==3">
+              <img :src="t6" v-else>
+            </span>
+            <span></span>
+            <span>发起的任务</span>
+          </a>
+        </div>
+      </aside>
+      <section style="width: 1048px;">
+        <router-view></router-view>
+      </section>
+    </div>
   </div>
 </template>
 
@@ -47,6 +52,7 @@ import t6 from "@/assets/images/icon/t6.png";
 import t7 from "@/assets/images/icon/t7.png";
 import t9 from "@/assets/images/icon/t9.png";
 import t10 from "@/assets/images/icon/t10.png";
+import breadcrumb from "@/components/common/taskbreadcrumb.vue";
 export default {
   name: "TaskMain",
   data() {
@@ -57,12 +63,27 @@ export default {
       t6,
       t7,
       t9,
-      t10
+      t10,
+      address: {
+        onePath: "",
+        text: "K81010随堂测试"
+      },
+      toRouter1:'',
+      toRouter2:''
     };
   },
   created() {
     console.log(this.$router.currentRoute.fullPath);
-    if (this.$router.currentRoute.fullPath.indexOf("sponsor") > 0) {
+    if(this.$router.currentRoute.fullPath.includes("student")){
+      this.address.onePath = '/student/task'
+      this.toRouter1 = '/student/task/received'
+      this.toRouter2 = '/student/task/received'
+    }else if(this.$router.currentRoute.fullPath.includes("teacher")){
+      this.address.onePath = '/teacher/task'
+      this.toRouter1 = '/teacher/task/received'
+      this.toRouter2 = '/teacher/task/received'
+    }
+    if (this.$router.currentRoute.fullPath.includes("sponsor")) {
       this.current = 3;
     } else {
       this.current = 1;
@@ -80,11 +101,17 @@ export default {
     changeIsNavShow() {
       this.isNavShow = !this.isNavShow;
     }
+  },
+  components: {
+    breadcrumb
   }
 };
 </script>
 
 <style lang="scss" scoped>
+.current_address {
+  padding-top: 0.15rem;
+}
 .course {
   // width: 100%;
   height: calc(100% - 0.5rem);

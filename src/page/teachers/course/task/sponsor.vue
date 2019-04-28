@@ -3,8 +3,8 @@
     <section>
       <div class="search-panel">
         <div class="left-title">
-          <img :src="activeName==='1'?t10:t9" alt>
-          <span>收到的任务</span>
+          <img :src="t7" alt>
+          <span>发起的任务</span>
         </div>
         <el-select
           class="search"
@@ -48,14 +48,16 @@
             :value="item.value"
           ></el-option>
         </el-select>
-        <div class="search-box">
-          <input type="text" placeholder="发起人搜索" v-model="teacher">
-          <i class="el-icon-search"></i>
+        <div class="add-task" @click="addWorks">
+          <span class="add-button">
+            <i class="el-icon-plus"></i>
+            添加任务
+          </span>
         </div>
       </div>
       <!-- <el-scrollbar style="height:100%;" tag="div" class="table-wrap"> -->
       <div class="table-wrap">
-        <el-table :data="tableData1" row-class-name="tableRow">
+        <el-table :data="tableData2" style="width: 100%" row-class-name="tableRow">
           <el-table-column label="任务类型" sortable align="center" width="180">
             <template slot-scope="scope">
               <div @click="todoType(scope.row)">
@@ -68,14 +70,14 @@
           <el-table-column prop="name" label="任务名称" sortable align="center" width="180"></el-table-column>
           <el-table-column prop="date" label="任务周期" sortable align="center" width="190"></el-table-column>
           <el-table-column prop="todoStatus" label="完成状态" sortable align="center"></el-table-column>
-          <el-table-column prop="taskStatus" label="发起人" align="center"></el-table-column>
+          <el-table-column prop="taskStatus" label="任务状态" align="center"></el-table-column>
           <el-table-column prop="pancel" label="操作" align="center">
             <template slot-scope="scope">
               <p @click="todo(scope.row)">{{ scope.row.pancel }}</p>
             </template>
           </el-table-column>
         </el-table>
-        <button class="more" @click="loadMore(1)">查看更多</button>
+        <button class="more" @click="loadMore(2)">查看更多</button>
       </div>
     </section>
 
@@ -135,6 +137,7 @@ export default {
   name: "Trends",
   data() {
     return {
+      fullPath: "",
       isShowDeleteWorks: false,
       isShowAddWork: false,
       isShowEditor: false,
@@ -205,70 +208,6 @@ export default {
         }
       ],
       // id=> 1 :问卷 2：测试 3：优势打卡 4：上传作品 5图文
-      tableData1: [
-        {
-          date: "2019/03/05-2019/05/08",
-          name: "2019上期前测",
-          type: "问卷",
-          todoStatus: "已完成",
-          taskStatus: "余老师",
-          pancel: "去查看 >",
-          icon: t4,
-          id: 1
-        },
-        {
-          date: "2019/03/13-2019/06/28",
-          name: "K5666随堂测验",
-          type: "测试",
-          todoStatus: "已完成",
-          taskStatus: "余老师",
-          pancel: "去完成 >",
-          icon: t1,
-          id: 2
-        },
-        {
-          date: "2019/03/05-2019/07/30",
-          name: "K5301随堂测验",
-          type: "优势打卡",
-          todoStatus: "未完成",
-          taskStatus: "开放",
-          pancel: "去查看 >",
-          icon: t5,
-          id: 3,
-          status: "1"
-        },
-        {
-          date: "2019/03/05-2019/07/30",
-          name: "K5301随堂测验",
-          type: "优势打卡",
-          todoStatus: "已完成",
-          taskStatus: "开放",
-          pancel: "去查看 >",
-          icon: t5,
-          id: 3,
-          status: "3"
-        },
-        {
-          date: "2019/03/05-2019/05/08",
-          name: "优势打卡",
-          type: "上传作品",
-          todoStatus: "已完成",
-          taskStatus: "余老师",
-          pancel: "去查看 >",
-          icon: t2,
-          id: 4
-        },
-        {
-          date: "2019/03/13-2019/06/28",
-          name: "优势打卡",
-          type: "图文",
-          todoStatus: "未完成",
-          taskStatus: "开放",
-          pancel: "去查看 >",
-          icon: t3,
-          id: 5
-        }
-      ],
       tableData2: [
         {
           date: "2019/03/05-2019/05/08",
@@ -282,7 +221,7 @@ export default {
         },
         {
           date: "2019/03/13-2019/06/28",
-          name: "K5666随堂测验",
+          name: "随堂测试",
           type: "测试",
           todoStatus: "已完成",
           taskStatus: "已关闭",
@@ -292,7 +231,7 @@ export default {
         },
         {
           date: "2019/03/05-2019/07/30",
-          name: "K5301随堂测验",
+          name: "阶段考试",
           type: "优势打卡",
           todoStatus: "未完成",
           taskStatus: "开放",
@@ -303,7 +242,7 @@ export default {
         },
         {
           date: "2019/03/05-2019/07/30",
-          name: "K5301随堂测验",
+          name: "阶段考试",
           type: "优势打卡",
           todoStatus: "已完成",
           taskStatus: "开放",
@@ -348,6 +287,8 @@ export default {
     };
   },
   created() {
+    this.fullPath = this.$router.currentRoute.fullPath;
+    console.log(this.fullPath)
     if (this.$route.query.type === "showPunchCard") {
       this.isShowPanchCard = true;
     }
@@ -377,29 +318,47 @@ export default {
       this.isShowDeleteWorks = true;
     },
     todo(row) {
-      if (row.id === 1) {
+      // if (row.id === 1) {
+      //   this.$router.push({
+      //     path: "/questionnaire"
+      //   });
+      // } else if (row.id === 2) {
+      //   this.isShowTask = true;
+      //   // this.isShowAdvantage = true
+      // } else if (row.id === 3) {
+      //   this.punchStatus = row.status;
+      //   this.isShowPanchCard = true;
+      // }
+      console.log(this.fullPath.indexOf("/teacher"))
+
+      if (this.fullPath.includes("/teacher")) {
         this.$router.push({
-          path: "/questionnaire"
+          path: "/teacher/task/sponsor/detail/2"
         });
-      } else if (row.id === 2) {
-        this.isShowTask = true;
-        // this.isShowAdvantage = true
-      } else if (row.id === 3) {
-        this.punchStatus = row.status;
-        this.isShowPanchCard = true;
+      } else if (this.fullPath.includes("/student")) {
+        this.$router.push({
+          path: "/student/task/sponsor/detail/2"
+        });
       }
     },
     todoType(row) {
-      if (row.id === 1) {
+      console.log(111)
+      if (this.fullPath.includes("/teacher")) {
         this.$router.push({
-          path: "/questionnaire"
+          path: "/teacher/task/sponsor/detail/2"
         });
-      } else if (row.id === 2) {
-        this.isShowTask = true;
-        // this.isShowAdvantage = true
-      } else if (row.id === 3) {
-        this.$router.push("/superiority-clockin/empty");
+      } else if (this.fullPath.includes("/student")) {
+        this.$router.push({
+          path: "/student/task/sponsor/detail/2"
+        });
       }
+      // if (row.id === 1) {
+      // } else if (row.id === 2) {
+      //   this.isShowTask = true;
+      //   // this.isShowAdvantage = true
+      // } else if (row.id === 3) {
+      //   this.$router.push("/superiority-clockin/empty");
+      // }
     },
     loadMore(id) {
       if (id === 1) {
@@ -446,31 +405,6 @@ export default {
       height: 0.2rem;
       margin-right: 0.08rem;
       margin-top: -0.03rem;
-    }
-  }
-  .search-box {
-    width: 2.42rem;
-    height: 0.32rem;
-    background: rgba(238, 242, 245, 1);
-    border-radius: 0.16rem;
-    margin: 0 0.46rem 0 0.2rem;
-    position: relative;
-    input {
-      height: 100%;
-      width: 100%;
-      background-color: rgba(238, 242, 245, 1);
-      border-radius: 0.16rem;
-      padding-left: 0.24rem;
-      padding-right: 0.4rem;
-      box-sizing: border-box;
-      &::-webkit-input-placeholder {
-        color: rgba(170, 170, 170, 1);
-      }
-    }
-    i {
-      position: absolute;
-      right: 0.24rem;
-      top: 0.08rem;
     }
   }
 }
@@ -593,5 +527,22 @@ button {
   text-align: left;
   padding-left: 0.43rem;
   box-sizing: border-box;
+}
+.add-task {
+  margin-right: 0.36rem;
+  .add-button {
+    display: inline-block;
+    width: 1.2rem;
+    height: 0.32rem;
+    line-height: 0.32rem;
+    border-radius: 0.16rem;
+    text-align: center;
+    background: #f79727;
+    color: #fff;
+    cursor: pointer;
+  }
+  .add-button:active {
+    opacity: 0.7;
+  }
 }
 </style>

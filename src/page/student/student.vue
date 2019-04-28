@@ -14,7 +14,7 @@
           <span><img src="../../assets/images/icon/icon_course.png" alt=""></span>
           <span>课程中心</span>
         </router-link>
-        <router-link to="/student/task" tag="div" :class="[{'task':isActive===2},'nav']">
+        <router-link to="/student/task/received" tag="div" :class="[{'task':isActive===2},'nav']">
           <span><img src="../../assets/images/icon/icon_task.png" alt=""></span>
           <span>任务中心</span>
         </router-link>
@@ -41,7 +41,7 @@ export default {
   },
   watch: {
     "$route.path"(newVal, oldVal) {
-      if (newVal === "/student/task") {
+      if (newVal.indexOf('/task')>0) {
         this.isActive = 2;
       } else if (newVal === "/student/course/mycourse") this.isActive = 1;
     }
@@ -50,7 +50,7 @@ export default {
     if (this.$router.currentRoute.fullPath === "/student/course/mycourse") {
       this.isActive = 1;
     } else if (
-      this.$router.currentRoute.fullPath === "/student/task"
+      this.$router.currentRoute.fullPath.indexOf("/task") > 0
     ) {
       this.isActive = 2;
     }

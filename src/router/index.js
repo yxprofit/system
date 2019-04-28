@@ -94,12 +94,26 @@ let router = new Router({
           {
             path: 'sponsor',
             components: {
-              default: resolve => require(['@/page/teachers/course/task/received.vue'], resolve)
+              default: resolve => require(['@/page/teachers/course/task/sponsor.vue'], resolve)
             }
           }
-
         ]
-      }],
+      },
+      {
+        path:'/student/task/sponsor/detail',
+        components: {
+          default: resolve => require(['@/page/teachers/course/task/main2.vue'], resolve)
+        },
+        children:[
+          {
+            path:'2',
+            components: {
+              default: resolve => require(['@/page/teachers/course/task/task_detail.vue'], resolve)
+            }
+          }
+        ]
+      }
+    ],
       meta: {
         title: '优想教育|学生端'
       }
@@ -145,10 +159,39 @@ let router = new Router({
         ]
       }, {
         path: '/teacher/task',
+        redirect: '/teacher/task/received',
         components: {
-          default: resolve => require(['@/page/teachers/course/task/main.vue'], resolve)
-        }
-      }],
+          default: resolve => require(['@/page/teachers/course/task/index.vue'], resolve)
+        },
+        children: [{
+            path: 'received',
+            components: {
+              default: resolve => require(['@/page/teachers/course/task/received.vue'], resolve)
+            }
+          },
+          {
+            path: 'sponsor',
+            components: {
+              default: resolve => require(['@/page/teachers/course/task/sponsor.vue'], resolve)
+            }
+          }
+        ]
+      },
+      {
+        path:'/teacher/task/sponsor/detail',
+        components: {
+          default: resolve => require(['@/page/teachers/course/task/main2.vue'], resolve)
+        },
+        children:[
+          {
+            path:'2',
+            components: {
+              default: resolve => require(['@/page/teachers/course/task/task_detail.vue'], resolve)
+            }
+          }
+        ]
+      }
+    ],
       meta: {
         title: '优想教育教师端'
       }

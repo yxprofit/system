@@ -4,36 +4,8 @@
       <div class="search-panel">
         <div class="left-title">
           <img :src="activeName==='1'?t10:t9" alt>
-          <span>收到的任务</span>
+          <span>发起任务详细</span>
         </div>
-        <el-select
-          class="search"
-          v-model="type"
-          clearable
-          placeholder="类型筛选"
-          @change="handleConditionChange"
-        >
-          <el-option
-            v-for="item in typeOptions"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value"
-          ></el-option>
-        </el-select>
-        <el-select
-          class="search"
-          v-model="status"
-          clearable
-          placeholder="状态筛选"
-          @change="handleConditionChange"
-        >
-          <el-option
-            v-for="item in statusOptions"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value"
-          ></el-option>
-        </el-select>
         <el-select
           class="search"
           clearable
@@ -55,20 +27,20 @@
       </div>
       <!-- <el-scrollbar style="height:100%;" tag="div" class="table-wrap"> -->
       <div class="table-wrap">
-        <el-table :data="tableData1" row-class-name="tableRow">
-          <el-table-column label="任务类型" sortable align="center" width="180">
+        <el-table :data="tableData1" style="width: 100%" row-class-name="tableRow">
+          <el-table-column label="执行人" align="center" width="180">
             <template slot-scope="scope">
-              <div @click="todoType(scope.row)">
-                <img :src="scope.row.icon" alt class="icon">
-                <span style="margin-left: 0.1rem">{{ scope.row.type }}</span>
-                <p class="look">查看明细 ></p>
+              <div>
+                <!-- <img :src="scope.row.icon" alt class="icon"> -->
+                <span>{{ scope.row.type }}</span>
+                <!-- <p class="look">查看明细 ></p> -->
               </div>
             </template>
           </el-table-column>
-          <el-table-column prop="name" label="任务名称" sortable align="center" width="180"></el-table-column>
-          <el-table-column prop="date" label="任务周期" sortable align="center" width="190"></el-table-column>
-          <el-table-column prop="todoStatus" label="完成状态" sortable align="center"></el-table-column>
-          <el-table-column prop="taskStatus" label="发起人" align="center"></el-table-column>
+          <el-table-column prop="name" label="人员类型" align="center" width="180"></el-table-column>
+          <el-table-column prop="date" label="所属班级" align="center"></el-table-column>
+          <el-table-column prop="todoStatus" label="完成状态" align="center"></el-table-column>
+          <el-table-column prop="taskStatus" label="完成时间" align="center" width="190"></el-table-column>
           <el-table-column prop="pancel" label="操作" align="center">
             <template slot-scope="scope">
               <p @click="todo(scope.row)">{{ scope.row.pancel }}</p>
@@ -207,144 +179,61 @@ export default {
       // id=> 1 :问卷 2：测试 3：优势打卡 4：上传作品 5图文
       tableData1: [
         {
-          date: "2019/03/05-2019/05/08",
-          name: "2019上期前测",
-          type: "问卷",
+          date: "",
+          name: "老师",
+          type: "张晓刚",
           todoStatus: "已完成",
-          taskStatus: "余老师",
-          pancel: "去查看 >",
+          taskStatus: "2019/03/05-2019/05/08",
+          pancel: "查看详细",
           icon: t4,
           id: 1
         },
         {
-          date: "2019/03/13-2019/06/28",
-          name: "K5666随堂测验",
-          type: "测试",
+          date: "201903班",
+          name: "学员",
+          type: "李晓红",
           todoStatus: "已完成",
-          taskStatus: "余老师",
-          pancel: "去完成 >",
-          icon: t1,
-          id: 2
-        },
-        {
-          date: "2019/03/05-2019/07/30",
-          name: "K5301随堂测验",
-          type: "优势打卡",
-          todoStatus: "未完成",
-          taskStatus: "开放",
-          pancel: "去查看 >",
-          icon: t5,
-          id: 3,
-          status: "1"
-        },
-        {
-          date: "2019/03/05-2019/07/30",
-          name: "K5301随堂测验",
-          type: "优势打卡",
-          todoStatus: "已完成",
-          taskStatus: "开放",
-          pancel: "去查看 >",
-          icon: t5,
-          id: 3,
-          status: "3"
-        },
-        {
-          date: "2019/03/05-2019/05/08",
-          name: "优势打卡",
-          type: "上传作品",
-          todoStatus: "已完成",
-          taskStatus: "余老师",
-          pancel: "去查看 >",
-          icon: t2,
-          id: 4
-        },
-        {
-          date: "2019/03/13-2019/06/28",
-          name: "优势打卡",
-          type: "图文",
-          todoStatus: "未完成",
-          taskStatus: "开放",
-          pancel: "去查看 >",
-          icon: t3,
-          id: 5
-        }
-      ],
-      tableData2: [
-        {
-          date: "2019/03/05-2019/05/08",
-          name: "成长档案",
-          type: "问卷",
-          todoStatus: "已完成",
-          taskStatus: "已关闭",
-          pancel: "删除",
+          taskStatus: "2019/03/05-2019/05/08",
+          pancel: "查看详细",
           icon: t4,
           id: 1
         },
         {
-          date: "2019/03/13-2019/06/28",
-          name: "K5666随堂测验",
-          type: "测试",
-          todoStatus: "已完成",
-          taskStatus: "已关闭",
-          pancel: "删除",
-          icon: t1,
-          id: 2
-        },
-        {
-          date: "2019/03/05-2019/07/30",
-          name: "K5301随堂测验",
-          type: "优势打卡",
+          date: "",
+          name: "家长",
+          type: "王小明",
           todoStatus: "未完成",
-          taskStatus: "开放",
-          pancel: "删除",
-          icon: t5,
-          id: 3,
-          status: "1"
+          taskStatus: "2019/03/05-2019/05/08",
+          pancel: "查看详细",
+          icon: t4,
+          id: 1
         },
         {
-          date: "2019/03/05-2019/07/30",
-          name: "K5301随堂测验",
-          type: "优势打卡",
+          date: "201903班",
+          name: "学员",
+          type: "李晓红",
           todoStatus: "已完成",
-          taskStatus: "开放",
-          pancel: "删除",
-          icon: t5,
-          id: 3,
-          status: "3"
+          taskStatus: "2019/03/05-2019/05/08",
+          pancel: "查看详细",
+          icon: t4,
+          id: 1
         },
         {
-          date: "2019/03/05-2019/05/08",
-          name: "优势打卡",
-          type: "上传作品",
+          date: "201903班",
+          name: "学员",
+          type: "李晓红",
           todoStatus: "已完成",
-          taskStatus: "已关闭",
-          pancel: "删除",
-          icon: t2,
-          id: 4
-        },
-        {
-          date: "2019/03/13-2019/06/28",
-          name: "优势打卡",
-          type: "图文",
-          todoStatus: "未完成",
-          taskStatus: "开放",
-          pancel: "删除",
-          icon: t3,
-          id: 5
-        },
-        {
-          date: "2019/03/05-2019/07/30",
-          name: "阶段考试",
-          type: "优势打卡",
-          todoStatus: "已完成",
-          taskStatus: "开放",
-          pancel: "删除",
-          icon: t5,
-          id: 3,
-          status: "3"
+          taskStatus: "2019/03/05-2019/05/08",
+          pancel: "查看详细",
+          icon: t4,
+          id: 1
         }
       ],
-      isShowTask: false
+      isShowTask: false,
+      address: {
+        onePath: "/",
+        text: "K81010随堂测试"
+      }
     };
   },
   created() {
@@ -377,30 +266,31 @@ export default {
       this.isShowDeleteWorks = true;
     },
     todo(row) {
-      if (row.id === 1) {
-        this.$router.push({
-          path: "/questionnaire"
-        });
-      } else if (row.id === 2) {
-        this.isShowTask = true;
-        // this.isShowAdvantage = true
-      } else if (row.id === 3) {
-        this.punchStatus = row.status;
-        this.isShowPanchCard = true;
-      }
+      console.log(111)
+      // if (row.id === 1) {
+      //   this.$router.push({
+      //     path: "/questionnaire"
+      //   });
+      // } else if (row.id === 2) {
+      //   this.isShowTask = true;
+      //   // this.isShowAdvantage = true
+      // } else if (row.id === 3) {
+      //   this.punchStatus = row.status;
+      //   this.isShowPanchCard = true;
+      // }
     },
-    todoType(row) {
-      if (row.id === 1) {
-        this.$router.push({
-          path: "/questionnaire"
-        });
-      } else if (row.id === 2) {
-        this.isShowTask = true;
-        // this.isShowAdvantage = true
-      } else if (row.id === 3) {
-        this.$router.push("/superiority-clockin/empty");
-      }
-    },
+    // todoType(row) {
+    //   if (row.id === 1) {
+    //     this.$router.push({
+    //       path: "/questionnaire"
+    //     });
+    //   } else if (row.id === 2) {
+    //     this.isShowTask = true;
+    //     // this.isShowAdvantage = true
+    //   } else if (row.id === 3) {
+    //     this.$router.push("/superiority-clockin/empty");
+    //   }
+    // },
     loadMore(id) {
       if (id === 1) {
         this.tableData1.push(
@@ -590,8 +480,11 @@ button {
 }
 .table-wrap /deep/ .el-table td.is-center:nth-of-type(1),
 .el-table th.is-center:nth-of-type(1) {
-  text-align: left;
-  padding-left: 0.43rem;
+  text-align: center;
+  // padding-left: 0.43rem;
   box-sizing: border-box;
+}
+.trends /deep/ .el-table .tableRow td:nth-of-type(5) {
+  text-decoration: none;
 }
 </style>

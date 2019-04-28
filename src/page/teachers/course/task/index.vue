@@ -8,7 +8,7 @@
       <div>
         <a
           :class="{'active':current==1,'over': over==1}"
-          @click="toCurrent(1, '/student/task/received')"
+          @click="toCurrent(1, '/teacher/task/received')"
           @mouseenter="addover(1)"
           @mouseleave="addover(0)"
         >
@@ -23,7 +23,7 @@
         </a>-->
         <a
           :class="{'active':current==3,'over': over==3}"
-          @click="toCurrent(3, '/student/task/sponsor')"
+          @click="toCurrent(3, '/teacher/task/sponsor')"
           @mouseenter="addover(3)"
           @mouseleave="addover(0)"
         >
