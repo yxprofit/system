@@ -433,7 +433,7 @@ export default {
 .trends {
   flex: 1;
   height: 100%;
-  margin: 0.4rem 0 0 0.2rem;
+  margin: 0.4rem 0 0 0;
   background-color: #fff;
   border-radius: 6px;
   .look {
