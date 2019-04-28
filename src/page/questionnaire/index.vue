@@ -4,6 +4,7 @@
       <div class="questionnaire-header__title">
         中小学项目学期前测
       </div>
+      <img src="../../assets/images/decoration.png" alt="" class="questionnaire-header__img">
     </div>
     <div class="questionnaire-tip">
       <p class="questionnaire-tip__content">
@@ -241,16 +242,27 @@ export default {
 
   .questionnaire-header {
     height: 0.6rem;
-
+    width: 3.63rem;
+    position: relative;
+    margin: 0 auto;
     .questionnaire-header__title {
       height: 0.6rem;
-      line-height: 0.6rem;
+      line-height: 0.58rem;
       font-size: 0.18rem;
       color: #fff;
       width: 3.63rem;
       margin: 0 auto;
       text-align: center;
-      background: url('../../assets/images/decoration.png') no-repeat;
+      position: relative;
+      z-index: 10;
+    }
+    .questionnaire-header__img{
+      position: absolute;
+      height: 0.6rem;
+      width: 3.36rem;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
     }
   }
 
