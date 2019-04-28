@@ -2,6 +2,7 @@
  <el-dialog
  	class="open-class-dialog"
   :visible.sync="showClass"
+	:close-on-click-modal='false'
   width="4.96rem">
   <div class="header-wraper" slot="title">
     <div class="title">班级列表</div>

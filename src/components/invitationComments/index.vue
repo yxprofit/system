@@ -5,6 +5,7 @@
       width="5.9rem"
       :before-close="handleClose"
       :show-close="isshowclose"
+      :close-on-click-modal='false'
     >
       <div class="adt-title-wrap">
         <div class="adt-line"></div>

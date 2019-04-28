@@ -1,6 +1,6 @@
 <template>
 	<div class="details" v-loading="loading">
-    <el-dialog class="details-dialog" :visible.sync="state" width="60%" :before-close="handleClose">
+    <el-dialog class="details-dialog" :visible.sync="state" width="60%" :before-close="handleClose" :close-on-click-modal='false'>
 			<div slot="title" class="detailsHead">
         <div class="avatar"><img :src="head" /></div>
         <div class="name">

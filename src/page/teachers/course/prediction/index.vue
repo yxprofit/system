@@ -1,6 +1,6 @@
 <template>
   <div class="prediction" v-show="visible">
-    <el-dialog :visible.sync="visible" width="5.5rem" :before-close="handleClose">
+    <el-dialog :visible.sync="visible" width="5.5rem" :before-close="handleClose" :close-on-click-modal='false'>
       <div class="prediction-wrap">
         <div class="img-wrap">
           <div class="img-title">中小学项目学期前测</div>

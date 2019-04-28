@@ -1,6 +1,6 @@
 <template>
   <div class="my-advantage">
-    <el-dialog :visible.sync="visible" width="5.63rem" :before-close="handleClose">
+    <el-dialog :visible.sync="visible" width="5.63rem" :before-close="handleClose" :close-on-click-modal='false'>
       <div class="adt-title-wrap">
         <div class="adt-line"></div>
         <div class="adt-title">我的优势打卡</div>

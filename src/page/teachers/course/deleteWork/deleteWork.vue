@@ -1,6 +1,6 @@
 <template>
   <div class="deletework" v-loading="loading" v-show="state">
-    <el-dialog :visible.sync="state" width="38%" :before-close="handleClose">
+    <el-dialog :visible.sync="state" width="38%" :before-close="handleClose" :close-on-click-modal='false'>
       <span slot="title" class="deletework_title">
         <h3>删除任务</h3>
       </span>

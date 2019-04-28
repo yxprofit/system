@@ -1,7 +1,7 @@
 <template>
   <el-dialog
     custom-class="add-superiority"
-   :visible.sync="dialogVisible">
+   :visible.sync="dialogVisible" :close-on-click-modal='false'>
     <div class="title" slot="title">
       添加优势应用标签
     </div>

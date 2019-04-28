@@ -194,7 +194,7 @@
             <li class="bai"></li>
           </ul>
           <ul v-show="isTab===1">
-            <li v-for="(item, index) in courseList" :key="index">
+            <li v-for="(item, index) in courseList2" :key="index">
               <router-link to="mycourse/view" tag="li">
                 <div>
                   <!-- <img src="../../../../assets/images/student/workimg.png" alt> -->
@@ -334,7 +334,22 @@ export default {
       }
 
       return list;
-    }
+    },
+    courseList2() {
+      var list = [];
+      for (var i = 0; i < 5; i++) {
+        list.push({
+          title: "课程名称课程名称",
+          classImg: require("../../../../assets/images/student/workimg.png"),
+          startTime: "开始时间：2019.01.01",
+          endTime: "结束时间：2019.01.01",
+          className: "104班"
+        });
+      }
+
+      return list;
+    },
+
   },
   methods: {
     goTrends() {

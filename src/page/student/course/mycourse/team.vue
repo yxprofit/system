@@ -1,6 +1,6 @@
 <template>
   <div class="team" v-loading="loading">
-    <el-dialog :visible.sync="state" :before-close="handleClose">
+    <el-dialog :visible.sync="state" :before-close="handleClose" :close-on-click-modal='false'>
       <span slot="title" class="teamTitle">
         <h3>我的小组</h3>
       </span>

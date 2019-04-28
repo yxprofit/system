@@ -1,6 +1,6 @@
 <template>
 	<div class="upload" v-loading="loading">
-    <el-dialog :visible.sync="state" width="6.62rem" :before-close="handleClose">
+    <el-dialog :visible.sync="state" width="6.62rem" :before-close="handleClose" :close-on-click-modal='false'>
 			<div slot="title" class="uploadHead">
         <h3>上传作品</h3>
 			</div>

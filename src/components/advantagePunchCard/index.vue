@@ -1,6 +1,6 @@
 <template>
   <div class="details" v-loading="loading">
-    <el-dialog class="details-dialog" :visible.sync="state" :before-close="handleClose">
+    <el-dialog class="details-dialog" :visible.sync="state" :before-close="handleClose" :close-on-click-modal='false'>
       <div slot="title" class="punch">
         <div class="name">
           <p>完整优势打卡的展示</p>

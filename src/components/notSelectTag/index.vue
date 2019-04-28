@@ -1,6 +1,6 @@
 <template>
   <div class="no-select">
-     <el-dialog :visible.sync="visible" width="4rem" :before-close="handleClose">
+     <el-dialog :visible.sync="visible" width="4rem" :before-close="handleClose" :close-on-click-modal='false'>
        <img src="../../assets/images/advantage/no_select.png" alt="" class="warning-icon">
        <div class="warn-text">
          <div class="text-top">你还未选择xx标签</div>

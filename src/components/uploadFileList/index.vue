@@ -1,6 +1,6 @@
 <template>
   <div class="invitation-comments">
-    <el-dialog :visible.sync="visible" width="5.9rem" :before-close="handleClose">
+    <el-dialog :visible.sync="visible" width="5.9rem" :before-close="handleClose" :close-on-click-modal='false'>
       <div class="adt-title-wrap">
         <div class="adt-line"></div>
         <div class="adt-title">课堂作品</div>

@@ -1,6 +1,6 @@
 <template>
   <div class="teacher_editor" v-loading="loading" v-show="state">
-    <el-dialog :visible.sync="state" :before-close="handleClose">
+    <el-dialog :visible.sync="state" :before-close="handleClose" :close-on-click-modal='false'>
       <span slot="title" class="teacher_editor_title">
         <h3>
           <i></i>课件编辑

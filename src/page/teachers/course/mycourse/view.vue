@@ -199,6 +199,7 @@
       :visible.sync="showLesson"
       width="11rem"
       :before-close="handleCloseModal"
+      :close-on-click-modal='false'
     >
       <prepare-lesson></prepare-lesson>
     </el-dialog>

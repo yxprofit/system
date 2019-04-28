@@ -1,6 +1,6 @@
 <template>
   <div class="invitation">
-    <el-dialog :visible.sync="visible" width="4.52rem" :before-close="handleClose">
+    <el-dialog :visible.sync="visible" width="4.52rem" :before-close="handleClose" :close-on-click-modal='false'>
        <div class="adt-title-wrap">
         <div class="adt-title">邀请成功</div>
       </div>

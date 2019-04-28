@@ -2,7 +2,7 @@
   <el-dialog
    :lock-scroll="true"
     custom-class="custom-activity"
-    :visible.sync="dialogVisible">
+    :visible.sync="dialogVisible" :close-on-click-modal='false'>
     <div class="title" slot="title">
       自定义活动
     </div>

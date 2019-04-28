@@ -1,6 +1,6 @@
 <template>
   <div class="addwork" v-loading="loading" v-show="state">
-    <el-dialog :visible.sync="state" width="38%" :before-close="handleClose">
+    <el-dialog :visible.sync="state" width="38%" :before-close="handleClose" :close-on-click-modal='false'>
       <span slot="title" class="taddwork_title">
         <h3>选择添加任务类型</h3>
       </span>
