@@ -41,6 +41,11 @@
                   <span>已禁用课件</span>
                 </div>
               </div>
+              <div class="myteam nowork_myteam">
+                <span class="i" @click="handleGrouping">小组分配</span>
+                <span class="classstart" @click="handleBeginClass">开始上课</span>
+                <span class="classdata" @click="handlePrepareLesson">备课资料</span>
+              </div>
             </div>
           </el-col>
           <el-col :span="12">
@@ -837,6 +842,14 @@ export default {
             font-weight: bold;
             display: block;
             margin: 0.1rem 0 0 -0.1rem;
+          }
+        }
+        .nowork_myteam{
+          margin-top: 1.35rem;
+          position: relative;
+          z-index: 100;
+          .i{
+            color: #666;
           }
         }
       }
