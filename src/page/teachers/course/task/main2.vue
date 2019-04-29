@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="current_address">
+    <!-- <div class="current_address">
       <breadcrumb :address="address"/>
-    </div>
+    </div>-->
     <div class="course">
       <aside :class="{'active':isNavShow}">
         <span @click="changeIsNavShow">
@@ -41,6 +41,9 @@
         </div>
       </aside>
       <section style="width: 1048px;">
+        <div class="current_address">
+          <breadcrumb :address="address"/>
+        </div>
         <router-view></router-view>
       </section>
     </div>
@@ -68,20 +71,20 @@ export default {
         onePath: "",
         text: "K81010随堂测试"
       },
-      toRouter1:'',
-      toRouter2:''
+      toRouter1: "",
+      toRouter2: ""
     };
   },
   created() {
     console.log(this.$router.currentRoute.fullPath);
-    if(this.$router.currentRoute.fullPath.includes("student")){
-      this.address.onePath = '/student/task'
-      this.toRouter1 = '/student/task/received'
-      this.toRouter2 = '/student/task/received'
-    }else if(this.$router.currentRoute.fullPath.includes("teacher")){
-      this.address.onePath = '/teacher/task'
-      this.toRouter1 = '/teacher/task/received'
-      this.toRouter2 = '/teacher/task/received'
+    if (this.$router.currentRoute.fullPath.includes("student")) {
+      this.address.onePath = "/student/task";
+      this.toRouter1 = "/student/task/received";
+      this.toRouter2 = "/student/task/received";
+    } else if (this.$router.currentRoute.fullPath.includes("teacher")) {
+      this.address.onePath = "/teacher/task";
+      this.toRouter1 = "/teacher/task/received";
+      this.toRouter2 = "/teacher/task/received";
     }
     if (this.$router.currentRoute.fullPath.includes("sponsor")) {
       this.current = 3;

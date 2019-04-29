@@ -323,7 +323,7 @@ export default {
 .trends {
   flex: 1;
   height: 100%;
-  margin: 0.4rem 0 0 0;
+  margin: 0.15rem 0 0 0;
   background-color: #fff;
   border-radius: 6px;
   .look {

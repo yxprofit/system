@@ -217,7 +217,8 @@ export default {
           taskStatus: "已关闭",
           pancel: "删除",
           icon: t4,
-          id: 1
+          id: 1,
+          num:1
         },
         {
           date: "2019/03/13-2019/06/28",
@@ -227,7 +228,8 @@ export default {
           taskStatus: "已关闭",
           pancel: "删除",
           icon: t1,
-          id: 2
+          id: 2,
+          num:2
         },
         {
           date: "2019/03/05-2019/07/30",
@@ -238,7 +240,8 @@ export default {
           pancel: "删除",
           icon: t5,
           id: 3,
-          status: "1"
+          status: "1",
+          num:3
         },
         {
           date: "2019/03/05-2019/07/30",
@@ -249,7 +252,8 @@ export default {
           pancel: "删除",
           icon: t5,
           id: 3,
-          status: "3"
+          status: "3",
+          num:4
         },
         {
           date: "2019/03/05-2019/05/08",
@@ -259,7 +263,8 @@ export default {
           taskStatus: "已关闭",
           pancel: "删除",
           icon: t2,
-          id: 4
+          id: 4,
+          num:5
         },
         {
           date: "2019/03/13-2019/06/28",
@@ -269,7 +274,8 @@ export default {
           taskStatus: "开放",
           pancel: "删除",
           icon: t3,
-          id: 5
+          id: 5,
+          num:6
         },
         {
           date: "2019/03/05-2019/07/30",
@@ -280,7 +286,8 @@ export default {
           pancel: "删除",
           icon: t5,
           id: 3,
-          status: "3"
+          status: "3",
+          num:7
         }
       ],
       isShowTask: false
@@ -318,28 +325,10 @@ export default {
       this.isShowDeleteWorks = true;
     },
     todo(row) {
-      // if (row.id === 1) {
-      //   this.$router.push({
-      //     path: "/questionnaire"
-      //   });
-      // } else if (row.id === 2) {
-      //   this.isShowTask = true;
-      //   // this.isShowAdvantage = true
-      // } else if (row.id === 3) {
-      //   this.punchStatus = row.status;
-      //   this.isShowPanchCard = true;
-      // }
-      console.log(this.fullPath.indexOf("/teacher"))
-
-      if (this.fullPath.includes("/teacher")) {
-        this.$router.push({
-          path: "/teacher/task/sponsor/detail/2"
-        });
-      } else if (this.fullPath.includes("/student")) {
-        this.$router.push({
-          path: "/student/task/sponsor/detail/2"
-        });
-      }
+      let arr = this.tableData2.filter(item=>{
+        return item.num != row.num
+      })
+      this.tableData2 = arr
     },
     todoType(row) {
       console.log(111)
@@ -352,13 +341,6 @@ export default {
           path: "/student/task/sponsor/detail/2"
         });
       }
-      // if (row.id === 1) {
-      // } else if (row.id === 2) {
-      //   this.isShowTask = true;
-      //   // this.isShowAdvantage = true
-      // } else if (row.id === 3) {
-      //   this.$router.push("/superiority-clockin/empty");
-      // }
     },
     loadMore(id) {
       if (id === 1) {
