@@ -707,6 +707,4 @@ export default {
   line-height: 0.6rem;
   border-bottom: 1px solid rgba(228, 232, 237, 1);
 }
-.details-dialog .el-dialog__body {
-}
 </style>
