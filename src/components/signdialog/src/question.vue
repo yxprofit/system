@@ -399,6 +399,7 @@ export default {
 .questions {
   // height: calc(100%);
   // overflow: auto;
+
   .questions-header {
     height: 1.88rem;
     width: 100%;
