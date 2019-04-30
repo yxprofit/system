@@ -397,8 +397,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 .questions {
-  height: calc(100%);
-  overflow: auto;
+  // height: calc(100%);
+  // overflow: auto;
   .questions-header {
     height: 1.88rem;
     width: 100%;
