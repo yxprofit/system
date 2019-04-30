@@ -5,59 +5,66 @@
         <h3>
           优势打卡
           <span class="close">
-            <i class="el-icon-close"></i>
+            <button class="close-btn">
+              <i class="el-icon-close"></i>
+            </button>
           </span>
         </h3>
       </div>
-      <div class="main-title">
-        <div class="main-top">
-          <h3>
-            <i class="el-icon-edit"></i>请输入优势打卡提示：
-          </h3>
-        </div>
-        <div class="main-input">
-          <el-input size="large" placeholder="样例：同学们，请记录这周你所参与的课外活动。"/>
-        </div>
-      </div>
-      <div class="superiority-clockin">
-        <div class="superiority-clockin__main">
-          <div class="main-header">
-            <div class="header-title">
-              <img :src="clockInIcon" alt>
-              <span>我的优势打卡</span>
-            </div>
+
+      <div style="height: 4.4rem;overflow:auto">
+        <div class="main-title">
+          <div class="main-top">
+            <h3>
+              <i class="el-icon-edit"></i>请输入优势打卡提示：
+            </h3>
           </div>
-          <div class="main-content">
-            <Question/>
+          <div class="main-input">
+            <el-input size="large" placeholder="样例：同学们，请记录这周你所参与的课外活动。"/>
           </div>
         </div>
-        <div class="superiority-clockin__asider">
-          <div class="asider-header">
-            <div class="header-title">
-              <img class="plain" :src="myPlain" alt>
-            </div>
-          </div>
-          <div class="asider-main">
-            <ul class="activity-list">
-              <li
-                :class="{'is-active': active === index}"
-                @click="handleClick(item,index)"
-                class="activity-list-item"
-                v-for="(item,index) in activityList"
-                :key="index"
-              >
-                <div class="left">
-                  <img :src="item.imgSrc" alt>
+        <div style="padding: 0 0.4rem 0 0.3rem;">
+          <div class="superiority-clockin">
+            <div class="superiority-clockin__main">
+              <div class="main-header">
+                <div class="header-title">
+                  <img :src="clockInIcon" alt>
+                  <span>我的优势打卡</span>
                 </div>
-                <div class="right">
-                  <p class="title">{{item.title}}</p>
-                  <p class="tip">{{item.tip}}</p>
+              </div>
+              <div class="main-content">
+                <Question ref="question" :select_id="default_select_id"/>
+              </div>
+            </div>
+            <div class="superiority-clockin__asider">
+              <div class="asider-header">
+                <div class="header-title">
+                  <img class="plain" :src="myPlain" alt>
                 </div>
-              </li>
-            </ul>
-            <div class="asider-action">
-              <button @click="customActivity">添加自定义活动</button>
-              <button>去活动库添加计划</button>
+              </div>
+              <div class="asider-main">
+                <ul class="activity-list">
+                  <li
+                    :class="{'is-active': active === index}"
+                    @click="handleClick(item,index)"
+                    class="activity-list-item"
+                    v-for="(item,index) in activityList"
+                    :key="index"
+                  >
+                    <div class="left">
+                      <img :src="item.imgSrc" alt>
+                    </div>
+                    <div class="right">
+                      <p class="title">{{item.title}}</p>
+                      <p class="tip">{{item.tip}}</p>
+                    </div>
+                  </li>
+                </ul>
+                <div class="asider-action">
+                  <button @click="customActivity">添加自定义活动</button>
+                  <button>去活动库添加计划</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -89,6 +96,7 @@ export default {
     return {
       clockInIcon,
       myPlain,
+      default_select_id: 111,
       active: "",
       activityList: [
         {
@@ -132,13 +140,15 @@ export default {
   },
   methods: {
     handleClick(item, index) {
+      // this.active = index;
+      // this.$router.push({
+      //   path: "/superiority-clockin/question",
+      //   query: {
+      //     id: item.id
+      //   }
+      // });
       this.active = index;
-      this.$router.push({
-        path: "/superiority-clockin/question",
-        query: {
-          id: item.id
-        }
-      });
+      this.$refs.question.setData(item.id);
     },
     customActivity() {
       this.$refs.cuttomActivityDialog.show();
@@ -155,7 +165,7 @@ export default {
   justify-content: center;
 }
 .g_main {
-  width: 13.66rem;
+  width: 12.66rem;
   height: 6rem;
   margin: 0 auto;
   overflow: scroll;
@@ -173,6 +183,15 @@ export default {
       .close {
         float: right;
         cursor: pointer;
+        .close-btn {
+          width: 24px;
+          height: 24px;
+          text-align: center;
+          line-height: 24px;
+          color: #fff;
+          background: #f79727;
+          border-radius: 50%;
+        }
       }
     }
   }
