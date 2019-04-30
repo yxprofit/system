@@ -12,7 +12,7 @@
         </h3>
       </div>
 
-      <div style="height: 4.4rem;overflow:auto">
+      <div style="height: 5.8rem;overflow:auto">
         <div class="main-title">
           <div class="main-top">
             <h3>
@@ -159,17 +159,17 @@ export default {
 <style lang="scss" scoped>
 .my-dialog {
   height: 100%;
+  overflow: auto;
   background: rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .g_main {
-  width: 12.66rem;
-  height: 6rem;
+  width: 9.4rem;
+  height: 7.32rem;
   margin: 0 auto;
-  overflow: scroll;
-  // padding: 0.2rem 0.1rem 0.29rem 0.2rem;
+  overflow: hidden;
   box-sizing: border-box;
   background-color: #fff;
   .dialog-title {

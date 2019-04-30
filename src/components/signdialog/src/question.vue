@@ -426,7 +426,7 @@ export default {
       .desc {
         font-size: 0.14rem;
         color: rgba(136, 136, 136, 1);
-        line-height: 0.24rem;
+        line-height: 0.18rem;
       }
     }
   }
@@ -526,6 +526,9 @@ export default {
   }
   .questions-details {
     position: relative;
+    .question-list {
+      padding-top: 0.4rem;
+    }
     .el-form {
       position: absolute;
       z-index: 5;
@@ -533,7 +536,7 @@ export default {
       font-size: 0;
       top: -0.13rem;
       .el-form-item {
-        width: 1.7rem;
+        width: 1.3rem;
         display: inline-block;
       }
       .el-form-item + .el-form-item {
