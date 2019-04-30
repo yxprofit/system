@@ -131,7 +131,27 @@ const mockTabledata1 = [
     date: '2016-05-03',
     name: '王小虎',
     address: '上海市普陀区金沙江路'
-  }
+  },
+  {
+    date: '2016-05-03',
+    name: '王小虎',
+    address: '上海市普陀区金沙江路'
+  },
+  {
+    date: '2016-05-03',
+    name: '王小虎',
+    address: '上海市普陀区金沙江路'
+  },
+  {
+    date: '2016-05-03',
+    name: '王小虎',
+    address: '上海市普陀区金沙江路'
+  },
+  {
+    date: '2016-05-03',
+    name: '王小虎',
+    address: '上海市普陀区金沙江路'
+  },
 ]
 const mockTableData2 = [
   {
@@ -276,7 +296,6 @@ export default {
   }
   & > div {
     margin-top: 0.2rem;
-    // margin-bottom: 0.2rem;
     overflow: hidden;
     aside {
       float: right;
@@ -306,14 +325,15 @@ export default {
       }
     }
     & > section {
-      // width: calc(100% - 2.1rem);
       width: calc(100% - 1.89rem);
+      height: calc(100% - 1.3rem);
       border-right: 0.01rem solid #e4e8ed;
       float: left;
       padding: 0 0.1rem;
       margin-bottom: 0.1rem;
       padding-right: 0.31rem;
       box-sizing: border-box;
+      overflow: auto;
       .look {
         color: #f80;
         // visibility:hidden;
