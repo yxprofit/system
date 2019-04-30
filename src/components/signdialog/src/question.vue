@@ -34,7 +34,7 @@
     <div class="questions-details">
       <el-form v-model="form">
         <el-form-item>
-          <el-select v-model="form.role" placeholder="担任的角色">
+          <el-select v-model="form.role" size="mini" placeholder="担任的角色">
             <el-option
               v-for="item in roleOps"
               :value="item.value"
@@ -44,7 +44,7 @@
           </el-select>
         </el-form-item>
         <el-form-item>
-          <el-select v-model="form.joinTime" placeholder="参与活动时间">
+          <el-select v-model="form.joinTime" size="mini" placeholder="参与活动时间">
             <el-option
               v-for="item in timeOps"
               :value="item.value"
@@ -54,7 +54,7 @@
           </el-select>
         </el-form-item>
         <el-form-item>
-          <el-select v-model="form.payTime" placeholder="本次花费时间">
+          <el-select v-model="form.payTime" size="mini" placeholder="本次花费时间">
             <el-option
               v-for="item in payTimeOps"
               :value="item.value"
@@ -319,9 +319,10 @@ export default {
   },
   created() {
     // let id = this.$route.query.id + ''
-    // let index = mockData.findIndex(item => item.id + '' === id)
-    this.setData(mockData[0]);
+    // let index = mockData.findIndex(item => item.id + "" == this.select_id);
+    this.setData(this.select_id);
   },
+  props: ["select_id"],
   methods: {
     handleActivityShow() {
       this.isShowActivity = true;
@@ -365,12 +366,14 @@ export default {
     handleChange(obj) {
       this.form[obj.prop] = obj.val;
     },
-    setData(data) {
-      this.activeData = data;
+    setData(id) {
+      console.log(id);
+      let index = mockData.findIndex(item => item.id + "" == id);
+      this.activeData = mockData[index];
       for (let key in this.form) {
-        this.form[key] = data[key];
+        this.form[key] = this.activeData[key];
       }
-      this.superiorites = data.superiorites;
+      this.superiorites = this.activeData.superiorites;
     },
     handleSuperiChange(list) {
       this.superiorites = list;
@@ -405,8 +408,8 @@ export default {
     .left {
       margin-right: 0.29rem;
       img {
-        height: 1.88rem;
-        width: 3.22rem;
+        height: 1rem;
+        width: 1.7rem;
       }
     }
     .right {
@@ -416,8 +419,8 @@ export default {
         font-size: 0.2rem;
         font-weight: bold;
         color: #333;
-        margin-bottom: 0.26rem;
-        margin-top: 0.2rem;
+        margin-bottom: 0.1rem;
+        margin-top: 0.1rem;
       }
       .desc {
         font-size: 0.14rem;
