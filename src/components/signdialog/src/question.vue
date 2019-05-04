@@ -397,8 +397,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 .questions {
-  // height: calc(100%);
-  // overflow: auto;
+  height: 5.5rem;
+  overflow: auto;
 
   .questions-header {
     height: 1.88rem;
@@ -528,6 +528,7 @@ export default {
     position: relative;
     .question-list {
       padding-top: 0.4rem;
+      padding-bottom: 0.4rem;
     }
     .el-form {
       position: absolute;

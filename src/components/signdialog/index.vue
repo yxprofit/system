@@ -12,7 +12,7 @@
         </h3>
       </div>
 
-      <div style="height: 5.8rem;overflow:auto">
+      <div>
         <div class="main-title">
           <div class="main-top">
             <h3>
@@ -42,7 +42,7 @@
                   <img class="plain" :src="myPlain" alt>
                 </div>
               </div>
-              <div class="asider-main">
+              <div class="asider-main" style="height: 5.5rem;overflow: auto;">
                 <ul class="activity-list">
                   <li
                     :class="{'is-active': active === index}"
@@ -158,18 +158,20 @@ export default {
 </script>
 <style lang="scss" scoped>
 .my-dialog {
-  height: 100%;
-  overflow: auto;
   background: rgba(0, 0, 0, 0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: fixed;
+  z-index: 10000;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  overflow: auto;
 }
 .g_main {
+  position: relative;
+  margin: 0.5rem auto;
   width: 9.4rem;
-  height: 7.32rem;
-  margin: 0 auto;
-  overflow: hidden;
+  // height: 7.32rem;
   box-sizing: border-box;
   background-color: #fff;
   .dialog-title {
@@ -332,7 +334,7 @@ export default {
 
       .activity-list-item {
         display: flex;
-        padding: 0.15rem 0.5rem 0.15rem 0.11rem;
+        padding: 0.1rem 0.1rem 0.1rem 0.11rem;
         cursor: pointer;
         .left {
           width: 0.79rem;
