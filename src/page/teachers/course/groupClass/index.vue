@@ -778,7 +778,7 @@ export default {
 }
 
 .group-slide {
-  width: 3.1rem;
+  width: 3.2rem;
   height: 3.25rem;
   background: #fafbfd;
   margin-right: 0.12rem;
@@ -827,12 +827,13 @@ export default {
 }
 
 .group2-inner {
-  height: 2.15rem;
+  height: 2.85rem;
+  overflow-y: scroll;
 }
 
 .list-group2 {
   overflow-y: scroll;
-  height: 2.90rem;
+  height: 2.9rem;
   text-align: left;
   white-space: pre-wrap;
   padding-top: 0.2rem;
