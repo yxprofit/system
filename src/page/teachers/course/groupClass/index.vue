@@ -62,6 +62,7 @@
                   <div class="group2-inner">
                     <draggable
                       class="list-group list-group2"
+                      :id="'list-group2-' + index"
                       :list="list2[index]"
                       group="people"
                       @change="log1"
@@ -292,7 +293,7 @@ export default {
       return this.controlOnStart ? 'clone' : true
     },
     start ({ originalEvent }) {
-      // console.log(originalEvent, 'start-originalEvent')
+      console.log(originalEvent, 'start-originalEvent')
       this.controlOnStart = originalEvent.ctrlKey
     },
     getdata (evt) {
@@ -303,7 +304,7 @@ export default {
       }
     },
     handleEnd (e) {
-      // console.log(e, "handleEnd");
+      console.log(e.to.id, 'handleEnd')
       let className = e.to.className
       this.className = className
       this.$refs.addSlide.style.borderColor = '#fafbfd'
@@ -311,7 +312,6 @@ export default {
         this.className = ''
         this.list3.push({})
         this.list2[this.list3.length - 1] = [this.currentEle]
-
         clearTimeout(this.timer)
         this.timer = setTimeout(() => {
           this.handleNext(
@@ -412,37 +412,41 @@ export default {
       }
     },
     log: function (evt) {
-      // console.log(evt, 'log')
+      console.log(evt, 'log')
       try {
         this.currentEle = Object.assign({}, evt.removed.element)
         console.log(this.currentEle)
+        let originList3 = JSON.parse(JSON.stringify(this.list3))
         this.list3 = JSON.parse(
           JSON.stringify(this.list2.filter(item => item.length))
         )
 
-        clearTimeout(this.timer)
-        this.timer = setTimeout(() => {
-          this.handlePrev(
-            '.content-group2-list',
-            'group2Index',
-            -328,
-            'group2'
-          )
-        }, 100)
+        console.log(originList3, this.list3, 'list3')
+
+        if (originList3.length !== this.list3.length) {
+           clearTimeout(this.timer)
+            this.timer = setTimeout(() => {
+              this.handlePrev(
+                '.content-group2-list',
+                'group2Index',
+                -328,
+                'group2'
+              )
+            }, 100)
+        }
       } catch (err) {}
     },
     log1: function (evt) {
-      // console.log(evt, 'log')
+      console.log(evt, 'log1')
       try {
         this.currentEle = Object.assign({}, evt.removed.element)
 
+       let originList3 = JSON.parse(JSON.stringify(this.list3))
         this.list3 = JSON.parse(
-          JSON.stringify(
-            this.list2.filter(item => {
-              return item.length > 0
-            })
-          )
+          JSON.stringify(this.list2.filter(item => item.length))
         )
+
+        console.log(originList3, this.list3, 'list3')
 
         for (var i = 0; i < this.list2.length; i++) {
           if (this.list2[i].length == 0) {
@@ -450,15 +454,17 @@ export default {
           }
         }
 
-        clearTimeout(this.timer)
-        this.timer = setTimeout(() => {
-          this.handlePrev(
-            '.content-group2-list',
-            'group2Index',
-            -328,
-            'group2'
-          )
-        }, 100)
+        if (originList3.length !== this.list3.length) {
+           clearTimeout(this.timer)
+            this.timer = setTimeout(() => {
+              this.handlePrev(
+                '.content-group2-list',
+                'group2Index',
+                -328,
+                'group2'
+              )
+            }, 100)
+        }
       } catch (err) {}
     }
   },
