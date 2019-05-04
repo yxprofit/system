@@ -832,12 +832,12 @@ export default {
 }
 
 .group2-inner {
-  height: 2.85rem;
+  height: 2.7rem;
   overflow-y: scroll;
 }
 
 .list-group2 {
-  overflow-y: scroll;
+  // overflow-y: scroll;
   height: 2.9rem;
   text-align: left;
   white-space: pre-wrap;
