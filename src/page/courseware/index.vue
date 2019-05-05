@@ -79,8 +79,9 @@
       <save-task @taskClose="handleTaskClose" @confirmDel="confirmDel"></save-task>
     </popup-modal>
     <delete-work :state="isdelete" @close="handleClose"></delete-work>
-    <add-works :state="addwork" @close="addworkClose" @handleJump="jump"></add-works>
+    <add-works :state="addwork" @close="addworkClose" @handleJump="jump" @handleJump2='jump2'></add-works>
     <teacher-editor :state="editor" @close="editorClose"></teacher-editor>
+    <sign-dialog :state='isSignDialog' @close='signDialogClose'></sign-dialog>
   </div>
 </template>
 
@@ -91,6 +92,7 @@ import details1 from "assets/images/details1.png";
 import allPrint from "assets/images/48.png";
 import closePrint from "assets/images/49.png";
 import PopupModal from "@/components/popup";
+import SignDialog from '@/components/signdialog'
 import SaveTask from "@/page/teachers/course/saveTask";
 import DeleteWork from "@/page/teachers/course/deleteWork/deleteWork";
 import AddWorks from "@/page/teachers/course/addworks/addWorkTypes";
@@ -102,6 +104,7 @@ export default {
   name: "tasks",
   data() {
     return {
+      isSignDialog: false,
       editor: false,
       addwork: false,
       isdelete: false,
@@ -329,6 +332,13 @@ export default {
       this.editor = true;
       this.addwork = false;
     },
+    jump2(){
+      this.isSignDialog = true
+      this.addwork = false;
+    },
+    signDialogClose(){
+      this.isSignDialog = false
+    },
     fullScreen() {
       // this.text = "esc";
       let that = this;
@@ -359,7 +369,8 @@ export default {
     DeleteWork,
     AddWorks,
     TeacherEditor,
-    draggable
+    draggable,
+    SignDialog
   }
 };
 </script>
