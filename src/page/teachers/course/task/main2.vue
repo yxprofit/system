@@ -78,22 +78,24 @@ export default {
   created() {
     console.log(this.$router.currentRoute.fullPath);
     if (this.$router.currentRoute.fullPath.includes("student")) {
-      this.address.onePath = "/student/task";
-       if(this.$router.currentRoute.fullPath.includes('/detail/2')){
-        this.toRouter1 = '/student/task/sponsor'
+      if(this.$router.currentRoute.fullPath.includes('/detail/2')){
+        this.address.onePath = "/student/task/sponsor";
+        this.toRouter1 = '/student/task/received'
         this.toRouter2 = "/student/task/sponsor";
       }else{
+        this.address.onePath = "/student/task";
         this.toRouter1 = "/student/task/received";
-        this.toRouter2 = "/student/task/received";
+        this.toRouter2 = "/student/task/sponsor";
       }
     } else if (this.$router.currentRoute.fullPath.includes("teacher")) {
-      this.address.onePath = "/teacher/task";
       if(this.$router.currentRoute.fullPath.includes('/detail/2')){
-        this.toRouter1 = '/teacher/task/sponsor'
+        this.address.onePath = "/teacher/task/sponsor";
+        this.toRouter1 = '/teacher/task/received'
         this.toRouter2 = "/teacher/task/sponsor";
       }else{
+        this.address.onePath = "/teacher/task";
         this.toRouter1 = "/teacher/task/received";
-        this.toRouter2 = "/teacher/task/received";
+        this.toRouter2 = "/teacher/task/sponsor";
       }
     }
     if (this.$router.currentRoute.fullPath.includes("sponsor")) {
