@@ -272,7 +272,13 @@ export default {
       // console.log(newVal, "list2");
     }
   },
-  created () {},
+  created () {
+    // Firefox中拖拽会新开页面的bug修复
+    document.body.addEventListener('drop', (e) => {
+      e.preventDefault()
+      e.stopPropagation()
+    })
+  },
   methods: {
     // 重置分组
     resetGroup () {
@@ -476,6 +482,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@~assets/css/mixins.scss';
 .group {
   width: 11rem;
   height: 6.9rem;
@@ -829,6 +836,7 @@ export default {
   font-weight: bold;
   color: rgba(51, 51, 51, 1);
   line-height: 0.26rem;
+  @include mix-text-overflow;
 }
 
 .group2-inner {
