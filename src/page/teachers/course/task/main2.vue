@@ -83,8 +83,13 @@ export default {
       this.toRouter2 = "/student/task/received";
     } else if (this.$router.currentRoute.fullPath.includes("teacher")) {
       this.address.onePath = "/teacher/task";
-      this.toRouter1 = "/teacher/task/received";
-      this.toRouter2 = "/teacher/task/received";
+      if(this.$router.currentRoute.fullPath.includes('/detail/2')){
+        this.toRouter1 = '/teacher/task/sponsor'
+        this.toRouter2 = "/teacher/task/sponsor";
+      }else{
+        this.toRouter1 = "/teacher/task/received";
+        this.toRouter2 = "/teacher/task/received";
+      }
     }
     if (this.$router.currentRoute.fullPath.includes("sponsor")) {
       this.current = 3;
