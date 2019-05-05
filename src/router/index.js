@@ -260,26 +260,6 @@ let router = new Router({
       }
     },
     {
-      path: "/deletework",
-      components: {
-        default: resolve =>
-          require(["@/page/teachers/course/deleteWork/deleteWork.vue"], resolve)
-      },
-      meta: {
-        title: "删除任务"
-      }
-    },
-    {
-      path: "/addwork",
-      components: {
-        default: resolve =>
-          require(["@/page/teachers/course/addworks/addWorkTypes.vue"], resolve)
-      },
-      meta: {
-        title: "添加任务"
-      }
-    },
-    {
       path: "/questionnaire",
       components: {
         default: resolve => require(["@/page/questionnaire/index.vue"], resolve)
@@ -314,12 +294,6 @@ let router = new Router({
           }
         }
       ]
-    },
-    {
-      path: "/test_dialog",
-      components: {
-        default: resolve => require(["@/components/signdialog"], resolve)
-      }
     },
     // 找不到路由的错误页面
     {
