@@ -242,6 +242,13 @@ input {
 ::-o-clear {
   display: none;
 }
-button{
+button {
   cursor: pointer;
+}
+.text-single-comm {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  white-space: nowrap;
 }

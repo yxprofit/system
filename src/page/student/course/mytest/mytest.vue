@@ -105,85 +105,85 @@
 </template>
 
 <script>
-import vs from 'assets/images/vs.png'
+import vs from "assets/images/vs.png";
 const mockTabledata1 = [
   {
-    date: '2016-05-03',
-    name: '王小虎',
-    address: '上海市普陀区金沙江路'
+    date: "2016-05-03",
+    name: "王小虎",
+    address: "上海市普陀区金沙江路"
   },
   {
-    date: '2016-05-02',
-    name: '王小虎',
-    address: '上海市普陀区金沙江'
+    date: "2016-05-02",
+    name: "王小虎",
+    address: "上海市普陀区金沙江"
   },
   {
-    date: '2016-05-04',
-    name: '王小虎',
-    address: '上海市普陀区金沙江路'
+    date: "2016-05-04",
+    name: "王小虎",
+    address: "上海市普陀区金沙江路"
   },
   {
-    date: '2016-05-01',
-    name: '王小虎',
-    address: '上海市普陀区金沙江路'
+    date: "2016-05-01",
+    name: "王小虎",
+    address: "上海市普陀区金沙江路"
   },
   {
-    date: '2016-05-03',
-    name: '王小虎',
-    address: '上海市普陀区金沙江路'
+    date: "2016-05-03",
+    name: "王小虎",
+    address: "上海市普陀区金沙江路"
   },
   {
-    date: '2016-05-03',
-    name: '王小虎',
-    address: '上海市普陀区金沙江路'
+    date: "2016-05-03",
+    name: "王小虎",
+    address: "上海市普陀区金沙江路"
   },
   {
-    date: '2016-05-03',
-    name: '王小虎',
-    address: '上海市普陀区金沙江路'
+    date: "2016-05-03",
+    name: "王小虎",
+    address: "上海市普陀区金沙江路"
   },
   {
-    date: '2016-05-03',
-    name: '王小虎',
-    address: '上海市普陀区金沙江路'
+    date: "2016-05-03",
+    name: "王小虎",
+    address: "上海市普陀区金沙江路"
   },
   {
-    date: '2016-05-03',
-    name: '王小虎',
-    address: '上海市普陀区金沙江路'
-  },
-]
+    date: "2016-05-03",
+    name: "王小虎",
+    address: "上海市普陀区金沙江路"
+  }
+];
 const mockTableData2 = [
   {
-    date: '2019-05-03',
-    name: '余周周1',
-    address: '上海市普陀区金沙江路'
+    date: "2019-05-03",
+    name: "余周周1",
+    address: "上海市普陀区金沙江路"
   },
   {
-    date: '2019-05-02',
-    name: '余周周2',
-    address: '上海市普陀区金沙江'
+    date: "2019-05-02",
+    name: "余周周2",
+    address: "上海市普陀区金沙江"
   },
   {
-    date: '2016-05-04',
-    name: '余周周3',
-    address: '上海市普陀区金沙江路'
+    date: "2016-05-04",
+    name: "余周周3",
+    address: "上海市普陀区金沙江路"
   },
   {
-    date: '2019-05-01',
-    name: '余周周4',
-    address: '上海市普陀区金沙江路'
+    date: "2019-05-01",
+    name: "余周周4",
+    address: "上海市普陀区金沙江路"
   },
   {
-    date: '2019-05-03',
-    name: '余周周5',
-    address: '上海市普陀区金沙江路'
+    date: "2019-05-03",
+    name: "余周周5",
+    address: "上海市普陀区金沙江路"
   }
-]
+];
 
 export default {
-  name: 'Mytest',
-  data () {
+  name: "Mytest",
+  data() {
     return {
       data: [1, 2, 3, 4],
       loading: true,
@@ -194,68 +194,70 @@ export default {
       pro3: 0,
       options: [
         {
-          value: '选项1',
-          label: '课程1'
+          value: "选项1",
+          label: "课程1"
         },
         {
-          value: '选项2',
-          label: '课程2'
+          value: "选项2",
+          label: "课程2"
         },
         {
-          value: '选项3',
-          label: '课程3'
+          value: "选项3",
+          label: "课程3"
         },
         {
-          value: '选项4',
-          label: '课程4'
+          value: "选项4",
+          label: "课程4"
         },
         {
-          value: '选项5',
-          label: '课程5'
+          value: "选项5",
+          label: "课程5"
         }
       ],
-      value: '课程1',
+      value: "课程1",
       tableData: []
-    }
+    };
   },
-  created () {
+  created() {
     setTimeout(() => {
-      this.loading = false
-      this.pro1 = 80
-      this.pro2 = 75
-      this.pro3 = 60
-      this.tableData = mockTabledata1
-    }, 1000)
+      this.loading = false;
+      this.pro1 = 80;
+      this.pro2 = 75;
+      this.pro3 = 60;
+      this.tableData = mockTabledata1;
+    }, 1000);
   },
   methods: {
-    loadData (index) {
+    loadData(index) {
       if (index === -1) {
         // 加载上一页
         if (this.currentPage <= 1) {
-          return
+          return;
         }
-        this.tableData = mockTabledata1
+        this.tableData = mockTabledata1;
         // load ...
-        this.currentPage -= 1
+        this.currentPage -= 1;
       } else {
         // 加载下一页
-        this.currentPage += 1
-        this.tableData = mockTableData2
+        this.currentPage += 1;
+        this.tableData = mockTableData2;
       }
     },
-    formatter (row, column) {
-      return row.address
+    formatter(row, column) {
+      return row.address;
     },
-    cellEnter (row) {
-      console.log(1)
+    cellEnter(row) {
+      console.log(1);
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
 .mytest {
   // height: calc(100% - 0.14rem);
+  height: 100%;
+  overflow: auto;
   background-color: #fff;
   border-radius: 0.06rem 0.06rem 0 0;
   padding: 0 0.2rem;
@@ -326,14 +328,14 @@ export default {
     }
     & > section {
       width: calc(100% - 1.89rem);
-      height: calc(100% - 1.3rem);
+      // height: calc(100% - 1.3rem);
       border-right: 0.01rem solid #e4e8ed;
       float: left;
       padding: 0 0.1rem;
       margin-bottom: 0.1rem;
       padding-right: 0.31rem;
       box-sizing: border-box;
-      overflow: auto;
+      // overflow: auto;
       .look {
         color: #f80;
         // visibility:hidden;

@@ -1,12 +1,12 @@
 <template>
   <div class="team" v-loading="loading">
-    <el-dialog :visible.sync="state" :before-close="handleClose" :close-on-click-modal='false'>
+    <el-dialog :visible.sync="state" :before-close="handleClose" :close-on-click-modal="false">
       <span slot="title" class="teamTitle">
         <h3>我的小组</h3>
       </span>
       <div class="group">
         <ul class="list-group">
-          <el-carousel :interval="0" arrow="always" :loop='false'>
+          <el-carousel :interval="0" arrow="always" :loop="false">
             <el-carousel-item v-for="(items, index) in data.length" :key="index">
               <li class="li-group" v-for="(item, index) in data[index]" :key="index">
                 <h4>09级2班 0{{index}}组</h4>
@@ -14,7 +14,7 @@
                   <div class="teamBlock" v-for="(item,index) in item" :key="index">
                     <div class="teamAvatar">
                       <img :src="head">
-                      <span>欧阳娜娜</span>
+                      <span class="text-single-comm">欧阳娜娜</span>
                     </div>
                     <div class="teamText">
                       欣赏美与卓越 | 欣赏美与卓越 | 欣赏
@@ -41,7 +41,7 @@ export default {
     return {
       loading: true,
       head,
-      data: [[1,2,3],[4,5,6],[7,8,9]],
+      data: [[1, 2, 3], [4, 5, 6], [7, 8, 9]],
       group1Index: 0
     };
   },
@@ -103,7 +103,7 @@ export default {
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
-    margin: 0 .2rem;
+    margin: 0 0.2rem;
     width: 11.4rem;
     ul {
       display: flex;
@@ -215,17 +215,17 @@ export default {
     width: 10.3rem;
     margin: 0 auto;
   }
-  .el-carousel__arrow--right{
-    right: -.55rem;
+  .el-carousel__arrow--right {
+    right: -0.55rem;
   }
-  .el-carousel__arrow--left{
-    left: -.55rem;
+  .el-carousel__arrow--left {
+    left: -0.55rem;
   }
-  .el-carousel__arrow{
+  .el-carousel__arrow {
     display: block !important;
   }
-  .el-carousel__arrow:hover{
-    background-color: #F79727;
+  .el-carousel__arrow:hover {
+    background-color: #f79727;
     color: #fff;
   }
 }
