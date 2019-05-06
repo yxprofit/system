@@ -38,12 +38,12 @@
             </draggable>
           </div>
         </div>
-        <div class="group1-prev" @click="handlePrev('.list-group', 'group1Index', -142, 'group1')">
+        <div class="group1-prev" @click="handlePrev('.list-group', 'group1Index', -143, 'group1')">
           <i class="el-icon-arrow-left"></i>
         </div>
         <div
           class="group1-next"
-          @click="handleNext('.list-group', 'group1Index', -142, 'list1', 7, 'group1')"
+          @click="handleNext('.list-group', 'group1Index', -143, 'list1', 7, 'group1')"
         >
           <i class="el-icon-arrow-right"></i>
         </div>
@@ -584,7 +584,7 @@ export default {
 }
 
 .content-1 {
-  width: 10rem;
+  width: 9.9rem;
   margin: 0 auto;
   overflow-x: hidden;
   /*三角箭头的颜色*/
