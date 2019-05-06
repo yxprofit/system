@@ -113,13 +113,13 @@
         </div>
         <div
           class="group1-prev"
-          @click="handlePrev('.content-group2-list', 'group2Index', -328, 'group2')"
+          @click="handlePrev('.content-group2-list', 'group2Index', -332, 'group2')"
         >
           <i class="el-icon-arrow-left"></i>
         </div>
         <div
           class="group1-next"
-          @click="handleNext('.content-group2-list', 'group2Index', -328,  'list3', 2, 'group2')"
+          @click="handleNext('.content-group2-list', 'group2Index', -332,  'list3', 2, 'group2')"
         >
           <i class="el-icon-arrow-right"></i>
         </div>
@@ -290,7 +290,7 @@ export default {
       if (list2Len >= 2) {
         clearTimeout(this.timer)
         this.timer = setTimeout(() => {
-          this.handlePrev('.content-group2-list', 'group2Index', -328, 'group2')
+          this.handlePrev('.content-group2-list', 'group2Index', -332, 'group2')
         }, 100)
       }
     },
@@ -323,7 +323,7 @@ export default {
           this.handleNext(
             '.content-group2-list',
             'group2Index',
-            -328,
+            -332,
             'list3',
             2,
             'group2'
@@ -351,7 +351,7 @@ export default {
           this.handleNext(
             '.content-group2-list',
             'group2Index',
-            -328,
+            -332,
             'list3',
             2,
             'group2'
@@ -401,7 +401,7 @@ export default {
             this[listIndex] += 5
           }
         }
-        // console.log(this[listIndex], list)
+        console.log(distance * 0.01 * this[listIndex])
         ele.style.transform = `translateX( ${distance *
           0.01 *
           this[listIndex]}rem)`
@@ -445,7 +445,7 @@ export default {
               this.handlePrev(
                 '.content-group2-list',
                 'group2Index',
-                -328,
+                -332,
                 'group2'
               )
             }, 100)
@@ -476,7 +476,7 @@ export default {
               this.handlePrev(
                 '.content-group2-list',
                 'group2Index',
-                -328,
+                -332,
                 'group2'
               )
             }, 100)
