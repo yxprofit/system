@@ -364,7 +364,12 @@ export default {
       } else {
         let ele = document.querySelector(el)
         if (type === 'group2') {
-          this[listIndex]--
+          // this[listIndex]--
+          if (this[listIndex] <= 3) {
+            this[listIndex] = 0
+          } else {
+            this[listIndex] -= 3
+          }
         } else {
           if (this[listIndex] <= 5) {
             this[listIndex] = 0
@@ -382,8 +387,13 @@ export default {
     handleNext (el, listIndex, distance, list, baseIndex, type) {
       let ele = document.querySelector(el)
       if (this[listIndex] < this[list].length - baseIndex) {
-        if (type == 'group2') {
-          this[listIndex]++
+        if (type === 'group2') {
+          // this[listIndex]++
+          if (this[list].length - this[listIndex] - baseIndex <= 3) {
+            this[listIndex] += this[list].length - this[listIndex] - baseIndex
+          } else {
+            this[listIndex] += 3
+          }
         } else {
           if (this[list].length - this[listIndex] - baseIndex <= 5) {
             this[listIndex] += this[list].length - this[listIndex] - baseIndex
