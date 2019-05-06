@@ -212,7 +212,7 @@
     <el-dialog
       class="group-class"
       :visible.sync="isShowGroup"
-      width="11rem"
+      width="11.5rem"
       :before-close="handleCloseModal"
     >
       <group-class></group-class>
@@ -221,17 +221,17 @@
 </template>
 
 <script>
-import breadcrumb from "@/components/common/breadcrumb.vue";
-import PopupModal from "@/components/popup";
-import PrepareLesson from "../prepareLesson";
-import OpenClass from "./openclass";
-import OpenCourseware from "./openCourseware";
-import GroupClass from "../groupClass";
-import breadcrumb_address from "assets/images/student/breadcrumb_address.png";
-import workimg from "assets/images/student/workimg.png";
+import breadcrumb from '@/components/common/breadcrumb.vue';
+import PopupModal from '@/components/popup';
+import PrepareLesson from '../prepareLesson';
+import OpenClass from './openclass';
+import OpenCourseware from './openCourseware';
+import GroupClass from '../groupClass';
+import breadcrumb_address from 'assets/images/student/breadcrumb_address.png';
+import workimg from 'assets/images/student/workimg.png';
 
 export default {
-  name: "MyCourseView",
+  name: 'MyCourseView',
   components: {
     breadcrumb,
     PrepareLesson,
@@ -240,7 +240,7 @@ export default {
     PopupModal,
     GroupClass
   },
-  data() {
+  data () {
     return {
       loading: true,
       workimg,
@@ -249,34 +249,34 @@ export default {
           id: 1,
           taskList: [
             {
-              name: "完成当前课时测试内容",
-              time: "2019.03.11",
+              name: '完成当前课时测试内容',
+              time: '2019.03.11',
               status: 0,
-              className: "li1"
+              className: 'li1'
             },
             {
-              name: "完成当前课时问卷调查",
-              time: "2019.03.11",
+              name: '完成当前课时问卷调查',
+              time: '2019.03.11',
               status: 0,
-              className: "li2"
+              className: 'li2'
             },
             {
-              name: "完成作品上传",
-              time: "2019.03.11",
+              name: '完成作品上传',
+              time: '2019.03.11',
               status: 1,
-              className: "li3"
+              className: 'li3'
             },
             {
-              name: "完成当前课时测试内容",
-              time: "2019.03.11",
+              name: '完成当前课时测试内容',
+              time: '2019.03.11',
               status: 0,
-              className: "li1"
+              className: 'li1'
             },
             {
-              name: "完成当前课时问卷调查",
-              time: "2019.03.11",
+              name: '完成当前课时问卷调查',
+              time: '2019.03.11',
               status: 0,
-              className: "li2"
+              className: 'li2'
             }
           ],
           taskListStr: []
@@ -285,34 +285,34 @@ export default {
           id: 2,
           taskList: [
             {
-              name: "完成当前课时测试内容",
-              time: "2019.03.11",
+              name: '完成当前课时测试内容',
+              time: '2019.03.11',
               status: 0,
-              className: "li1"
+              className: 'li1'
             },
             {
-              name: "完成当前课时问卷调查",
-              time: "2019.03.11",
+              name: '完成当前课时问卷调查',
+              time: '2019.03.11',
               status: 0,
-              className: "li2"
+              className: 'li2'
             },
             {
-              name: "完成作品上传",
-              time: "2019.03.11",
+              name: '完成作品上传',
+              time: '2019.03.11',
               status: 1,
-              className: "li3"
+              className: 'li3'
             },
             {
-              name: "完成当前课时测试内容",
-              time: "2019.03.11",
+              name: '完成当前课时测试内容',
+              time: '2019.03.11',
               status: 0,
-              className: "li1"
+              className: 'li1'
             },
             {
-              name: "完成当前课时问卷调查",
-              time: "2019.03.11",
+              name: '完成当前课时问卷调查',
+              time: '2019.03.11',
               status: 0,
-              className: "li2"
+              className: 'li2'
             }
           ],
           taskListStr: []
@@ -321,18 +321,18 @@ export default {
           id: 3,
           taskList: [
             {
-              name: "完成当前课时测试内容",
-              time: "2019.03.11",
+              name: '完成当前课时测试内容',
+              time: '2019.03.11',
               status: 0
             },
             {
-              name: "完成当前课时测试内容",
-              time: "2019.03.11",
+              name: '完成当前课时测试内容',
+              time: '2019.03.11',
               status: 0
             },
             {
-              name: "完成当前课时测试内容",
-              time: "2019.03.11",
+              name: '完成当前课时测试内容',
+              time: '2019.03.11',
               status: 1
             }
           ],
@@ -342,18 +342,18 @@ export default {
           id: 4,
           taskList: [
             {
-              name: "完成当前课时测试内容",
-              time: "2019.03.11",
+              name: '完成当前课时测试内容',
+              time: '2019.03.11',
               status: 0
             },
             {
-              name: "完成当前课时测试内容",
-              time: "2019.03.11",
+              name: '完成当前课时测试内容',
+              time: '2019.03.11',
               status: 0
             },
             {
-              name: "完成当前课时测试内容",
-              time: "2019.03.11",
+              name: '完成当前课时测试内容',
+              time: '2019.03.11',
               status: 1
             }
           ],
@@ -363,18 +363,18 @@ export default {
           id: 5,
           taskList: [
             {
-              name: "完成当前课时测试内容",
-              time: "2019.03.11",
+              name: '完成当前课时测试内容',
+              time: '2019.03.11',
               status: 0
             },
             {
-              name: "完成当前课时测试内容",
-              time: "2019.03.11",
+              name: '完成当前课时测试内容',
+              time: '2019.03.11',
               status: 0
             },
             {
-              name: "完成当前课时测试内容",
-              time: "2019.03.11",
+              name: '完成当前课时测试内容',
+              time: '2019.03.11',
               status: 1
             }
           ],
@@ -384,18 +384,18 @@ export default {
           id: 6,
           taskList: [
             {
-              name: "完成当前课时测试内容",
-              time: "2019.03.11",
+              name: '完成当前课时测试内容',
+              time: '2019.03.11',
               status: 0
             },
             {
-              name: "完成当前课时测试内容",
-              time: "2019.03.11",
+              name: '完成当前课时测试内容',
+              time: '2019.03.11',
               status: 0
             },
             {
-              name: "完成当前课时测试内容",
-              time: "2019.03.11",
+              name: '完成当前课时测试内容',
+              time: '2019.03.11',
               status: 1
             }
           ],
@@ -405,18 +405,18 @@ export default {
           id: 7,
           taskList: [
             {
-              name: "完成当前课时测试内容",
-              time: "2019.03.11",
+              name: '完成当前课时测试内容',
+              time: '2019.03.11',
               status: 0
             },
             {
-              name: "完成当前课时测试内容",
-              time: "2019.03.11",
+              name: '完成当前课时测试内容',
+              time: '2019.03.11',
               status: 0
             },
             {
-              name: "完成当前课时测试内容",
-              time: "2019.03.11",
+              name: '完成当前课时测试内容',
+              time: '2019.03.11',
               status: 1
             }
           ],
@@ -432,72 +432,72 @@ export default {
       closeOverLay: false,
       visible: false,
       address: {
-        onePath: "/teachers/course/mycourse",
-        text: "1对1英语课程"
+        onePath: '/teachers/course/mycourse',
+        text: '1对1英语课程'
       }
-    };
+    }
   },
-  created() {
-    let _this = this;
+  created () {
+    let _this = this
     setTimeout(() => {
-      _this.loading = false;
-    }, 1000);
-    this.computedtaskList();
+      _this.loading = false
+    }, 1000)
+    this.computedtaskList()
   },
   methods: {
-    handleCloseModal(done) {
-      done();
+    handleCloseModal (done) {
+      done()
     },
-    handlePrepareLesson() {
-      this.showLesson = !this.showLesson;
+    handlePrepareLesson () {
+      this.showLesson = !this.showLesson
     },
-    handleBeginClass() {
-      this.$refs.ClassBeginDialog.show();
+    handleBeginClass () {
+      this.$refs.ClassBeginDialog.show()
     },
-    handleOpenCourseware() {
-      this.$refs.OpenCoursewarDialog.show();
+    handleOpenCourseware () {
+      this.$refs.OpenCoursewarDialog.show()
     },
-    handleGrouping() {
-      this.isShowGroup = !this.isShowGroup;
+    handleGrouping () {
+      this.isShowGroup = !this.isShowGroup
     },
-    fitlerdes() {
+    fitlerdes () {
       let text =
-        "外教英语培训班 , 外教英语培训班 , 每天45分钟 , 随时纠正 , 学英语上TutorABC , 随时随地对话全球外教 , 生活,职场，外教英语培训班 , 外教英语培训班 , 每天45分钟 , 随时纠正 , 学英语上TutorABC，外教英语培训班 , 外教英语培训班 , 每天45分";
-      return this.desState ? text : text.slice(0, 133) + "...";
+        '外教英语培训班 , 外教英语培训班 , 每天45分钟 , 随时纠正 , 学英语上TutorABC , 随时随地对话全球外教 , 生活,职场，外教英语培训班 , 外教英语培训班 , 每天45分钟 , 随时纠正 , 学英语上TutorABC，外教英语培训班 , 外教英语培训班 , 每天45分';
+      return this.desState ? text : text.slice(0, 133) + '...';
     },
-    computedtaskList() {
-      let data = this.data;
+    computedtaskList () {
+      let data = this.data
       for (let i = 0; i < data.length; i++) {
         if (data[i].taskList.length > 3) {
-          data[i].showText = "查看全部";
-          data[i].taskListStr = data[i].taskList.slice(0, 3);
+          data[i].showText = '查看全部';
+          data[i].taskListStr = data[i].taskList.slice(0, 3)
         } else {
-          data[i].taskListStr = data[i].taskList;
-          data[i].showText = "";
+          data[i].taskListStr = data[i].taskList
+          data[i].showText = '';
         }
       }
-      this.computedData = data;
+      this.computedData = data
     },
-    searchMore(item) {
+    searchMore (item) {
       if (!item.showText) {
-        return;
+        return
       }
-      let list = this.computedData;
+      let list = this.computedData
       for (let i = 0; i < list.length; i++) {
         if (list[i].id === item.id) {
-          if (item.showText === "查看全部") {
-            list[i].taskListStr = list[i].taskList;
-            list[i].showText = "收取全部";
+          if (item.showText === '查看全部') {
+            list[i].taskListStr = list[i].taskList
+            list[i].showText = '收取全部';
           } else {
-            list[i].taskListStr = list[i].taskList.slice(0, 3);
-            list[i].showText = "查看全部";
+            list[i].taskListStr = list[i].taskList.slice(0, 3)
+            list[i].showText = '查看全部';
           }
         }
       }
-      this.computedData = list;
+      this.computedData = list
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
