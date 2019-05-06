@@ -77,9 +77,9 @@
                         v-for="(gItem, gIndex) in list2[index]"
                         :key="gIndex"
                       >
-                        <img class="avatar-img" :src="gItem.avatar" alt>
+                        <img class="avatar-img avatar-img2" :src="gItem.avatar" alt>
                         <div class="avatar-name">{{ gItem.name }}</div>
-                        <div class="icon-list">
+                        <div class="icon-list icon-list2">
                           <img
                             class="icon-item icon-item-2"
                             src="../../../../assets/images/teacher/g2.png"
@@ -726,7 +726,13 @@ export default {
 }
 
 .icon-list {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+  &.icon-list2 {
+    height: 0.2rem;
+  }
 }
 
 .group1-list-inner {
@@ -829,6 +835,9 @@ export default {
   margin-bottom: 0.05rem;
   border-radius: 50%;
   overflow: hidden;
+  &.avatar-img2 {
+    margin-left: 0.08rem;
+  }
 }
 
 .avatar-name {
@@ -849,7 +858,7 @@ export default {
   height: 2.9rem;
   text-align: left;
   white-space: pre-wrap;
-  padding-top: 0.2rem;
+  // padding-top: 0.2rem;
   // &::-webkit-scrollbar {
   //   display: none;
   // }
