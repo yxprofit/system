@@ -22,7 +22,7 @@
               :move="getdata"
               :clone="clone"
               :group="{ name: 'people', pull: pullFunction }"
-              :style="{ width: 1.38*Number(list1.length - 1) + 'rem' }"
+              :style="{ width: 1.4*Number(list1.length - 1) + 'rem' }"
             >
               <div class="list-group-item" v-for="(item, index) in list1" :key="index">
                 <div class="group1-list-inner">
@@ -38,12 +38,12 @@
             </draggable>
           </div>
         </div>
-        <div class="group1-prev" @click="handlePrev('.list-group', 'group1Index', -138, 'group1')">
+        <div class="group1-prev" @click="handlePrev('.list-group', 'group1Index', -142, 'group1')">
           <i class="el-icon-arrow-left"></i>
         </div>
         <div
           class="group1-next"
-          @click="handleNext('.list-group', 'group1Index', -138, 'list1', 7, 'group1')"
+          @click="handleNext('.list-group', 'group1Index', -142, 'list1', 7, 'group1')"
         >
           <i class="el-icon-arrow-right"></i>
         </div>
@@ -53,7 +53,7 @@
         <div class="content-1">
           <div
             class="content-1-wrap content-group2-list"
-            :style="{ width: 3.22*Number(list3.length + 1) + 'rem' }"
+            :style="{ width: 3.42*Number(list3.length + 1) + 'rem' }"
           >
             <div class="group-slide" v-for="(item, index) in  list3" :key="index">
               <div class="group-slide-innder">
@@ -484,7 +484,7 @@ export default {
 <style lang="scss" scoped>
 @import '@~assets/css/mixins.scss';
 .group {
-  width: 11rem;
+  width: 11.5rem;
   height: 6.9rem;
   margin: 0 auto;
   background: #fff;
@@ -584,9 +584,9 @@ export default {
 }
 
 .content-1 {
-  width: 9.54rem;
+  width: 10rem;
   margin: 0 auto;
-  overflow-x: scroll;
+  overflow-x: hidden;
   /*三角箭头的颜色*/
   // scrollbar-arrow-color: #f00;
   /*滚动条滑块按钮的颜色*/
@@ -644,7 +644,7 @@ export default {
   }
 
   .group1--1-wrap {
-    overflow-x: auto;
+    overflow-x: hidden;
     /*三角箭头的颜色*/
     // scrollbar-arrow-color: #f00;
     /*滚动条滑块按钮的颜色*/
@@ -708,14 +708,14 @@ export default {
 
 .list-group-item,
 .group-slide {
-  width: 1.26rem;
+  width: 1.3rem;
   height: 1.46rem;
   display: inline-block;
   text-align: center;
   vertical-align: middle;
   background: #fff;
   border: 0.01rem solid #e4e8ed;
-  margin-right: 0.12rem;
+  margin-right: 0.13rem;
   box-sizing: border-box;
   position: relative;
 }
