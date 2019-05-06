@@ -22,7 +22,7 @@
           <div class="warn-message" v-show="isWarn">你的标签选择超过了三个，请选择此次活动中你最突出的三个能力标签</div>
           <ul class="ability-list">
             <li class="ability-item" v-for="(tag, index) in tagList" :key="index" @click="handleSelectTag(tag, index)">
-              <el-tooltip placement="right" effect="light" >
+              <el-tooltip placement="right" effect="light" style="z-index:10001">
                 <div slot="content" class="tip-content">
                   <div class="tip-title">{{ tag.tipTitle }}：</div>
                   <div class="tip-desc">{{ tag.tipDesc }}</div>
@@ -440,6 +440,8 @@ body /deep/ .el-tooltip__popper {
   box-shadow: 0px 4px 10px 0px rgba(188,188,188,0.4);
   border-radius: 0.04rem;
   padding: 0.15rem 0.18rem 0.17rem 0.22rem;
+  z-index: 10001 !important;
+  position: relative;
 }
 
 .el-tooltip__popper[x-placement^=right] .popper__arrow {

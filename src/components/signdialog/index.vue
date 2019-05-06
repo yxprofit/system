@@ -1,11 +1,11 @@
 <template>
-  <div class="my-dialog">
+  <div class="my-dialog" v-show="state">
     <div class="g_main">
       <div class="dialog-title">
         <h3>
           优势打卡
           <span class="close">
-            <button class="close-btn">
+            <button class="close-btn" @click='handleClose'>
               <i class="el-icon-close"></i>
             </button>
           </span>
@@ -70,7 +70,7 @@
         </div>
       </div>
 
-      <div class="bottom-button">
+      <div class="bottom-button" @click="handleClose">
         <button>确认添加</button>
       </div>
 
@@ -138,6 +138,7 @@ export default {
       ]
     };
   },
+  props:['state'],
   methods: {
     handleClick(item, index) {
       // this.active = index;
@@ -152,7 +153,10 @@ export default {
     },
     customActivity() {
       this.$refs.cuttomActivityDialog.show();
-    }
+    },
+     handleClose() {
+      this.$emit("close");
+    },
   }
 };
 </script>

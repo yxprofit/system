@@ -96,11 +96,14 @@
     <activity-name :state="isShowActivity" @close="parentClose" @invitation="invitation"></activity-name>
 
     <!-- 添加任务弹框 -->
-    <add-works :state="isShowAddWork" @close="parentClose" @handleJump="handleJump"></add-works>
+    <!-- <add-works :state="isShowAddWork" @close="parentClose" @handleJump="handleJump" @handleJump2='jump2'></add-works> -->
     <Ueditor :state="isShowEditor" @close="parentClose"></Ueditor>
 
     <!-- 删除任务弹框 -->
     <delete-works :state="isShowDeleteWorks" @close="parentClose"></delete-works>
+
+    <!-- 优势打卡弹框 -->
+    <!-- <sign-dialog :state='isSignDialog' @close='signDialogClose'></sign-dialog> -->
 
     <!-- 测试弹窗组件区域 -->
     <!-- <my-advantage :state="isShowAdvantage"></my-advantage> -->
@@ -130,11 +133,14 @@ import ActivityName from "@/components/activityName";
 import AddWorks from "../addworks/addWorkTypes";
 import Ueditor from "@/page/ueditor/ueditor";
 import DeleteWorks from "../deleteWork/deleteWork";
+// import SignDialog from '@/components/signdialog'
+
 
 export default {
   name: "Trends",
   data() {
     return {
+      isSignDialog:false,
       isShowDeleteWorks: false,
       isShowAddWork: false,
       isShowEditor: false,
@@ -419,7 +425,8 @@ export default {
     ActivityName,
     AddWorks,
     Ueditor,
-    DeleteWorks
+    DeleteWorks,
+    // SignDialog
     // MyAdvantage,
     // CoursewareUpload,
     // NoSelect,

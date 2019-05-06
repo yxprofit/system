@@ -54,6 +54,8 @@ export default {
     handleClick(){
       if(this.ischeck===1){
         this.$emit('handleJump')
+      }else if(this.ischeck===2){
+        this.$emit('handleJump2')
       }
     }
   }
