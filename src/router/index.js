@@ -269,6 +269,16 @@ let router = new Router({
       }
     },
     {
+      path: "/test_dialog",
+      components: {
+        default: resolve =>
+          require(["@/page/teachers/course/mycourse/priview.vue"], resolve)
+      },
+      meta: {
+        title: "测试弹窗"
+      }
+    },
+    {
       path: "/superiority-clockin",
       redirect: "/superiority-clockin/empty",
       components: {
