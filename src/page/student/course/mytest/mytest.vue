@@ -56,10 +56,11 @@
             <el-table-column prop="name" label="总分" align="center" sortable></el-table-column>
           </el-table>
         </div>
-        <div class="pagination">
+        <!-- <div class="pagination">
           <span class="prev-btn" @click="loadData(-1)">上一页</span>
           <span class="next-btn" @click="loadData(1)">下一页</span>
-        </div>
+        </div> -->
+        <button class="more" @click="loadmore">查看更多</button>
       </section>
       <aside class="clearfix">
         <h3>测试完成率</h3>
@@ -106,53 +107,53 @@
 
 <script>
 import vs from "assets/images/vs.png";
-const mockTabledata1 = [
-  {
-    date: "2016-05-03",
-    name: "王小虎",
-    address: "上海市普陀区金沙江路"
-  },
-  {
-    date: "2016-05-02",
-    name: "王小虎",
-    address: "上海市普陀区金沙江"
-  },
-  {
-    date: "2016-05-04",
-    name: "王小虎",
-    address: "上海市普陀区金沙江路"
-  },
-  {
-    date: "2016-05-01",
-    name: "王小虎",
-    address: "上海市普陀区金沙江路"
-  },
-  {
-    date: "2016-05-03",
-    name: "王小虎",
-    address: "上海市普陀区金沙江路"
-  },
-  {
-    date: "2016-05-03",
-    name: "王小虎",
-    address: "上海市普陀区金沙江路"
-  },
-  {
-    date: "2016-05-03",
-    name: "王小虎",
-    address: "上海市普陀区金沙江路"
-  },
-  {
-    date: "2016-05-03",
-    name: "王小虎",
-    address: "上海市普陀区金沙江路"
-  },
-  {
-    date: "2016-05-03",
-    name: "王小虎",
-    address: "上海市普陀区金沙江路"
-  }
-];
+// const mockTabledata1 = [
+//   {
+//     date: "2016-05-03",
+//     name: "王小虎",
+//     address: "上海市普陀区金沙江路"
+//   },
+//   {
+//     date: "2016-05-02",
+//     name: "王小虎",
+//     address: "上海市普陀区金沙江"
+//   },
+//   {
+//     date: "2016-05-04",
+//     name: "王小虎",
+//     address: "上海市普陀区金沙江路"
+//   },
+//   {
+//     date: "2016-05-01",
+//     name: "王小虎",
+//     address: "上海市普陀区金沙江路"
+//   },
+//   {
+//     date: "2016-05-03",
+//     name: "王小虎",
+//     address: "上海市普陀区金沙江路"
+//   },
+//   {
+//     date: "2016-05-03",
+//     name: "王小虎",
+//     address: "上海市普陀区金沙江路"
+//   },
+//   {
+//     date: "2016-05-03",
+//     name: "王小虎",
+//     address: "上海市普陀区金沙江路"
+//   },
+//   {
+//     date: "2016-05-03",
+//     name: "王小虎",
+//     address: "上海市普陀区金沙江路"
+//   },
+//   {
+//     date: "2016-05-03",
+//     name: "王小虎",
+//     address: "上海市普陀区金沙江路"
+//   }
+// ];
 const mockTableData2 = [
   {
     date: "2019-05-03",
@@ -215,7 +216,58 @@ export default {
         }
       ],
       value: "课程1",
-      tableData: []
+      tableData: [
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路"
+        },
+        {
+          date: "2016-05-02",
+          name: "王小虎",
+          address: "上海市普陀区金沙江"
+        },
+        {
+          date: "2016-05-04",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路"
+        },
+        {
+          date: "2016-05-01",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路"
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路"
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路"
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路"
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路"
+        },
+        {
+          date: "2016-05-03",
+          name: "王小虎",
+          address: "上海市普陀区金沙江路"
+        },
+        {
+        date: "2019-05-20",
+        name: "王小虎",
+        address: "上海市普陀区"
+      }
+      ]
     };
   },
   created() {
@@ -224,10 +276,17 @@ export default {
       this.pro1 = 80;
       this.pro2 = 75;
       this.pro3 = 60;
-      this.tableData = mockTabledata1;
+      // this.tableData = mockTabledata1;
     }, 1000);
   },
   methods: {
+    loadmore() {
+      this.tableData.push({
+        date: "2019-05-20",
+        name: "王小虎",
+        address: "上海市普陀区"
+      });
+    },
     loadData(index) {
       if (index === -1) {
         // 加载上一页
@@ -328,14 +387,14 @@ export default {
     }
     & > section {
       width: calc(100% - 1.89rem);
-      // height: calc(100% - 1.3rem);
+      height: calc(100% - 1.6rem);
       border-right: 0.01rem solid #e4e8ed;
       float: left;
       padding: 0 0.1rem;
       margin-bottom: 0.1rem;
       padding-right: 0.31rem;
       box-sizing: border-box;
-      // overflow: auto;
+      overflow: auto;
       .look {
         color: #f80;
         // visibility:hidden;
@@ -474,13 +533,31 @@ export default {
   }
 
   .table-wrap {
-    height: 4rem;
-
+    max-height: 4.5rem;
     .table-border {
       width: 100%;
       height: 0.7rem;
       border: 1px solid #f28c18;
     }
+  }
+  .more {
+    display: block;
+    width: 1.2rem;
+    height: 0.34rem;
+    line-height: 0.32rem;
+    text-align: center;
+    background-color: transparent;
+    border: 0.01rem solid #ccc;
+    border-radius: 0.17rem;
+    color: #999;
+    font-size: 0.13rem;
+    font-family: "MicrosoftYaHei";
+    cursor: pointer;
+    margin: 0.2rem auto;
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 </style>
