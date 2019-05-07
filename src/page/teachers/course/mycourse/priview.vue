@@ -103,7 +103,7 @@
             </div>
             <div class="myteam clearfix">
               <span class="i">我的小组</span>
-              <span class="read right">查看></span>
+              <span class="read right" @click="handleShowTeam">查看></span>
             </div>
           </div>
         </el-col>
@@ -341,6 +341,9 @@ export default {
     },
     handleClose(){
       this.$emit('close')
+    },
+    handleShowTeam(){
+      this.$emit('showTeam')
     }
   }
 };

@@ -218,7 +218,10 @@
       <group-class></group-class>
     </el-dialog>
     <!-- 预览学生效果 -->
-    <Preview :is_show='isShowPreview' @close='parentClose'></Preview>
+    <Preview :is_show='isShowPreview' @close='parentClose' @showTeam='showTeam'></Preview>
+
+    <!-- 预览学生我的小组 -->
+    <Team :state='isShowTeam' @close='parentClose'></Team>
   </div>
 </template>
 
@@ -232,6 +235,8 @@ import GroupClass from '../groupClass';
 import breadcrumb_address from 'assets/images/student/breadcrumb_address.png';
 import workimg from 'assets/images/student/workimg.png';
 import Preview from './priview';
+import Team from '@/page/student/course/mycourse/team'
+
 
 export default {
   name: 'MyCourseView',
@@ -242,10 +247,12 @@ export default {
     OpenCourseware,
     PopupModal,
     GroupClass,
-    Preview
+    Preview,
+    Team
   },
   data () {
     return {
+      isShowTeam:false,
       isShowPreview:false,
       loading: true,
       workimg,
@@ -450,8 +457,13 @@ export default {
     this.computedtaskList()
   },
   methods: {
+    showTeam(){
+      this.isShowPreview = false
+      this.isShowTeam = true
+    },
     parentClose(){
       this.isShowPreview = false
+      this.isShowTeam = false
     },
     showPreview(){
       this.isShowPreview = true

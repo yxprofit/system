@@ -229,4 +229,7 @@ export default {
     color: #fff;
   }
 }
+.team /deep/ .el-carousel--horizontal{
+    overflow: hidden !important;
+  }
 </style>
