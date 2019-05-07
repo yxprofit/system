@@ -1,5 +1,5 @@
 <template>
-  <el-dialog custom-class="priview_dialog" :visible.sync="is_show" width="11.9rem">
+  <el-dialog custom-class="priview_dialog" :before-close="handleClose" :visible.sync="is_show" width="11.9rem" :close-on-click-modal='false'>
     <div class="dialog-title" slot="title">
       <span>预览学生效果</span>
     </div>
@@ -138,7 +138,7 @@
 export default {
   data() {
     return {
-      is_show: true,
+      // is_show: true,
       computedData: [],
       data: [
         {
@@ -321,7 +321,7 @@ export default {
       ]
     };
   },
-  //   props: ["is_show"],
+  props: ["is_show"],
   created() {
     this.computedtaskList();
   },
@@ -338,6 +338,9 @@ export default {
         }
       }
       this.computedData = data;
+    },
+    handleClose(){
+      this.$emit('close')
     }
   }
 };

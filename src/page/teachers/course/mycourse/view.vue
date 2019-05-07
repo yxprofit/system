@@ -15,7 +15,7 @@
               <el-col :span="18">
                 <div class="workdes">
                   <h3>外教1对11英语课程 口语轻松说</h3>
-                  <router-link tag="span" to="/teacher/task" class="previewstudents">预览学生效果</router-link>
+                  <span class="previewstudents" @click="showPreview">预览学生效果</span>
                   <p>
                     {{fitlerdes()}}
                     <var v-if="!desState" @click="()=>{this.desState = true}">查看详情</var>
@@ -217,6 +217,8 @@
     >
       <group-class></group-class>
     </el-dialog>
+    <!-- 预览学生效果 -->
+    <Preview :is_show='isShowPreview' @close='parentClose'></Preview>
   </div>
 </template>
 
@@ -229,6 +231,7 @@ import OpenCourseware from './openCourseware';
 import GroupClass from '../groupClass';
 import breadcrumb_address from 'assets/images/student/breadcrumb_address.png';
 import workimg from 'assets/images/student/workimg.png';
+import Preview from './priview';
 
 export default {
   name: 'MyCourseView',
@@ -238,10 +241,12 @@ export default {
     OpenClass,
     OpenCourseware,
     PopupModal,
-    GroupClass
+    GroupClass,
+    Preview
   },
   data () {
     return {
+      isShowPreview:false,
       loading: true,
       workimg,
       data: [
@@ -445,6 +450,12 @@ export default {
     this.computedtaskList()
   },
   methods: {
+    parentClose(){
+      this.isShowPreview = false
+    },
+    showPreview(){
+      this.isShowPreview = true
+    },
     handleCloseModal (done) {
       done()
     },
@@ -576,6 +587,7 @@ export default {
         top: 0.15rem;
         color: #f79727;
         font-size: 0.16rem;
+        cursor: pointer;
         &:after {
           display: block;
           content: "";
