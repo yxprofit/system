@@ -202,7 +202,7 @@ export default {
 }
 .team /deep/ .el-dialog__body {
   overflow: hidden !important;
-  max-height: 594px;
+  max-height: 600px;
 }
 .team /deep/ .el-dialog__wrapper {
   overflow: hidden !important;
