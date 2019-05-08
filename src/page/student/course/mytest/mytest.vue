@@ -41,7 +41,6 @@
             :data="tableData"
             style="width: 100%"
             @row-click="cellEnter"
-            :default-sort="{prop: 'date', order: 'descending'}"
             row-class-name="tableRow"
           >
             <el-table-column label="课时名称" sortable align="center" width="180">
@@ -55,12 +54,12 @@
             <el-table-column prop="name" label="分数" align="center" sortable></el-table-column>
             <el-table-column prop="name" label="总分" align="center" sortable></el-table-column>
           </el-table>
+          <button class="more" @click="loadmore">查看更多</button>
         </div>
         <!-- <div class="pagination">
           <span class="prev-btn" @click="loadData(-1)">上一页</span>
           <span class="next-btn" @click="loadData(1)">下一页</span>
         </div> -->
-        <button class="more" @click="loadmore">查看更多</button>
       </section>
       <aside class="clearfix">
         <h3>测试完成率</h3>
@@ -316,7 +315,7 @@ export default {
 .mytest {
   // height: calc(100% - 0.14rem);
   height: 100%;
-  overflow: auto;
+  overflow: hidden;
   background-color: #fff;
   border-radius: 0.06rem 0.06rem 0 0;
   padding: 0 0.2rem;
@@ -387,7 +386,8 @@ export default {
     }
     & > section {
       width: calc(100% - 1.89rem);
-      height: calc(100% - 1.6rem);
+      max-height: calc(100vh - 1.6rem);
+      height: 100vh;
       border-right: 0.01rem solid #e4e8ed;
       float: left;
       padding: 0 0.1rem;
@@ -554,10 +554,10 @@ export default {
     font-family: "MicrosoftYaHei";
     cursor: pointer;
     margin: 0.2rem auto;
-    position: fixed;
-    bottom: 1rem;
-    left: 50%;
-    transform: translateX(-50%);
+    // position: fixed;
+    // bottom: 1rem;
+    // left: 50%;
+    // transform: translateX(-50%);
   }
 }
 </style>
