@@ -44,9 +44,9 @@
 
 <script>
 import t6 from "@/assets/images/icon/t6.png";
-import t7 from "@/assets/images/icon/t7.png";
+import t7 from "@/assets/images/icon/t7_1.png";
 import t9 from "@/assets/images/icon/t9.png";
-import t10 from "@/assets/images/icon/t10.png";
+import t10 from "@/assets/images/icon/t10_1.png";
 export default {
   name: "TaskMain",
   data() {
