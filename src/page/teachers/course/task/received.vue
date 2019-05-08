@@ -147,7 +147,7 @@ export default {
       isShowActivity: false,
       isShowPanchCard: false,
       isShowAdvantage: false,
-      punchStatus: "1",
+      punchStatus: "2",
       teacher: "",
       activeName: "1",
       type: "",
