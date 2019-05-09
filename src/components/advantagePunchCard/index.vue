@@ -41,14 +41,23 @@
               </div>
             </div>
             <!-- 查看作品 -->
-            <div class="works" @click="jumpTo18">
+            <div class="works">
               <div>
                 <img src="../../assets/images/icon/ad_works.png" alt>
                 <p>活动名称民乐社团（样本范例）</p>
               </div>
               <div>
-                <p>查看作品</p>
-                <img src="../../assets/images/icon/ad_next.png" alt>
+                <!-- <p>查看作品</p>
+                <img src="../../assets/images/icon/ad_next.png" alt> -->
+                <el-dropdown size="medium" trigger="click">
+                  <span class="el-dropdown-link">
+                    查看作品<i class="el-icon-arrow-down el-icon--right"></i>
+                  </span>
+                  <el-dropdown-menu slot="dropdown">
+                    <el-dropdown-item @click.native="jumpTo18(item.value)" v-for="(item,index) in works" :key="index">{{item.label}}</el-dropdown-item>
+                    <!-- <el-dropdown-item @click.native="jumpTo18">绘画海报</el-dropdown-item> -->
+                  </el-dropdown-menu>
+                </el-dropdown>
               </div>
             </div>
             <!-- 问答 -->
@@ -190,65 +199,75 @@ export default {
     },
     status: {
       type: String,
-      default: '2'
+      default: "2"
     }
   },
-  data () {
+  data() {
     return {
       loading: true,
       currentPage: 1,
       data: [
         {
           content:
-            '余周周真的很棒，在活动中积极参与，完成度高，余周周真的很棒，在活动中积极参与，完成度高，余周周真的很棒，在活动中积极参与。',
-          username: '用户名',
-          time: '2019.3.20 16:02'
+            "余周周真的很棒，在活动中积极参与，完成度高，余周周真的很棒，在活动中积极参与，完成度高，余周周真的很棒，在活动中积极参与。",
+          username: "用户名",
+          time: "2019.3.20 16:02"
         },
         {
           content:
-            '余周周真的很棒，在活动中积极参与，完成度高，余周周真的很棒。',
-          username: '小黑黑',
-          time: '2019.2.08 13:15'
+            "余周周真的很棒，在活动中积极参与，完成度高，余周周真的很棒。",
+          username: "小黑黑",
+          time: "2019.2.08 13:15"
         },
         {
           content:
-            '余周周真的很棒，在活动中积极参与，完成度高，余周周真的很棒，在活动中积极参与，在活动中积极参与。',
-          username: '小明明',
-          time: '2019.1.12 09:10'
+            "余周周真的很棒，在活动中积极参与，完成度高，余周周真的很棒，在活动中积极参与，在活动中积极参与。",
+          username: "小明明",
+          time: "2019.1.12 09:10"
         }
-      ]
-    }
+      ],
+      works: [
+        {
+          value: "1",
+          label: "项目报告"
+        },
+        {
+          value: "2",
+          label: "绘画海报"
+        },
+      ],
+    };
   },
-  created () {
-    let _this = this
+  created() {
+    let _this = this;
     setTimeout(() => {
-      _this.loading = false
-    }, 1000)
+      _this.loading = false;
+    }, 1000);
   },
   methods: {
-    handleContinuePunch () {
-      this.$router.push('/superiority-clockin/empty')
+    handleContinuePunch() {
+      this.$router.push("/superiority-clockin/empty");
     },
-    handleClose () {
-      this.$emit('close')
+    handleClose() {
+      this.$emit("close");
     },
-    jumpTo18 () {
-      this.$emit('showActivity')
+    jumpTo18() {
+      this.$emit("showActivity");
     },
-    prev () {
+    prev() {
       if (this.currentPage <= 1) {
-        return
+        return;
       }
-      this.currentPage--
+      this.currentPage--;
     },
-    next () {
+    next() {
       if (this.currentPage >= this.data.length) {
-        return
+        return;
       }
-      this.currentPage++
+      this.currentPage++;
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -437,7 +456,7 @@ export default {
           min-height: 0.6rem;
           max-height: 1.04rem;
           overflow: auto;
-          &:nth-of-type(2){
+          &:nth-of-type(2) {
             height: 1.04rem;
           }
         }
@@ -706,5 +725,8 @@ export default {
   padding: 0;
   line-height: 0.6rem;
   border-bottom: 1px solid rgba(228, 232, 237, 1);
+}
+.details /deep/ .el-dropdown-link {
+  cursor: pointer;
 }
 </style>

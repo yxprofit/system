@@ -206,3 +206,13 @@
 .limit-message.el-message .el-message__icon  {
   font-size: 0.16px;
 }
+.el-dropdown-menu{
+  top:2.25rem !important;
+}
+.el-dropdown-menu__item:hover{
+  color: #f79727 !important;
+  background-color: #fff !important;
+}
+.el-dropdown-link{
+  border: none !important;
+}

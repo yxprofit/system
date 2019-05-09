@@ -49,7 +49,10 @@ import {
   CheckboxGroup,
   Scrollbar,
   Checkbox,
-  Message
+  Message,
+  Dropdown,
+  DropdownMenu,
+  DropdownItem
 } from "element-ui";
 
 import waterfall from "vue-waterfall2";
@@ -88,7 +91,10 @@ Vue.use(Button)
   .use(Checkbox)
   .use(RadioGroup)
   .use(CheckboxGroup)
-  .use(Input);
+  .use(Input)
+  .use(Dropdown)
+  .use(DropdownMenu)
+  .use(DropdownItem)
 /* eslint-disable no-new */
 new Vue({
   el: "#app",
