@@ -111,7 +111,7 @@
     <!-- <courseware-upload :state.sync="isShowAdvantage"></courseware-upload> -->
     <!-- <no-select :state.sync="isShowAdvantage"></no-select> -->
     <!-- <invitation-success :state.sync="isShowAdvantage"></invitation-success> -->
-    <invitation-comments :state.sync="isShowAdvantage"></invitation-comments>
+    <invitation-comments :state.sync="isShowAdvantage" @showActivity='handleActivityShow'></invitation-comments>
     <!-- <invitation-comments :state.sync="isShowAdvantage"></invitation-comments> -->
   </div>
 </template>
@@ -382,6 +382,7 @@ export default {
       this.isShowDeleteWorks = false;
     },
     handleActivityShow() {
+      this.isShowAdvantage = false
       this.isShowActivity = true;
     },
     invitation() {
