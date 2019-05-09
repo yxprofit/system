@@ -6,7 +6,7 @@
         <div class="adt-title">我的优势打卡</div>
         <div class="back">
           <i class="el-icon-arrow-left"></i>
-          <span class="back-text">返回上一步</span>
+          <span class="back-text" @click="handleClose">返回上一步</span>
         </div>
       </div>
       <div class="upload-desc">这个活动中你有完成作品吗？上传留下记录，赢得积分</div>
@@ -209,6 +209,7 @@ export default {
     margin-left: 0.14rem;
     color: #f79727;
     font-weight: 400;
+    cursor: pointer;
   }
 }
 

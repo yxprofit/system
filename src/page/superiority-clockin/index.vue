@@ -67,7 +67,7 @@ export default {
         {
           imgSrc: activity2,
           id: 111,
-          title: "活动名称民乐社团（样本范例",
+          title: "活动名称民乐社团(样本范例)",
           tip: "选中打卡"
         },
         {
@@ -223,7 +223,7 @@ export default {
 
       .activity-list-item {
         display: flex;
-        padding: 0.15rem 0.5rem 0.15rem 0.11rem;
+        padding: 0.15rem 0.3rem 0.15rem 0.11rem;
         cursor: pointer;
         .left {
           width: 0.79rem;
@@ -238,6 +238,8 @@ export default {
             color: rgba(51, 51, 51, 1);
             line-height: 0.15rem;
             font-size: 0.13rem;
+            word-break: break-all;
+            text-align: left;
           }
           .tip {
             font-size: 0.12rem;

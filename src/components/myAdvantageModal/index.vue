@@ -254,6 +254,9 @@ export default {
       //   this.isOK = true
       // }
     }
+  },
+  beforeDestroy () {
+    this.timer = null
   }
 }
 </script>

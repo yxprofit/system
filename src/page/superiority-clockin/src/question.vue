@@ -18,6 +18,7 @@
               <img :src="item.imgsrc" alt="">
               <p>{{item.title}}</p>
             </li>
+            <li class="item_select" v-if="superiorites.length!==3" @click="addSuperiority">再次选择</li>
           </ul>
         </el-col>
         <el-col class="acrion-btn" :span="12">
@@ -97,93 +98,106 @@
   </div>
 </template>
 <script>
-import activity3 from 'assets/images/superiority/activity-03.png'
-import activity2 from 'assets/images/superiority/activity-02.png'
-import activity1 from 'assets/images/superiority/activity-01.png'
-import activity4 from 'assets/images/superiority/activity-04.png'
-import quesLeft from 'assets/images/superiority/ques-left.png'
-import quesRight from 'assets/images/superiority/ques-right.png'
-import indexPic from 'assets/images/superiority/index.png'
+import activity3 from "assets/images/superiority/activity-03.png";
+import activity2 from "assets/images/superiority/activity-02.png";
+import activity1 from "assets/images/superiority/activity-01.png";
+import activity4 from "assets/images/superiority/activity-04.png";
+import quesLeft from "assets/images/superiority/ques-left.png";
+import quesRight from "assets/images/superiority/ques-right.png";
+import indexPic from "assets/images/superiority/index.png";
 
-import ActivityName from '@/components/activityName'
-import balanced from 'assets/images/superiority/balanced.png'
-import brave from 'assets/images/superiority/brave.png'
-import teamSpirit from 'assets/images/superiority/teamSpirit.png'
-import ItemInput from './item-input'
-import AddSuperiorityDialog from './add-superiority-dialog.vue'
-import MyAdvantage from '@/components/myAdvantageModal'
-import CoursewareUpload from '@/components/coursewareUpload'
-import NoSelect from '@/components/notSelectTag'
-import InvitationSuccess from '@/components/invitationSuccess'
-import InvitationComments from '@/components/invitationComments'
-import UploadList from '@/components/uploadFileList'
-import DeleteWorks from '@/page/teachers/course/deleteWork/deleteWork'
+import ActivityName from "@/components/activityName";
+import balanced from "assets/images/superiority/balanced.png";
+import brave from "assets/images/superiority/brave.png";
+import teamSpirit from "assets/images/superiority/teamSpirit.png";
+import ItemInput from "./item-input";
+import AddSuperiorityDialog from "./add-superiority-dialog.vue";
+import MyAdvantage from "@/components/myAdvantageModal";
+import CoursewareUpload from "@/components/coursewareUpload";
+import NoSelect from "@/components/notSelectTag";
+import InvitationSuccess from "@/components/invitationSuccess";
+import InvitationComments from "@/components/invitationComments";
+import UploadList from "@/components/uploadFileList";
+import DeleteWorks from "@/page/teachers/course/deleteWork/deleteWork";
 
-let mockData = [{
+let mockData = [
+  {
     imgSrc: activity2,
     id: 111,
-    title: '民国民乐社团小提琴打卡',
-    tip: '选中打卡',
-    desc: '外教英语培训班 , 外教英语培训班 , 每天45分钟 , 随时纠正 , 学英语上TutorABC , 随时随地对话全球外教 , 生活 , 职场 , 外教英语培训班 , 外教英语培训班 , 每天45分钟 , 随时纠正 , 学英语上TutorABC，外教英语,时纠正 , 学英语上TutorABC，外教英语教英语培训班 , 外教英语培训班 , 每天45分钟 , 随时纠正 , 学英语上TutorABC，外教英语,时纠正 , 学英语上TutorABC，外教英语',
-    role: '',
-    payTime: '',
-    joinTime: '',
-    situation: '',
-    action: '',
-    result: '',
+    title: "民国民乐社团小提琴打卡",
+    tip: "选中打卡",
+    desc:
+      "外教英语培训班 , 外教英语培训班 , 每天45分钟 , 随时纠正 , 学英语上TutorABC , 随时随地对话全球外教 , 生活 , 职场 , 外教英语培训班 , 外教英语培训班 , 每天45分钟 , 随时纠正 , 学英语上TutorABC，外教英语,时纠正 , 学英语上TutorABC，外教英语教英语培训班 , 外教英语培训班 , 每天45分钟 , 随时纠正 , 学英语上TutorABC，外教英语,时纠正 , 学英语上TutorABC，外教英语",
+    role: "",
+    payTime: "",
+    joinTime: "",
+    situation: "",
+    action: "",
+    result: "",
     superiorites: []
-  }, {
+  },
+  {
     imgSrc: activity1,
     id: 222,
-    title: '英语社区民乐社团打卡任务',
-    tip: '选中打卡',
-    desc: '英语社区民乐社团打卡任务英语社区民乐社团打卡任务英语社区民乐社团打卡任务英语社区民乐社团打卡任务英语社区民乐社团打卡任务英语社区民乐社团打卡任务英语社区民乐社团打卡任务英语社区民乐社团打卡任务英语社区民乐社团打卡任务英语社区民乐社团打卡任务英语社区民乐社团打卡任务英语社区民乐社团打卡任务英语社区民乐社团打卡任务',
-    role: '1',
-    payTime: '1',
-    joinTime: '1',
-    situation: '最喜欢的数学课学到很难得概念，我学不懂',
-    action: '我主动找老师课后问问题',
-    result: '周末作业我都完成了，也都会了',
-    superiorites: [{
-      label: '欣赏美和卓越',
-      prop: 'balanced',
-      imgsrc: balanced
-    }, {
-      label: '勇敢',
-      prop: 'brave',
-      imgsrc: brave
-    }, {
-      label: '团队精神',
-      prop: 'teamSpirit',
-      imgsrc: teamSpirit
-    }]
-  }, {
+    title: "英语社区民乐社团打卡任务",
+    tip: "选中打卡",
+    desc:
+      "英语社区民乐社团打卡任务英语社区民乐社团打卡任务英语社区民乐社团打卡任务英语社区民乐社团打卡任务英语社区民乐社团打卡任务英语社区民乐社团打卡任务英语社区民乐社团打卡任务英语社区民乐社团打卡任务英语社区民乐社团打卡任务英语社区民乐社团打卡任务英语社区民乐社团打卡任务英语社区民乐社团打卡任务英语社区民乐社团打卡任务",
+    role: "1",
+    payTime: "1",
+    joinTime: "1",
+    situation: "最喜欢的数学课学到很难得概念，我学不懂",
+    action: "我主动找老师课后问问题",
+    result: "周末作业我都完成了，也都会了",
+    superiorites: [
+      {
+        label: "欣赏美和卓越",
+        prop: "balanced",
+        imgsrc: balanced
+      },
+      {
+        label: "勇敢",
+        prop: "brave",
+        imgsrc: brave
+      },
+      {
+        label: "团队精神",
+        prop: "teamSpirit",
+        imgsrc: teamSpirit
+      }
+    ]
+  },
+  {
     imgSrc: activity3,
     id: 333,
-    title: '45天的持续打卡任务',
-    tip: '选中打卡',
-    desc: '45天的持续打卡任务45天的持续打卡任务45天的持续打卡任务45天的持续打卡任务45天的持续打卡任务45天的持续打卡任务45天的持续打卡任务45天的持续打卡任务',
-    role: '',
-    payTime: '',
-    joinTime: '',
-    situation: '',
-    action: '',
-    result: '',
+    title: "45天的持续打卡任务",
+    tip: "选中打卡",
+    desc:
+      "45天的持续打卡任务45天的持续打卡任务45天的持续打卡任务45天的持续打卡任务45天的持续打卡任务45天的持续打卡任务45天的持续打卡任务45天的持续打卡任务",
+    role: "",
+    payTime: "",
+    joinTime: "",
+    situation: "",
+    action: "",
+    result: "",
     superiorites: []
-  }, {
+  },
+  {
     imgSrc: activity4,
     id: 444,
-    title: '45天的持续打卡任务',
-    tip: '选中打卡',
-    desc: '45天的持续打卡任务45天的持续打卡任务45天的持续打卡任务45天的持续打卡任务45天的持续打卡任务45天的持续打卡任务45天的持续打卡任务45天的持续打卡任务',
-    role: '',
-    payTime: '',
-    joinTime: '',
-    situation: '',
-    action: '',
-    result: '',
+    title: "45天的持续打卡任务",
+    tip: "选中打卡",
+    desc:
+      "45天的持续打卡任务45天的持续打卡任务45天的持续打卡任务45天的持续打卡任务45天的持续打卡任务45天的持续打卡任务45天的持续打卡任务45天的持续打卡任务",
+    role: "",
+    payTime: "",
+    joinTime: "",
+    situation: "",
+    action: "",
+    result: "",
     superiorites: []
-  }]
+  }
+];
 
 export default {
   components: {
@@ -198,10 +212,10 @@ export default {
     ActivityName,
     DeleteWorks
   },
-  data () {
+  data() {
     return {
       indexPic,
-      isShowDeleteWorks:false,
+      isShowDeleteWorks: false,
       isShowAdvantage: false,
       isShowNoSelect: false,
       isShowUpload: false,
@@ -217,149 +231,156 @@ export default {
       quesLeft,
       activeData: {},
       form: {
-        role: '',
-        payTime: '',
-        joinTime: '',
-        situation: '',
-        action: '',
-        result: ''
+        role: "",
+        payTime: "",
+        joinTime: "",
+        situation: "",
+        action: "",
+        result: ""
       },
       roleOps: [
         {
-          value: '1',
-          label: '担任的角色1'
+          value: "1",
+          label: "担任的角色1"
         },
         {
-          value: '2',
-          label: '担任的角色2'
+          value: "2",
+          label: "担任的角色2"
         }
       ],
       timeOps: [
         {
-          value: '1',
-          label: '2019-04-20'
+          value: "1",
+          label: "2019-04-20"
         },
         {
-          value: '2',
-          label: '2019-04-21'
+          value: "2",
+          label: "2019-04-21"
         }
       ],
       payTimeOps: [
         {
-          value: '1',
-          label: '1小时'
+          value: "1",
+          label: "1小时"
         },
         {
-          value: '2',
-          label: '2小时'
+          value: "2",
+          label: "2小时"
         }
       ],
       questionList: [
         {
           id: 111,
-          tag: 'Situation：',
-          label: '当时的情况/挑战是什么？',
-          placeholder: '例如：我最喜欢的数学课学到很难得概念，我学不懂，测验失利（不超过140字）',
-          prop: 'situation'
+          tag: "Situation：",
+          label: "当时的情况/挑战是什么？",
+          placeholder:
+            "例如：我最喜欢的数学课学到很难得概念，我学不懂，测验失利（不超过140字）",
+          prop: "situation"
         },
         {
           id: 222,
-          tag: 'Action：',
-          label: '你的主要行动是什么? （结合你的优势，你具体的行动是什么）',
-          placeholder: '我主动找老师课后问问题<br/>我和最好的朋友约着一起对卷子<br/>我安慰自己，很快恢复了情绪',
-          prop: 'action'
+          tag: "Action：",
+          label: "你的主要行动是什么? （结合你的优势，你具体的行动是什么）",
+          placeholder:
+            "我主动找老师课后问问题<br/>我和最好的朋友约着一起对卷子<br/>我安慰自己，很快恢复了情绪",
+          prop: "action"
         },
         {
           id: 222,
-          tag: 'Results：',
-          label: '结果如何?',
-          placeholder: '周末作业我都完成了，也都会了',
-          prop: 'result'
+          tag: "Results：",
+          label: "结果如何?",
+          placeholder: "周末作业我都完成了，也都会了",
+          prop: "result"
         }
       ]
-    }
+    };
   },
   computed: {
-    showAddSupBtn () {
-      return this.superiorites.length <= 0
+    showAddSupBtn() {
+      return this.superiorites.length <= 0;
     },
-    showAddAbilitBtn () {
-      return this.abilities.length <= 0
+    showAddAbilitBtn() {
+      return this.abilities.length <= 0;
     }
   },
-  created () {
-    let id = this.$route.query.id + ''
-    let index = mockData.findIndex(item => item.id + '' === id)
-    this.setData(mockData[index])
+  created() {
+    let id = this.$route.query.id + "";
+    let index = mockData.findIndex(item => item.id + "" === id);
+    this.setData(mockData[index]);
   },
   methods: {
-     handleActivityShow () {
-      this.isShowActivity = true
+    handleActivityShow() {
+      this.isShowActivity = true;
     },
-    handleUploadSelect () {
-      this.isShowUploadList = true
+    handleUploadSelect() {
+      this.isShowUploadList = true;
     },
-    handleUploadList (list) {
-      console.log(list, 'upload')
-      this.uploadList = list
+    handleUploadList(list) {
+      console.log(list, "upload");
+      this.uploadList = list;
     },
-    handleAbility (list) {
-      console.log(list, 'list')
-      this.abilities = list
+    handleAbility(list) {
+      console.log(list, "list");
+      this.abilities = list;
     },
-    handleInvitative () {
-      this.isShowComments = true
+    handleInvitative() {
+      this.isShowComments = true;
     },
-    handleSuccess () {
-      this.isShowSuccess = true
+    handleSuccess() {
+      this.isShowSuccess = true;
     },
-    handleNext () {
-      console.log(this.superiorites.length, this.abilities.length, this.abilities.length <= 0 || this.superiorites.length <= 0, 'text')
+    handleNext() {
+      console.log(
+        this.superiorites.length,
+        this.abilities.length,
+        this.abilities.length <= 0 || this.superiorites.length <= 0,
+        "text"
+      );
       if (this.abilities.length > 0 || this.superiorites.length > 0) {
-        this.isShowUpload = true
+        this.isShowUpload = true;
       } else {
-        this.isShowNoSelect = true
+        this.isShowNoSelect = true;
       }
     },
-    addSuperiority () {
-      this.$refs.addSuperiorityDialog.show()
+    addSuperiority() {
+      this.$refs.addSuperiorityDialog.show();
     },
-    addOperate () {
-      this.isShowAdvantage = true
+    addOperate() {
+      this.isShowAdvantage = true;
     },
-    handleChange (obj) {
-      this.form[obj.prop] = obj.val
+    handleChange(obj) {
+      this.form[obj.prop] = obj.val;
     },
-    setData (data) {
-      this.activeData = data
+    setData(data) {
+      this.activeData = data;
       for (let key in this.form) {
-        this.form[key] = data[key]
+        this.form[key] = data[key];
       }
-      this.superiorites = data.superiorites
+      this.superiorites = data.superiorites;
     },
-    handleSuperiChange (list) {
-      this.superiorites = list
+    handleSuperiChange(list) {
+      this.superiorites = list;
     },
-    parentClose () {
-      this.isShowActivity = false
-      this.isShowDeleteWorks = false
+    parentClose() {
+      this.isShowActivity = false;
+      this.isShowDeleteWorks = false;
     },
-    invitation () {
-      this.isShowDeleteWorks = true
+    invitation() {
+      this.isShowDeleteWorks = true;
     }
   },
   watch: {
-    $route () {
-      let id = this.$route.query.id + ''
-      let index = mockData.findIndex(item => item.id + '' === id)
-      this.setData(mockData[index])
+    $route() {
+      let id = this.$route.query.id + "";
+      let index = mockData.findIndex(item => item.id + "" === id);
+      this.setData(mockData[index]);
     }
   }
-}
+};
 </script>
 <style lang="scss" scoped>
 .questions {
-  height: calc( 100% - 1.34rem);
+  height: calc(100% - 1.34rem);
   overflow: auto;
   .questions-header {
     height: 1.88rem;
@@ -386,7 +407,7 @@ export default {
       }
       .desc {
         font-size: 0.14rem;
-        color:rgba(136,136,136,1);
+        color: rgba(136, 136, 136, 1);
         line-height: 0.24rem;
       }
     }
@@ -394,8 +415,8 @@ export default {
   .questions-actions {
     height: 0.8rem;
     margin: 0.21rem 0.31rem 0.33rem;
-    background:rgba(248,248,248,0.8);
-    border: 1px solid rgba(228,232,237,1);
+    background: rgba(248, 248, 248, 0.8);
+    border: 1px solid rgba(228, 232, 237, 1);
     .el-row {
       height: 100%;
       position: relative;
@@ -412,16 +433,16 @@ export default {
         font-size: 0.15rem;
         border-radius: 0.04rem;
         margin-top: 0.16rem;
-        border: 1px solid #F79727;
+        border: 1px solid #f79727;
         box-sizing: border-box;
       }
       &:first-child button {
-        background-color: #F79727;
+        background-color: #f79727;
         color: #fff;
       }
       &:last-child button {
         background-color: transparent;
-        color: #F79727;
+        color: #f79727;
       }
       .shown-list {
         height: 100%;
@@ -431,7 +452,7 @@ export default {
           line-height: 0.8rem;
           display: inline-block;
           margin-right: 0.6rem;
-          &:last-child{
+          &:last-child {
             margin-right: 0;
           }
           img {
@@ -443,6 +464,15 @@ export default {
             vertical-align: middle;
             font-size: 0.14rem;
           }
+          &.item_select {
+            width: 1.04rem;
+            height: 0.36rem;
+            line-height: 0.36rem;
+            border: 1px solid rgba(247, 151, 39, 1);
+            border-radius: 4px;
+            font-size: .15rem;
+            color:rgba(247,151,39,1);
+          }
         }
       }
       .shown-list.superity {
@@ -452,13 +482,13 @@ export default {
           margin-right: 0.08rem;
         }
         .spirit {
-          color: #D957D9;
+          color: #d957d9;
         }
         .emotion {
-          color: #24AEF2;
+          color: #24aef2;
         }
         .relationship {
-          color: #FA4B77;
+          color: #fa4b77;
         }
       }
       .shown-list.ability {
@@ -469,7 +499,7 @@ export default {
             margin-right: 0.1rem;
           }
           p {
-            color: #F79727;
+            color: #f79727;
           }
         }
       }
@@ -482,7 +512,7 @@ export default {
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-      background-color: rgba(228,232,237,1);
+      background-color: rgba(228, 232, 237, 1);
     }
   }
   .questions-details {
@@ -518,7 +548,6 @@ export default {
         }
         .tag {
           font-weight: bold;
-
         }
         .index {
           position: absolute;
@@ -554,7 +583,11 @@ export default {
       height: 100%;
       width: 2.23rem;
       line-height: 0.52rem;
-      background:linear-gradient(-90deg,rgba(255,183,38,1),rgba(255,129,38,1));
+      background: linear-gradient(
+        -90deg,
+        rgba(255, 183, 38, 1),
+        rgba(255, 129, 38, 1)
+      );
       border-radius: 0.26rem;
       color: #fff;
       font-weight: bold;

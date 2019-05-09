@@ -57,7 +57,7 @@
             ></el-option>
           </el-select>
           <div class="search-box">
-            <input type="text" placeholder="发起人搜索" v-model="username">
+            <input type="text" placeholder="姓名检索" v-model="username">
             <i class="el-icon-search"></i>
           </div>
         </div>
