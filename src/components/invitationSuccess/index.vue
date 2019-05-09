@@ -17,7 +17,7 @@
       </div>
 
       <div class="btn-wrap">
-        <div class="btn-left" @click="handleClose">知道了</div>
+        <!-- <div class="btn-left" @click="handleClose">知道了</div> -->
         <div class="btn-right" @click="handleJump">查看打卡记录</div>
       </div>
     </el-dialog>
@@ -116,25 +116,27 @@ export default {
 .btn-wrap {
   padding-bottom: 0.3rem;
 
-  .btn-left,
+  // .btn-left,
   .btn-right {
-    width: 1.2rem;
-    height: 0.36rem;
-    line-height: 0.36rem;
+    line-height: 0.5rem;
     text-align: center;
-    border-radius: 0.04rem;
     display: inline-block;
     vertical-align: middle;
     user-select: none;
     cursor: pointer;
     color: #fff;
+    width:1.8rem;
+    height:.5rem;
+    background:linear-gradient(-90deg,rgba(255,183,38,1),rgba(255,129,38,1));
+    border-radius:.25rem;
+    font-size: .16rem;
   }
 
-  .btn-left {
-    border: 0.01rem solid rgba(204,204,204,1);
-    margin-right: 0.2rem;
-    color: #999;
-  }
+  // .btn-left {
+  //   border: 0.01rem solid rgba(204,204,204,1);
+  //   margin-right: 0.2rem;
+  //   color: #999;
+  // }
 
   .btn-right {
     background:linear-gradient(-90deg,rgba(255,183,38,1),rgba(255,129,38,1));

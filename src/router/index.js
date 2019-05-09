@@ -272,7 +272,7 @@ let router = new Router({
       path: "/test_dialog",
       components: {
         default: resolve =>
-          require(["@/page/teachers/course/mycourse/priview.vue"], resolve)
+          require(["@/components/empty/index.vue"], resolve)
       },
       meta: {
         title: "测试弹窗"

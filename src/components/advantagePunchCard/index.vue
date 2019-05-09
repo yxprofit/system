@@ -8,7 +8,7 @@
         </div>
         <div class="content">
           <div class="left">
-            <!-- 优势图标 -->
+            <!-- 优势图标 --> 
             <div class="advantage">
               <div class="ad_left">
                 <div>
@@ -51,7 +51,7 @@
                 <img src="../../assets/images/icon/ad_next.png" alt> -->
                 <el-dropdown size="medium" trigger="click">
                   <span class="el-dropdown-link">
-                    查看作品<i class="el-icon-arrow-down el-icon--right"></i>
+                    项目报告<i class="el-icon-arrow-down el-icon--right"></i>
                   </span>
                   <el-dropdown-menu slot="dropdown">
                     <el-dropdown-item @click.native="jumpTo18(item.value)" v-for="(item,index) in works" :key="index">{{item.label}}</el-dropdown-item>
@@ -124,7 +124,7 @@
               <div class="punch_person" v-show="status==='2'">
                 <img src="../../assets/images/icon/ad_2.png" alt>
                 <p class="assess">暂无活动评价</p>
-                <p class="look">去邀请评价，赢得行动力积分</p>
+                <p class="look" @click="callInvitationComments">去邀请评价，赢得行动力积分</p>
               </div>
               <div class="person_comment" v-show="status==='3'">
                 <div
@@ -253,6 +253,9 @@ export default {
     },
     jumpTo18() {
       this.$emit("showActivity");
+    },
+    callInvitationComments(){
+      this.$emit('invitationComments')
     },
     prev() {
       if (this.currentPage <= 1) {
@@ -429,6 +432,16 @@ export default {
               color: #999;
               margin-right: 0.11rem;
             }
+            .el-icon-arrow-down{
+              width:.18rem;
+              height:.18rem;
+              background:linear-gradient(0deg,rgba(255,129,38,1) 0%,rgba(254,172,114,1) 100%);
+              border-radius:50%;
+              color: #fff;
+              text-align: center;
+              line-height: .18rem;
+              font-size: .1rem;
+            }
           }
         }
       }
@@ -579,6 +592,7 @@ export default {
           &.look {
             font-size: 0.15rem;
             color: #999;
+            cursor: pointer;
           }
         }
       }

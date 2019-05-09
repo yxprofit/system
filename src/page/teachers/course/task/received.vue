@@ -90,6 +90,7 @@
       :status="punchStatus"
       @close="parentClose"
       @showActivity="handleActivityShow"
+      @invitationComments='handleInvitation'
     ></punch-card>
 
     <!-- 我的活动 -->
@@ -110,7 +111,7 @@
     <!-- <courseware-upload :state.sync="isShowAdvantage"></courseware-upload> -->
     <!-- <no-select :state.sync="isShowAdvantage"></no-select> -->
     <!-- <invitation-success :state.sync="isShowAdvantage"></invitation-success> -->
-    <!-- <invitation-comments :state.sync="isShowAdvantage"></invitation-comments> -->
+    <invitation-comments :state.sync="isShowAdvantage"></invitation-comments>
     <!-- <invitation-comments :state.sync="isShowAdvantage"></invitation-comments> -->
   </div>
 </template>
@@ -133,7 +134,7 @@ import ActivityName from "@/components/activityName";
 import AddWorks from "../addworks/addWorkTypes";
 import Ueditor from "@/page/ueditor/ueditor";
 import DeleteWorks from "../deleteWork/deleteWork";
-// import SignDialog from '@/components/signdialog'
+import InvitationComments from '@/components/invitationComments'
 
 
 export default {
@@ -359,6 +360,10 @@ export default {
     }
   },
   methods: {
+    handleInvitation(){
+      this.isShowPanchCard = false
+      this.isShowAdvantage = true
+    },
     addWorks() {
       this.isShowAddWork = true;
     },
@@ -431,7 +436,7 @@ export default {
     // CoursewareUpload,
     // NoSelect,
     // InvitationSuccess,
-    // InvitationComments
+    InvitationComments
   }
 };
 </script>

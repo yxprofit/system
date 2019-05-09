@@ -18,7 +18,7 @@
               <img :src="item.imgsrc" alt="">
               <p>{{item.title}}</p>
             </li>
-            <li class="item_select" v-if="superiorites.length!==3" @click="addSuperiority">再次选择</li>
+            <li class="item_select" @click="addSuperiority">再次选择</li>
           </ul>
         </el-col>
         <el-col class="acrion-btn" :span="12">
@@ -28,6 +28,7 @@
               <img :src="item.icon" alt="">
               <p>{{item.tipTitle}}</p>
             </li>
+            <li class="item_select" @click="addOperate">再次选择</li>
           </ul>
         </el-col>
       </el-row>
@@ -447,11 +448,16 @@ export default {
       .shown-list {
         height: 100%;
         line-height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 0 .3rem;
         li {
           height: 0.8rem;
           line-height: 0.8rem;
           display: inline-block;
-          margin-right: 0.6rem;
+          // margin-right: 0.6rem;
           &:last-child {
             margin-right: 0;
           }
@@ -496,7 +502,6 @@ export default {
           img {
             width: 0.36rem;
             height: 0.4rem;
-            margin-right: 0.1rem;
           }
           p {
             color: #f79727;
