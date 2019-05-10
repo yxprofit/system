@@ -235,6 +235,16 @@ export default {
 .task-content /deep/ .el-table tr {
   background: rgba(248, 248, 248, 0.4);
 }
+
+.task-content /deep/ .el-input--suffix .el-input__inner {
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+}
+
+.task-content /deep/ .el-input--small .el-input__icon {
+  display: none;
+}
 </style>
 
 <style lang="scss" scoped>
