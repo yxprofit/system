@@ -82,6 +82,7 @@
     <add-works :state="addwork" @close="addworkClose" @handleJump="jump" @handleJump2='jump2'></add-works>
     <teacher-editor :state="editor" @close="editorClose"></teacher-editor>
     <sign-dialog :state='isSignDialog' @close='signDialogClose'></sign-dialog>
+    <publish-task :state.sync="isPublishTask"></publish-task>
   </div>
 </template>
 
@@ -97,6 +98,7 @@ import SaveTask from "@/page/teachers/course/saveTask";
 import DeleteWork from "@/page/teachers/course/deleteWork/deleteWork";
 import AddWorks from "@/page/teachers/course/addworks/addWorkTypes";
 import TeacherEditor from "@/page/ueditor/ueditor";
+import PublishTask from '@/components/pubishTask';
 /* 组件方式引用 */
 import draggable from "vuedraggable";
 
@@ -108,6 +110,7 @@ export default {
       editor: false,
       addwork: false,
       isdelete: false,
+      isPublishTask: true,
       loading: true,
       material,
       details1,
@@ -246,6 +249,10 @@ export default {
       _this.loading = false;
     }, 1000);
 
+    if (this.$route.query.isTask) {
+      this.isPublishTask = true
+    }
+
     // document.onkeyup = function(e) {
     //   let key = window.event.keyCode;
     //   if (key == 27) {
@@ -370,7 +377,8 @@ export default {
     AddWorks,
     TeacherEditor,
     draggable,
-    SignDialog
+    SignDialog,
+    PublishTask
   }
 };
 </script>

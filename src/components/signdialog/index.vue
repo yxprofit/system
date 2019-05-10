@@ -71,7 +71,7 @@
       </div>
 
       <div class="bottom-button" @click="handleClose">
-        <button>确认添加</button>
+        <button>下一步</button>
       </div>
 
       <custom-activity-dialog ref="cuttomActivityDialog"></custom-activity-dialog>
@@ -156,7 +156,17 @@ export default {
     },
      handleClose() {
       this.$emit("close");
+      this.$router.push({
+        path: '/courseware',
+        query: {
+          type: 'studentTask',
+          isTask: 'task'
+        }
+      })
     },
+  },
+  created () {
+    console.log(this.$route)
   }
 };
 </script>

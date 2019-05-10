@@ -52,7 +52,7 @@ import {
   Message,
   Dropdown,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
 } from "element-ui";
 
 import waterfall from "vue-waterfall2";
