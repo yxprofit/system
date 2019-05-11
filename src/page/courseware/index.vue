@@ -82,7 +82,7 @@
     <add-works :state="addwork" @close="addworkClose" @handleJump="jump" @handleJump2='jump2'></add-works>
     <teacher-editor :state="editor" @close="editorClose"></teacher-editor>
     <sign-dialog :state='isSignDialog' @close='signDialogClose'></sign-dialog>
-    <publish-task :state.sync="isPublishTask"></publish-task>
+    <!-- <publish-task :state.sync="isPublishTask"></publish-task> -->
   </div>
 </template>
 

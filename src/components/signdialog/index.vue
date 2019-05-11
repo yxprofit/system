@@ -155,13 +155,13 @@ export default {
     },
      handleClose() {
       this.$emit("close");
-      this.$router.push({
-        path: '/courseware',
-        query: {
-          type: 'studentTask',
-          isTask: 'task'
-        }
-      })
+      // this.$router.push({
+      //   path: '/courseware',
+      //   query: {
+      //     type: 'studentTask',
+      //     isTask: 'task'
+      //   }
+      // })
     },
   },
   created () {

@@ -107,6 +107,10 @@
       <!-- 优势打卡弹框 -->
     <sign-dialog :state='isSignDialog' @close='signDialogClose'></sign-dialog>
 
+    <!-- 发布任务 -->
+    <publish-task :state.sync="isPublishTask"></publish-task>
+
+
     <!-- 测试弹窗组件区域 -->
     <!-- <my-advantage :state="isShowAdvantage"></my-advantage> -->
     <!-- <courseware-upload :state.sync="isShowAdvantage"></courseware-upload> -->
@@ -136,11 +140,14 @@ import AddWorks from "../addworks/addWorkTypes";
 import Ueditor from "@/page/ueditor/ueditor";
 import DeleteWorks from "../deleteWork/deleteWork";
 import SignDialog from '@/components/signdialog'
+import PublishTask from '@/components/pubishTask';
+
 
 export default {
   name: "Trends",
   data() {
     return {
+      isPublishTask:false,
       isSignDialog:false,
       fullPath: "",
       isShowDeleteWorks: false,
@@ -311,7 +318,9 @@ export default {
     },
     signDialogClose(){
       this.isShowAddWork = false;
-      this.isSignDialog = false
+      this.isSignDialog = false;
+      console.log(this.fullPath.includes('teachers'))
+      this.fullPath.includes('teacher')?this.isPublishTask = true:this.isPublishTask = false;
     },
     addWorks() {
       this.isShowAddWork = true;
@@ -373,7 +382,8 @@ export default {
     AddWorks,
     Ueditor,
     DeleteWorks,
-    SignDialog
+    SignDialog,
+    PublishTask
     // MyAdvantage,
     // CoursewareUpload,
     // NoSelect,
