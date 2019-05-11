@@ -90,7 +90,7 @@
       :status="punchStatus"
       @close="parentClose"
       @showActivity="handleActivityShow"
-      @invitationComments='handleInvitation'
+      @invitationComments="handleInvitation"
     ></punch-card>
 
     <!-- 我的活动 -->
@@ -111,49 +111,48 @@
     <!-- <courseware-upload :state.sync="isShowAdvantage"></courseware-upload> -->
     <!-- <no-select :state.sync="isShowAdvantage"></no-select> -->
     <!-- <invitation-success :state.sync="isShowAdvantage"></invitation-success> -->
-    <invitation-comments :state.sync="isShowAdvantage" @showActivity='handleActivityShow'></invitation-comments>
+    <invitation-comments :state.sync="isShowAdvantage" @showActivity="handleActivityShow"></invitation-comments>
     <!-- <invitation-comments :state.sync="isShowAdvantage"></invitation-comments> -->
   </div>
 </template>
 
 <script>
-import t1 from "@/assets/images/icon/t1.png";
-import t2 from "@/assets/images/icon/t2.png";
-import t3 from "@/assets/images/icon/t3.png";
-import t4 from "@/assets/images/icon/t4.png";
-import t5 from "@/assets/images/icon/t5.png";
-import t6 from "@/assets/images/icon/t6.png";
-import t7 from "@/assets/images/icon/t7.png";
-import t8 from "@/assets/images/icon/t8.png";
-import t9 from "@/assets/images/icon/t9.png";
-import t10 from "@/assets/images/icon/t10.png";
-import t11 from "@/assets/images/icon/t11.png";
-import PredictionTask from "../prediction";
-import PunchCard from "@/components/advantagePunchCard";
-import ActivityName from "@/components/activityName";
-import AddWorks from "../addworks/addWorkTypes";
-import Ueditor from "@/page/ueditor/ueditor";
-import DeleteWorks from "../deleteWork/deleteWork";
+import t1 from '@/assets/images/icon/t1.png'
+import t2 from '@/assets/images/icon/t2.png'
+import t3 from '@/assets/images/icon/t3.png'
+import t4 from '@/assets/images/icon/t4.png'
+import t5 from '@/assets/images/icon/t5.png'
+import t6 from '@/assets/images/icon/t6.png'
+import t7 from '@/assets/images/icon/t7.png'
+import t8 from '@/assets/images/icon/t8.png'
+import t9 from '@/assets/images/icon/t9.png'
+import t10 from '@/assets/images/icon/t10.png'
+import t11 from '@/assets/images/icon/t11.png'
+import PredictionTask from '../prediction'
+import PunchCard from '@/components/advantagePunchCard'
+import ActivityName from '@/components/activityName'
+import AddWorks from '../addworks/addWorkTypes'
+import Ueditor from '@/page/ueditor/ueditor'
+import DeleteWorks from '../deleteWork/deleteWork'
 import InvitationComments from '@/components/invitationComments'
 
-
 export default {
-  name: "Trends",
-  data() {
+  name: 'Trends',
+  data () {
     return {
-      isSignDialog:false,
+      isSignDialog: false,
       isShowDeleteWorks: false,
       isShowAddWork: false,
       isShowEditor: false,
       isShowActivity: false,
       isShowPanchCard: false,
       isShowAdvantage: false,
-      punchStatus: "2",
-      teacher: "",
-      activeName: "1",
-      type: "",
-      status: "",
-      timer: "",
+      punchStatus: '2',
+      teacher: '',
+      activeName: '1',
+      type: '',
+      status: '',
+      timer: '',
       t1,
       t2,
       t3,
@@ -167,263 +166,270 @@ export default {
       t11,
       typeOptions: [
         {
-          value: "1",
-          label: "问卷"
+          value: '1',
+          label: '问卷'
         },
         {
-          value: "2",
-          label: "测试"
+          value: '2',
+          label: '测试'
         },
         {
-          value: "3",
-          label: "优势打卡"
+          value: '3',
+          label: '优势打卡'
         },
         {
-          value: "4",
-          label: "上传作品"
+          value: '4',
+          label: '上传作品'
         }
       ],
       statusOptions: [
         {
-          value: "1",
-          label: "未完成"
+          value: '1',
+          label: '未完成'
         },
         {
-          value: "2",
-          label: "已完成"
+          value: '2',
+          label: '已完成'
         }
       ],
       timerOptions: [
         {
-          value: "1",
-          label: "3-7天"
+          value: '1',
+          label: '3-7天'
         },
         {
-          value: "2",
-          label: "7-30天"
+          value: '2',
+          label: '7-30天'
         },
         {
-          value: "3",
-          label: "1月-3月"
+          value: '3',
+          label: '1月-3月'
         },
         {
-          value: "4",
-          label: "1月-3月"
+          value: '4',
+          label: '1月-3月'
         }
       ],
       // id=> 1 :问卷 2：测试 3：优势打卡 4：上传作品 5图文
       tableData1: [
         {
-          date: "2019/03/05-2019/05/08",
-          name: "2019上期前测",
-          type: "问卷",
-          todoStatus: "已完成",
-          taskStatus: "余老师",
-          pancel: "去查看 >",
+          date: '2019/03/05-2019/05/08',
+          name: '2019上期前测',
+          type: '问卷',
+          todoStatus: '已完成',
+          taskStatus: '余老师',
+          pancel: '去查看 >',
           icon: t4,
           id: 1
         },
         {
-          date: "2019/03/13-2019/06/28",
-          name: "K5666随堂测验",
-          type: "测试",
-          todoStatus: "已完成",
-          taskStatus: "余老师",
-          pancel: "去完成 >",
+          date: '2019/03/13-2019/06/28',
+          name: 'K5666随堂测验',
+          type: '测试',
+          todoStatus: '已完成',
+          taskStatus: '余老师',
+          pancel: '去完成 >',
           icon: t1,
           id: 2
         },
         {
-          date: "2019/03/05-2019/07/30",
-          name: "K5301随堂测验",
-          type: "优势打卡",
-          todoStatus: "未完成",
-          taskStatus: "开放",
-          pancel: "去查看 >",
+          date: '2019/03/05-2019/07/30',
+          name: 'K5301随堂测验',
+          type: '优势打卡',
+          todoStatus: '未完成',
+          taskStatus: '开放',
+          pancel: '去查看 >',
           icon: t5,
           id: 3,
-          status: "1"
+          status: '1'
         },
         {
-          date: "2019/03/05-2019/07/30",
-          name: "K5301随堂测验",
-          type: "优势打卡",
-          todoStatus: "已完成",
-          taskStatus: "开放",
-          pancel: "去查看 >",
+          date: '2019/03/05-2019/07/30',
+          name: 'K5301随堂测验',
+          type: '优势打卡',
+          todoStatus: '已完成',
+          taskStatus: '开放',
+          pancel: '去查看 >',
           icon: t5,
           id: 3,
-          status: "3"
+          status: '3'
         },
         {
-          date: "2019/03/05-2019/05/08",
-          name: "优势打卡",
-          type: "上传作品",
-          todoStatus: "已完成",
-          taskStatus: "余老师",
-          pancel: "去查看 >",
+          date: '2019/03/05-2019/05/08',
+          name: '优势打卡',
+          type: '上传作品',
+          todoStatus: '已完成',
+          taskStatus: '余老师',
+          pancel: '去查看 >',
           icon: t2,
           id: 4
         },
         {
-          date: "2019/03/13-2019/06/28",
-          name: "优势打卡",
-          type: "图文",
-          todoStatus: "未完成",
-          taskStatus: "开放",
-          pancel: "去查看 >",
+          date: '2019/03/13-2019/06/28',
+          name: '优势打卡',
+          type: '图文',
+          todoStatus: '未完成',
+          taskStatus: '开放',
+          pancel: '去查看 >',
           icon: t3,
           id: 5
         }
       ],
       tableData2: [
         {
-          date: "2019/03/05-2019/05/08",
-          name: "成长档案",
-          type: "问卷",
-          todoStatus: "已完成",
-          taskStatus: "已关闭",
-          pancel: "删除",
+          date: '2019/03/05-2019/05/08',
+          name: '成长档案',
+          type: '问卷',
+          todoStatus: '已完成',
+          taskStatus: '已关闭',
+          pancel: '删除',
           icon: t4,
           id: 1
         },
         {
-          date: "2019/03/13-2019/06/28",
-          name: "K5666随堂测验",
-          type: "测试",
-          todoStatus: "已完成",
-          taskStatus: "已关闭",
-          pancel: "删除",
+          date: '2019/03/13-2019/06/28',
+          name: 'K5666随堂测验',
+          type: '测试',
+          todoStatus: '已完成',
+          taskStatus: '已关闭',
+          pancel: '删除',
           icon: t1,
           id: 2
         },
         {
-          date: "2019/03/05-2019/07/30",
-          name: "K5301随堂测验",
-          type: "优势打卡",
-          todoStatus: "未完成",
-          taskStatus: "开放",
-          pancel: "删除",
+          date: '2019/03/05-2019/07/30',
+          name: 'K5301随堂测验',
+          type: '优势打卡',
+          todoStatus: '未完成',
+          taskStatus: '开放',
+          pancel: '删除',
           icon: t5,
           id: 3,
-          status: "1"
+          status: '1'
         },
         {
-          date: "2019/03/05-2019/07/30",
-          name: "K5301随堂测验",
-          type: "优势打卡",
-          todoStatus: "已完成",
-          taskStatus: "开放",
-          pancel: "删除",
+          date: '2019/03/05-2019/07/30',
+          name: 'K5301随堂测验',
+          type: '优势打卡',
+          todoStatus: '已完成',
+          taskStatus: '开放',
+          pancel: '删除',
           icon: t5,
           id: 3,
-          status: "3"
+          status: '3'
         },
         {
-          date: "2019/03/05-2019/05/08",
-          name: "优势打卡",
-          type: "上传作品",
-          todoStatus: "已完成",
-          taskStatus: "已关闭",
-          pancel: "删除",
+          date: '2019/03/05-2019/05/08',
+          name: '优势打卡',
+          type: '上传作品',
+          todoStatus: '已完成',
+          taskStatus: '已关闭',
+          pancel: '删除',
           icon: t2,
           id: 4
         },
         {
-          date: "2019/03/13-2019/06/28",
-          name: "优势打卡",
-          type: "图文",
-          todoStatus: "未完成",
-          taskStatus: "开放",
-          pancel: "删除",
+          date: '2019/03/13-2019/06/28',
+          name: '优势打卡',
+          type: '图文',
+          todoStatus: '未完成',
+          taskStatus: '开放',
+          pancel: '删除',
           icon: t3,
           id: 5
         },
         {
-          date: "2019/03/05-2019/07/30",
-          name: "阶段考试",
-          type: "优势打卡",
-          todoStatus: "已完成",
-          taskStatus: "开放",
-          pancel: "删除",
+          date: '2019/03/05-2019/07/30',
+          name: '阶段考试',
+          type: '优势打卡',
+          todoStatus: '已完成',
+          taskStatus: '开放',
+          pancel: '删除',
           icon: t5,
           id: 3,
-          status: "3"
+          status: '3'
         }
       ],
       isShowTask: false
-    };
-  },
-  created() {
-    if (this.$route.query.type === "showPunchCard") {
-      this.isShowPanchCard = true;
     }
   },
+  // created () {
+  //   if (this.$route.query.type === 'showPunchCard') {
+  //     this.isShowPanchCard = true
+  //   }
+  // },
   methods: {
-    handleInvitation(){
+    handleInvitation () {
       this.isShowPanchCard = false
       this.isShowAdvantage = true
     },
-    addWorks() {
-      this.isShowAddWork = true;
+    addWorks () {
+      this.isShowAddWork = true
     },
-    handleJump() {
-      this.isShowEditor = true;
+    handleJump () {
+      this.isShowEditor = true
     },
-    handleClick(tab, event) {
+    handleClick (tab, event) {
       // console.log(tab, event)
     },
-    handleConditionChange() {},
-    parentClose() {
-      this.isShowPanchCard = false;
-      this.isShowActivity = false;
-      this.isShowAddWork = false;
-      this.isShowEditor = false;
-      this.isShowDeleteWorks = false;
+    handleConditionChange () {},
+    parentClose () {
+      this.isShowPanchCard = false
+      this.isShowActivity = false
+      this.isShowAddWork = false
+      this.isShowEditor = false
+      this.isShowDeleteWorks = false
     },
-    handleActivityShow() {
+    handleActivityShow () {
       this.isShowAdvantage = false
-      this.isShowActivity = true;
+      this.isShowActivity = true
     },
-    invitation() {
-      this.isShowDeleteWorks = true;
+    invitation () {
+      this.isShowDeleteWorks = true
     },
-    todo(row) {
+    todo (row) {
       if (row.id === 1) {
         this.$router.push({
-          path: "/questionnaire"
-        });
+          path: '/questionnaire'
+        })
       } else if (row.id === 2) {
-        this.isShowTask = true;
+        this.isShowTask = true
         // this.isShowAdvantage = true
       } else if (row.id === 3) {
-        this.punchStatus = row.status;
-        this.isShowPanchCard = true;
+        this.punchStatus = row.status
+        this.isShowPanchCard = true
       }
     },
-    todoType(row) {
+    todoType (row) {
       if (row.id === 1) {
         this.$router.push({
-          path: "/questionnaire"
-        });
+          path: '/questionnaire'
+        })
       } else if (row.id === 2) {
-        this.isShowTask = true;
+        this.isShowTask = true
         // this.isShowAdvantage = true
       } else if (row.id === 3) {
-        this.$router.push("/superiority-clockin/empty");
+        this.$router.push('/superiority-clockin/empty')
       }
     },
-    loadMore(id) {
+    loadMore (id) {
       if (id === 1) {
         this.tableData1.push(
           this.tableData1[parseInt(Math.random() * this.tableData1.length)]
-        );
+        )
       } else {
         this.tableData2.push(
           this.tableData2[parseInt(Math.random() * this.tableData2.length)]
-        );
+        )
       }
     }
+  },
+  beforeRouteEnter (to, from, next) {
+    next((vm) => {
+      if (from.path === '/superiority-clockin/question') {
+        vm.isShowPanchCard = true
+      }
+    })
   },
   components: {
     PredictionTask,
@@ -439,7 +445,7 @@ export default {
     // InvitationSuccess,
     InvitationComments
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

@@ -85,27 +85,27 @@
 </template>
 
 <script>
-import t1 from "@/assets/images/icon/t1.png";
-import t2 from "@/assets/images/icon/t2.png";
-import t3 from "@/assets/images/icon/t3.png";
-import t4 from "@/assets/images/icon/t4.png";
-import t5 from "@/assets/images/icon/t5.png";
-import t6 from "@/assets/images/icon/t6.png";
-import t7 from "@/assets/images/icon/t7.png";
-import t8 from "@/assets/images/icon/t8.png";
-import t9 from "@/assets/images/icon/t9.png";
-import t10 from "@/assets/images/icon/t10.png";
-import t11 from "@/assets/images/icon/t11.png";
-import PredictionTask from "../prediction";
-import PunchCard from "@/components/advantagePunchCard";
-import ActivityName from "@/components/activityName";
-import AddWorks from "../addworks/addWorkTypes";
-import Ueditor from "@/page/ueditor/ueditor";
-import DeleteWorks from "../deleteWork/deleteWork";
+import t1 from '@/assets/images/icon/t1.png';
+import t2 from '@/assets/images/icon/t2.png';
+import t3 from '@/assets/images/icon/t3.png';
+import t4 from '@/assets/images/icon/t4.png';
+import t5 from '@/assets/images/icon/t5.png';
+import t6 from '@/assets/images/icon/t6.png';
+import t7 from '@/assets/images/icon/t7.png';
+import t8 from '@/assets/images/icon/t8.png';
+import t9 from '@/assets/images/icon/t9.png';
+import t10 from '@/assets/images/icon/t10.png';
+import t11 from '@/assets/images/icon/t11.png';
+import PredictionTask from '../prediction';
+import PunchCard from '@/components/advantagePunchCard';
+import ActivityName from '@/components/activityName';
+import AddWorks from '../addworks/addWorkTypes';
+import Ueditor from '@/page/ueditor/ueditor';
+import DeleteWorks from '../deleteWork/deleteWork';
 
 export default {
-  name: "Trends",
-  data() {
+  name: 'Trends',
+  data () {
     return {
       isShowDeleteWorks: false,
       isShowAddWork: false,
@@ -113,12 +113,12 @@ export default {
       isShowActivity: false,
       isShowPanchCard: false,
       isShowAdvantage: false,
-      punchStatus: "1",
-      teacher: "",
-      activeName: "1",
-      type: "",
-      status: "",
-      timer: "",
+      punchStatus: '1',
+      teacher: '',
+      activeName: '1',
+      type: '',
+      status: '',
+      timer: '',
       t1,
       t2,
       t3,
@@ -132,140 +132,140 @@ export default {
       t11,
       typeOptions: [
         {
-          value: "1",
-          label: "问卷"
+          value: '1',
+          label: '问卷'
         },
         {
-          value: "2",
-          label: "测试"
+          value: '2',
+          label: '测试'
         },
         {
-          value: "3",
-          label: "优势打卡"
+          value: '3',
+          label: '优势打卡'
         },
         {
-          value: "4",
-          label: "上传作品"
+          value: '4',
+          label: '上传作品'
         }
       ],
       statusOptions: [
         {
-          value: "1",
-          label: "未完成"
+          value: '1',
+          label: '未完成'
         },
         {
-          value: "2",
-          label: "已完成"
+          value: '2',
+          label: '已完成'
         }
       ],
       timerOptions: [
         {
-          value: "1",
-          label: "3-7天"
+          value: '1',
+          label: '3-7天'
         },
         {
-          value: "2",
-          label: "7-30天"
+          value: '2',
+          label: '7-30天'
         },
         {
-          value: "3",
-          label: "1月-3月"
+          value: '3',
+          label: '1月-3月'
         },
         {
-          value: "4",
-          label: "1月-3月"
+          value: '4',
+          label: '1月-3月'
         }
       ],
       // id=> 1 :问卷 2：测试 3：优势打卡 4：上传作品 5图文
       tableData1: [
         {
-          date: "",
-          name: "老师",
-          type: "张晓刚",
-          todoStatus: "已完成",
-          taskStatus: "2019/03/05-2019/05/08",
-          pancel: "查看详细",
+          date: '',
+          name: '老师',
+          type: '张晓刚',
+          todoStatus: '已完成',
+          taskStatus: '2019/03/05-2019/05/08',
+          pancel: '查看详细',
           icon: t4,
           id: 1
         },
         {
-          date: "201903班",
-          name: "学员",
-          type: "李晓红",
-          todoStatus: "已完成",
-          taskStatus: "2019/03/05-2019/05/08",
-          pancel: "查看详细",
+          date: '201903班',
+          name: '学员',
+          type: '李晓红',
+          todoStatus: '已完成',
+          taskStatus: '2019/03/05-2019/05/08',
+          pancel: '查看详细',
           icon: t4,
           id: 1
         },
         {
-          date: "",
-          name: "家长",
-          type: "王小明",
-          todoStatus: "未完成",
-          taskStatus: "2019/03/05-2019/05/08",
-          pancel: "查看详细",
+          date: '',
+          name: '家长',
+          type: '王小明',
+          todoStatus: '未完成',
+          taskStatus: '2019/03/05-2019/05/08',
+          pancel: '查看详细',
           icon: t4,
           id: 1
         },
         {
-          date: "201903班",
-          name: "学员",
-          type: "李晓红",
-          todoStatus: "已完成",
-          taskStatus: "2019/03/05-2019/05/08",
-          pancel: "查看详细",
+          date: '201903班',
+          name: '学员',
+          type: '李晓红',
+          todoStatus: '已完成',
+          taskStatus: '2019/03/05-2019/05/08',
+          pancel: '查看详细',
           icon: t4,
           id: 1
         },
         {
-          date: "201903班",
-          name: "学员",
-          type: "李晓红",
-          todoStatus: "已完成",
-          taskStatus: "2019/03/05-2019/05/08",
-          pancel: "查看详细",
+          date: '201903班',
+          name: '学员',
+          type: '李晓红',
+          todoStatus: '已完成',
+          taskStatus: '2019/03/05-2019/05/08',
+          pancel: '查看详细',
           icon: t4,
           id: 1
         }
       ],
       isShowTask: false,
       address: {
-        onePath: "/",
-        text: "K81010随堂测试"
+        onePath: '/',
+        text: 'K81010随堂测试'
       }
-    };
-  },
-  created() {
-    if (this.$route.query.type === "showPunchCard") {
-      this.isShowPanchCard = true;
     }
   },
+  // created () {
+  //   if (this.$route.query.type === 'showPunchCard') {
+  //     this.isShowPanchCard = true
+  //   }
+  // },
   methods: {
-    addWorks() {
-      this.isShowAddWork = true;
+    addWorks () {
+      this.isShowAddWork = true
     },
-    handleJump() {
-      this.isShowEditor = true;
+    handleJump () {
+      this.isShowEditor = true
     },
-    handleClick(tab, event) {
+    handleClick (tab, event) {
       // console.log(tab, event)
     },
-    handleConditionChange() {},
-    parentClose() {
-      this.isShowPanchCard = false;
-      this.isShowActivity = false;
-      this.isShowAddWork = false;
-      this.isShowEditor = false;
-      this.isShowDeleteWorks = false;
+    handleConditionChange () {},
+    parentClose () {
+      this.isShowPanchCard = false
+      this.isShowActivity = false
+      this.isShowAddWork = false
+      this.isShowEditor = false
+      this.isShowDeleteWorks = false
     },
-    handleActivityShow() {
-      this.isShowActivity = true;
+    handleActivityShow () {
+      this.isShowActivity = true
     },
-    invitation() {
-      this.isShowDeleteWorks = true;
+    invitation () {
+      this.isShowDeleteWorks = true
     },
-    todo(row) {
+    todo (row) {
       console.log(111)
       // if (row.id === 1) {
       //   this.$router.push({
@@ -291,15 +291,15 @@ export default {
     //     this.$router.push("/superiority-clockin/empty");
     //   }
     // },
-    loadMore(id) {
+    loadMore (id) {
       if (id === 1) {
         this.tableData1.push(
           this.tableData1[parseInt(Math.random() * this.tableData1.length)]
-        );
+        )
       } else {
         this.tableData2.push(
           this.tableData2[parseInt(Math.random() * this.tableData2.length)]
-        );
+        )
       }
     }
   },
@@ -315,8 +315,15 @@ export default {
     // NoSelect,
     // InvitationSuccess,
     // InvitationComments
+  },
+  beforeRouteEnter (to, from, next) {
+    next((vm) => {
+      if (from.path === '/superiority-clockin/question') {
+        vm.isShowPanchCard = true
+      }
+    })
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

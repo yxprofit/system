@@ -98,18 +98,22 @@
     <activity-name :state="isShowActivity" @close="parentClose" @invitation="invitation"></activity-name>
 
     <!-- 添加任务弹框 -->
-    <add-works :state="isShowAddWork" @close="parentClose" @handleJump="handleJump" @handleJump2='jump2'></add-works>
+    <add-works
+      :state="isShowAddWork"
+      @close="parentClose"
+      @handleJump="handleJump"
+      @handleJump2="jump2"
+    ></add-works>
     <Ueditor :state="isShowEditor" @close="parentClose"></Ueditor>
 
     <!-- 删除任务弹框 -->
     <delete-works :state="isShowDeleteWorks" @close="parentClose"></delete-works>
 
-      <!-- 优势打卡弹框 -->
-    <sign-dialog :state='isSignDialog' @close='signDialogClose'></sign-dialog>
+    <!-- 优势打卡弹框 -->
+    <sign-dialog :state="isSignDialog" @close="signDialogClose"></sign-dialog>
 
     <!-- 发布任务 -->
     <publish-task :state.sync="isPublishTask"></publish-task>
-
 
     <!-- 测试弹窗组件区域 -->
     <!-- <my-advantage :state="isShowAdvantage"></my-advantage> -->
@@ -122,46 +126,45 @@
 </template>
 
 <script>
-import t1 from "@/assets/images/icon/t1.png";
-import t2 from "@/assets/images/icon/t2.png";
-import t3 from "@/assets/images/icon/t3.png";
-import t4 from "@/assets/images/icon/t4.png";
-import t5 from "@/assets/images/icon/t5.png";
-import t6 from "@/assets/images/icon/t6.png";
-import t7 from "@/assets/images/icon/t7.png";
-import t8 from "@/assets/images/icon/t8.png";
-import t9 from "@/assets/images/icon/t9.png";
-import t10 from "@/assets/images/icon/t10.png";
-import t11 from "@/assets/images/icon/t11.png";
-import PredictionTask from "../prediction";
-import PunchCard from "@/components/advantagePunchCard";
-import ActivityName from "@/components/activityName";
-import AddWorks from "../addworks/addWorkTypes";
-import Ueditor from "@/page/ueditor/ueditor";
-import DeleteWorks from "../deleteWork/deleteWork";
-import SignDialog from '@/components/signdialog'
+import t1 from '@/assets/images/icon/t1.png';
+import t2 from '@/assets/images/icon/t2.png';
+import t3 from '@/assets/images/icon/t3.png';
+import t4 from '@/assets/images/icon/t4.png';
+import t5 from '@/assets/images/icon/t5.png';
+import t6 from '@/assets/images/icon/t6.png';
+import t7 from '@/assets/images/icon/t7.png';
+import t8 from '@/assets/images/icon/t8.png';
+import t9 from '@/assets/images/icon/t9.png';
+import t10 from '@/assets/images/icon/t10.png';
+import t11 from '@/assets/images/icon/t11.png';
+import PredictionTask from '../prediction';
+import PunchCard from '@/components/advantagePunchCard';
+import ActivityName from '@/components/activityName';
+import AddWorks from '../addworks/addWorkTypes';
+import Ueditor from '@/page/ueditor/ueditor';
+import DeleteWorks from '../deleteWork/deleteWork';
+import SignDialog from '@/components/signdialog';
 import PublishTask from '@/components/pubishTask';
 
-
 export default {
-  name: "Trends",
-  data() {
+  name: 'Trends',
+  data () {
     return {
-      isPublishTask:false,
-      isSignDialog:false,
-      fullPath: "",
+      isPublishTask: false,
+      isSignDialog: false,
+      fullPath: '',
       isShowDeleteWorks: false,
       isShowAddWork: false,
       isShowEditor: false,
       isShowActivity: false,
       isShowPanchCard: false,
       isShowAdvantage: false,
-      punchStatus: "1",
-      teacher: "",
-      activeName: "1",
-      type: "",
-      status: "",
-      timer: "",
+      punchStatus: '1',
+      teacher: '',
+      activeName: '1',
+      type: '',
+      status: '',
+      timer: '',
       t1,
       t2,
       t3,
@@ -175,205 +178,214 @@ export default {
       t11,
       typeOptions: [
         {
-          value: "1",
-          label: "问卷"
+          value: '1',
+          label: '问卷'
         },
         {
-          value: "2",
-          label: "测试"
+          value: '2',
+          label: '测试'
         },
         {
-          value: "3",
-          label: "优势打卡"
+          value: '3',
+          label: '优势打卡'
         },
         {
-          value: "4",
-          label: "上传作品"
+          value: '4',
+          label: '上传作品'
         }
       ],
       statusOptions: [
         {
-          value: "1",
-          label: "未完成"
+          value: '1',
+          label: '未完成'
         },
         {
-          value: "2",
-          label: "已完成"
+          value: '2',
+          label: '已完成'
         }
       ],
       timerOptions: [
         {
-          value: "1",
-          label: "3-7天"
+          value: '1',
+          label: '3-7天'
         },
         {
-          value: "2",
-          label: "7-30天"
+          value: '2',
+          label: '7-30天'
         },
         {
-          value: "3",
-          label: "1月-3月"
+          value: '3',
+          label: '1月-3月'
         },
         {
-          value: "4",
-          label: "1月-3月"
+          value: '4',
+          label: '1月-3月'
         }
       ],
       // id=> 1 :问卷 2：测试 3：优势打卡 4：上传作品 5图文
       tableData2: [
         {
-          date: "2019/03/05-2019/05/08",
-          name: "成长档案",
-          type: "问卷",
-          todoStatus: "已完成",
-          taskStatus: "已关闭",
-          pancel: "删除",
+          date: '2019/03/05-2019/05/08',
+          name: '成长档案',
+          type: '问卷',
+          todoStatus: '已完成',
+          taskStatus: '已关闭',
+          pancel: '删除',
           icon: t4,
           id: 1,
-          num:1
+          num: 1
         },
         {
-          date: "2019/03/13-2019/06/28",
-          name: "随堂测试",
-          type: "测试",
-          todoStatus: "已完成",
-          taskStatus: "已关闭",
-          pancel: "删除",
+          date: '2019/03/13-2019/06/28',
+          name: '随堂测试',
+          type: '测试',
+          todoStatus: '已完成',
+          taskStatus: '已关闭',
+          pancel: '删除',
           icon: t1,
           id: 2,
-          num:2
+          num: 2
         },
         {
-          date: "2019/03/05-2019/07/30",
-          name: "阶段考试",
-          type: "优势打卡",
-          todoStatus: "未完成",
-          taskStatus: "开放",
-          pancel: "删除",
+          date: '2019/03/05-2019/07/30',
+          name: '阶段考试',
+          type: '优势打卡',
+          todoStatus: '未完成',
+          taskStatus: '开放',
+          pancel: '删除',
           icon: t5,
           id: 3,
-          status: "1",
-          num:3
+          status: '1',
+          num: 3
         },
         {
-          date: "2019/03/05-2019/07/30",
-          name: "阶段考试",
-          type: "优势打卡",
-          todoStatus: "已完成",
-          taskStatus: "开放",
-          pancel: "删除",
+          date: '2019/03/05-2019/07/30',
+          name: '阶段考试',
+          type: '优势打卡',
+          todoStatus: '已完成',
+          taskStatus: '开放',
+          pancel: '删除',
           icon: t5,
           id: 3,
-          status: "3",
-          num:4
+          status: '3',
+          num: 4
         },
         {
-          date: "2019/03/05-2019/05/08",
-          name: "优势打卡",
-          type: "上传作品",
-          todoStatus: "已完成",
-          taskStatus: "已关闭",
-          pancel: "删除",
+          date: '2019/03/05-2019/05/08',
+          name: '优势打卡',
+          type: '上传作品',
+          todoStatus: '已完成',
+          taskStatus: '已关闭',
+          pancel: '删除',
           icon: t2,
           id: 4,
-          num:5
+          num: 5
         },
         {
-          date: "2019/03/13-2019/06/28",
-          name: "优势打卡",
-          type: "图文",
-          todoStatus: "未完成",
-          taskStatus: "开放",
-          pancel: "删除",
+          date: '2019/03/13-2019/06/28',
+          name: '优势打卡',
+          type: '图文',
+          todoStatus: '未完成',
+          taskStatus: '开放',
+          pancel: '删除',
           icon: t3,
           id: 5,
-          num:6
+          num: 6
         },
         {
-          date: "2019/03/05-2019/07/30",
-          name: "阶段考试",
-          type: "优势打卡",
-          todoStatus: "已完成",
-          taskStatus: "开放",
-          pancel: "删除",
+          date: '2019/03/05-2019/07/30',
+          name: '阶段考试',
+          type: '优势打卡',
+          todoStatus: '已完成',
+          taskStatus: '开放',
+          pancel: '删除',
           icon: t5,
           id: 3,
-          status: "3",
-          num:7
+          status: '3',
+          num: 7
         }
       ],
       isShowTask: false
-    };
-  },
-  created() {
-    this.fullPath = this.$router.currentRoute.fullPath;
-    console.log(this.fullPath)
-    if (this.$route.query.type === "showPunchCard") {
-      this.isShowPanchCard = true;
     }
   },
+  // created () {
+  //   this.fullPath = this.$router.currentRoute.fullPath
+  //   console.log(this.fullPath)
+  //   if (this.$route.query.type === 'showPunchCard') {
+  //     this.isShowPanchCard = true
+  //   }
+  // },
   methods: {
-    jump2(){
+    jump2 () {
       this.isSignDialog = true
     },
-    signDialogClose(){
-      this.isShowAddWork = false;
-      this.isSignDialog = false;
+    signDialogClose () {
+      this.isShowAddWork = false
+      this.isSignDialog = false
       console.log(this.fullPath.includes('teachers'))
-      this.fullPath.includes('teacher')?this.isPublishTask = true:this.isPublishTask = false;
+      this.fullPath.includes('teacher')
+        ? (this.isPublishTask = true)
+        : (this.isPublishTask = false)
     },
-    addWorks() {
-      this.isShowAddWork = true;
+    addWorks () {
+      this.isShowAddWork = true
     },
-    handleJump() {
-      this.isShowEditor = true;
+    handleJump () {
+      this.isShowEditor = true
     },
-    handleClick(tab, event) {
+    handleClick (tab, event) {
       // console.log(tab, event)
     },
-    handleConditionChange() {},
-    parentClose() {
-      this.isShowPanchCard = false;
-      this.isShowActivity = false;
-      this.isShowAddWork = false;
-      this.isShowEditor = false;
-      this.isShowDeleteWorks = false;
+    handleConditionChange () {},
+    parentClose () {
+      this.isShowPanchCard = false
+      this.isShowActivity = false
+      this.isShowAddWork = false
+      this.isShowEditor = false
+      this.isShowDeleteWorks = false
     },
-    handleActivityShow() {
-      this.isShowActivity = true;
+    handleActivityShow () {
+      this.isShowActivity = true
     },
-    invitation() {
-      this.isShowDeleteWorks = true;
+    invitation () {
+      this.isShowDeleteWorks = true
     },
-    todo(row) {
-      let arr = this.tableData2.filter(item=>{
+    todo (row) {
+      let arr = this.tableData2.filter(item => {
         return item.num != row.num
       })
       this.tableData2 = arr
     },
-    todoType(row) {
+    todoType (row) {
       console.log(111)
-      if (this.fullPath.includes("/teacher")) {
+      if (this.fullPath.includes('/teacher')) {
         this.$router.push({
-          path: "/teacher/task/sponsor/detail/2"
-        });
-      } else if (this.fullPath.includes("/student")) {
+          path: '/teacher/task/sponsor/detail/2'
+        })
+      } else if (this.fullPath.includes('/student')) {
         this.$router.push({
-          path: "/student/task/sponsor/detail/2"
-        });
+          path: '/student/task/sponsor/detail/2'
+        })
       }
     },
-    loadMore(id) {
+    loadMore (id) {
       if (id === 1) {
         this.tableData1.push(
           this.tableData1[parseInt(Math.random() * this.tableData1.length)]
-        );
+        )
       } else {
         this.tableData2.push(
           this.tableData2[parseInt(Math.random() * this.tableData2.length)]
-        );
+        )
       }
     }
+  },
+  beforeRouteEnter (to, from, next) {
+    next((vm) => {
+      if (from.path === '/superiority-clockin/question') {
+        vm.isShowPanchCard = true
+      }
+    })
   },
   components: {
     PredictionTask,
@@ -390,7 +402,7 @@ export default {
     // InvitationSuccess,
     // InvitationComments
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
