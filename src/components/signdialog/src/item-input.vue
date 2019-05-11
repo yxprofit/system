@@ -6,6 +6,7 @@
       type="textarea"
       @focus="foucsing=true"
       @blur="foucsing=false"
+      :disabled="true"
       @change="handlechange">
     </el-input>
     <span @click="handleFocus" v-show="showPlaceholder" class="place-holder" v-html="placeholder"></span>

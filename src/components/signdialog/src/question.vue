@@ -12,7 +12,7 @@
     <div class="questions-actions">
       <el-row>
         <el-col class="acrion-btn" :span="12">
-          <button v-if="showAddSupBtn" @click="addSuperiority">添加优势应用标签</button>
+          <button v-if="showAddSupBtn">添加优势应用标签</button>
           <ul v-else class="shown-list superity">
             <li :class="item.type" v-for="(item,index) in superiorites" :key="index">
               <img :src="item.imgsrc" alt>
@@ -21,7 +21,7 @@
           </ul>
         </el-col>
         <el-col class="acrion-btn" :span="12">
-          <button v-if="showAddAbilitBtn" @click="addOperate">添加能力应用标签</button>
+          <button v-if="showAddAbilitBtn">添加能力应用标签</button>
           <ul v-else class="shown-list ability">
             <li v-for="(item,index) in abilities" :key="index">
               <img :src="item.icon" alt>

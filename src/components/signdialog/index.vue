@@ -20,7 +20,7 @@
             </h3>
           </div>
           <div class="main-input">
-            <el-input size="large" placeholder="样例：同学们，请记录这周你所参与的课外活动。"/>
+            <el-input size="large" placeholder="样例：同学们，请记录这周你所参与的课外活动。" :disabled="true"/>
           </div>
         </div>
         <div style="padding: 0 0.4rem 0 0.3rem;">
@@ -46,7 +46,6 @@
                 <ul class="activity-list">
                   <li
                     :class="{'is-active': active === index}"
-                    @click="handleClick(item,index)"
                     class="activity-list-item"
                     v-for="(item,index) in activityList"
                     :key="index"
@@ -61,7 +60,7 @@
                   </li>
                 </ul>
                 <div class="asider-action">
-                  <button @click="customActivity">添加自定义活动</button>
+                  <button>添加自定义活动</button>
                   <button>去活动库添加计划</button>
                 </div>
               </div>
