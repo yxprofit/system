@@ -82,7 +82,7 @@
     <add-works :state="addwork" @close="addworkClose" @handleJump="jump" @handleJump2='jump2'></add-works>
     <teacher-editor :state="editor" @close="editorClose"></teacher-editor>
     <sign-dialog :state='isSignDialog' @close='signDialogClose'></sign-dialog>
-    <!-- <publish-task :state.sync="isPublishTask"></publish-task> -->
+    <publish-task :state.sync="isPublishTask"></publish-task>
   </div>
 </template>
 
@@ -110,7 +110,7 @@ export default {
       editor: false,
       addwork: false,
       isdelete: false,
-      isPublishTask: true,
+      isPublishTask: false,
       loading: true,
       material,
       details1,
@@ -249,9 +249,9 @@ export default {
       _this.loading = false;
     }, 1000);
 
-    if (this.$route.query.isTask) {
-      this.isPublishTask = true
-    }
+    // if (this.$route.query.isTask) {
+    //   this.isPublishTask = true
+    // }
 
     // document.onkeyup = function(e) {
     //   let key = window.event.keyCode;
@@ -345,6 +345,7 @@ export default {
     },
     signDialogClose(){
       this.isSignDialog = false
+      this.isPublishTask = true
     },
     fullScreen() {
       // this.text = "esc";
