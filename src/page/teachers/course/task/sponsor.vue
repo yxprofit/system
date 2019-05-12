@@ -308,13 +308,13 @@ export default {
       isShowTask: false
     }
   },
-  // created () {
-  //   this.fullPath = this.$router.currentRoute.fullPath
-  //   console.log(this.fullPath)
-  //   if (this.$route.query.type === 'showPunchCard') {
-  //     this.isShowPanchCard = true
-  //   }
-  // },
+  created () {
+    this.fullPath = this.$router.currentRoute.fullPath
+    // console.log(this.fullPath)
+    // if (this.$route.query.type === 'showPunchCard') {
+    //   this.isShowPanchCard = true
+    // }
+  },
   methods: {
     jump2 () {
       this.isSignDialog = true
@@ -322,10 +322,16 @@ export default {
     signDialogClose () {
       this.isShowAddWork = false
       this.isSignDialog = false
-      console.log(this.fullPath.includes('teachers'))
-      this.fullPath.includes('teacher')
-        ? (this.isPublishTask = true)
-        : (this.isPublishTask = false)
+      console.log(this.fullPath.includes('teacher'))
+      if(this.fullPath.includes('teacher')){
+        this.isPublishTask = true
+      }else if(this.fullPath.includes('student')){
+        this.isPublishTask = false
+        this.$router.push('/superiority-clockin/empty')
+      }
+      // this.fullPath.includes('teacher')
+      //   ? (this.isPublishTask = true)
+      //   : (this.isPublishTask = false)
     },
     addWorks () {
       this.isShowAddWork = true
