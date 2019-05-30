@@ -2,7 +2,7 @@
   <div class="questions">
     <div class="questions-header">
       <div class="left">
-        <img :src="activeData.imgSrc" alt="">
+        <img :src="activeData.imgSrc" alt>
       </div>
       <div class="right">
         <h2 class="title">{{activeData.title}}</h2>
@@ -15,7 +15,7 @@
           <button v-if="showAddSupBtn" @click="addSuperiority">添加优势应用标签</button>
           <ul v-else class="shown-list superity">
             <li :class="item.type" v-for="(item,index) in superiorites" :key="index">
-              <img :src="item.imgsrc" alt="">
+              <img :src="item.imgsrc" alt>
               <p>{{item.title}}</p>
             </li>
             <li class="item_select" @click="addSuperiority">再次选择</li>
@@ -25,7 +25,7 @@
           <button v-if="showAddAbilitBtn" @click="addOperate">添加能力应用标签</button>
           <ul v-else class="shown-list ability">
             <li v-for="(item,index) in abilities" :key="index">
-              <img :src="item.icon" alt="">
+              <img :src="item.icon" alt>
               <p>{{item.tipTitle}}</p>
             </li>
             <li class="item_select" @click="addOperate">再次选择</li>
@@ -41,61 +41,78 @@
               v-for="item in roleOps"
               :value="item.value"
               :label="item.label"
-              :key="item.value">
-            </el-option>
+              :key="item.value"
+            ></el-option>
           </el-select>
         </el-form-item>
         <el-form-item>
-          <el-select v-model="form.joinTime" placeholder="参与活动时间">
+          <!-- <el-select v-model="form.joinTime" placeholder="参与活动时间">
             <el-option
               v-for="item in timeOps"
               :value="item.value"
               :label="item.label"
               :key="item.value">
             </el-option>
-          </el-select>
+          </el-select>-->
+          <el-date-picker style="width:1.7rem;" v-model="value1" type="datetimerange" placeholder="参与活动时间"></el-date-picker>
         </el-form-item>
         <el-form-item>
-          <el-select v-model="form.payTime" placeholder="本次花费时间">
+          <!-- <el-select v-model="form.payTime" placeholder="本次花费时间">
             <el-option
               v-for="item in payTimeOps"
               :value="item.value"
               :label="item.label"
-              :key="item.value">
-            </el-option>
-          </el-select>
+              :key="item.value"
+            ></el-option>
+          </el-select> -->
+          <el-input v-model="input" placeholder="本次花费时间(小时)"></el-input>
         </el-form-item>
       </el-form>
       <ul class="question-list">
         <li class="question-list-item" v-for="(item,index) in questionList" :key="index">
-          <span  :content="index+1" class="index"><img :src="indexPic" alt=""></span>
+          <span :content="index+1" class="index">
+            <img :src="indexPic" alt>
+          </span>
           <div class="title">
             <div class="tag">{{item.tag}}</div>
             <div class="label">{{item.label}}</div>
           </div>
           <div class="content">
-            <item-input @change="handleChange" :prop="item.prop" :placeholder="item.placeholder" :itemValue="form[item.prop]"></item-input>
+            <item-input
+              @change="handleChange"
+              :prop="item.prop"
+              :placeholder="item.placeholder"
+              :itemValue="form[item.prop]"
+            ></item-input>
           </div>
         </li>
       </ul>
     </div>
     <div class="questions-btn">
-      <img class="left-img" :src="quesLeft" alt="">
+      <img class="left-img" :src="quesLeft" alt>
       <button @click="handleNext">下一步</button>
-      <img class="right-img" :src="quesRight" alt="">
+      <img class="right-img" :src="quesRight" alt>
     </div>
     <add-superiority-dialog @change="handleSuperiChange" ref="addSuperiorityDialog"></add-superiority-dialog>
     <my-advantage :state.sync="isShowAdvantage" @ability="handleAbility"></my-advantage>
     <no-select :state.sync="isShowNoSelect"></no-select>
-    <courseware-upload :state.sync="isShowUpload" :uploadList="uploadList" @uploadSelect="handleUploadSelect" @invitative="handleInvitative"></courseware-upload>
+    <courseware-upload
+      :state.sync="isShowUpload"
+      :uploadList="uploadList"
+      @uploadSelect="handleUploadSelect"
+      @invitative="handleInvitative"
+    ></courseware-upload>
     <upload-list :state.sync="isShowUploadList" @uploadtList="handleUploadList"></upload-list>
-    <invitation-comments :state.sync="isShowComments" @success="handleSuccess" @showActivity="handleActivityShow"></invitation-comments>
+    <invitation-comments
+      :state.sync="isShowComments"
+      @success="handleSuccess"
+      @showActivity="handleActivityShow"
+    ></invitation-comments>
     <invitation-success :state.sync="isShowSuccess"></invitation-success>
-     <!-- 我的活动 -->
-    <activity-name :state='isShowActivity' @close='parentClose' @invitation='invitation'></activity-name>
+    <!-- 我的活动 -->
+    <activity-name :state="isShowActivity" @close="parentClose" @invitation="invitation"></activity-name>
     <!-- 确认删除弹框 -->
-    <delete-works :state='isShowDeleteWorks' @close='parentClose'></delete-works>
-
+    <delete-works :state="isShowDeleteWorks" @close="parentClose"></delete-works>
   </div>
 </template>
 <script>
@@ -215,6 +232,8 @@ export default {
   },
   data() {
     return {
+      input:'',
+      value1:'',
       indexPic,
       isShowDeleteWorks: false,
       isShowAdvantage: false,
@@ -452,7 +471,7 @@ export default {
         justify-content: space-between;
         align-items: center;
         box-sizing: border-box;
-        padding: 0 .3rem;
+        padding: 0 0.3rem;
         li {
           height: 0.8rem;
           line-height: 0.8rem;
@@ -476,8 +495,8 @@ export default {
             line-height: 0.36rem;
             border: 1px solid rgba(247, 151, 39, 1);
             border-radius: 4px;
-            font-size: .15rem;
-            color:rgba(247,151,39,1);
+            font-size: 0.15rem;
+            color: rgba(247, 151, 39, 1);
           }
         }
       }

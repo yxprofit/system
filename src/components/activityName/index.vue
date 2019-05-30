@@ -28,17 +28,17 @@
             <!-- 问答 -->
             <section class="qa">
               <p><i>Situation：</i>当时的情况/挑战是什么？</p>
-              <textarea maxlength="140">我最喜欢的数学课学到很难得概念，我学不懂，测验失利（不超过140字）</textarea>
+              <textarea maxlength="140" disabled>我最喜欢的数学课学到很难得概念，我学不懂，测验失利（不超过140字）</textarea>
               <p><i>Action：</i>你的主要行动是什么? （结合你的优势，你具体的行动是什么）</p>
-              <textarea>我主动找老师课后问问题，我和最好的朋友约着一起对卷子，我安慰自己，很快恢复了情绪，我主动找老师课后问问题，我和最好的朋友约着一起对卷子，我安慰自己，很快恢复了情绪，我主动找老师课后问问题，我和最好的朋友约着一起对卷子，我安慰自己，很快恢复了情绪。我主动找老师课后问问题，我和最好的朋十九</textarea>
+              <textarea disabled style="overflow:hidden;">我主动找老师课后问问题，我和最好的朋友约着一起对卷子，我安慰自己，很快恢复了情绪，我主动找老师课后问问题，我和最好的朋友约着一起对卷子，我安慰自己，很快恢复了情绪，我主动找老师课后问问题，我和最好的朋友约着一起对卷子，我安慰自己，很快恢复了情绪。我主动找老师课后问问题，我和最好的朋十九</textarea>
               <p><i>Results：</i>结果如何?</p>
-              <textarea>周末作业我都完成了，也都会了</textarea>
+              <textarea disabled>周末作业我都完成了，也都会了</textarea>
             </section>
           </div>
           <div class="right">
             <p>为他点赞</p>
             <p>分享你的评价</p>
-            <textarea maxlength="100" name="" id="" cols="30" rows="10" placeholder="不超过100字">
+            <textarea disabled style="background-color:#fff;" maxlength="100" name="" id="" cols="30" rows="10" placeholder="不超过100字">
             </textarea>
             <p>如果你参与了这个活动，点击分享你看到对方展示的优势与能力标签</p>
             <div class="add_ad_button">
@@ -51,10 +51,10 @@
           </div>
 
         </div>
-        <footer>
+        <!-- <footer>
           <button class="button1" @click="handleInvitation">拒绝邀请</button>
           <button class="button2" @click="handleClose">提交</button>
-        </footer>
+        </footer> -->
 			</div>
     </el-dialog>
 	</div>
