@@ -87,7 +87,8 @@
               </ul>
             </div>
             <div class="zan">
-              <img src="../../assets/images/icon/zan.png" alt>
+              <img v-if="zan" @click="isZan" src="../../assets/images/icon/zan.png" alt>
+              <div v-else class="zan1" @click="isZan"><i class="el-icon-thumb"></i>点赞</div>
             </div>
           </div>
         </div>
@@ -121,7 +122,8 @@ export default {
       loading: true,
       isShowAdvantage: false,
       abilities: [],
-      superiorites: []
+      superiorites: [],
+      zan:false
     };
   },
   created() {
@@ -131,6 +133,9 @@ export default {
     }, 1000);
   },
   methods: {
+    isZan(){
+      this.zan = !this.zan
+    },
     handleSuperiChange(list) {
       console.log(list);
       this.superiorites = list;
@@ -328,6 +333,21 @@ export default {
         img {
           width: 100%;
           height: auto;
+        }
+        .zan1{
+          position: absolute;
+          width: .9rem;
+          height: .3rem;
+          top: 0.2rem;
+          // right: 0.4rem;
+          text-align: center;
+          background-color: #fff;
+          line-height: .3rem;
+          font-size: .14rem;
+          border-radius: 6px;
+          i{
+            margin-right: .05rem;
+          }
         }
       }
     }
