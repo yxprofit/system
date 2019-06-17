@@ -1,14 +1,19 @@
 <template>
-	<div class="details" v-loading="loading">
-    <el-dialog class="details-dialog" :visible.sync="state" :before-close="handleClose" :close-on-click-modal='false'>
-			<div slot="title">
+  <div class="details" v-loading="loading">
+    <el-dialog
+      class="details-dialog"
+      :visible.sync="state"
+      :before-close="handleClose"
+      :close-on-click-modal="false"
+    >
+      <div slot="title">
         <div class="name">
           <div class="left">
-            <img src="../../assets/images/icon/ac1.png" alt="">
+            <img src="../../assets/images/icon/ac1.png" alt>
             <p>活动名称民乐社团（样本范例）</p>
           </div>
           <div class="button">
-            <img src="../../assets/images/icon/ad_3.png" alt="">
+            <img src="../../assets/images/icon/ad_3.png" alt>
             <div>
               <p>用户名</p>
               <p>来自</p>
@@ -17,79 +22,137 @@
         </div>
         <div class="punch_info">
           <span>.</span>
-          <span>打卡时间：<i>2019.3.19</i></span>
+          <span>
+            打卡时间：
+            <i>2019.3.19</i>
+          </span>
           <span>.</span>
-          <span>活动类型：<i>学科活动</i></span>
+          <span>
+            活动类型：
+            <i>学科活动</i>
+          </span>
           <span>.</span>
-          <span>科目方向：<i>stem</i></span>
+          <span>
+            科目方向：
+            <i>stem</i>
+          </span>
         </div>
         <div class="content">
           <div class="left">
             <!-- 问答 -->
             <section class="qa">
-              <p><i>Situation：</i>当时的情况/挑战是什么？</p>
+              <p>
+                <i>Situation：</i>当时的情况/挑战是什么？
+              </p>
               <textarea maxlength="140">我最喜欢的数学课学到很难得概念，我学不懂，测验失利（不超过140字）</textarea>
-              <p><i>Action：</i>你的主要行动是什么? （结合你的优势，你具体的行动是什么）</p>
+              <p>
+                <i>Action：</i>你的主要行动是什么? （结合你的优势，你具体的行动是什么）
+              </p>
               <textarea>我主动找老师课后问问题，我和最好的朋友约着一起对卷子，我安慰自己，很快恢复了情绪，我主动找老师课后问问题，我和最好的朋友约着一起对卷子，我安慰自己，很快恢复了情绪，我主动找老师课后问问题，我和最好的朋友约着一起对卷子，我安慰自己，很快恢复了情绪。我主动找老师课后问问题，我和最好的朋十九</textarea>
-              <p><i>Results：</i>结果如何?</p>
+              <p>
+                <i>Results：</i>结果如何?
+              </p>
               <textarea>周末作业我都完成了，也都会了</textarea>
             </section>
           </div>
           <div class="right">
             <p>为他点赞</p>
             <p>分享你的评价</p>
-            <textarea style="background-color:#fff;" maxlength="100" name="" id="" cols="30" rows="10" placeholder="不超过100字">
-            </textarea>
+            <textarea
+              style="background-color:#fff;"
+              maxlength="100"
+              name
+              id
+              cols="30"
+              rows="10"
+              placeholder="不超过100字"
+            ></textarea>
             <p>如果你参与了这个活动，点击分享你看到对方展示的优势与能力标签</p>
             <div class="add_ad_button">
-              <button>添加优势应用标签</button>
-              <button>添加能力应用标签</button>
+              <button @click="addAdvatage1" v-if="superiorites.length == 0">添加优势应用标签</button>
+              <button @click="addAdvatage2" v-if="abilities.length == 0">添加能力应用标签</button>
+            </div>
+            <div class="item_list">
+              <ul v-if="superiorites.length !== 0">
+                <li v-for="(item,index) in superiorites" :key="index">
+                  <img :src="item.imgsrc" alt>
+                  <span>{{item.title}}</span>
+                </li>
+              </ul>
+              <ul v-if="abilities.length!=0" class="abilities">
+                <li v-for="(item,index) in abilities" :key="index">
+                  <img :src="item.icon" alt>
+                  <span>{{item.tipTitle}}</span>
+                </li>
+              </ul>
             </div>
             <div class="zan">
-              <img src="../../assets/images/icon/zan.png" alt="">
+              <img src="../../assets/images/icon/zan.png" alt>
             </div>
           </div>
-
         </div>
         <footer>
           <button class="button2" @click="handleClose">已完成</button>
         </footer>
-			</div>
+      </div>
     </el-dialog>
-	</div>
+    <my-advantage :state.sync="isShowAdvantage" @ability="handleAbility"></my-advantage>
+    <add-superiority-dialog @change="handleSuperiChange" ref="addSuperiorityDialog"></add-superiority-dialog>
+  </div>
 </template>
 
 <script>
+import AddSuperiorityDialog from "@/page/superiority-clockin/src/add-superiority-dialog";
+import MyAdvantage from "@/components/myAdvantageModal";
 // 组建需三个props state控制dialog显示与隐藏，close触发父组件方法
 export default {
+  components: {
+    MyAdvantage,
+    AddSuperiorityDialog
+  },
   props: {
     state: {
       type: Boolean,
       default: false
     }
   },
-  data () {
+  data() {
     return {
-      loading: true
-    }
+      loading: true,
+      isShowAdvantage: false,
+      abilities: [],
+      superiorites: []
+    };
   },
-  created () {
-    let _this = this
+  created() {
+    let _this = this;
     setTimeout(() => {
-      _this.loading = false
-    }, 1000)
+      _this.loading = false;
+    }, 1000);
   },
   methods: {
-    handleClose () {
-      this.$emit('close')
+    handleSuperiChange(list) {
+      console.log(list);
+      this.superiorites = list;
     },
-    handleInvitation () {
-      this.$emit('invitation')
-      this.$message('您已拒绝邀请')
-      // this.$emit('invitation')
+    handleAbility(list) {
+      this.abilities = list;
+    },
+    handleClose() {
+      this.$emit("close");
+    },
+    handleInvitation() {
+      this.$emit("invitation");
+      this.$message("您已拒绝邀请");
+    },
+    addAdvatage1() {
+      this.$refs.addSuperiorityDialog.show();
+    },
+    addAdvatage2() {
+      this.isShowAdvantage = true;
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -147,21 +210,21 @@ export default {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    margin-left: .61rem;
-    span{
+    margin-left: 0.61rem;
+    span {
       &:nth-of-type(2n + 1) {
         width: 4px;
         height: 4px;
         background-color: #f79727;
       }
       &:nth-of-type(2n) {
-       font-size: .13rem;
-       line-height: 1;
-       margin: 0 .29rem 0 .1rem;
-       color: #888;
-       i{
-         color: #333;
-       }
+        font-size: 0.13rem;
+        line-height: 1;
+        margin: 0 0.29rem 0 0.1rem;
+        color: #888;
+        i {
+          color: #333;
+        }
       }
     }
   }
@@ -176,8 +239,8 @@ export default {
           font-size: 0.15rem;
           color: #333;
           line-height: 1;
-          margin: .25rem 0 .17rem;
-          font-family:MicrosoftYaHei-Bold;
+          margin: 0.25rem 0 0.17rem;
+          font-family: MicrosoftYaHei-Bold;
           i {
             font-weight: bold;
           }
@@ -202,66 +265,67 @@ export default {
     }
     .right {
       width: 4.9rem;
-      height: 4.6rem;
-      border: 1px dashed #E67A00;
-      margin-top: .18rem;
-      border-radius: .06rem;
+      height: 100%;
+      border: 1px dashed #e67a00;
+      margin-top: 0.18rem;
+      border-radius: 0.06rem;
       box-sizing: border-box;
-      padding: .18rem .43rem .47rem .31rem;
+      padding: 0.18rem 0.43rem 0.2rem 0.31rem;
       position: relative;
-      p{
-        font-size: .15rem;
+      p {
+        font-size: 0.15rem;
         color: #333;
-        line-height: .24rem;
+        line-height: 0.24rem;
         position: relative;
-        margin-left: .1rem;
-        &:nth-of-type(1){
-          margin-bottom: .25rem;
+        margin-left: 0.1rem;
+        &:nth-of-type(1) {
+          margin-bottom: 0.25rem;
         }
-        &::after{
+        &::after {
           position: absolute;
-          content:'';
+          content: "";
           width: 3px;
           height: 3px;
           border-radius: 50%;
           background-color: #aaa;
-          top: .13rem;
-          left: -.1rem;
+          top: 0.13rem;
+          left: -0.1rem;
         }
       }
-      textarea{
+      textarea {
         width: 4.2rem;
         height: 1.8rem;
         max-height: 1.8rem;
         overflow: auto;
-        border-radius: .06rem;
-        padding: .18rem;
+        border-radius: 0.06rem;
+        padding: 0.18rem;
         box-sizing: border-box;
-        margin: .16rem 0 .2rem;
+        margin: 0.16rem 0 0.2rem;
         resize: none;
       }
-      .add_ad_button{
+      .add_ad_button {
         display: flex;
         justify-content: flex-start;
-        margin-top: .2rem;
-        button{
+        align-items: center;
+        margin-top: 0.1rem;
+        button {
           width: 1.6rem;
-          height: .4rem;
-          border-radius: .04rem;
-          border: 1px solid #F7952A;
-          font-size: .15rem;
-          color: #F7952A;
-          background-color: #FFF8F0;
-          margin-right: .19rem;
+          height: 0.4rem;
+          border-radius: 0.04rem;
+          border: 1px solid #f7952a;
+          font-size: 0.15rem;
+          color: #f7952a;
+          background-color: #fff8f0;
+          margin-right: 0.19rem;
         }
       }
-      .zan{
+      .zan {
         position: absolute;
-        width: .9rem;
-        height: .4rem;
+        width: 0.9rem;
+        height: 0.4rem;
         top: 0rem;
-        right: .4rem;
-        img{
+        right: 0.4rem;
+        img {
           width: 100%;
           height: auto;
         }
@@ -272,7 +336,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: .22rem;
+    margin-top: 0.22rem;
     button {
       width: 1.2rem;
       height: 0.36rem;
@@ -295,13 +359,29 @@ export default {
       }
     }
   }
+  .item_list {
+    ul {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      li {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        img {
+          flex: 1;
+          margin: 0 0.05rem;
+        }
+      }
+    }
+  }
 }
 </style>
 <style lang="scss" scoped>
 .details /deep/ .el-dialog {
   width: 11.4rem;
-  height: 6.65rem;
-  margin: .6rem auto !important;
+  height: 7.35rem;
+  margin: 0.6rem auto !important;
   background-color: #fff8f0;
 }
 .details /deep/ .el-dialog__header {
